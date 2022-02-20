@@ -18,7 +18,9 @@ body {
 }
 
 .panel{
-    position: absolute;right: 500px;top: 100px;
+    position: absolute;
+    right: 500px;
+    top: 1000px;
     height: 350px;
     background:rgb(255, 255, 255);
 }
