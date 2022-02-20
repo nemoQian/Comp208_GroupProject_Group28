@@ -123,8 +123,19 @@ body {
 }
 
 .title{
-    font-size: 50px ;
+    color: #cccccc;
+    text-align:center;
+    font-size: 55px ;
+    position: absolute;
+    left: 40px;
+    top: 40px;
+}
+
+.titlebelow{
+    color: #cccccc;
+    text-align:center;
+    font-size: 18px ;
     position: absolute;
     left: 10px;
-    top: 40px;
+    top: 500px;
 }
