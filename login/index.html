@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="./style.css">
     <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
 </head>
-/*test push*/
+
 <body>
     <div id='app' class="container">
         <img src="./log_background.png" />
-        <div class="panel">
 
+        <div class="panel">
             <div class="content login">
                 <div class="switch">
                     <span :class='{"active": active === "login"}' @click='go("login")'>log in</span>
@@ -45,6 +45,11 @@
                     <button type="submit" @click='submit'>log in </button>
                 </div>
             </div>
+        </div>
+        <div class="title">
+            <span>
+                City energy<br>management<br> and<br> ComputationalSustainability<br> System
+            </span>
         </div>
     </div>
 </body>

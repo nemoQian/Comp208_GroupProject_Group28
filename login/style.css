@@ -17,13 +17,7 @@ body {
     background: linear-gradient(45deg, rgb(100, 149, 237), rgb(100, 149, 237)) fixed;
 }
 
-.panel{
-    position: absolute;
-    right: 500px;
-    top: 1000px;
-    height: 350px;
-    background:rgb(255, 255, 255);
-}
+
 .container {
     position: relative;
     width: 70rem;
@@ -46,14 +40,15 @@ body {
 .switch span.active {
     color: rgb(6, 154, 254);
 }
-
+/*整块*/
 .panel {
     width: 30%;
     margin: 10rem 0 0;
     position: absolute;
-    right: 0;
-    top: 0;
-
+    right: 180px;
+    top: 80px;
+    height: 350px;
+    background:rgb(255, 255, 255);
     display: flex;
     justify-content: center;
 }
@@ -125,4 +120,11 @@ body {
 
 #live2dcanvas {
     border: 0 !important;
+}
+
+.title{
+    font-size: 50px ;
+    position: absolute;
+    left: 10px;
+    top: 40px;
 }
