@@ -17,6 +17,7 @@
         <div class="panel">
             <div class="content login">
                 <div class="switch">
+                    <br>
                     <span :class='{"active": active === "login"}' @click='go("login")'>log in</span>
                     <span>/</span>
                     <span :class='{"active": active === "register"}' @click='go("register")'>register</span>
@@ -44,7 +45,9 @@
                     </span>
                     <button type="submit" @click='submit'>log in </button>
                 </div>
+
             </div>
+
         </div>
         <div class="title">
             <span>
