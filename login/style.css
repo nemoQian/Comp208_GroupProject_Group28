@@ -124,19 +124,23 @@ body {
 }
 
 .title{
-    color: #cccccc;
+    font-family: Microsoft YaHei;
+    width: 100%;
+    color: aliceblue;
     text-align:center;
-    font-size: 55px ;
+    font-size: 54px ;
     position: absolute;
-    left: 40px;
-    top: 40px;
+    left: -340px;
+    top: 50px;
 }
 
 .titlebelow{
-    color: #cccccc;
+    font-family: Microsoft JhengHei;
+    width: 1000px;
+    color: aliceblue;
     text-align:center;
-    font-size: 18px ;
+    font-size: 16px ;
     position: absolute;
-    left: 10px;
-    top: 500px;
+    left: -280px;
+    top: 550px;
 }
