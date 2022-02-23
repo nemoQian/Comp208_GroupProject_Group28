@@ -1,0 +1,146 @@
+@font-face {
+    font-family: miaowu;
+    src: url('resources/方正-喵呜.TTF');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: miaowu;
+    background: linear-gradient(45deg, rgb(100, 149, 237), rgb(100, 149, 237)) fixed;
+}
+
+
+.container {
+    position: relative;
+    width: 70rem;
+}
+
+.container img {
+    width: 70rem;
+}
+
+.panel span{
+    color: #cccccc;
+}
+
+.switch span {
+    color: #ccc;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+/*buttom log in*/
+.switch span.active {
+    color: rgb(6, 154, 254);
+}
+/*整块*/
+.panel {
+    width: 30%;
+    margin: 10rem 0 0;
+    position: absolute;
+    right: 180px;
+    top: 80px;
+    height: 350px;
+    background:rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    border-radius: 19px;
+}
+
+.form {
+    width: 12rem;
+    margin: 3rem 0 0;
+}
+
+.form .input {
+    position: relative;
+    opacity: 1;
+    height: 2rem;
+    width: 100%;
+    margin: 2rem 0;
+    transition: .4s;
+}
+
+/*line*/
+.input input {
+    outline: none;
+    width: 100%;
+    border: none;
+    border-bottom: .1rem solid rgb(25, 25, 112);
+    position: relative;
+    line-height: 50px;
+    background: transparent;
+    z-index: 1;
+}
+/*username password */
+.input label {
+    position: absolute;
+    left: 0;
+    top: 20%;
+    font-size: 15px;
+    color: rgb(25, 25, 112);
+    transition: .3s;
+}
+
+/* fixbug for IMBIT（1448214956） */
+.hasValue ~ label, input:focus ~ label {
+    top: -50%;
+    font-size: .9rem;
+}
+
+
+/*forget and remember */
+.form span {
+    display: block;
+    color: rgb(110, 89, 167);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/*log in buttom*/
+.form button {
+    border: none;
+    outline: none;
+    margin: 2.5rem 0 0;
+    width: 50%;
+    height: 2rem;
+    border-radius: 3rem;
+    background: linear-gradient(90deg, rgb(25, 25, 112), rgb(25, 25, 112));
+    box-shadow: 0 0 8px rgb(181, 154, 254);
+    cursor: pointer;
+    color: white;
+    font-family: Times New Roman;
+}
+
+#live2dcanvas {
+    border: 0 !important;
+}
+
+.title{
+    font-family: Microsoft YaHei;
+    width: 100%;
+    color: aliceblue;
+    text-align:center;
+    font-size: 54px ;
+    position: absolute;
+    left: -340px;
+    top: 50px;
+}
+
+.titlebelow{
+    font-family: Microsoft JhengHei;
+    width: 1000px;
+    color: aliceblue;
+    text-align:center;
+    font-size: 16px ;
+    position: absolute;
+    left: -280px;
+    top: 550px;
+}
