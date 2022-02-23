@@ -28,22 +28,19 @@
                         <div class="input"><input :class='{ hasValue: registerForm.Username }' v-model='registerForm.Username' type="text" name="Username" id="username" /><label for="username">username</label></div>
                         <div class="input"><input :class='{ hasValue: registerForm.Password }' v-model='registerForm.Password' type="password" name="Password" id="Password" /><label for="Password">password</label></div>
                         <div class="input"><input :class='{ hasValue: registerForm.repeat }' v-model='registerForm.repeat' type="password" name="repeat" id="Passwordrepeat" /><label for="Passwordrepeat">repeat your password</label></div>
+                        <button type="submit" @click='submit'>log in </button>
                     </template>
 
                     <template v-if='active === "login"'>
                         <div class="input"><input :class='{ hasValue: loginForm.Username }' v-model='loginForm.Username' type="text" name="Username" id="username" /><label for="username">username</label></div>
                         <div class="input"><input :class='{ hasValue: loginForm.Password }' v-model='loginForm.Password' type="password" name="Password" id="Password" /><label for="Password">password</label></div>
+                        <div class="remember"><br><input :class="remember" type="checkbox" name="rememberme" checked="checked">&nbsp remember me </div>
+                        <span>forget your passport?</span>
+
+
+                       <button type="submit" @click='submit'>log in </button>
                     </template>
 
-                    <span>
-                        forget your passport?
-                    </span>
-
-                    <span>
-                        <br>
-                          <input type="checkbox" name="rememberme" checked="checked">&nbsp remember me
-                    </span>
-                    <button type="submit" @click='submit'>log in </button>
                 </div>
 
             </div>

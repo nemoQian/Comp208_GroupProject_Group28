@@ -1,12 +1,4 @@
-@font-face {
-    font-family: miaowu;
-    src: url('./方正-喵呜.TTF');
-}
 
-* {
-    margin: 0;
-    padding: 0;
-}
 
 body {
     height: 100vh;
@@ -42,12 +34,12 @@ body {
 }
 /*整块*/
 .panel {
-    width: 30%;
+    width: 350px;
     margin: 10rem 0 0;
     position: absolute;
-    right: 180px;
+    right: 160px;
     top: 80px;
-    height: 350px;
+    height: 430px;
     background:rgb(255, 255, 255);
     display: flex;
     justify-content: center;
@@ -58,6 +50,7 @@ body {
     width: 12rem;
     margin: 3rem 0 0;
 }
+
 
 .form .input {
     position: relative;
@@ -79,6 +72,12 @@ body {
     background: transparent;
     z-index: 1;
 }
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
 /*username password */
 .input label {
     position: absolute;
@@ -96,12 +95,24 @@ body {
 }
 
 
-/*forget and remember */
+/*forget*/
 .form span {
     display: block;
     color: rgb(110, 89, 167);
-    font-size: 16px;
+    font-size: 18px;
     cursor: pointer;
+    position: absolute;
+    bottom: 110px;
+    right: 70px;
+}
+
+.remember{
+
+    color: rgb(110, 89, 167);
+    font-size: 18px;
+    position: absolute;
+    bottom: 160px;
+    right: 77px;
 }
 
 /*log in buttom*/
@@ -117,20 +128,20 @@ body {
     cursor: pointer;
     color: white;
     font-family: Times New Roman;
+    position: absolute;
+    bottom: 30px;
 }
 
-#live2dcanvas {
-    border: 0 !important;
-}
+
 
 .title{
     font-family: Microsoft YaHei;
-    width: 100%;
+    width: 800px;
     color: aliceblue;
     text-align:center;
     font-size: 54px ;
     position: absolute;
-    left: -340px;
+    left: -190px;
     top: 50px;
 }
 
