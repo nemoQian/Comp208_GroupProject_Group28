@@ -28,7 +28,7 @@
                         <div class="input"><input :class='{ hasValue: registerForm.Username }' v-model='registerForm.Username' type="text" name="Username" id="username" /><label for="username">username</label></div>
                         <div class="input"><input :class='{ hasValue: registerForm.Password }' v-model='registerForm.Password' type="password" name="Password" id="Password" /><label for="Password">password</label></div>
                         <div class="input"><input :class='{ hasValue: registerForm.repeat }' v-model='registerForm.repeat' type="password" name="repeat" id="Passwordrepeat" /><label for="Passwordrepeat">repeat your password</label></div>
-                        <button type="submit" @click='submit'>log in </button>
+                        <button type="submit" @click='submit'>register</button>
                     </template>
 
                     <template v-if='active === "login"'>

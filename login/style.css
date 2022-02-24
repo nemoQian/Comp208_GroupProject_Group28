@@ -31,6 +31,7 @@ body {
 /*buttom log in*/
 .switch span.active {
     color: rgb(6, 154, 254);
+    font-size: 25px;
 }
 /*整块*/
 .panel {
@@ -128,8 +129,9 @@ body {
     cursor: pointer;
     color: white;
     font-family: Times New Roman;
+    font-size: 18px;
     position: absolute;
-    bottom: 30px;
+    bottom: 20px;
 }
 
 
