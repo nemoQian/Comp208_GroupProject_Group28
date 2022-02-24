@@ -5,7 +5,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: miaowu;
     background: linear-gradient(45deg, rgb(100, 149, 237), rgb(100, 149, 237)) fixed;
 }
 
@@ -33,7 +32,7 @@ body {
     color: rgb(6, 154, 254);
     font-size: 25px;
 }
-/*整块*/
+/*whole login part*/
 .panel {
     width: 350px;
     margin: 10rem 0 0;
@@ -87,9 +86,9 @@ body {
     font-size: 15px;
     color: rgb(25, 25, 112);
     transition: .3s;
-}   
+}
 
-/* fixbug for IMBIT（1448214956） */
+/*fixbug*/
 .hasValue ~ label, input:focus ~ label {
     top: -50%;
     font-size: .9rem;

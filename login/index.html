@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="shortcut icon" href="logo.png" />
+    <title>City energy management and Computational Sustainability System</title>
     <link rel="stylesheet" href="./style.css">
     <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
 </head>
@@ -13,7 +14,6 @@
 <body>
     <div id='app' class="container">
         <img src="./log_background.png" />
-
         <div class="panel">
             <div class="content login">
                 <div class="switch">
@@ -75,7 +75,7 @@ var vue = new Vue({
         submit() {
             if (type === 'login') {
                 console.log('login', this.loginForm)
-            } 
+            }
 
             if (type === 'register') {
                 console.log('register', this.registerForm)
