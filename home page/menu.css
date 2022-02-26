@@ -3,31 +3,22 @@ body{
 }
 
 header{
-	width: auto;
+/*	width: auto;
+	height: auto;*/
 	background-color: rgb(58, 98, 215);
-	position:  relative;
-	top: 0px;
-	left: 0px;
-}
-
-.img1{
-	padding: 5px;
-
 }
 
 .title{
 	color: white;
-	position:  absolute;
-	top: 13px;
-	left: 40px;
-/*	position:  relative;
-	top: 10px;
-	left: 45px;*/
+	padding: 13px;
+    position:absolute;
+	top: -5px;
+	left: 25px;
 }
 .boxset{
 	margin: auto;
 	width: 1180px;
-	height: 1200px;	
+	height: 1200px;
 	background-color: rgb(245, 245, 245);
 	position:  relative;
 	top: 20px;
@@ -43,7 +34,7 @@ header{
 .box1{
 	margin: auto;
 	width: 330px;
-	height: 224px;	
+	height: 224px;
 	background-color: #FFFFFF;
 	position:  absolute;
 	top: 0px;
@@ -62,7 +53,7 @@ header{
 }
 
 .box1_header{
-	width: 330px;	
+	width: 330px;
 	position:  absolute;
 	top: 0px;
 	left: 0px;
@@ -71,14 +62,14 @@ header{
 
 .box2{
 	width: 829px;
-	height: 515px;	
+	height: 515px;
 	background-color: #FFFFFF;
 	position: absolute;
 	left: 351px;
 }
 
 .box2_header{
-	width: 829px;	
+	width: 829px;
 	position:  absolute;
 	top: 0px;
 	left: 0px;
@@ -88,7 +79,7 @@ header{
 .box3{
 	margin: auto;
 	width: 330px;
-	height: 173px;	
+	height: 173px;
 	background-color: #FFFFFF;
 	position:  absolute;
 	top: 244px;
@@ -96,7 +87,7 @@ header{
 }
 
 .box3_header{
-	width: 330px;	
+	width: 330px;
 	position:  absolute;
 	top: 0px;
 	left: 0px;
@@ -105,7 +96,7 @@ header{
 .box4{
 	margin: auto;
 	width: 330px;
-	height: 355px;	
+	height: 355px;
 	background-color: #FFFFFF;
 	position:  absolute;
 	top: 437px;
@@ -113,7 +104,7 @@ header{
 }
 
 .box4_header{
-	width: 330px;	
+	width: 330px;
 	position:  absolute;
 	top: 0px;
 	left: 0px;
@@ -121,7 +112,7 @@ header{
 
 .box5{
 	width: 829px;
-	height: 257px;	
+	height: 257px;
 	background-color: #FFFFFF;
 	position: absolute;
 	top:  535px;
@@ -130,7 +121,7 @@ header{
 }
 
 .box5_header{
-	width: 829px;	
+	width: 829px;
 	position:  absolute;
 	top: 0px;
 	left: 0px;
@@ -139,7 +130,7 @@ header{
 .box6{
 	margin: auto;
 	width: 1180px;
-	height: 323px;	
+	height: 323px;
 	background-color: #FFFFFF;
 	position:  absolute;
 	top: 812px;
@@ -147,7 +138,7 @@ header{
 }
 
 .box6_header{
-	width: 1180px;	
+	width: 1180px;
 	position:  absolute;
 	top: 0px;
 	left: 0px;
