@@ -139,6 +139,7 @@ body {
     color: aliceblue;
     text-align:center;
     font-size: 54px ;
+    line-height: 65px;
     position: absolute;
     left: -190px;
     top: 50px;
@@ -150,6 +151,7 @@ body {
     color: aliceblue;
     text-align:center;
     font-size: 16px ;
+    line-height: 25px;
     position: absolute;
     left: -280px;
     top: 550px;

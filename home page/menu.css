@@ -12,9 +12,14 @@ header{
 	color: white;
 	padding: 13px;
     position:absolute;
-	top: -5px;
+	top: -8px;
 	left: 25px;
 }
+.img1{
+	position: relative;
+	left: 6px;
+}
+
 .boxset{
 	margin: auto;
 	width: 1180px;
