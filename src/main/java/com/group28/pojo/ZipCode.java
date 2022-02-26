@@ -6,24 +6,19 @@ package com.group28.pojo;
  * @author Yihan Qian
  */
 public class ZipCode {
-    private String zipCode;
-    private String blockName;
 
-    /**
-     * Instantiates a new Zip code.
-     */
-    public ZipCode() {
-    }
+    private final String ZIP_CODE;
+    private String block_Name;
 
     /**
      * Instantiates a new Zip code.
      *
-     * @param zipCode   the zip code
-     * @param blockName the block name
+     * @param ZIP_CODE   the zip code
+     * @param block_Name the block name
      */
-    public ZipCode(String zipCode, String blockName) {
-        this.zipCode = zipCode;
-        this.blockName = blockName;
+    public ZipCode(String ZIP_CODE, String block_Name) {
+        this.ZIP_CODE = ZIP_CODE;
+        this.block_Name = block_Name;
     }
 
     /**
@@ -31,17 +26,8 @@ public class ZipCode {
      *
      * @return the zip code
      */
-    public String getZipCode() {
-        return zipCode;
-    }
-
-    /**
-     * Sets zip code.
-     *
-     * @param zipCode the zip code
-     */
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
+    public String getZIP_CODE() {
+        return ZIP_CODE;
     }
 
     /**
@@ -49,24 +35,24 @@ public class ZipCode {
      *
      * @return the block name
      */
-    public String getBlockName() {
-        return blockName;
+    public String getBlock_Name() {
+        return block_Name;
     }
 
     /**
      * Sets block name.
      *
-     * @param blockName the block name
+     * @param block_Name the block name
      */
-    public void setBlockName(String blockName) {
-        this.blockName = blockName;
+    public void setBlock_Name(String block_Name) {
+        this.block_Name = block_Name;
     }
 
     @Override
     public String toString() {
         return "ZipCode{" +
-                "zipCode='" + zipCode + '\'' +
-                ", blockName='" + blockName + '\'' +
+                "ZIP_CODE='" + ZIP_CODE + '\'' +
+                ", block_Name='" + block_Name + '\'' +
                 '}';
     }
 }

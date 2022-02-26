@@ -7,89 +7,56 @@ package com.group28.pojo;
  */
 public class ElectricityUnitType {
 
-    private String electricityUnitType;
-    private int MAX_CONSUMPTION;
-    private int MIN_CONSUMPTION;
-
-    /**
-     * Instantiates a new Electricity unit type.
-     */
-    public ElectricityUnitType() {
-    }
+    private final String TYPE_ID;
+    private final Long MAX_CONSUMMPTION;
+    private final Long MIN_CONSUMMPTION;
 
     /**
      * Instantiates a new Electricity unit type.
      *
-     * @param electricityUnitType the electricity unit type
-     * @param MAX_CONSUMPTION     the max consumption
-     * @param MIN_CONSUMPTION     the min consumption
+     * @param TYPE_ID          the type id
+     * @param MAX_CONSUMMPTION the max consummption
+     * @param MIN_CONSUMMPTION the min consummption
      */
-    public ElectricityUnitType(String electricityUnitType, int MAX_CONSUMPTION, int MIN_CONSUMPTION) {
-        this.electricityUnitType = electricityUnitType;
-        this.MAX_CONSUMPTION = MAX_CONSUMPTION;
-        this.MIN_CONSUMPTION = MIN_CONSUMPTION;
+    public ElectricityUnitType(String TYPE_ID, Long MAX_CONSUMMPTION, Long MIN_CONSUMMPTION) {
+        this.TYPE_ID = TYPE_ID;
+        this.MAX_CONSUMMPTION = MAX_CONSUMMPTION;
+        this.MIN_CONSUMMPTION = MIN_CONSUMMPTION;
     }
 
     /**
-     * Gets electricity unit type.
+     * Gets type id.
      *
-     * @return the electricity unit type
+     * @return the type id
      */
-    public String getElectricityUnitType() {
-        return electricityUnitType;
+    public String getTYPE_ID() {
+        return TYPE_ID;
     }
 
     /**
-     * Sets electricity unit type.
+     * Gets max consummption.
      *
-     * @param electricityUnitType the electricity unit type
+     * @return the max consummption
      */
-    public void setElectricityUnitType(String electricityUnitType) {
-        this.electricityUnitType = electricityUnitType;
+    public Long getMAX_CONSUMMPTION() {
+        return MAX_CONSUMMPTION;
     }
 
     /**
-     * Gets max consumption.
+     * Gets min consummption.
      *
-     * @return the max consumption
+     * @return the min consummption
      */
-    public int getMAX_CONSUMPTION() {
-        return MAX_CONSUMPTION;
-    }
-
-    /**
-     * Sets max consumption.
-     *
-     * @param MAX_CONSUMPTION the max consumption
-     */
-    public void setMAX_CONSUMPTION(int MAX_CONSUMPTION) {
-        this.MAX_CONSUMPTION = MAX_CONSUMPTION;
-    }
-
-    /**
-     * Gets min consumption.
-     *
-     * @return the min consumption
-     */
-    public int getMIN_CONSUMPTION() {
-        return MIN_CONSUMPTION;
-    }
-
-    /**
-     * Sets min consumption.
-     *
-     * @param MIN_CONSUMPTION the min consumption
-     */
-    public void setMIN_CONSUMPTION(int MIN_CONSUMPTION) {
-        this.MIN_CONSUMPTION = MIN_CONSUMPTION;
+    public Long getMIN_CONSUMMPTION() {
+        return MIN_CONSUMMPTION;
     }
 
     @Override
     public String toString() {
         return "ElectricityUnitType{" +
-                "electricityUnitType='" + electricityUnitType + '\'' +
-                ", MAX_CONSUMPTION=" + MAX_CONSUMPTION +
-                ", MIN_CONSUMPTION=" + MIN_CONSUMPTION +
+                "TYPE_ID='" + TYPE_ID + '\'' +
+                ", MAX_CONSUMMPTION=" + MAX_CONSUMMPTION +
+                ", MIN_CONSUMMPTION=" + MIN_CONSUMMPTION +
                 '}';
     }
 }

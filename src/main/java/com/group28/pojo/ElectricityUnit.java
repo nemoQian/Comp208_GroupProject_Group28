@@ -1,35 +1,30 @@
 package com.group28.pojo;
 
 /**
- * The type Electricity uint.
+ * The type Electricity unit.
  *
  * @author Yihan Qian
  */
-public class ElectricityUint {
+public class ElectricityUnit {
+
     private ZipCode zipCode;
-    private int electricityUnitId;
     private ElectricityUnitType electricityUnitType;
+    private int electricityUnitId;
     private String electricityUnitName;
 
     /**
-     * Instantiates a new Electricity uint.
-     */
-    public ElectricityUint() {
-    }
-
-    /**
-     * Instantiates a new Electricity uint.
+     * Instantiates a new Electricity unit.
      *
      * @param zipCode             the zip code
-     * @param electricityUnitId   the electricity unit id
      * @param electricityUnitType the electricity unit type
+     * @param electricityUnitId   the electricity unit id
      * @param electricityUnitName the electricity unit name
      */
-    public ElectricityUint(ZipCode zipCode, int electricityUnitId,
-                           ElectricityUnitType electricityUnitType, String electricityUnitName) {
+    public ElectricityUnit(ZipCode zipCode, ElectricityUnitType electricityUnitType,
+                           int electricityUnitId, String electricityUnitName) {
         this.zipCode = zipCode;
-        this.electricityUnitId = electricityUnitId;
         this.electricityUnitType = electricityUnitType;
+        this.electricityUnitId = electricityUnitId;
         this.electricityUnitName = electricityUnitName;
     }
 
@@ -52,24 +47,6 @@ public class ElectricityUint {
     }
 
     /**
-     * Gets electricity unit id.
-     *
-     * @return the electricity unit id
-     */
-    public int getElectricityUnitId() {
-        return electricityUnitId;
-    }
-
-    /**
-     * Sets electricity unit id.
-     *
-     * @param electricityUnitId the electricity unit id
-     */
-    public void setElectricityUnitId(int electricityUnitId) {
-        this.electricityUnitId = electricityUnitId;
-    }
-
-    /**
      * Gets electricity unit type.
      *
      * @return the electricity unit type
@@ -85,6 +62,24 @@ public class ElectricityUint {
      */
     public void setElectricityUnitType(ElectricityUnitType electricityUnitType) {
         this.electricityUnitType = electricityUnitType;
+    }
+
+    /**
+     * Gets electricity unit id.
+     *
+     * @return the electricity unit id
+     */
+    public int getElectricityUnitId() {
+        return electricityUnitId;
+    }
+
+    /**
+     * Sets electricity unit id.
+     *
+     * @param electricityUnitId the electricity unit id
+     */
+    public void setElectricityUnitId(int electricityUnitId) {
+        this.electricityUnitId = electricityUnitId;
     }
 
     /**
@@ -107,11 +102,12 @@ public class ElectricityUint {
 
     @Override
     public String toString() {
-        return "ElectricityUint{" +
+        return "ElectricityUnit{" +
                 "zipCode=" + zipCode +
-                ", electricityUnitId=" + electricityUnitId +
                 ", electricityUnitType=" + electricityUnitType +
+                ", electricityUnitId=" + electricityUnitId +
                 ", electricityUnitName='" + electricityUnitName + '\'' +
                 '}';
     }
+
 }

@@ -6,31 +6,26 @@ package com.group28.pojo;
  * @author Yihan Qian
  */
 public class PowerStation {
-    private ZipCode zipCode;
-    private int electricityUnitId;
-    private PowerStationType powerStationType;
-    private String electricityUnitName;
 
-    /**
-     * Instantiates a new Power station.
-     */
-    public PowerStation() {
-    }
+    private ZipCode zipCode;
+    private PowerStationType powerStationType;
+    private int powerStationId;
+    private String powerStationName;
 
     /**
      * Instantiates a new Power station.
      *
-     * @param zipCode             the zip code
-     * @param electricityUnitId   the electricity unit id
-     * @param powerStationType    the power station type
-     * @param electricityUnitName the electricity unit name
+     * @param zipCode          the zip code
+     * @param powerStationType the power station type
+     * @param powerStationId   the power station id
+     * @param powerStationName the power station name
      */
-    public PowerStation(ZipCode zipCode, int electricityUnitId,
-                        PowerStationType powerStationType, String electricityUnitName) {
+    public PowerStation(ZipCode zipCode, PowerStationType powerStationType,
+                        int powerStationId, String powerStationName) {
         this.zipCode = zipCode;
-        this.electricityUnitId = electricityUnitId;
         this.powerStationType = powerStationType;
-        this.electricityUnitName = electricityUnitName;
+        this.powerStationId = powerStationId;
+        this.powerStationName = powerStationName;
     }
 
     /**
@@ -43,33 +38,6 @@ public class PowerStation {
     }
 
     /**
-     * Sets zip code.
-     *
-     * @param zipCode the zip code
-     */
-    public void setZipCode(ZipCode zipCode) {
-        this.zipCode = zipCode;
-    }
-
-    /**
-     * Gets electricity unit id.
-     *
-     * @return the electricity unit id
-     */
-    public int getElectricityUnitId() {
-        return electricityUnitId;
-    }
-
-    /**
-     * Sets electricity unit id.
-     *
-     * @param electricityUnitId the electricity unit id
-     */
-    public void setElectricityUnitId(int electricityUnitId) {
-        this.electricityUnitId = electricityUnitId;
-    }
-
-    /**
      * Gets power station type.
      *
      * @return the power station type
@@ -79,39 +47,30 @@ public class PowerStation {
     }
 
     /**
-     * Sets power station type.
+     * Gets power station id.
      *
-     * @param powerStationType the power station type
+     * @return the power station id
      */
-    public void setPowerStationType(PowerStationType powerStationType) {
-        this.powerStationType = powerStationType;
+    public int getPowerStationId() {
+        return powerStationId;
     }
 
     /**
-     * Gets electricity unit name.
+     * Gets power station name.
      *
-     * @return the electricity unit name
+     * @return the power station name
      */
-    public String getElectricityUnitName() {
-        return electricityUnitName;
-    }
-
-    /**
-     * Sets electricity unit name.
-     *
-     * @param electricityUnitName the electricity unit name
-     */
-    public void setElectricityUnitName(String electricityUnitName) {
-        this.electricityUnitName = electricityUnitName;
+    public String getPowerStationName() {
+        return powerStationName;
     }
 
     @Override
     public String toString() {
         return "PowerStation{" +
                 "zipCode=" + zipCode +
-                ", electricityUnitId=" + electricityUnitId +
                 ", powerStationType=" + powerStationType +
-                ", electricityUnitName='" + electricityUnitName + '\'' +
+                ", powerStationId=" + powerStationId +
+                ", powerStationName='" + powerStationName + '\'' +
                 '}';
     }
 }

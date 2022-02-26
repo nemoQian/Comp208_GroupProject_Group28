@@ -7,42 +7,27 @@ package com.group28.pojo;
  */
 public class PowerStationType {
 
-    private String powerStationType;
-    private int MAX_PRODUCTION;
-
-    /**
-     * Instantiates a new Power station type.
-     */
-    public PowerStationType() {
-    }
+    private final String TYPE_ID;
+    private final Long MAX_PRODUCTION;
 
     /**
      * Instantiates a new Power station type.
      *
-     * @param powerStationType the power station type
-     * @param MAX_PRODUCTION   the max production
+     * @param TYPE_ID        the type id
+     * @param MAX_PRODUCTION the max production
      */
-    public PowerStationType(String powerStationType, int MAX_PRODUCTION) {
-        this.powerStationType = powerStationType;
+    public PowerStationType(String TYPE_ID, Long MAX_PRODUCTION) {
+        this.TYPE_ID = TYPE_ID;
         this.MAX_PRODUCTION = MAX_PRODUCTION;
     }
 
     /**
-     * Gets power station type.
+     * Gets type id.
      *
-     * @return the power station type
+     * @return the type id
      */
-    public String getPowerStationType() {
-        return powerStationType;
-    }
-
-    /**
-     * Sets power station type.
-     *
-     * @param powerStationType the power station type
-     */
-    public void setPowerStationType(String powerStationType) {
-        this.powerStationType = powerStationType;
+    public String getTYPE_ID() {
+        return TYPE_ID;
     }
 
     /**
@@ -50,23 +35,14 @@ public class PowerStationType {
      *
      * @return the max production
      */
-    public int getMAX_PRODUCTION() {
+    public Long getMAX_PRODUCTION() {
         return MAX_PRODUCTION;
-    }
-
-    /**
-     * Sets max production.
-     *
-     * @param MAX_PRODUCTION the max production
-     */
-    public void setMAX_PRODUCTION(int MAX_PRODUCTION) {
-        this.MAX_PRODUCTION = MAX_PRODUCTION;
     }
 
     @Override
     public String toString() {
         return "PowerStationType{" +
-                "powerStationType='" + powerStationType + '\'' +
+                "TYPE_ID='" + TYPE_ID + '\'' +
                 ", MAX_PRODUCTION=" + MAX_PRODUCTION +
                 '}';
     }
