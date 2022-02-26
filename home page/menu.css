@@ -1,0 +1,149 @@
+body{
+	background-color: rgb(245, 245, 245);
+}
+
+header{
+/*	width: auto;
+	height: auto;*/
+	background-color: rgb(58, 98, 215);
+}
+
+.logo{
+
+}
+
+.title{
+	color: white;
+	padding: 13px;
+/*	position:  relative;
+	top: 10px;
+	left: 45px;*/
+}
+.boxset{
+	margin: auto;
+	width: 1180px;
+	height: 1200px;	
+	background-color: rgb(245, 245, 245);
+	position:  relative;
+	top: 20px;
+	left: 0px;
+}
+
+.box1,.box2,.box3,.box4,.box5,.box6{
+	border: 1px solid #BBBBBB;
+	border-radius: 10px;
+	box-shadow: 0px 5px 5px #B9B9B9;
+}
+
+.box1{
+	margin: auto;
+	width: 330px;
+	height: 224px;	
+	background-color: #FFFFFF;
+	position:  absolute;
+	top: 0px;
+	left: 0px;
+}
+
+.box1_header,.box2_header,.box3_header,.box4_header,.box5_header,.box6_header{
+/*	border: 1px solid #BBBBBB;*/
+	color: #353535;
+	border-bottom: 1px solid #BBBBBB;
+	background-color: #EEEEEE;
+	text-align:center;
+	padding-top: 6px;
+	height: 25px;
+	border-radius: 10px 10px 0px 0px;
+}
+
+.box1_header{
+	width: 330px;	
+	position:  absolute;
+	top: 0px;
+	left: 0px;
+}
+
+
+.box2{
+	width: 829px;
+	height: 515px;	
+	background-color: #FFFFFF;
+	position: absolute;
+	left: 351px;
+}
+
+.box2_header{
+	width: 829px;	
+	position:  absolute;
+	top: 0px;
+	left: 0px;
+}
+
+
+.box3{
+	margin: auto;
+	width: 330px;
+	height: 173px;	
+	background-color: #FFFFFF;
+	position:  absolute;
+	top: 244px;
+	left: 0px;
+}
+
+.box3_header{
+	width: 330px;	
+	position:  absolute;
+	top: 0px;
+	left: 0px;
+}
+
+.box4{
+	margin: auto;
+	width: 330px;
+	height: 355px;	
+	background-color: #FFFFFF;
+	position:  absolute;
+	top: 437px;
+	left: 0px;
+}
+
+.box4_header{
+	width: 330px;	
+	position:  absolute;
+	top: 0px;
+	left: 0px;
+}
+
+.box5{
+	width: 829px;
+	height: 257px;	
+	background-color: #FFFFFF;
+	position: absolute;
+	top:  535px;
+	left: 351px;
+
+}
+
+.box5_header{
+	width: 829px;	
+	position:  absolute;
+	top: 0px;
+	left: 0px;
+}
+
+.box6{
+	margin: auto;
+	width: 1180px;
+	height: 323px;	
+	background-color: #FFFFFF;
+	position:  absolute;
+	top: 812px;
+	left: 0px;
+}
+
+.box6_header{
+	width: 1180px;	
+	position:  absolute;
+	top: 0px;
+	left: 0px;
+}
