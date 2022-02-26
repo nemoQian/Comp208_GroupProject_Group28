@@ -3,18 +3,23 @@ body{
 }
 
 header{
-/*	width: auto;
-	height: auto;*/
+	width: auto;
 	background-color: rgb(58, 98, 215);
+	position:  relative;
+	top: 0px;
+	left: 0px;
 }
 
-.logo{
+.img1{
+	padding: 5px;
 
 }
 
 .title{
 	color: white;
-	padding: 13px;
+	position:  absolute;
+	top: 13px;
+	left: 40px;
 /*	position:  relative;
 	top: 10px;
 	left: 45px;*/
