@@ -6,20 +6,40 @@ header{
 /*	width: auto;
 	height: auto;*/
 	background-color: rgb(58, 98, 215);
+	height: 36px;
+
 }
 
 .title{
 	color: white;
 	padding: 13px;
     position:absolute;
-	top: -8px;
+	top: -4px;
 	left: 25px;
 }
 .img1{
 	position: relative;
 	left: 6px;
+	top: 4px;
 }
 
+
+.user{
+	position: absolute;
+	left: 1550px;
+	top: 4px;
+}
+
+.download{
+	position: absolute;
+	left: 1590px;
+	top: 4px;
+}
+.exit{
+	position: absolute;
+	left: 1630px;
+	top: 4px;
+}
 .boxset{
 	margin: auto;
 	width: 1180px;
