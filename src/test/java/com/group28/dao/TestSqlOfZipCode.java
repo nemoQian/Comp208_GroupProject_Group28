@@ -7,8 +7,16 @@ import org.junit.Test;
 
 import java.util.List;
 
+/**
+ * The type Test sql of zip code.
+ *
+ * @author Yihan Qian
+ */
 public class TestSqlOfZipCode {
 
+    /**
+     * Tset select.
+     */
     @Test
     public void tsetSelect(){
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
@@ -23,6 +31,9 @@ public class TestSqlOfZipCode {
         sqlSession.close();
     }
 
+    /**
+     * Test select by zip code.
+     */
     @Test
     public void testSelectByZipCode(){
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
@@ -34,6 +45,9 @@ public class TestSqlOfZipCode {
         sqlSession.close();
     }
 
+    /**
+     * Test add zip code.
+     */
     @Test
     public void testAddZipCode(){
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
