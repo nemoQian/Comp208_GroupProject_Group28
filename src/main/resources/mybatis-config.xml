@@ -12,11 +12,14 @@
             <transactionManager type="JDBC" />
             <dataSource type="POOLED">
                 <property name="driver" value="${jdbc_driver}" />
-                <property name="url" value="${db_url}" />
+                <property name="url" value="${db_url}"/>
                 <property name="username" value="${db_name}" />
                 <property name="password" value="${db_pwd}" />
             </dataSource>
         </environment>
     </environments>
 
+    <mappers>
+        <mapper resource="ZipCodeMapper.xml" />
+    </mappers>
 </configuration>

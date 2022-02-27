@@ -15,7 +15,6 @@ import java.io.InputStream;
  */
 public class MyBatisUtil {
 
-
     private static SqlSessionFactory sqlSessionFactory;
 
     static {
@@ -38,7 +37,7 @@ public class MyBatisUtil {
      *
      * @return the sqlSession
      */
-    public  static  SqlSession getSqlSession(){
+    public static SqlSession getSqlSession(){
         return sqlSessionFactory.openSession();
     }
 
