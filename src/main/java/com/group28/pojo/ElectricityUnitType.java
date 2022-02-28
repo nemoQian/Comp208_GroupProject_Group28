@@ -1,27 +1,25 @@
 package com.group28.pojo;
 
 /**
- * The type Electricity unit type.
+ * The type Electricity unit type extends FacilityType.
  *
  * @author Yihan Qian
  */
-public class ElectricityUnitType {
+public class ElectricityUnitType extends FacilityType{
 
-    private final String TYPE_ID;
-    private final Long MAX_CONSUMMPTION;
-    private final Long MIN_CONSUMMPTION;
+    private String type_Id;
+    private Long MAX_CONSUMMPTION;
+    private Long MIN_CONSUMMPTION;
 
     /**
      * Instantiates a new Electricity unit type.
      *
-     * @param TYPE_ID          the type id
+     * @param type_Id          the type id
      * @param MAX_CONSUMMPTION the max consummption
      * @param MIN_CONSUMMPTION the min consummption
      */
-    public ElectricityUnitType(String TYPE_ID, Long MAX_CONSUMMPTION, Long MIN_CONSUMMPTION) {
-        this.TYPE_ID = TYPE_ID;
-        this.MAX_CONSUMMPTION = MAX_CONSUMMPTION;
-        this.MIN_CONSUMMPTION = MIN_CONSUMMPTION;
+    public ElectricityUnitType(String type_Id, Long MAX_CONSUMMPTION, Long MIN_CONSUMMPTION) {
+        super(type_Id, MAX_CONSUMMPTION, MIN_CONSUMMPTION);
     }
 
     /**
@@ -29,8 +27,8 @@ public class ElectricityUnitType {
      *
      * @return the type id
      */
-    public String getTYPE_ID() {
-        return TYPE_ID;
+    public String gettype_Id() {
+        return type_Id;
     }
 
     /**
@@ -54,7 +52,7 @@ public class ElectricityUnitType {
     @Override
     public String toString() {
         return "ElectricityUnitType{" +
-                "TYPE_ID='" + TYPE_ID + '\'' +
+                "TYPE_ID='" + type_Id + '\'' +
                 ", MAX_CONSUMMPTION=" + MAX_CONSUMMPTION +
                 ", MIN_CONSUMMPTION=" + MIN_CONSUMMPTION +
                 '}';

@@ -1,11 +1,11 @@
 package com.group28.pojo;
 
 /**
- * The type Power station.
+ * The type Power station extends Facility.
  *
  * @author Yihan Qian
  */
-public class PowerStation {
+public class PowerStation extends Facility{
 
     private ZipCode zipCode;
     private PowerStationType powerStationType;
@@ -22,10 +22,7 @@ public class PowerStation {
      */
     public PowerStation(ZipCode zipCode, PowerStationType powerStationType,
                         int powerStationId, String powerStationName) {
-        this.zipCode = zipCode;
-        this.powerStationType = powerStationType;
-        this.powerStationId = powerStationId;
-        this.powerStationName = powerStationName;
+        super(zipCode, powerStationType, powerStationId, powerStationName);
     }
 
     /**
@@ -33,6 +30,7 @@ public class PowerStation {
      *
      * @return the zip code
      */
+    @Override
     public ZipCode getZipCode() {
         return zipCode;
     }

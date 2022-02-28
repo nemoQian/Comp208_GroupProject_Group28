@@ -1,24 +1,23 @@
 package com.group28.pojo;
 
 /**
- * The type Power station type.
+ * The type Power station type extends FacilityType.
  *
  * @author Yihan Qian
  */
-public class PowerStationType {
+public class PowerStationType extends FacilityType{
 
-    private final String TYPE_ID;
-    private final Long MAX_PRODUCTION;
+    private String type_Id;
+    private Long MAX_PRODUCTION;
 
     /**
      * Instantiates a new Power station type.
      *
-     * @param TYPE_ID        the type id
+     * @param type_Id        the type id
      * @param MAX_PRODUCTION the max production
      */
-    public PowerStationType(String TYPE_ID, Long MAX_PRODUCTION) {
-        this.TYPE_ID = TYPE_ID;
-        this.MAX_PRODUCTION = MAX_PRODUCTION;
+    public PowerStationType(String type_Id, Long MAX_PRODUCTION) {
+        super(type_Id,MAX_PRODUCTION);
     }
 
     /**
@@ -27,7 +26,7 @@ public class PowerStationType {
      * @return the type id
      */
     public String getTYPE_ID() {
-        return TYPE_ID;
+        return type_Id;
     }
 
     /**
@@ -42,7 +41,7 @@ public class PowerStationType {
     @Override
     public String toString() {
         return "PowerStationType{" +
-                "TYPE_ID='" + TYPE_ID + '\'' +
+                "TYPE_ID='" + type_Id + '\'' +
                 ", MAX_PRODUCTION=" + MAX_PRODUCTION +
                 '}';
     }

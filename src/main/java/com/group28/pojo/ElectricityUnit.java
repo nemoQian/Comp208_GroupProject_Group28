@@ -1,11 +1,11 @@
 package com.group28.pojo;
 
 /**
- * The type Electricity unit.
+ * The type Electricity unit extends Facility.
  *
  * @author Yihan Qian
  */
-public class ElectricityUnit {
+public class ElectricityUnit extends Facility{
 
     private ZipCode zipCode;
     private ElectricityUnitType electricityUnitType;
@@ -22,28 +22,12 @@ public class ElectricityUnit {
      */
     public ElectricityUnit(ZipCode zipCode, ElectricityUnitType electricityUnitType,
                            int electricityUnitId, String electricityUnitName) {
-        this.zipCode = zipCode;
-        this.electricityUnitType = electricityUnitType;
-        this.electricityUnitId = electricityUnitId;
-        this.electricityUnitName = electricityUnitName;
+        super(zipCode, electricityUnitType, electricityUnitId, electricityUnitName);
     }
 
-    /**
-     * Gets zip code.
-     *
-     * @return the zip code
-     */
+    @Override
     public ZipCode getZipCode() {
         return zipCode;
-    }
-
-    /**
-     * Sets zip code.
-     *
-     * @param zipCode the zip code
-     */
-    public void setZipCode(ZipCode zipCode) {
-        this.zipCode = zipCode;
     }
 
     /**
@@ -56,30 +40,12 @@ public class ElectricityUnit {
     }
 
     /**
-     * Sets electricity unit type.
-     *
-     * @param electricityUnitType the electricity unit type
-     */
-    public void setElectricityUnitType(ElectricityUnitType electricityUnitType) {
-        this.electricityUnitType = electricityUnitType;
-    }
-
-    /**
      * Gets electricity unit id.
      *
      * @return the electricity unit id
      */
     public int getElectricityUnitId() {
         return electricityUnitId;
-    }
-
-    /**
-     * Sets electricity unit id.
-     *
-     * @param electricityUnitId the electricity unit id
-     */
-    public void setElectricityUnitId(int electricityUnitId) {
-        this.electricityUnitId = electricityUnitId;
     }
 
     /**
@@ -90,24 +56,4 @@ public class ElectricityUnit {
     public String getElectricityUnitName() {
         return electricityUnitName;
     }
-
-    /**
-     * Sets electricity unit name.
-     *
-     * @param electricityUnitName the electricity unit name
-     */
-    public void setElectricityUnitName(String electricityUnitName) {
-        this.electricityUnitName = electricityUnitName;
-    }
-
-    @Override
-    public String toString() {
-        return "ElectricityUnit{" +
-                "zipCode=" + zipCode +
-                ", electricityUnitType=" + electricityUnitType +
-                ", electricityUnitId=" + electricityUnitId +
-                ", electricityUnitName='" + electricityUnitName + '\'' +
-                '}';
-    }
-
 }
