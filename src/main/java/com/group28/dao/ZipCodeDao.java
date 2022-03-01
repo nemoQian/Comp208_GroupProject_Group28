@@ -8,6 +8,7 @@ import java.util.List;
  * The interface Zip code mapper.
  *
  * @author Yihan Qian
+ * @version 1.0
  */
 public interface ZipCodeDao {
 

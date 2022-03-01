@@ -4,6 +4,7 @@ package com.group28.pojo;
  * The type Electricity unit extends Facility.
  *
  * @author Yihan Qian
+ * @version 1.0
  */
 public class ElectricityUnit extends Facility{
 

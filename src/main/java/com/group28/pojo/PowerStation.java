@@ -4,6 +4,7 @@ package com.group28.pojo;
  * The type Power station extends Facility.
  *
  * @author Yihan Qian
+ * @version 1.0
  */
 public class PowerStation extends Facility{
 

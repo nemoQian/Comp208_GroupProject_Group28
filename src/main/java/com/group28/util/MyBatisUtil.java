@@ -12,6 +12,7 @@ import java.io.InputStream;
  * This is a util to build sql session factory
  *
  * @author Yihan Qian
+ * @version 1.0
  */
 public class MyBatisUtil {
 

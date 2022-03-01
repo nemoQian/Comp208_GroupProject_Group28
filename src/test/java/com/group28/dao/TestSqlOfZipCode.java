@@ -11,6 +11,7 @@ import java.util.List;
  * The type Test sql of zip code.
  *
  * @author Yihan Qian
+ * @version 1.0
  */
 public class TestSqlOfZipCode {
 

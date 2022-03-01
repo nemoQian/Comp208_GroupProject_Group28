@@ -5,6 +5,7 @@ package com.group28.util;
  * It simulates times 1 minute equals 6 seconds in real world.
  *
  * @author Yihan Qian
+ * @version 1.0
  */
 public interface SimulateTimeInterface {
 

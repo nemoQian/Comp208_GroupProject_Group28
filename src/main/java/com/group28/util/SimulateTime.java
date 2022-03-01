@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * The type Simulate time.
  *
  * @author Yihan Qian
+ * @version 1.0
  */
 public class SimulateTime implements SimulateTimeInterface {
     private static String[][] JANUARY = new String[31][24];

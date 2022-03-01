@@ -4,6 +4,7 @@ package com.group28.pojo;
  * The type User.
  *
  * @author Yihan Qian
+ * @version 1.0
  */
 public class User {
 
