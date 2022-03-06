@@ -4,13 +4,13 @@ package com.group28.pojo;
  * The type Facility.
  *
  * @author Yihan Qian
- * @version 1.0
+ * @version 1.1
  */
 public class Facility {
 
     private ZipCode zipCode;
     private FacilityType facilityType;
-    private int facilityId;
+    private String facilityId;
     private String facilityName;
 
     /**
@@ -22,7 +22,7 @@ public class Facility {
      * @param facilityName the facility name
      */
     public Facility(ZipCode zipCode, FacilityType facilityType,
-                    int facilityId, String facilityName) {
+                    String facilityId, String facilityName) {
         this.zipCode = zipCode;
         this.facilityType = facilityType;
         this.facilityId = facilityId;
@@ -52,7 +52,7 @@ public class Facility {
      *
      * @return the facility id
      */
-    public int getFacilityId() {
+    public String getFacilityId() {
         return facilityId;
     }
 

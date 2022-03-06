@@ -4,13 +4,13 @@ package com.group28.pojo;
  * The type Power station extends Facility.
  *
  * @author Yihan Qian
- * @version 1.0
+ * @version 1.1
  */
 public class PowerStation extends Facility{
 
     private ZipCode zipCode;
     private PowerStationType powerStationType;
-    private int powerStationId;
+    private String powerStationId;
     private String powerStationName;
 
     /**
@@ -22,7 +22,7 @@ public class PowerStation extends Facility{
      * @param powerStationName the power station name
      */
     public PowerStation(ZipCode zipCode, PowerStationType powerStationType,
-                        int powerStationId, String powerStationName) {
+                        String powerStationId, String powerStationName) {
         super(zipCode, powerStationType, powerStationId, powerStationName);
     }
 
@@ -50,7 +50,7 @@ public class PowerStation extends Facility{
      *
      * @return the power station id
      */
-    public int getPowerStationId() {
+    public String getPowerStationId() {
         return powerStationId;
     }
 
