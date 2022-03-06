@@ -100,6 +100,7 @@
                     console.log(res.data.name);
                 })
             },
+
             submit() {
                 if (type === 'login') {
                     console.log('login', this.loginForm)
