@@ -25,7 +25,7 @@ CREATE TABLE PowerStation(
   powerStationName VARCHAR(255),
 
   CONSTRAINT fk_zip FOREIGN KEY(ZipCode) REFERENCES Zip_Code(ZipCode),
-  CONSTRAINT fk_StationType FOREIGN KEY(powerStationType) REFERENCES PowerStation_Type(Type_ID)
+  CONSTRAINT fk_StationType FOREIGN KEY(powerStationType) REFERENCES PowerStationType(Type_ID)
 );
 
 CREATE TABLE ElectricityUnit(
@@ -34,7 +34,7 @@ CREATE TABLE ElectricityUnit(
   ElectricityType VARCHAR(10),
   electricityUnitName VARCHAR(255),
   CONSTRAINT fk_zipElec FOREIGN KEY(ZipCode) REFERENCES Zip_Code(ZipCode),
-  CONSTRAINT fk_ElecType FOREIGN KEY(ElectricityType) REFERENCES ElectricityUnit_Type(Type_ID)
+  CONSTRAINT fk_ElecType FOREIGN KEY(ElectricityType) REFERENCES ElectricityUnitType(Type_ID)
 );
 
 CREATE TABLE ElectricityUnit_DataStore(
