@@ -15,7 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>City energy management and Computational Sustainability System</title>
-    <link rel="icon" href="28logo.png">
+    <link rel="icon" href="picture/28logo.png">
 
     <link rel="stylesheet" href="reset/reset.css">
     <link rel="stylesheet" href="style.css">
@@ -92,18 +92,17 @@
             go (type) {
                 this.active = type
             },
-            send(){
-                axios({
-                    methods: 'get',
-                    url: "${pageContext.request.contextPath}/ajax/a1"
-                }).then(function(res){
-                    console.log(res.data.name);
-                })
-            },
+
 
             submit() {
                 if (type === 'login') {
                     console.log('login', this.loginForm)
+                    axios({
+                        methods: 'get',
+                        url: "${pageContext.request.contextPath}/ajax/a1"
+                    }).then(function(res){
+                        console.log(res.data.name);
+                    })
                 }
 
                 if (type === 'register') {
