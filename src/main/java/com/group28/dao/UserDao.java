@@ -8,8 +8,8 @@ import java.util.List;
 /**
  * The interface User dao.
  *
- * @author Yuyuan Cao
- * @version 1.0
+ * @author Yuyuan Cao, Yucheng Du
+ * @version 1.1
  */
 public interface UserDao {
 
@@ -28,6 +28,21 @@ public interface UserDao {
      */
     User getUser(String user_Name);
 
+    /**
+     * Gets username's list.
+     *
+     *
+     * @return the username's list
+     */
+    List<String> GetUserNameList();
 
-   // User login(@Param("user_Name") String user_Name, @Param("user_Password") String user_Password);
+
+    /**
+     * insert new user into DB.
+     *
+     *
+     * @return insert success or failed
+     */
+    void Register(User user);
+
 }

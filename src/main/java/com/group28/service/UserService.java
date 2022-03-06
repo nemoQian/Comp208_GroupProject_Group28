@@ -4,8 +4,8 @@ package com.group28.service;
 /**
  * The interface User service.
  *
- * @author Yuyuan Cao
- * @version 1.0
+ * @author Yuyuan Cao, Yucheng Du
+ * @version 1.1
  */
 public interface UserService {
     /**
@@ -16,4 +16,6 @@ public interface UserService {
      * @return the string
      */
     String login(String user_Name, String user_Password);
+
+    String Register (String User_Name, String User_Password, String User_Email);
 }

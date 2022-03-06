@@ -7,7 +7,7 @@ import java.util.LinkedList;
 public class SimulateVirtualWorld implements Runnable, SimulateVirtualWroldInterface{
 
     static SimulateTime simulateTime = new SimulateTime();
-    static SimulateMap simulateMap = new SimulateMap(20,20);
+    static SimulateMap simulateMap = new SimulateMap(16,10);
 
     private long totalProduction = 0;
     private long totalConsumpion = 0;
