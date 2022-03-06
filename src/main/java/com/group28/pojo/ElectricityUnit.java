@@ -4,13 +4,13 @@ package com.group28.pojo;
  * The type Electricity unit extends Facility.
  *
  * @author Yihan Qian
- * @version 1.0
+ * @version 1.1
  */
 public class ElectricityUnit extends Facility{
 
     private ZipCode zipCode;
     private ElectricityUnitType electricityUnitType;
-    private int electricityUnitId;
+    private String electricityUnitId;
     private String electricityUnitName;
 
     /**
@@ -22,7 +22,7 @@ public class ElectricityUnit extends Facility{
      * @param electricityUnitName the electricity unit name
      */
     public ElectricityUnit(ZipCode zipCode, ElectricityUnitType electricityUnitType,
-                           int electricityUnitId, String electricityUnitName) {
+                           String electricityUnitId, String electricityUnitName) {
         super(zipCode, electricityUnitType, electricityUnitId, electricityUnitName);
     }
 
@@ -45,7 +45,7 @@ public class ElectricityUnit extends Facility{
      *
      * @return the electricity unit id
      */
-    public int getElectricityUnitId() {
+    public String getElectricityUnitId() {
         return electricityUnitId;
     }
 
