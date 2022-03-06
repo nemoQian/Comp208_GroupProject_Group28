@@ -1,4 +1,4 @@
-package com.group28.service;
+package com.group28.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
