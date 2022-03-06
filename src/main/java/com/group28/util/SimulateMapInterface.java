@@ -42,4 +42,5 @@ public interface SimulateMapInterface {
      * @return the int [ ] [ ]
      */
     int[][] getEnergyMatrix ();
+
 }

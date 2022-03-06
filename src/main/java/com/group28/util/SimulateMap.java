@@ -8,7 +8,7 @@ import java.util.HashMap;
  * The type Simulate map.
  *
  * @Yihan Qian
- * @version 1.0
+ * @version 1.1
  */
 public class SimulateMap implements SimulateMapInterface {
 
@@ -17,7 +17,7 @@ public class SimulateMap implements SimulateMapInterface {
 
     private Facility[][] map;
     private int[][] EnergyMatrix;
-    private HashMap<Facility, int[]> facilityLocation;
+    private HashMap<Facility, int[]> facilityLocationMap;
 
     private final int ROW = 0;
     private final int COL = 0;
@@ -36,13 +36,15 @@ public class SimulateMap implements SimulateMapInterface {
         this.map = new Facility[numOfRow][numOfCol];
         this.EnergyMatrix = new int[numOfRow][numOfCol];
 
-        this.facilityLocation = new HashMap<Facility, int[]>();
+        this.facilityLocationMap = new HashMap<Facility, int[]>();
 
         for(int i = 0; i < numOfRow; i++){
             for (int j = 0; j < numOfCol; j++){
                 EnergyMatrix[i][j] = -1;
             }
         }
+
+        System.out.println("Map created!");
 
     }
 
@@ -55,9 +57,9 @@ public class SimulateMap implements SimulateMapInterface {
         if(location[ROW] < 0 || location[ROW] >= numOfRow
                 || location[COL] < 0 || location[COL] >= numOfCol) { return -1; }
 
-        if(!facilityLocation.containsValue(location)){
+        if(!facilityLocationMap.containsValue(location) && !facilityLocationMap.containsKey(facility)){
             map[location[ROW]][location[COL]] = facility;
-            facilityLocation.put(facility,location);
+            facilityLocationMap.put(facility,location);
             return 1;
         }
         else { return -1; }
@@ -65,7 +67,7 @@ public class SimulateMap implements SimulateMapInterface {
 
     @Override
     public int[] getFacilityLocation(Facility facility) {
-        if (facilityLocation.containsKey(facility)) { return facilityLocation.get(facility); }
+        if (facilityLocationMap.containsKey(facility)) { return facilityLocationMap.get(facility); }
         else { return FAIL; }
     }
 
@@ -86,4 +88,5 @@ public class SimulateMap implements SimulateMapInterface {
     public int[][] getEnergyMatrix() {
         return EnergyMatrix;
     }
+
 }
