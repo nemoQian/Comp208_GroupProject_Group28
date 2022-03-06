@@ -20,9 +20,7 @@ public class UserSearch {
     public User searchUser(String user_name){
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         UserDao mapper = sqlSession.getMapper(UserDao.class);
-
         User user = mapper.getUser(user_name);
-
         sqlSession.close();
         return user;
     }
