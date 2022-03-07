@@ -15,7 +15,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public String login(String user_Name, String user_Password) {
         //0 is null,1 is not exist,2 is incorrect,2828 is success
-        if(user_Name == null || user_Password == null||user_Name == "" || user_Password == ""){
+        if(user_Name == null || user_Password == null||user_Name.equals("") || user_Password.equals("")){
             return "null";
         }
 
