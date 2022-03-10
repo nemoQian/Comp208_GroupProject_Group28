@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.group28.dao.ZipCodeDao">
+    <select id="getZipCodeList" resultType="com.group28.pojo.ZipCode">
+        select * from virtualworld.zip_code;
+    </select>
+
+    <select id="getZipCode" resultType="com.group28.pojo.ZipCode" parameterType="String">
+        select * from virtualworld.zip_code where ZipCode = #{ZipCode};
+    </select>
+
+    <select id="addZipCode" parameterType="com.group28.pojo.ZipCode">
+        insert into virtualworld.zip_code (ZipCode, Block_Name) value (#{ZipCode}, #{block_Name});
+    </select>
+</mapper>
