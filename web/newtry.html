@@ -7,18 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>City energy management and Computational Sustainability System</title>
-    <link rel="icon" href="WEB-INF/resources/28logo.png">
+    <link rel="icon" href="picture/28logo.png">
 
     <link rel="stylesheet" href="reset/reset.css">
-    <link rel="stylesheet" href="../../../../web/style.css">
+    <link rel="stylesheet" href="style.css">
+
     <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+    <script src=”https://unpkg.com/axios/dist/axios.min.js”></script>
 
 </head>
 
 <body>
 
 <div id='app' class="container">
-    <img src="WEB-INF/resources/log_background.png">
+    <img src="picture/log_background.png">
     <div class="panel">
         <div class="content login">
             <div class="switch">
@@ -30,15 +32,15 @@
             <div class='form' id="fromLogin">
                 <template v-if='active === "register"'>
                     <div class="input"><input :class='{ hasValue: registerForm.email }' v-model='registerForm.email' type="text" name="email" id='email' /><label for="email">email</label></div>
-                    <div class="input"><input :class='{ hasValue: registerForm.Username }' v-model='registerForm.Username' type="text" name="Username" id="username" /><label for="username">username</label></div>
-                    <div class="input"><input :class='{ hasValue: registerForm.Password }' v-model='registerForm.Password' type="password" name="Password" id="Password" /><label for="Password">password</label></div>
+                    <div class="input"><input :class='{ hasValue: registerForm.Username }' v-model='registerForm.Username' type="text" name="Username" id="registerusername" /><label for="username">username</label></div>
+                    <div class="input"><input :class='{ hasValue: registerForm.Password }' v-model='registerForm.Password' type="password" name="Password" id="registerPassword" /><label for="Password">password</label></div>
                     <div class="input"><input :class='{ hasValue: registerForm.repeat }' v-model='registerForm.repeat' type="password" name="repeat" id="Passwordrepeat" /><label for="Passwordrepeat">repeat your password</label></div>
                     <button type="submit" @click='submit'>register</button>
                 </template>
 
                 <template v-if='active === "login"'>
-                    <div class="input"><input :class='{ hasValue: loginForm.Username }' v-model='loginForm.Username' type="text" name="Username" id="username " onblur="a()"/><label for="username">username</label></div>
-                    <div class="input"><input :class='{ hasValue: loginForm.Password }' v-model='loginForm.Password' type="password" name="Password" id="Password " /><label for="Password">password</label></div>
+                    <div class="input"><input :class='{ hasValue: loginForm.Username }' v-model='loginForm.Username' type="text" name="Username" id="loginusername" onblur="a1()"/><label for="username">username</label></div>
+                    <div class="input"><input :class='{ hasValue: loginForm.Password }' v-model='loginForm.Password' type="password" name="Password" id="loginPassword" /><label for="Password">password</label></div>
                     <div class="remember"><br><input :class="remember" type="checkbox" name="rememberme" checked="checked">&nbsp remember me </div>
                     <span>forget your passport?</span>
 
@@ -63,15 +65,13 @@
             </span>
     </div>
 </div>
+
+
+
 </body>
 
-<script src="js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript">
-$.ajax({
-type:"get"
-});
 
-</script>
+
 <script>
     var vue = new Vue({
         el: '#app',
@@ -81,21 +81,41 @@ type:"get"
             loginForm: { Username: '', Password: '', },
         },
         methods: {
-            go (type) {
+            go: function (type) {
                 this.active = type
             },
-            submit() {
-                if (type === 'login') {
-                    console.log('login', this.loginForm)
-                }
 
-                if (type === 'register') {
-                    console.log('register', this.registerForm)
-                }
+
+            submit: function () {
+                // var lusername = $("#loginusername").val();
+                // var lpassword = $("#loginPassword").val();
+                // if (lusername==null){
+                alert("username is empty")
+                // }
+                // if (type === 'login') {
+                // console.log('login', this.loginForm);
+                // this.$axios.get({
+                //     url: "@{/ajax/a1}"
+                // }).then(function(res){
+                //     console.log(res.data.name);
+                // })
+                // }
+                // <%--this.$axios.get("${pageContext.request.contextPath}/ajax/a1")--%>
+                // <%--.then( res=> {--%>
+                // <%--    console.log(res);--%>
+                // <%--})--%>
+                // alert("chenggong")
+                //     }
+                //
+                //     if (type === 'register') {
+                //         console.log('register', this.registerForm)
+                //     }
             }
+
         },
 
     })
 </script>
+
 
 </html>
