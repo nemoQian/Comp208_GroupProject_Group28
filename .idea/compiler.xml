@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="208 back - end" />
+        <module name="comp208group" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="208 back - end" target="6" />
+      <module name="comp208group" target="6" />
     </bytecodeTargetLevel>
   </component>
 </project>

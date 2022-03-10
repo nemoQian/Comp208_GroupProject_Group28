@@ -5,11 +5,19 @@
 
     <mapper namespace = "com.group28.dao.UserDao">
         <select id = "getUserList" resultType = "com.group28.pojo.User">
-            select * from user_information.user;
+            select * from User_information.User;
         </select>
 
         <select id = "getUser" resultType="com.group28.pojo.User" parameterType="String">
-            select * from user_information.user where user_Name = #{user_Name};
+            select * from User_information.User where User_Name = #{user_Name};
         </select>
+
+        <select id = "GetUserNameList" resultType = "String">
+            select User_Name from User_information.User;
+        </select>
+
+        <insert id = "Register" parameterType="com.group28.pojo.User">
+            insert into User_information.User values(#{user_Name}, #{user_Password}, #{user_Email});
+        </insert>
     </mapper>
 

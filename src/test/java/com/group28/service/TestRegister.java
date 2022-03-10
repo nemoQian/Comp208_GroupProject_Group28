@@ -25,8 +25,8 @@ public class TestRegister {
         System.out.println(service.Register("Kamisato_Ayaka", null, null));
         System.out.println(service.Register(null, null, "Ayaka@Tri.com"));
         System.out.println(service.Register(null, "Inazuma001", null));
-        System.out.println(service.Register("YuyuanCao", "G52828", "Yuyuan.Cao19@xjtlu.edu.cn"));
-        System.out.println(service.login("YuyuanCao", "G52828"));
+        System.out.println(service.Register("YihanQian", "G52828", "Yihan.Qian19@xjtlu.edu.cn"));
+        System.out.println(service.login("YihanQian", "G52828"));
 
     }
 }
