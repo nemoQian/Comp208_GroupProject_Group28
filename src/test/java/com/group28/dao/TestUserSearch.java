@@ -17,7 +17,7 @@ public class TestUserSearch {
     public void testSearch(){
         User user = new User();
         UserSearch userSearch =new UserSearch();
-        user =userSearch.searchUser("Cyy");
+        user =userSearch.searchUser("YuyuanCao");
         System.out.println(user);
 
     }

@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="comp208group" />
+        <module name="group208" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="comp208group" target="6" />
+      <module name="group208" target="6" />
     </bytecodeTargetLevel>
   </component>
 </project>
