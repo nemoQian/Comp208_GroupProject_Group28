@@ -93,4 +93,10 @@ public interface SimulateTimeInterface {
      */
     void simulationStop();
 
+    /**
+     * Gets thread name.
+     *
+     * @return the thread name
+     */
+    String getThreadName();
 }

@@ -74,4 +74,22 @@ public class Facility {
                 ", facilityName='" + facilityName + '\'' +
                 '}';
     }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + (facilityId == null ? 0 : facilityId.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Facility facility = (Facility)obj;
+        if (facility.getFacilityId() == this.facilityId){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }

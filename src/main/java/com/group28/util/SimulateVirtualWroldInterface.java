@@ -1,6 +1,7 @@
 package com.group28.util;
 
 import com.group28.pojo.Facility;
+import com.group28.pojo.FacilityData;
 
 public interface SimulateVirtualWroldInterface {
 
@@ -8,13 +9,13 @@ public interface SimulateVirtualWroldInterface {
 
     void worldSimulateStop ();
 
-    int addNewFacility (Facility facility);
+    int addNewFacility (FacilityData facilityData, int[] location);
 
-    long getTotalProduction (Facility facility);
+    long getTotalProduction ();
 
-    long getTotalConsumption (Facility facility);
+    long getTotalConsumption ();
 
-    long getFacilityProduction (Facility facility);
+    long getMaxConsumption();
 
     long getFacilityConsumption (Facility facility);
 
