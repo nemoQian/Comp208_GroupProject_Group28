@@ -187,6 +187,4 @@ public class SimulateTime implements SimulateTimeInterface {
         return MONTH.get(month-1)[day-1][hour];
     }
 
-
-
 }

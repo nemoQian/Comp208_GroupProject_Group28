@@ -53,9 +53,6 @@ public class TestSimulateTime{
             else if(a == 3){
                 System.out.println(simulateTime.getHour());
             }
-            else if(a == 5){
-                System.out.println(simulateTime.getThreadName());
-            }
             else if(a == 4){
                 s = false;
             }
