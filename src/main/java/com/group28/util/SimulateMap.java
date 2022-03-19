@@ -3,6 +3,7 @@ package com.group28.util;
 import com.group28.pojo.Facility;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 
 /**
  * The type Simulate map.
@@ -18,10 +19,13 @@ public class SimulateMap implements SimulateMapInterface {
     private Facility[][] map;
     private int[][] EnergyMatrix;
     private HashMap<Facility, int[]> facilityLocationMap;
+    private LinkedList<Facility> facilitiesList;
 
     private final int ROW = 0;
     private final int COL = 0;
     private final int[] FAIL = new int[]{-1,-1};
+
+    private int worstDistance = 0;
 
     /**
      * Instantiates a new Simulate map.
@@ -37,7 +41,7 @@ public class SimulateMap implements SimulateMapInterface {
         this.EnergyMatrix = new int[numOfRow][numOfCol];
 
         this.facilityLocationMap = new HashMap<Facility, int[]>();
-
+        this.facilitiesList = new LinkedList<Facility>();
         for(int i = 0; i < numOfRow; i++){
             for (int j = 0; j < numOfCol; j++){
                 EnergyMatrix[i][j] = -1;
@@ -60,9 +64,21 @@ public class SimulateMap implements SimulateMapInterface {
         if(!facilityLocationMap.containsValue(location) && !facilityLocationMap.containsKey(facility)){
             map[location[ROW]][location[COL]] = facility;
             facilityLocationMap.put(facility,location);
-            return 1;
+
         }
         else { return -1; }
+
+        if(facilitiesList.size() <= 1){
+            facilitiesList.add(facility);
+        }
+        else {
+            for (int i = 0; i<facilitiesList.size(); i++){
+                worstDistance += getDistance(facility, facilitiesList.get(i));
+            }
+            facilitiesList.add(facility);
+        }
+
+        return 1;
     }
 
     @Override
@@ -82,6 +98,10 @@ public class SimulateMap implements SimulateMapInterface {
             return distance;
         }
         else { return -1; }
+    }
+
+    public int getWorstTotalDistance(){
+        return worstDistance;
     }
 
     @Override
