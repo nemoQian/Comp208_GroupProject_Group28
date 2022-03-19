@@ -24,9 +24,13 @@ public class TestUserDao {
         UserDao mapper = sqlSession.getMapper(UserDao.class);
 
         List<User> UserList = mapper.getUserList();
+        List<String> UserNameList = mapper.GetUserNameList();
 
         for(User user: UserList){
             System.out.println(user);
+        }
+        for (String name: UserNameList){
+            System.out.println(name);
         }
 
         sqlSession.close();

@@ -1,0 +1,158 @@
+body {
+    height: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, rgb(100, 149, 237), rgb(100, 149, 237)) fixed;
+}
+
+
+.container {
+    position: relative;
+    width: 70rem;
+}
+
+.container img {
+    width: 70rem;
+}
+
+.panel span{
+    color: #cccccc;
+}
+
+.switch span {
+    color: #ccc;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+/*buttom log in*/
+.switch span.active {
+    color: rgb(6, 154, 254);
+    font-size: 25px;
+}
+/*whole login part*/
+.panel {
+    width: 350px;
+    margin: 10rem 0 0;
+    position: absolute;
+    right: 160px;
+    top: 80px;
+    height: 430px;
+    background:rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    border-radius: 19px;
+}
+
+.form {
+    width: 12rem;
+    margin: 3rem 0 0;
+}
+
+
+.form .input {
+    position: relative;
+    opacity: 1;
+    height: 2rem;
+    width: 100%;
+    margin: 2rem 0;
+    transition: .4s;
+}
+
+/*line*/
+.input input {
+    outline: none;
+    width: 100%;
+    border: none;
+    border-bottom: .1rem solid rgb(25, 25, 112);
+    position: relative;
+    line-height: 50px;
+    background: transparent;
+    z-index: 1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*username password */
+.input label {
+    position: absolute;
+    left: 0;
+    top: 20%;
+    font-size: 15px;
+    color: rgb(25, 25, 112);
+    transition: .3s;
+}
+
+/*fixbug*/
+.hasValue ~ label, input:focus ~ label {
+    top: -50%;
+    font-size: .9rem;
+}
+
+
+/*forget*/
+.form span {
+    display: block;
+    color: rgb(110, 89, 167);
+    font-size: 18px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 110px;
+    right: 70px;
+}
+
+.remember{
+
+    color: rgb(110, 89, 167);
+    font-size: 18px;
+    position: absolute;
+    bottom: 160px;
+    right: 77px;
+}
+
+/*log in buttom*/
+.form button {
+    border: none;
+    outline: none;
+    margin: 2.5rem 0 0;
+    width: 50%;
+    height: 2rem;
+    border-radius: 3rem;
+    background: linear-gradient(90deg, rgb(25, 25, 112), rgb(25, 25, 112));
+    box-shadow: 0 0 8px rgb(181, 154, 254);
+    cursor: pointer;
+    color: white;
+    font-family: Times New Roman;
+    font-size: 18px;
+    position: absolute;
+    bottom: 20px;
+}
+
+
+
+.title{
+    font-family: Microsoft YaHei;
+    width: 800px;
+    color: aliceblue;
+    text-align:center;
+    font-size: 54px ;
+    line-height: 65px;
+    position: absolute;
+    left: -190px;
+    top: 50px;
+}
+
+.titlebelow{
+    font-family: Microsoft JhengHei;
+    width: 1000px;
+    color: aliceblue;
+    text-align:center;
+    font-size: 16px ;
+    line-height: 25px;
+    position: absolute;
+    left: -280px;
+    top: 550px;
+}

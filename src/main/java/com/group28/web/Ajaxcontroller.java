@@ -9,14 +9,22 @@ import java.io.IOException;
 @RequestMapping("/ajax")
 public class Ajaxcontroller {
 
-    @RequestMapping("a1")
-    public void ajax(String name, HttpServletResponse response) throws IOException {
-        if("admin".equals(name)){
-            response.getWriter().print("true");
-        }
-        else{
-            response.getWriter().print("false");
-        }
-
+//    @RequestMapping("a1")
+//    public void ajax(String name, HttpServletResponse response) throws IOException {
+//        if("admin".equals(name)){
+//            response.getWriter().print("true");
+//        }
+//        else{
+//            response.getWriter().print("false");
+//        }
+//
+//    }
+    @RequestMapping("/a1")
+    public static String usernamew(String username){
+        return username;
     }
+//    public static void main(String[] args) {
+//        String name = "sdfsd";
+//        System.out.println(usernamew(name));
+//    }
 }
