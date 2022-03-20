@@ -5,39 +5,64 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>homepage</title>
 	<link rel="shortcut icon" href="picture/28logo.png">
-	<link rel="stylesheet" href="../login/reset/reset.css">
+	<link rel="stylesheet" href="./reset/reset.css">
 	<link rel="stylesheet" type="text/css" href="./menu.css">
 </head>
-<body>
-	<header>
-		<div class="img1"><img src="picture/28logo.png" width=25px height=25px></div>
-		<div class="download">	<img src="picture/download.png" width=25px height=25px></div>
-		<div class="user">	<img src="picture/user.png" width=25px height=25px></div>
-		<div class="exit">	<img src="picture/exit.png" width=25px height=25px></div>
+<style>
 
-		<div class="title">City energy management and Computational Sustainability System</div>
-		<div class="user"></div>
-	</header>
-	<div class="boxset">
-		<div class="box1">
-			<div class="box1_header">Power generation and consumption</div>
-		</div>
-		<div class="box2">
-			<div class="box2_header">Map</div>
-		</div>
-		<div class="box3">
-			<div class="box3_header">Daily/monthly/annual power consumption</div>
-		</div>
-		<div class="box4">
-			<div class="box4_header">Facilities number and consumption</div>
-		</div>
-		<div class="box5">
-			<div class="box5_header">Add and modify facilities </div>
-		</div>
-		<div class="box6">
-			<div class="box6_header">Energymonitor</div>
-		</div>
+</style>
+<body>
+<header>
+	<img src="picture/28logo.png" width=25px height=25px class="logo">
+	<img src="picture/download.png" width=25px height=25px class="download">
+	<img src="picture/user.png" width=25px height=25px class="user">
+	<img src="picture/exit.png" width=25px height=25px class="exit">
+
+	<div class="title">City energy management and Computational Sustainability System</div>
+	<div class="user"></div>
+</header>
+<div class="boxset">
+	<div class="box1">
+		<div class="box1_header">Power generation and consumption</div>
 	</div>
+
+
+	<div class="box2_header">Map</div>
+	<div class="box2">
+        <img src="picture/house.png" class="house1">
+		<img src="picture/house.png" class="house2">
+		<img src="picture/house.png" class="house3">
+		<canvas width="829px" height="515px" id="myCanvas"></canvas>
+		<script type="text/javascript">
+			var canvas=document.getElementById('myCanvas');
+			var ctx=canvas.getContext('2d');
+			function draw(fromx,fromy,tox,toy){
+				ctx.moveTo(fromx,fromy);
+				ctx.lineTo(tox,toy);
+				ctx.stroke();
+			}
+
+			setTimeout("draw(125,125,525,125)",1000)
+			setTimeout("draw(525,125,325,425)",2000)
+			setTimeout("draw(325,425,125,125)",3000)
+		</script>
+
+	</div>
+
+
+	<div class="box3">
+		<div class="box3_header">Daily/monthly/annual power consumption</div>
+	</div>
+	<div class="box4">
+		<div class="box4_header">Facilities number and consumption</div>
+	</div>
+	<div class="box5">
+		<div class="box5_header">Add and modify facilities </div>
+	</div>
+	<div class="box6">
+		<div class="box6_header">Energymonitor</div>
+	</div>
+</div>
 
 </body>
 </html>

@@ -17,29 +17,7 @@ header{
 	top: -4px;
 	left: 25px;
 }
-.img1{
-	position: relative;
-	left: 6px;
-	top: 4px;
-}
 
-
-.user{
-	position: absolute;
-	left: 1550px;
-	top: 4px;
-}
-
-.download{
-	position: absolute;
-	left: 1590px;
-	top: 4px;
-}
-.exit{
-	position: absolute;
-	left: 1630px;
-	top: 4px;
-}
 .boxset{
 	margin: auto;
 	width: 1180px;
@@ -85,27 +63,13 @@ header{
 }
 
 
-.box2{
-	width: 829px;
-	height: 515px;
-	background-color: #FFFFFF;
-	position: absolute;
-	left: 351px;
-}
-
-.box2_header{
-	width: 829px;
-	position:  absolute;
-	top: 0px;
-	left: 0px;
-}
 
 
 .box3{
 	margin: auto;
 	width: 330px;
 	height: 173px;
-	background-color: #FFFFFF;
+	background-color: #ffffff;
 	position:  absolute;
 	top: 244px;
 	left: 0px;
@@ -167,4 +131,61 @@ header{
 	position:  absolute;
 	top: 0px;
 	left: 0px;
+}
+
+.box2{
+	width: 829px;
+	height: 515px;
+	background-image: url("picture/grid.png");
+	position: absolute;
+	left: 351px;
+	z-index: 3;
+
+}
+
+.box2_header{
+	width: 830px;
+	position:  absolute;
+	top: 0px;
+	left: 351px;
+	z-index:4;
+}
+.canvas{
+	z-index: 4;
+}
+
+img {
+}.logo{
+	   position: absolute;
+	   left: 8px;
+	   top: 3px;
+   } .user{
+	position: absolute;
+	left: 1550px;
+	top: 4px;
+}  .download{
+	position: absolute;
+	left: 1590px;
+	top: 4px;
+}  .exit{
+	position: absolute;
+	left: 1630px;
+	top: 4px;
+}.house1{
+	position: absolute;
+	left: 100px;
+	top: 100px;
+	width: 50px;
+			 }
+.house2{
+	position: absolute;
+	left: 500px;
+	top: 100px;
+	width: 50px;
+}
+.house3{
+	position: absolute;
+	left: 300px;
+	top: 400px;
+	width: 50px;
 }

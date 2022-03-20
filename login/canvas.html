@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<canvas id="canvas" width="300" height="300">
+    <span>你的浏览器不支持 canvas，请升级你的浏览器。</span>
+</canvas>
+
+</body>
+<canvas width="829px" height="515px" id="myCanvas"></canvas>
+<canvas width="829px" height="515px" id="myCanvass"></canvas>
+<script type="text/javascript">
+
+
+
+
+
+    var canvas=document.getElementById('myCanvas');
+    var ctx=canvas.getContext('2d');
+
+    function draw(fromx,fromy,tox,toy){
+
+        ctx.moveTo(fromx,fromy);
+        ctx.lineTo(tox,toy);
+        ctx.stroke();
+    }
+
+    //grid
+    ctx.lineWidth='1'
+    ctx.strokeStyle='rgb(205,201,201)'
+    for (let i = 0; i < 900; i+=30) {
+        draw(i,0,i,520)
+    }
+    for (let i = 0; i < 550; i+=30) {
+        draw(0,i,840,i)
+    }
+
+
+</script>
+</html>

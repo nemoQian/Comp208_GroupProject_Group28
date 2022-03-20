@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<div id="app">
+
+    <h1 id="show">{undefined{name}}</h1>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.6/dist/vue.js"></script>
+<script>
+    axios({
+        url:'https://link.zhihu.com/?target=https%3A//link.jianshu.com/%3Ft%3Dhttps%253A%252F%252Fwww.apishop.net%252F%2523%252Fapi%252Fdetail%252F%253FproductID%253D215'
+    }).then(res=>{
+        console.log(res);
+        alert("success")
+    }).catch(
+        err=>{
+            console.log(err);
+            alert("worng transfer")
+        }
+    )
+</script>
