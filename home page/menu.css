@@ -1,3 +1,6 @@
+html{
+	font-size: 70px;/*设置html字体大小以便rem*/
+}
 body{
 	background-color: rgb(245, 245, 245);
 }
@@ -7,6 +10,7 @@ header{
 	height: auto;*/
 	background-color: rgb(58, 98, 215);
 	height: 36px;
+	font-size: 16px;
 
 }
 
@@ -53,6 +57,7 @@ header{
 	padding-top: 6px;
 	height: 25px;
 	border-radius: 10px 10px 0px 0px;
+	font-size: 16px;
 }
 
 .box1_header{
@@ -188,4 +193,13 @@ img {
 	left: 300px;
 	top: 400px;
 	width: 50px;
+}
+
+.t_box{
+	position: absolute;
+	top: 10px;
+	left: -5px;
+	width: 330px;
+	height: 224px;
+
 }
