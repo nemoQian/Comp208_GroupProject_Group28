@@ -1,0 +1,8 @@
+{
+  "name": "Comp208_GroupProject_Group28",
+  "version": "1.0.0",
+  "dependencies": {
+    "echarts": "^5.3.1",
+    "vue-echarts": "^6.0.2"
+  }
+}
