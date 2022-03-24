@@ -155,6 +155,7 @@ $(function () {
                     show: false
                 },
                 axisLabel: {
+                    formatter: '{value}kW',
                     textStyle: {
                         color: '#b5b5b5',
                         fontSize: 10
@@ -169,7 +170,7 @@ $(function () {
             },
             yAxis: {// y 轴
                 type: 'category',
-                data: ['Generation','Consumption','Storage'],
+                data: ['Storage','Consumption','Generation'],
                 axisTick: {
                     show: false
                 },
