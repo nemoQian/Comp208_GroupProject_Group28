@@ -23,7 +23,7 @@ public class SimulateVirtualWorld implements SimulateVirtualWroldInterface{
     /**
      * The Simulate map.
      */
-    static SimulateMap simulateMap = new SimulateMap(10,16);
+    static SimulateMap simulateMap = new SimulateMap();
 
     private long totalProduction;
     private long totalConsumption;
