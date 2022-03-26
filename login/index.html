@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="style.css">
 
     <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
-    	<script src="js/jquery-2.2.1.min.js"></script>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <!--	<script src="js/jquery-2.2.1.min.js"></script>-->
 <!--    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>-->
 <!--    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>-->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -42,9 +43,9 @@
                 </template>
 
                 <template v-if='active === "login"'>
-                    <div class="input"><input :class='{ hasValue: loginForm.Username }' v-model='loginForm.Username' type="text" name="Username" id="loginusername" /><label for="username">username</label></div>
-                    <div class="input"><input :class='{ hasValue: loginForm.Password }' v-model='loginForm.Password' type="password" name="Password" id="loginPassword" /><label for="Password">password</label></div>
-                    <div class="rememberme"><br><input :class='{ hasValue: loginForm.rememberme }' v-model='loginForm.rememberme' type="checkbox" name="rememberme" checked="checked">&nbsp remember me </div>
+                    <div class="input" ><input :class='{ hasValue: loginForm.Username }' v-model='loginForm.Username' type="text" name="Username" id="loginusername" /><label for="username">username</label></div>
+                    <div class="input" ><input :class='{ hasValue: loginForm.Password }' v-model='loginForm.Password' type="password" name="Password" id="loginPassword" /><label for="Password">password</label></div>
+                    <div class="rememberme" ><br><input :class='{ hasValue: loginForm.rememberme }' v-model='loginForm.rememberme' type="checkbox" name="rememberme" id="rememberMe" checked="checked">&nbsp remember me </div>
                     <span>forget your passport?</span>
                     <button type="submit" @click='loginsubmit'>log in </button>
                 </template>
@@ -72,16 +73,29 @@
 </body>
 
 
-
 <script>
+
+    $(document).ready(function(){
+
+        var strName = localStorage.getItem('keyName');
+        var strPass = localStorage.getItem('keyPass');
+        if(strName){
+            $('#loginusername').val(strName);
+        }if(strPass){
+            $('#loginPassword').val(strPass);
+        }
+
+    });
+
     var vue = new Vue({
         el: '#app',
         data: {
             active: 'login',
             registerForm: { email: '', Username: '', Password: '', repeat: '', },
-            loginForm: { Username: '', Password: '', rememberme:''},
+            loginForm: { Username: '', Password: '', rememberMe:''},
         },
         methods: {
+
             go: function (type) {
                 this.active = type
             },
@@ -97,10 +111,18 @@
                if (lpassword==null|| lpassword.trim() == ""){
                     alert("password is empty")
                }
-
-
+                if($('#rememberMe').is(':checked')){
+                    localStorage.setItem('keyPass',lpassword);
+                    localStorage.setItem('keyName',lusername);
+                }else{
+                    localStorage.removeItem('keyPass');
+                }
 
             },
+
+
+
+
 
             registersubmit: function () {
                 var rusername = this.registerForm.Username;
@@ -151,6 +173,8 @@
 
 
     })
+
+
 </script>
 
 
