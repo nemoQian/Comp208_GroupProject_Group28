@@ -4,6 +4,7 @@ import com.group28.pojo.Facility;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * The type Simulate map.
@@ -13,16 +14,12 @@ import java.util.LinkedList;
  */
 public class SimulateMap implements SimulateMapInterface {
 
-    private int numOfRow;
-    private int numOfCol;
-
-    private Facility[][] map;
-    private int[][] EnergyMatrix;
-    private HashMap<Facility, int[]> facilityLocationMap;
+    private LinkedList<int[]> facilitiesMap;
+    private ConcurrentHashMap<Facility, int[]> facilityLocationMap;
     private LinkedList<Facility> facilitiesList;
 
     private final int ROW = 0;
-    private final int COL = 0;
+    private final int COL = 1;
     private final int[] FAIL = new int[]{-1,-1};
 
     private int worstDistance = 0;
@@ -30,23 +27,12 @@ public class SimulateMap implements SimulateMapInterface {
     /**
      * Instantiates a new Simulate map.
      *
-     * @param numOfRow the num of row
-     * @param numOfCol the num of col
      */
-    public SimulateMap(int numOfRow, int numOfCol){
-        this.numOfRow = numOfRow;
-        this.numOfCol = numOfCol;
+    public SimulateMap(){
 
-        this.map = new Facility[numOfRow][numOfCol];
-        this.EnergyMatrix = new int[numOfRow][numOfCol];
-
-        this.facilityLocationMap = new HashMap<Facility, int[]>();
+        this.facilitiesMap = new LinkedList<int[]>();
+        this.facilityLocationMap = new ConcurrentHashMap<Facility, int[]>();
         this.facilitiesList = new LinkedList<Facility>();
-        for(int i = 0; i < numOfRow; i++){
-            for (int j = 0; j < numOfCol; j++){
-                EnergyMatrix[i][j] = -1;
-            }
-        }
 
         System.out.println("Map created!");
 
@@ -58,17 +44,15 @@ public class SimulateMap implements SimulateMapInterface {
         * -1 means fail
         * 1 means successful
         * */
-        if(location[ROW] < 0 || location[ROW] >= numOfRow
-                || location[COL] < 0 || location[COL] >= numOfCol) { return -1; }
+        if(location[ROW] < 0 || location[COL] < 0) { return -1; }
 
         if(!facilityLocationMap.containsValue(location) && !facilityLocationMap.containsKey(facility)){
-            map[location[ROW]][location[COL]] = facility;
+            facilitiesMap.add(location);
             facilityLocationMap.put(facility,location);
-
         }
         else { return -1; }
 
-        if(facilitiesList.size() <= 1){
+        if(facilitiesList.size() < 1){
             facilitiesList.add(facility);
         }
         else {
@@ -104,9 +88,5 @@ public class SimulateMap implements SimulateMapInterface {
         return worstDistance;
     }
 
-    @Override
-    public int[][] getEnergyMatrix() {
-        return EnergyMatrix;
-    }
 
 }

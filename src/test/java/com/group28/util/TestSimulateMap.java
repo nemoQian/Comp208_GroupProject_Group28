@@ -13,22 +13,7 @@ import java.util.Arrays;
  */
 public class TestSimulateMap {
 
-    private static SimulateMap map = new SimulateMap(10,10);
-
-    /**
-     * Test energy matrix.
-     */
-    @Test
-    public void testEnergyMatrix(){
-        int[][] energyMatrix = map.getEnergyMatrix();
-
-        for (int[] row : energyMatrix){
-            for (int col : row){
-                System.out.print(col + " ");
-            }
-            System.out.println();
-        }
-    }
+    private static SimulateMap map = new SimulateMap();
 
     @Test
     public void testFacilityMap(){
@@ -50,7 +35,7 @@ public class TestSimulateMap {
 
         int a[] = new int[]{2,3};
 
-        System.out.println(map.addNewFacility(powerStation, new int[]{11, 3})); // -1
+        System.out.println(map.addNewFacility(powerStation, new int[]{-1, 3})); // -1
         System.out.println(map.addNewFacility(powerStation, a)); // 1
         System.out.println(map.addNewFacility(powerStation1, a)); // -1
         System.out.println(map.addNewFacility(powerStation, a)); // -1
@@ -65,9 +50,9 @@ public class TestSimulateMap {
 
         System.out.println(map.getDistance(powerStation,powerStation1)); // 4
         System.out.println(map.getDistance(electricityUnit,powerStation1)); // 3
-        System.out.println(map.getDistance(electricityUnit,powerStation)); // 8
+        System.out.println(map.getDistance(electricityUnit,powerStation)); // 1
 
-        System.out.println(map.getWorstTotalDistance());
+        System.out.println(map.getWorstTotalDistance()); // 8
 
     }
 }

@@ -36,11 +36,4 @@ public interface SimulateMapInterface {
      */
     int getDistance(Facility facility1, Facility facility2);
 
-    /**
-     * Get energy matrix int [ ] [ ].
-     *
-     * @return the int [ ] [ ]
-     */
-    int[][] getEnergyMatrix ();
-
 }
