@@ -46,13 +46,7 @@ public class UserServiceImpl implements UserService {
             return "User Already Exist, Register Failed";
         }
 
-        else if (user_Name == null || user_Password == null || user_Email == null){
-            return "Please input your user name, password and email";
-        }
 
-        else if (user_Name.equals("") || user_Password.equals("") || user_Email.equals("")){
-            return "Please input your user name, password and email";
-        }
 
 
         else {

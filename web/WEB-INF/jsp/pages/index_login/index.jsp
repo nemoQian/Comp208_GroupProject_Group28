@@ -137,6 +137,7 @@
             },
 
             registersubmit: function () {
+
                 var rusername = this.registerForm.Username;
                 var rpassword = this.registerForm.Password;
                 var email = this.registerForm.email;
@@ -171,7 +172,6 @@
                 );
                 axios({
                     url:'ajax/register',
-                    // headers:{ 'Content-type': 'application/x-www-form-urlencoded'},
                     data: r,
                     method:"post",
                     dataType:"json",
