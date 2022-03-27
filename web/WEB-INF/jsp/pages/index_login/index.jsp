@@ -119,12 +119,12 @@
                 //     });
                 let s = window.Qs.stringify(
                     {
-                        Username: this.loginForm.Username,
+                        Username: lusername,
                         password: lpassword
                     }
                 );
                 axios({
-                    url:'ajax/a1',
+                    url:'ajax/login',
                    // headers:{ 'Content-type': 'application/x-www-form-urlencoded'},
                     data: s,
                     method:"post",
@@ -162,7 +162,23 @@
                 if(repeat.length<8){
                     alert("The length of the password must exceed 8")
                 }
-
+                let r = window.Qs.stringify(
+                    {
+                        Username: rusername,
+                        password: rpassword,
+                        email:email,
+                    }
+                );
+                axios({
+                    url:'ajax/register',
+                    // headers:{ 'Content-type': 'application/x-www-form-urlencoded'},
+                    data: r,
+                    method:"post",
+                    dataType:"json",
+                    success:function (data){
+                        if(data.success()) {alert("successs")}
+                    }
+                })
 
 
 

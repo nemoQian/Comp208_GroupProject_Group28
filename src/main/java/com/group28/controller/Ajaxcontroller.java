@@ -10,12 +10,23 @@ import java.util.Map;
 public class Ajaxcontroller {
 
 
-    @RequestMapping("/a1")
-    public  String getuser(@RequestParam(value = "Username",required = false) String username,
+    @RequestMapping("/login")
+    public  String getluser(@RequestParam(value = "Username",required = false) String username,
                            @RequestParam(value = "password",required = false) String password){
         System.out.println("username = "  + username);
         System.out.println("password = "  + password);
 
+//        return "/index.jsp";
+        return "pages/index_login/index";
+    }
+
+    @RequestMapping("/register")
+    public  String getruser(@RequestParam(value = "Username",required = false) String username,
+                           @RequestParam(value = "password",required = false) String password,
+                            @RequestParam(value = "password",required = false) String email){
+        System.out.println("username = "  + username);
+        System.out.println("password = "  + password);
+        System.out.println("email ="+email);
 //        return "/index.jsp";
         return "pages/index_login/index";
     }
