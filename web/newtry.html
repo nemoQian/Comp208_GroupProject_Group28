@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,11 +10,11 @@
     <title>City energy management and Computational Sustainability System</title>
     <link rel="icon" href="picture/28logo.png">
 
-    <link rel="stylesheet" href="reset/reset.css">
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="WEB-INF/jsp/pages/index_login/style.css">
 
     <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
-    <script src=”https://unpkg.com/axios/dist/axios.min.js”></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 </head>
 
@@ -35,17 +36,15 @@
                     <div class="input"><input :class='{ hasValue: registerForm.Username }' v-model='registerForm.Username' type="text" name="Username" id="registerusername" /><label for="username">username</label></div>
                     <div class="input"><input :class='{ hasValue: registerForm.Password }' v-model='registerForm.Password' type="password" name="Password" id="registerPassword" /><label for="Password">password</label></div>
                     <div class="input"><input :class='{ hasValue: registerForm.repeat }' v-model='registerForm.repeat' type="password" name="repeat" id="Passwordrepeat" /><label for="Passwordrepeat">repeat your password</label></div>
-                    <button type="submit" @click='submit'>register</button>
+                    <button type="submit" @click='registersubmit'>register</button>
                 </template>
 
                 <template v-if='active === "login"'>
-                    <div class="input"><input :class='{ hasValue: loginForm.Username }' v-model='loginForm.Username' type="text" name="Username" id="loginusername" onblur="a1()"/><label for="username">username</label></div>
+                    <div class="input"><input :class='{ hasValue: loginForm.Username }' v-model='loginForm.Username' type="text" name="Username" id="loginusername" /><label for="username">username</label></div>
                     <div class="input"><input :class='{ hasValue: loginForm.Password }' v-model='loginForm.Password' type="password" name="Password" id="loginPassword" /><label for="Password">password</label></div>
-                    <div class="remember"><br><input :class="remember" type="checkbox" name="rememberme" checked="checked">&nbsp remember me </div>
+                    <div class="rememberme"><br><input :class='{ hasValue: loginForm.rememberme }' v-model='loginForm.rememberme' type="checkbox" name="rememberme" checked="checked">&nbsp remember me </div>
                     <span>forget your passport?</span>
-
-
-                    <button type="submit" @click='submit'>log in </button>
+                    <button type="submit" @click='loginsubmit'>log in </button>
                 </template>
 
             </div>
@@ -78,7 +77,7 @@
         data: {
             active: 'login',
             registerForm: { email: '', Username: '', Password: '', repeat: '', },
-            loginForm: { Username: '', Password: '', },
+            loginForm: { Username: '', Password: '', rememberme:''},
         },
         methods: {
             go: function (type) {
@@ -86,36 +85,62 @@
             },
 
 
-            submit: function () {
-                // var lusername = $("#loginusername").val();
-                // var lpassword = $("#loginPassword").val();
-                // if (lusername==null){
-                alert("username is empty")
-                // }
-                // if (type === 'login') {
-                // console.log('login', this.loginForm);
-                // this.$axios.get({
-                //     url: "@{/ajax/a1}"
-                // }).then(function(res){
-                //     console.log(res.data.name);
-                // })
-                // }
-                // <%--this.$axios.get("${pageContext.request.contextPath}/ajax/a1")--%>
-                // <%--.then( res=> {--%>
-                // <%--    console.log(res);--%>
-                // <%--})--%>
-                // alert("chenggong")
-                //     }
-                //
-                //     if (type === 'register') {
-                //         console.log('register', this.registerForm)
-                //     }
-            }
+            loginsubmit: function () {
+                var lusername = this.loginForm.Username;
+                var lpassword = this.loginForm.Password;
+                if (lusername==null|| lusername.trim() == ""){
+                    alert("username is empty")
+                }
+
+                if (lpassword==null|| lpassword.trim() == ""){
+                    alert("password is empty")
+                }
+
+
+
+            },
+
+            registersubmit: function () {
+                var rusername = this.registerForm.Username;
+                var rpassword = this.registerForm.Password;
+                var email = this.registerForm.email;
+                var repeat = this.registerForm.repeat;
+
+                if (rusername==null|| rusername.trim() == ""){
+                    alert("username can not be empty")
+                }
+
+                if (rpassword==null|| rpassword.trim() == ""){
+                    alert("password can not be empty")
+                }
+                if (email==null|| email.trim() == ""){
+                    alert("email can not be empty")
+                }
+                if (repeat==null|| repeat.trim() == ""){
+                    alert("please repeat your password")
+                }
+
+                if(rpassword!=repeat){
+                    alert("Repetitive password is different from the original one")
+                }
+                if(repeat.length<8){
+                    alert("The length of the password must exceed 8")
+                }
+
+
+
+
+            },
+
+
 
         },
 
+
     })
 </script>
+
+
 
 
 </html>
