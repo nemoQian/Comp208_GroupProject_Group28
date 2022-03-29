@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.group28.dao.FacilityDao">
+    <insert id="AddType" parameterType="com.group28.pojo.ElectricityUnitType">
+        insert into virtualWorld.ElectricityUnitType values (#{TypeID}, #{MaxConsumption}, #{MinConsumption});
+    </insert>
+
+    <insert id="AddFacility" parameterType="com.group28.pojo.ElectricityUnit">
+        insert into virtualWorld.ElectricityUnit values (#{FacilityId}, #{ZipCode}, #{FacilityType}, #{Name});
+    </insert>
+
+    <select id="SearchFacility" parameterType="String">
+        select * from virtualWorld.ElectricityUnit where ElectricityUnitID = #{FacilityId};
+    </select>
+
+    <insert id="InsertData" parameterType="com.group28.pojo.ElectricityUnitData">
+        insert into virtualWorld.ElectricityUnit values (#{ReferenceID}, #{FacilityID}, #{TimeOfStore}, #{Consumption});
+    </insert>
+</mapper>
