@@ -7,6 +7,14 @@
 	<link rel="shortcut icon" href="picture/28logo.png">
 	<link rel="stylesheet" href="./reset/reset.css">
 	<link rel="stylesheet" type="text/css" href="./menu.css">
+	<!--<link rel="stylesheet" href="css/index.css">-->
+<!--	<script src="js/jquery-2.2.1.min.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/http-vue-loader"></script>
+<!--	<script src="js/vue.min.js"></script>-->
+<!--	<script src="js/rem.js"></script>-->
+	<script src="js/echarts.min.js"></script>
+<!--	<script src="js/index.js"></script>-->
 </head>
 <style>
 
@@ -21,9 +29,22 @@
 	<div class="title">City energy management and Computational Sustainability System</div>
 	<div class="user"></div>
 </header>
+
 <div class="boxset">
 	<div class="box1">
 		<div class="box1_header">Power generation and consumption</div>
+        <div>
+            <echarts id="app" class = "test"></echarts>
+            <script>
+                Vue.use(httpVueLoader);
+                new Vue({
+                    el: '#app',
+                    components:{
+                        "echarts":"url:./echarts.vue"
+                    },
+                })
+            </script>
+        </div>
 	</div>
 
 
@@ -63,6 +84,7 @@
 		<div class="box6_header">Energymonitor</div>
 	</div>
 </div>
+
 
 </body>
 </html>
