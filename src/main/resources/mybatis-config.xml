@@ -32,5 +32,6 @@
     <mappers>
         <mapper resource="ZipCodeMapper.xml" />
         <mapper resource="UserMapper.xml" />
+        <mapper resource="ElectricityMapper.xml" />
     </mappers>
 </configuration>
