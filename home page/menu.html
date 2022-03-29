@@ -7,19 +7,12 @@
 	<link rel="shortcut icon" href="picture/28logo.png">
 	<link rel="stylesheet" href="./reset/reset.css">
 	<link rel="stylesheet" type="text/css" href="./menu.css">
-	<!--<link rel="stylesheet" href="css/index.css">-->
-<!--	<script src="js/jquery-2.2.1.min.js"></script>-->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="https://unpkg.com/http-vue-loader"></script>
-<!--	<script src="js/vue.min.js"></script>-->
-<!--	<script src="js/rem.js"></script>-->
-	<script src="js/echarts.min.js"></script>
-<!--	<script src="js/index.js"></script>-->
 </head>
 <style>
 
 </style>
 <body>
+<div id='app' class="container">
 <header>
 	<img src="picture/28logo.png" width=25px height=25px class="logo">
 	<img src="picture/download.png" width=25px height=25px class="download">
@@ -29,44 +22,17 @@
 	<div class="title">City energy management and Computational Sustainability System</div>
 	<div class="user"></div>
 </header>
-
 <div class="boxset">
 	<div class="box1">
 		<div class="box1_header">Power generation and consumption</div>
-        <div>
-            <echarts id="app" class = "test"></echarts>
-            <script>
-                Vue.use(httpVueLoader);
-                new Vue({
-                    el: '#app',
-                    components:{
-                        "echarts":"url:./echarts.vue"
-                    },
-                })
-            </script>
-        </div>
 	</div>
 
 
 	<div class="box2_header">Map</div>
 	<div class="box2">
-        <img src="picture/house.png" class="house1">
-		<img src="picture/house.png" class="house2">
-		<img src="picture/house.png" class="house3">
-		<canvas width="829px" height="515px" id="myCanvas"></canvas>
-		<script type="text/javascript">
-			var canvas=document.getElementById('myCanvas');
-			var ctx=canvas.getContext('2d');
-			function draw(fromx,fromy,tox,toy){
-				ctx.moveTo(fromx,fromy);
-				ctx.lineTo(tox,toy);
-				ctx.stroke();
-			}
 
-			setTimeout("draw(125,125,525,125)",1000)
-			setTimeout("draw(525,125,325,425)",2000)
-			setTimeout("draw(325,425,125,125)",3000)
-		</script>
+		<canvas width="829px" height="515px" id="myCanvas"></canvas>
+
 
 	</div>
 
@@ -79,12 +45,62 @@
 	</div>
 	<div class="box5">
 		<div class="box5_header">Add and modify facilities </div>
+		<img src="picture/house.png" class="house1">
+		<div class='operation'>
+			<div class="input"><input :class='{ hasValue: operation.x }' v-model='operation.x' type="text"   /><label >label_X</label></div>
+			<div class="input"><input :class='{ hasValue: operation.y }' v-model='operation.y' type="text"  /><label >Label_Y</label></div>
+			<div class="input"><input :class='{ hasValue: operation.powerconsumption }' v-model='operation.powerconsumption'  /><label >consumption</label></div>
+
+				<button type="submit"> add </button>
+              dsfsdfsdfsdfsdfsdfs
+	   </div>
+
 	</div>
+
+
 	<div class="box6">
 		<div class="box6_header">Energymonitor</div>
 	</div>
+
 </div>
-
-
+</div>
 </body>
+
+<script type="text/javascript">
+	var canvas=document.getElementById('myCanvas');
+	var ctx=canvas.getContext('2d');
+	function draw(fromx,fromy,tox,toy){
+		ctx.moveTo(fromx,fromy);
+		ctx.lineTo(tox,toy);
+		ctx.stroke();
+	}
+
+	function houseposition(x,y){
+		var img = new Image()
+		img.src = 'picture/house.png'
+		img.onload = function(){
+			ctx.drawImage(this, x, y, 50, 40)
+		}
+	}
+
+	houseposition(100,100)
+	houseposition(500,100)
+	houseposition(300,400)
+
+	setTimeout("draw(125,125,525,125)",1000)
+	setTimeout("draw(525,125,325,425)",2000)
+	setTimeout("draw(325,425,125,125)",3000)
+
+	var vue = new Vue({
+		el: '#app',
+		data: {
+			active: 'login',
+			registerForm: {email: '', Username: '', Password: '', repeat: '',},
+			loginForm: {Username: '', Password: '', rememberme: ''},
+		},
+		methods: {}
+	})
+</script>
+
 </html>
+

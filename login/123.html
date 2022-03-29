@@ -3,18 +3,29 @@
 <head>
     <meta charset="utf-8">
     <title>菜鸟教程(runoob.com)</title>
-    <style>
-        img {
-            border-radius: 800px;
-        }
-    </style>
+
 </head>
 <body>
+<canvas id="myCanvas" width="400" height="400" style="border: 2px solid grey">当前浏览器不支持canvas</canvas>
+<script type="text/javascript">
 
-<h2>圆角图片</h2>
-<p>使用 border-radius 属性来创建圆角图片:</p>
+    var canvas = document.getElementById("myCanvas")
+    var context = canvas.getContext("2d")
 
-<img src="picture/paris.jpeg" alt="Paris" width="400" height="300">
-<img src="picture/grid.png" alt="Paris" width="400" height="300">
+    var img = new Image()
+    img.src = 'picture/grid.png'
+    //图片加载完后，将其显示在canvas中
+    img.onload = function(){
+
+        context.drawImage(this, 100, 100, 1080, 980)
+    }
+
+
+
+
+</script>
+
+
+
 </body>
 </html>

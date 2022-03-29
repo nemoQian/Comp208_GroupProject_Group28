@@ -172,28 +172,24 @@ img {
 	position: absolute;
 	left: 1590px;
 	top: 4px;
-}  .exit{
+} .exit{
 	position: absolute;
 	left: 1630px;
 	top: 4px;
 }.house1{
 	position: absolute;
-	left: 100px;
-	top: 100px;
+	left: 20px;
+	top: 40px;
 	width: 50px;
 			 }
-.house2{
-	position: absolute;
-	left: 500px;
-	top: 100px;
-	width: 50px;
-}
-.house3{
-	position: absolute;
-	left: 300px;
-	top: 400px;
-	width: 50px;
-}
+
+.operation{
+	border-left: 5px;
+	 position: absolute;
+	 left: 500px;
+	 top: 70px;
+
+ }
 
 .test{
 	margin: auto;
