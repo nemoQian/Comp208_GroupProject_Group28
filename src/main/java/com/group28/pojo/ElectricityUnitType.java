@@ -9,8 +9,8 @@ package com.group28.pojo;
 public class ElectricityUnitType extends FacilityType{
 
     private String type_Id;
-    private Long MAX_CONSUMMPTION;
-    private Long MIN_CONSUMMPTION;
+    private long MAX_CONSUMMPTION;
+    private long MIN_CONSUMMPTION;
 
     /**
      * Instantiates a new Electricity unit type.
@@ -37,7 +37,7 @@ public class ElectricityUnitType extends FacilityType{
      *
      * @return the max consummption
      */
-    public Long getMAX_CONSUMMPTION() {
+    public long getMAX_CONSUMMPTION() {
         return MAX_CONSUMMPTION;
     }
 
@@ -46,7 +46,7 @@ public class ElectricityUnitType extends FacilityType{
      *
      * @return the min consummption
      */
-    public Long getMIN_CONSUMMPTION() {
+    public long getMIN_CONSUMMPTION() {
         return MIN_CONSUMMPTION;
     }
 

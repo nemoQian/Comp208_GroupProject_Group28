@@ -25,10 +25,10 @@ public interface FacilityDao {
     /**
      * Gets user.
      *
-     * @param TypeID, MAxConsumption, MinConsumption
+     * @param NewType
      * @return Specific Facility
      */
-    ElectricityUnitType AddType(String TypeID, int MaxConsumption, int MinConsumption);
+    void AddType(String type_Id, long MAX_CONSUMMPTION, long MIN_CONSUMMPTION);
 
     /**
      * Gets user.
