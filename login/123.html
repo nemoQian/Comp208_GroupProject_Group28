@@ -1,31 +1,79 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <title>菜鸟教程(runoob.com)</title>-->
+<!--    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--&lt;!&ndash;<canvas id="myCanvas" width="400" height="400" style="border: 2px solid grey">当前浏览器不支持canvas</canvas>&ndash;&gt;-->
+<!--&lt;!&ndash;<script type="text/javascript">&ndash;&gt;-->
+
+<!--&lt;!&ndash;    var canvas = document.getElementById("myCanvas")&ndash;&gt;-->
+<!--&lt;!&ndash;    var context = canvas.getContext("2d")&ndash;&gt;-->
+
+<!--&lt;!&ndash;    var img = new Image()&ndash;&gt;-->
+<!--&lt;!&ndash;    img.src = 'picture/grid.png'&ndash;&gt;-->
+<!--&lt;!&ndash;    //图片加载完后，将其显示在canvas中&ndash;&gt;-->
+<!--&lt;!&ndash;    img.onload = function(){&ndash;&gt;-->
+
+<!--&lt;!&ndash;        context.drawImage(this, 100, 100, 1080, 980)&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+<!--&lt;!&ndash;</script>&ndash;&gt;-->
+
+
+<!--<body>-->
+<!--&lt;!&ndash;<div id="app">&ndash;&gt;-->
+<!--&lt;!&ndash;    <h4>{{ msg }}</h4>&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="text" v-model="msg" />&ndash;&gt;-->
+<!--&lt;!&ndash;    <button class="add" type="submit" @click="addsubmit"> add </button>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<script type="text/javascript">&ndash;&gt;-->
+<!--&lt;!&ndash;    var vm = new Vue({&ndash;&gt;-->
+<!--&lt;!&ndash;        el : "#app",&ndash;&gt;-->
+<!--&lt;!&ndash;        data : {&ndash;&gt;-->
+<!--&lt;!&ndash;            msg : 'This is a msgsd'&ndash;&gt;-->
+<!--&lt;!&ndash;        },&ndash;&gt;-->
+<!--&lt;!&ndash;        methods : {&ndash;&gt;-->
+<!--&lt;!&ndash;            addsubmit(){&ndash;&gt;-->
+<!--&lt;!&ndash;                var m = this.msg;&ndash;&gt;-->
+<!--&lt;!&ndash;              alert(m)&ndash;&gt;-->
+<!--&lt;!&ndash;            }&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;    });&ndash;&gt;-->
+<!--&lt;!&ndash;</script>&ndash;&gt;-->
+
+<!--</body>-->
+
+
+
+
+<!--</body>-->
+<!--</html>-->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>菜鸟教程(runoob.com)</title>
-
+    <meta charset="UTF-8">
+    <title>vue实例化</title>
 </head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <body>
-<canvas id="myCanvas" width="400" height="400" style="border: 2px solid grey">当前浏览器不支持canvas</canvas>
+
+<div id="app-2">
+  <span v-bind:title="message">
+    鼠标悬停几秒钟查看此处动态绑定的提示信息！
+  </span>
+</div>
 <script type="text/javascript">
-
-    var canvas = document.getElementById("myCanvas")
-    var context = canvas.getContext("2d")
-
-    var img = new Image()
-    img.src = 'picture/grid.png'
-    //图片加载完后，将其显示在canvas中
-    img.onload = function(){
-
-        context.drawImage(this, 100, 100, 1080, 980)
-    }
-
-
-
+    var app2 = new Vue({
+        el: '#app-2',
+        data: {
+            message: '页面加载于 ' + new Date().toLocaleString()
+        }
+    })
 
 </script>
-
-
 
 </body>
 </html>

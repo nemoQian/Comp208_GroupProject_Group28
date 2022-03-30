@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>homepage</title>
 	<link rel="shortcut icon" href="picture/28logo.png">
 	<link rel="stylesheet" href="./reset/reset.css">
 	<link rel="stylesheet" type="text/css" href="./menu.css">
+	<script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+	<script src="https://unpkg.com/http-vue-loader"></script>
+	<!--   <script src="js/vue.min.js"></script>-->
+	<!--   <script src="js/rem.js"></script>-->
+	<script src="js/echarts.min.js"></script>
 </head>
 <style>
 
 </style>
 <body>
-<div id='app' class="container">
+
 <header>
 	<img src="picture/28logo.png" width=25px height=25px class="logo">
 	<img src="picture/download.png" width=25px height=25px class="download">
@@ -25,6 +31,18 @@
 <div class="boxset">
 	<div class="box1">
 		<div class="box1_header">Power generation and consumption</div>
+		<div>
+			<echarts id="appp" class = "test"></echarts>
+			<script>
+				Vue.use(httpVueLoader);
+				new Vue({
+					el: '#appp',
+					components:{
+						"echarts":"url:./echarts.vue"
+					},
+				})
+			</script>
+		</div>
 	</div>
 
 
@@ -43,18 +61,42 @@
 	<div class="box4">
 		<div class="box4_header">Facilities number and consumption</div>
 	</div>
-	<div class="box5">
+	<div id='app' class="container">
+	 <div class="box5">
 		<div class="box5_header">Add and modify facilities </div>
-		<img src="picture/house.png" class="house1">
+		 <label for="house"><img src="picture/house.png" class="house1" v-bind:title="message"></label>
+		 <input type="radio" name="type" id="house">
+		 <input type="radio" name="type" id="house1">
+		 <input type="radio" name="type" id="house2">
+		 <input type="radio" name="type" id="house3">
 		<div class='operation'>
-			<div class="input"><input :class='{ hasValue: operation.x }' v-model='operation.x' type="text"   /><label >label_X</label></div>
-			<div class="input"><input :class='{ hasValue: operation.y }' v-model='operation.y' type="text"  /><label >Label_Y</label></div>
-			<div class="input"><input :class='{ hasValue: operation.powerconsumption }' v-model='operation.powerconsumption'  /><label >consumption</label></div>
 
-				<button type="submit"> add </button>
-              dsfsdfsdfsdfsdfsdfs
-	   </div>
+			<div class="input"><label >Name: &nbsp</label><input class="inputname" v-model='name' /></div>
 
+			<div class="input"><label >X-coordinate: &nbsp</label><input class="inputx" v-model='x' type="text"   /></div>
+
+			<div class="input"><label >Y-coordinate: &nbsp</label><input class="inputy" v-model='y' type="text"  /></div>
+
+			Power level:
+			<select class="consumption">
+
+				<option>---------Default---------</option>
+
+				<option>low-level</option>
+
+				<option>medium-level</option>
+
+				<option>high-level</option>
+
+			</select>
+
+			<button class="add" type="submit" @click="addsubmit"> add </button>
+			<button class="reset" type="submit" @click="clearCanvas"> reset </button>
+			<button class="done" type="submit"  @click="addword"  > done </button>
+
+	    </div>
+
+	 </div>
 	</div>
 
 
@@ -63,43 +105,102 @@
 	</div>
 
 </div>
-</div>
+
 </body>
 
 <script type="text/javascript">
+
 	var canvas=document.getElementById('myCanvas');
 	var ctx=canvas.getContext('2d');
+
 	function draw(fromx,fromy,tox,toy){
 		ctx.moveTo(fromx,fromy);
 		ctx.lineTo(tox,toy);
 		ctx.stroke();
 	}
 
+
 	function houseposition(x,y){
 		var img = new Image()
 		img.src = 'picture/house.png'
 		img.onload = function(){
-			ctx.drawImage(this, x, y, 50, 40)
+			ctx.drawImage(this,x, y, 50, 40)
 		}
 	}
 
-	houseposition(100,100)
-	houseposition(500,100)
-	houseposition(300,400)
+    function addw(x,y){
+		ctx.fillText("text",  x+10, y+50)
+	}
+	addw(10,200)
 
-	setTimeout("draw(125,125,525,125)",1000)
-	setTimeout("draw(525,125,325,425)",2000)
-	setTimeout("draw(325,425,125,125)",3000)
+	function isNumber(str){
+		var n = Number(str);
+		if (!isNaN(n)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	// var imgData;
+	// function canvas_copy(){
+	// 	var context = document.getElementById("pic").getContext('2d');
+	// 	var width = context.canvas.width;
+	// 	var height = context.canvas.height;
+	// 	imgData = context.getImageData(0, 0, width, height);
+	// }
+	//
+	// function canvas_paste(){
+	// 	var context = document.getElementById("pic").getContext('2d');
+	// 	context.putImageData(imgData,0,0);
+	// }
+	//
+	// function pic_cancel(){
+	// 	canvas_paste();
+	// }
+	// houseposition(100,100)
+	// houseposition(500,100)
+	// houseposition(300,400)
+
+	// setTimeout("draw(125,125,525,125)",1000)
+	// setTimeout("draw(525,125,325,425)",2000)
+	// setTimeout("draw(325,425,125,125)",3000)
 
 	var vue = new Vue({
 		el: '#app',
 		data: {
-			active: 'login',
-			registerForm: {email: '', Username: '', Password: '', repeat: '',},
-			loginForm: {Username: '', Password: '', rememberme: ''},
+          x:"",y:"",name:"",message:"hao"
 		},
-		methods: {}
+		methods: {
+
+
+
+	        addword:function(){
+				var con=document.getElementById("myCanvas");
+				var context=con.getContext("2d");
+				context.fillText(this.name,Number(this.x)+10,Number(this.y)+50)
+			},
+
+			addsubmit:function(){
+				var x = this.x;
+				var y = this.y;
+				if(isNumber(x)==false||isNumber(y)==false){alert("please input the number")}
+				if(x.trim()==null){alert("please enter the value of x")}
+				if(y.trim()==null){alert("please enter the value of y")}
+				houseposition(x,y)
+				this.addword(x,y)
+			},
+
+		    clearCanvas:function (){
+		    var c=document.getElementById("myCanvas");
+		    var cxt=c.getContext("2d");
+		    cxt.clearRect(0,0,c.width,c.height);
+	        }
+
+
+	}
 	})
+
 </script>
 
 </html>
