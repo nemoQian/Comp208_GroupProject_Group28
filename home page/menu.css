@@ -215,8 +215,17 @@ img {
 	width: 330px;
 	height: 230px;
 	position:  absolute;
-	top: -5px;
+	top: -15px;
 	left: -3px;
+}
+.test1{
+	margin: auto;
+	width: 400px;
+	height: 357px;
+	position:  absolute;
+	/*	background-color: aqua;*/
+	top: 90px;
+	left: 5px;
 }
 
 .inputname,.inputx,.inputy{
