@@ -9,23 +9,15 @@ package com.group28.pojo;
 public class PowerStationType extends FacilityType{
 
     private String type_Id;
-    private Long MAX_PRODUCTION;
+    private int MAX_PRODUCTION;
 
-    /**
-     * Gets type id.
-     *
-     * @return the type id
-     */
-    public String getTYPE_ID() {
+    @Override
+    public String getType_Id() {
         return type_Id;
     }
 
-    /**
-     * Gets max production.
-     *
-     * @return the max production
-     */
-    public Long getMAX_PRODUCTION() {
+    @Override
+    public int getMAX_NUMERICAL() {
         return MAX_PRODUCTION;
     }
 

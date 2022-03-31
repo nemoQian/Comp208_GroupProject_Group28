@@ -22,4 +22,24 @@ public class ElectricityUnit extends Facility{
                 ", electricityUnitName='" + electricityUnitName + '\'' +
                 '}';
     }
+
+    @Override
+    public ElectricityUnitType getFacilityType() {
+        return electricityUnitType;
+    }
+
+    @Override
+    public ZipCode getZipCode() {
+        return zipCode;
+    }
+
+    @Override
+    public String getFacilityId() {
+        return electricityUnitId;
+    }
+
+    @Override
+    public String getFacilityName() {
+        return electricityUnitName;
+    }
 }

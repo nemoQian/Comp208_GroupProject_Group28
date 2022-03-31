@@ -19,4 +19,19 @@ public class ElectricityUnitType extends FacilityType{
                 ", MIN_CONSUMMPTION=" + MIN_CONSUMMPTION +
                 '}';
     }
+
+    @Override
+    public String getType_Id() {
+        return type_Id;
+    }
+
+    @Override
+    public int getMAX_NUMERICAL() {
+        return MAX_CONSUMMPTION;
+    }
+
+    @Override
+    public int getMIN_NUMERICAL() {
+        return MIN_CONSUMMPTION;
+    }
 }
