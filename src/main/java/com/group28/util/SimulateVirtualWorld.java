@@ -64,8 +64,8 @@ public class SimulateVirtualWorld implements SimulateVirtualWroldInterface{
 
     @Override
     public void worldSimulateOpen() {
-        fixeedThreadPool.execute(() -> {worldSimulation();});
-        fixeedThreadPool.execute(() -> {simulateTime.simulationOpen();});
+//        fixeedThreadPool.execute(() -> {worldSimulation();});
+//        fixeedThreadPool.execute(() -> {simulateTime.simulationOpen();});
     }
 
     @Override

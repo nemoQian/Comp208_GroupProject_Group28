@@ -11,7 +11,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Comp208_GroupProject_Group28" target="8" />
-      <module name="Project" target="6" />
+      <module name="Project" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
