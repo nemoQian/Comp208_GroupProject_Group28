@@ -14,19 +14,6 @@ public class PowerStation extends Facility{
     private String powerStationName;
 
     /**
-     * Instantiates a new Power station.
-     *
-     * @param zipCode          the zip code
-     * @param powerStationType the power station type
-     * @param powerStationId   the power station id
-     * @param powerStationName the power station name
-     */
-    public PowerStation(ZipCode zipCode, PowerStationType powerStationType,
-                        String powerStationId, String powerStationName) {
-        super(zipCode, powerStationType, powerStationId, powerStationName);
-    }
-
-    /**
      * Gets zip code.
      *
      * @return the zip code

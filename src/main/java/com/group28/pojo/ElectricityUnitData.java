@@ -11,7 +11,7 @@ public class ElectricityUnitData {
     private final String DATA_REFERENCE_ID;
     private ElectricityUnit electricityUnit;
     private String timeOfStore;
-    private Long ConsumptionAmount;
+    private int ConsumptionAmount;
 
     /**
      * Instantiates a new Electricity unit data.
@@ -22,7 +22,7 @@ public class ElectricityUnitData {
      * @param consumptionAmount the consumption amount
      */
     public ElectricityUnitData(String DATA_REFERENCE_ID, ElectricityUnit electricityUnit,
-                               String timeOfStore, Long consumptionAmount) {
+                               String timeOfStore, int consumptionAmount) {
         this.DATA_REFERENCE_ID = DATA_REFERENCE_ID;
         this.electricityUnit = electricityUnit;
         this.timeOfStore = timeOfStore;
@@ -79,7 +79,7 @@ public class ElectricityUnitData {
      *
      * @return the consumption amount
      */
-    public Long getConsumptionAmount() {
+    public int getConsumptionAmount() {
         return ConsumptionAmount;
     }
 
@@ -88,7 +88,7 @@ public class ElectricityUnitData {
      *
      * @param consumptionAmount the consumption amount
      */
-    public void setConsumptionAmount(Long consumptionAmount) {
+    public void setConsumptionAmount(int consumptionAmount) {
         ConsumptionAmount = consumptionAmount;
     }
 

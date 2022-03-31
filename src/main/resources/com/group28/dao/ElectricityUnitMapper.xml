@@ -4,25 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.group28.dao.ElectricityUnitDao">
-    <select id="getElectricityUnit" resultMap="ElectricityUnitMap">
-        select * from virtualworld.electricityunit;
-    </select>
-    <select id="getZipCode" resultType="com.group28.pojo.ZipCode">
-        select * from virtualworld.zip_code where ZipCode = #{zipCode};
-    </select>
-    <select id="getElectricityUintType" resultType="com.group28.pojo.ElectricityUnitType">
-        select * from virtualworld.electricityunittype where Type_ID = #{electricityUnitType};
-    </select>
 
-    <resultMap id="ElectricityUnitMap" type="com.group28.pojo.ElectricityUnit" >
-        <result property="electricityUnitId" column="electricityUnitId" />
-        <result property="electricityUnitName" column="electricityUnitName" />
-        <association property="zipCode" column="ZipCode" javaType="com.group28.pojo.ZipCode" select="getZipCode"/>
-        <association property="electricityUnitType" column="ElectricityType"
-                     javaType="com.group28.pojo.ElectricityUnitType" select="getElectricityUintType"/>
-    </resultMap>
-
-    <select id="getElectricityUnit1" resultMap="ElectricityUnitMap1">
+    <select id="getElectricityUnit" resultMap="ElectricityUnitMap1">
         select eut.Type_ID eueut, eut.Max_Consumption eumax, eut.Min_Consumption eumin,
                zc.ZipCode euzc, zc.Block_Name euzcname,
                eu.ElectricityUnitID euid, eu.electricityUnitName euname
@@ -30,7 +13,7 @@
         where eu.ZipCode = zc.ZipCode
           and eu.ElectricityType = eut.Type_ID
     </select>
-    
+
     <resultMap id="ElectricityUnitMap1" type="com.group28.pojo.ElectricityUnit" >
         <id property="electricityUnitId" jdbcType="VARCHAR" column= "euid"/>
         <result property="electricityUnitName" jdbcType="VARCHAR" column= "euname"/>

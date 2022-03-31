@@ -12,16 +12,6 @@ public class PowerStationType extends FacilityType{
     private Long MAX_PRODUCTION;
 
     /**
-     * Instantiates a new Power station type.
-     *
-     * @param type_Id        the type id
-     * @param MAX_PRODUCTION the max production
-     */
-    public PowerStationType(String type_Id, Long MAX_PRODUCTION) {
-        super(type_Id,MAX_PRODUCTION);
-    }
-
-    /**
      * Gets type id.
      *
      * @return the type id

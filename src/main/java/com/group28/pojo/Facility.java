@@ -8,26 +8,10 @@ package com.group28.pojo;
  */
 public class Facility {
 
-    private ZipCode zipCode;
-    private FacilityType facilityType;
     private String facilityId;
     private String facilityName;
-
-    /**
-     * Instantiates a new Facility.
-     *
-     * @param zipCode      the zip code
-     * @param facilityType the facility type
-     * @param facilityId   the facility id
-     * @param facilityName the facility name
-     */
-    public Facility(ZipCode zipCode, FacilityType facilityType,
-                    String facilityId, String facilityName) {
-        this.zipCode = zipCode;
-        this.facilityType = facilityType;
-        this.facilityId = facilityId;
-        this.facilityName = facilityName;
-    }
+    private ZipCode zipCode;
+    private FacilityType facilityType;
 
     /**
      * Gets zip code.

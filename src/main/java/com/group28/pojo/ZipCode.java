@@ -8,17 +8,17 @@ package com.group28.pojo;
  */
 public class ZipCode {
 
-    private String ZipCode;
+    private String zipCode;
     private String block_Name;
 
     /**
      * Instantiates a new Zip code.
      *
-     * @param ZipCode   the zip code
+     * @param zipCode   the zip code
      * @param block_Name the block name
      */
-    public ZipCode(String ZipCode, String block_Name) {
-        this.ZipCode = ZipCode;
+    public ZipCode(String zipCode, String block_Name) {
+        this.zipCode = zipCode;
         this.block_Name = block_Name;
     }
 
@@ -28,7 +28,7 @@ public class ZipCode {
      * @return the zip code
      */
     public String getZipCode() {
-        return ZipCode;
+        return zipCode;
     }
 
     /**
@@ -52,7 +52,7 @@ public class ZipCode {
     @Override
     public String toString() {
         return "ZipCode{" +
-                "ZIP_CODE='" + ZipCode + '\'' +
+                "ZIP_CODE='" + zipCode + '\'' +
                 ", block_Name='" + block_Name + '\'' +
                 '}';
     }

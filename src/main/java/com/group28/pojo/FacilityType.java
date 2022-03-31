@@ -9,32 +9,8 @@ package com.group28.pojo;
 public class FacilityType {
 
     private String type_Id;
-    private Long MAX_NUMERICAL;
-    private Long MIN_NUMERICAL;
-
-    /**
-     * Instantiates a new Facility type.
-     *
-     * @param type_Id       the type id
-     * @param MAX_NUMERICAL the max numerical
-     */
-    public FacilityType(String type_Id, Long MAX_NUMERICAL) {
-        this.type_Id = type_Id;
-        this.MAX_NUMERICAL = MAX_NUMERICAL;
-    }
-
-    /**
-     * Instantiates a new Facility type.
-     *
-     * @param type_Id       the type id
-     * @param MAX_NUMERICAL the max numerical
-     * @param MIN_NUMERICAL the min numerical
-     */
-    public FacilityType(String type_Id, Long MAX_NUMERICAL, Long MIN_NUMERICAL) {
-        this.type_Id = type_Id;
-        this.MAX_NUMERICAL = MAX_NUMERICAL;
-        this.MIN_NUMERICAL = MIN_NUMERICAL;
-    }
+    private int MAX_NUMERICAL;
+    private int MIN_NUMERICAL;
 
     /**
      * Gets type id.
@@ -50,7 +26,7 @@ public class FacilityType {
      *
      * @return the max numerical
      */
-    public Long getMAX_NUMERICAL() {
+    public int getMAX_NUMERICAL() {
         return MAX_NUMERICAL;
     }
 
@@ -59,7 +35,7 @@ public class FacilityType {
      *
      * @return the min numerical
      */
-    public Long getMIN_NUMERICAL() {
+    public int getMIN_NUMERICAL() {
         return MIN_NUMERICAL;
     }
 
