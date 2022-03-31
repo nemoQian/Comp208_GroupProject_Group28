@@ -227,6 +227,13 @@ img {
 	top: 90px;
 	left: 5px;
 }
+.test2{
+	margin: auto;
+	position:  absolute;
+	/*	background-color: aqua;*/
+	top: -15px;
+	left: 10px;
+}
 
 .inputname,.inputx,.inputy{
 	position: absolute;

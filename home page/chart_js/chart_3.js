@@ -8,18 +8,68 @@ $(function () {
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('chart_3'));
         myChart.setOption({
-            title: {x: 222, text: '男性和女性身高、体重分布'},
+            tooltip: {
+            },
+            title: {x: 222},
             color: ['blue', 'green'],
-            xAxis: {scale: true, name: '身高(cm)', color: 'red'},
-            yAxis: {scale: true, name: '体重(kg)'},
-            series: [{
-                type: 'scatter', symbolSize: 20,
+            xAxis: {
+                scale: true,
+                splitLine: {
+                    show: true,
+                    lineStyle:{
+                        color: '#ccc8c8',
+                        width: 1,
+                        type: 'solid'
+                    }
+                },
+                axisLine:{
+                    lineStyle:{
+                        color:'#ccc8c8',
+                        width:1,//这里是为了突出显示加上的
+                    }
+                }
+
+            },
+            yAxis: {
+                scale: true,
+                splitLine: {
+                    show: true,
+                    lineStyle:{
+                        color: '#cdc9c9',
+                        width: 1,
+                        type: 'solid'
+                    }
+                },
+
+                axisLine:{
+                    lineStyle:{
+                        color:'#ccc8c8',
+                        width:1,//这里是为了突出显示加上的
+                    }
+                }
+            },
+            encode: {
+                tooltip: 2
+            },
+            series: {
+                type: 'effectScatter', symbolSize: 20,
+                color: '#5e1e1e',
+                itemStyle: {
+                    color: '#5086eb'
+                },
+                symbolSize: function (params) {
+                    return (params[2] / 100) * 15 + 3;
+                },
+                encode: {
+                    tooltip: 2
+                },
                 data: [
-                    [167.0, 64.6], [177.8, 74.8], [159.5, 58.0], [169.5, 68.0],
-                    [163.0, 63.6], [157.5, 53.2], [164.5, 65.0], [163.5, 62.0],
-                    [171.2, 65.1], [161.6, 58.9], [167.4, 67.7], [167.5, 63.0],
-                    [181.1, 76.0], [165.0, 60.2], [174.5, 70.0], [171.5, 68.0],],
-            }],
+                    [770.3415644319939, 757.9672194986475, 30],
+                    [1180.0329284196291, 743.6141808346214, 80],
+                    [894.03790632245, 1188.1985153835008, 61],
+                    [1072.98925630313, 477.3839988649537, 70],
+                    [1078.62251255796, 935.6708486282843, 81]],
+            },
         });
 
 
