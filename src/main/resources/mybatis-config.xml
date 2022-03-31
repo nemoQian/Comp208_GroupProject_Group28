@@ -12,17 +12,17 @@
             <transactionManager type="JDBC" />
             <dataSource type="POOLED">
                 <property name="driver" value="${jdbc_driver}" />
-                <property name="url" value="${db_url}"/>
+                <property name="url" value="${db_UserUrl}"/>
                 <property name="username" value="${db_name}" />
                 <property name="password" value="${db_pwd}" />
             </dataSource>
         </environment>
 
-        <environment id="development">
+        <environment id="development1">
             <transactionManager type="JDBC" />
             <dataSource type="POOLED">
                 <property name="driver" value="${jdbc_driver}" />
-                <property name="url" value= "jdbc:mysql://localhost:3306/user_information?useSSL=false&amp;serverTimezone=GMT"/>
+                <property name="url" value= "${db_WorldUrl}"/>
                 <property name="username" value="${db_name}" />
                 <property name="password" value="${db_pwd}" />
             </dataSource>
@@ -30,7 +30,8 @@
     </environments>
 
     <mappers>
-        <mapper resource="ZipCodeMapper.xml" />
-        <mapper resource="UserMapper.xml" />
+        <mapper resource="com/group28/dao/ZipCodeMapper.xml"/>
+        <mapper resource="com/group28/dao/UserMapper.xml"/>
+        <mapper resource="com/group28/dao/ElectricityUnitMapper.xml"/>
     </mappers>
 </configuration>
