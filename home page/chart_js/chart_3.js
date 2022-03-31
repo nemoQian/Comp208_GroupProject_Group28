@@ -23,11 +23,15 @@ $(function () {
                     }
                 },
                 axisLine:{
+                    show: false,
                     lineStyle:{
                         color:'#ccc8c8',
                         width:1,//这里是为了突出显示加上的
                     }
-                }
+                },
+/*                axisLabel:{
+                    show:false
+                }*/
 
             },
             yAxis: {
@@ -46,7 +50,10 @@ $(function () {
                         color:'#ccc8c8',
                         width:1,//这里是为了突出显示加上的
                     }
-                }
+                },
+/*                axisLabel:{
+                    show:false
+                }*/
             },
             encode: {
                 tooltip: 2
