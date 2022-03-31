@@ -1,20 +1,88 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <title>菜鸟教程(runoob.com)</title>-->
+<!--    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--&lt;!&ndash;<canvas id="myCanvas" width="400" height="400" style="border: 2px solid grey">当前浏览器不支持canvas</canvas>&ndash;&gt;-->
+<!--&lt;!&ndash;<script type="text/javascript">&ndash;&gt;-->
+
+<!--&lt;!&ndash;    var canvas = document.getElementById("myCanvas")&ndash;&gt;-->
+<!--&lt;!&ndash;    var context = canvas.getContext("2d")&ndash;&gt;-->
+
+<!--&lt;!&ndash;    var img = new Image()&ndash;&gt;-->
+<!--&lt;!&ndash;    img.src = 'picture/grid.png'&ndash;&gt;-->
+<!--&lt;!&ndash;    //图片加载完后，将其显示在canvas中&ndash;&gt;-->
+<!--&lt;!&ndash;    img.onload = function(){&ndash;&gt;-->
+
+<!--&lt;!&ndash;        context.drawImage(this, 100, 100, 1080, 980)&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+<!--&lt;!&ndash;</script>&ndash;&gt;-->
+
+
+<!--<body>-->
+<!--&lt;!&ndash;<div id="app">&ndash;&gt;-->
+<!--&lt;!&ndash;    <h4>{{ msg }}</h4>&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="text" v-model="msg" />&ndash;&gt;-->
+<!--&lt;!&ndash;    <button class="add" type="submit" @click="addsubmit"> add </button>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<script type="text/javascript">&ndash;&gt;-->
+<!--&lt;!&ndash;    var vm = new Vue({&ndash;&gt;-->
+<!--&lt;!&ndash;        el : "#app",&ndash;&gt;-->
+<!--&lt;!&ndash;        data : {&ndash;&gt;-->
+<!--&lt;!&ndash;            msg : 'This is a msgsd'&ndash;&gt;-->
+<!--&lt;!&ndash;        },&ndash;&gt;-->
+<!--&lt;!&ndash;        methods : {&ndash;&gt;-->
+<!--&lt;!&ndash;            addsubmit(){&ndash;&gt;-->
+<!--&lt;!&ndash;                var m = this.msg;&ndash;&gt;-->
+<!--&lt;!&ndash;              alert(m)&ndash;&gt;-->
+<!--&lt;!&ndash;            }&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;    });&ndash;&gt;-->
+<!--&lt;!&ndash;</script>&ndash;&gt;-->
+
+<!--</body>-->
+
+
+
+
+<!--</body>-->
+<!--</html>-->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>菜鸟教程(runoob.com)</title>
-    <style>
-        img {
-            border-radius: 800px;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>vue实例化</title>
 </head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <body>
 
-<h2>圆角图片</h2>
-<p>使用 border-radius 属性来创建圆角图片:</p>
+<div id="example-4">
+    <input type="radio" id="one" name="p" value="Oneerw" v-model="picked">
+    <label for="one">One</label>
+    <br>
+    <input type="radio" id="two"  name="p" value="Two" v-model="picked">
+    <label for="two">Two</label>
+    <br>
+    <span>Picked: {{ picked }}</span>
+<!--    <button class="add" type="submit" @click="add"> add </button>-->
+</div>
 
-<img src="picture/paris.jpeg" alt="Paris" width="400" height="300">
-<img src="picture/grid.png" alt="Paris" width="400" height="300">
+
+
+
+<script type="text/javascript">
+    new Vue({
+        el: '#example-4',
+        data: {
+            picked: ''
+        }
+    })
+
+</script>
+
 </body>
 </html>

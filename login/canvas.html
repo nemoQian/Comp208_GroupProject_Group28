@@ -21,23 +21,23 @@
 
     var canvas=document.getElementById('myCanvas');
     var ctx=canvas.getContext('2d');
-
-    function draw(fromx,fromy,tox,toy){
-
-        ctx.moveTo(fromx,fromy);
-        ctx.lineTo(tox,toy);
-        ctx.stroke();
-    }
-
-    //grid
-    ctx.lineWidth='1'
-    ctx.strokeStyle='rgb(205,201,201)'
-    for (let i = 0; i < 900; i+=30) {
-        draw(i,0,i,520)
-    }
-    for (let i = 0; i < 550; i+=30) {
-        draw(0,i,840,i)
-    }
+    ctx.fillText("sewewd",10,200)
+    // function draw(fromx,fromy,tox,toy){
+    //
+    //     ctx.moveTo(fromx,fromy);
+    //     ctx.lineTo(tox,toy);
+    //     ctx.stroke();
+    // }
+    //
+    // //grid
+    // ctx.lineWidth='1'
+    // ctx.strokeStyle='rgb(205,201,201)'
+    // for (let i = 0; i < 900; i+=30) {
+    //     draw(i,0,i,520)
+    // }
+    // for (let i = 0; i < 550; i+=30) {
+    //     draw(0,i,840,i)
+    // }
 
 
 </script>

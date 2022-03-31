@@ -172,29 +172,44 @@ img {
 	position: absolute;
 	left: 1590px;
 	top: 4px;
-}  .exit{
+} .exit{
 	position: absolute;
 	left: 1630px;
 	top: 4px;
 }.house1{
 	position: absolute;
-	left: 100px;
-	top: 100px;
+	left: 20px;
+	top: 40px;
 	width: 50px;
 			 }
-.house2{
-	position: absolute;
-	left: 500px;
-	top: 100px;
-	width: 50px;
-}
-.house3{
-	position: absolute;
-	left: 300px;
-	top: 400px;
-	width: 50px;
-}
 
+.operation{
+	 border-left: 10px;
+	width: 300px;
+	height: 50px;
+	 position: absolute;
+	 left: 400px;
+	 top: 60px;
+	font-size: 20px;
+	font-family: Microsoft YaHei;
+    line-height: 30px;
+ }
+.add,.reset,.done{
+	width: 80px;
+	font-size: 20px;
+}.add{
+	 position: absolute;
+	 top:140px;
+	 left: 20px;
+ }.reset{
+	   position: absolute;
+	   top:140px;
+	   left: 120px;
+   }.done{
+		   position: absolute;
+		   top:140px;
+		   left: 220px;
+	   }
 .test{
 	margin: auto;
 	width: 330px;
@@ -203,3 +218,80 @@ img {
 	top: -5px;
 	left: -3px;
 }
+
+.inputname,.inputx,.inputy{
+	position: absolute;
+	left: 140px;
+}
+.inputname{
+	top: 5px;
+}
+.inputx{
+	top: 35px;
+}
+.inputy{
+	top: 65px;
+}
+.consumption{
+	position: absolute;
+	left: 140px;
+	top:97px;
+}
+.raselect{
+	position: absolute;
+	left: 5px;
+	width: 150px;
+	top: 60px;
+}
+.house{
+	position: absolute;
+	left: 40px;
+}
+.select{
+position: absolute;
+	left: 10px;
+	font-size: 16px;
+	line-height: 25px;
+}
+.hosselect{
+	position: absolute;
+	left: 260px;
+	top: 60px;
+	width: 150px;
+}
+.hospital{
+	position: absolute;
+	left: 23px;
+}
+.schoolselect{
+	position: absolute;
+	left: 80px;
+	top:160px;
+	width: 150px;
+}
+.school{
+	position: absolute;
+	left: 20px;
+}
+.powerselect{
+	position: absolute;
+	left: 180px;
+	top: 160px;
+	width: 250px;
+}
+.power{
+	position: absolute;
+     left: 40px;
+}
+
+.shopselect{
+	position: absolute;
+	left: 140px;
+	width: 100px;
+	top:60px;
+}
+.shop{
+	position: absolute;
+	left: 30px;
+}
+

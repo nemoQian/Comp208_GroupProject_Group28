@@ -48,6 +48,7 @@
                     <div class="rememberme" ><br><input :class='{ hasValue: loginForm.rememberme }' v-model='loginForm.rememberme' type="checkbox" name="rememberme" id="rememberMe" checked="checked">&nbsp remember me </div>
                     <span>forget your passport?</span>
                     <button type="submit" @click='loginsubmit'>log in </button>
+
                 </template>
 
             </div>
@@ -134,36 +135,38 @@
                     alert("username can not be empty")
                 }
 
-                if (rpassword==null|| rpassword.trim() == ""){
+                else if (rpassword==null|| rpassword.trim() == ""){
                     alert("password can not be empty")
                 }
-                if (email==null|| email.trim() == ""){
+                else if (email==null|| email.trim() == ""){
                     alert("email can not be empty")
                 }
-                if (repeat==null|| repeat.trim() == ""){
+                else if (repeat==null|| repeat.trim() == ""){
                     alert("please repeat your password")
                 }
 
-                if(rpassword!=repeat){
+                else if(rpassword!=repeat){
                     alert("Repetitive password is different from the original one")
                 }
-                if(repeat.length<8){
+                else if(repeat.length<8){
                     alert("The length of the password must exceed 8")
                 }
-
-                // this.$axios.post({
-                //     username:this.username,
-                //     password:this.password
-                // }).then(function(res){
-                //     console.log(res);
-                // }).catch(
-                //     err=>{
-                //         console.log(err);
-                //         alert("worng transfer")
-                //     }
-                // )
+                else{
+                    alert(rusername+ "  your registration has been completed.")
+                }
 
 
+
+                axios.post('ajax/a1', {
+                    firstName: 'Fred',
+                    lastName: 'Flintstone'
+                })
+                    .then(function (response) {
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
 
             },
 
