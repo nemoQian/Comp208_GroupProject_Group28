@@ -166,15 +166,15 @@ img {
 	   top: 3px;
    } .user{
 	position: absolute;
-	left: 1550px;
+	right:80px;
 	top: 4px;
 }  .download{
 	position: absolute;
-	left: 1590px;
+	right:45px;
 	top: 4px;
 } .exit{
 	position: absolute;
-	left: 1630px;
+	right: 10px;
 	top: 4px;
 }.house1{
 	position: absolute;
