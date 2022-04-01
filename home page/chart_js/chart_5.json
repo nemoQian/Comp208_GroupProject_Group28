@@ -1,0 +1,62 @@
+{
+  "jinJian": [
+    {
+      "AREA": "16:00",
+      "LANDNUM": 190
+    },
+    {
+      "AREA": "16:10",
+      "LANDNUM": 200
+    },
+    {
+      "AREA": "16:20",
+      "LANDNUM": 310
+    },
+    {
+      "AREA": "16:30",
+      "LANDNUM": 290
+    },
+    {
+      "AREA": "16:40",
+      "LANDNUM": 260
+    },
+    {
+      "AREA": "16:50",
+      "LANDNUM": 300
+    },
+    {
+      "AREA": "17:00",
+      "LANDNUM": 320
+    }
+  ],
+  "banJie": [
+    {
+      "AREA": "16:10",
+      "LANDNUM": 90
+    },
+    {
+      "AREA": "16:10",
+      "LANDNUM": 100
+    },
+    {
+      "AREA": "16:20",
+      "LANDNUM": 120
+    },
+    {
+      "AREA": "16:30",
+      "LANDNUM": 140
+    },
+    {
+      "AREA": "16:40",
+      "LANDNUM": 160
+    },
+    {
+      "AREA": "16:50",
+      "LANDNUM": 180
+    },
+    {
+      "AREA": "17:00",
+      "LANDNUM": 200
+    }
+  ]
+}

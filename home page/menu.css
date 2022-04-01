@@ -232,7 +232,15 @@ img {
 	position:  absolute;
 	/*	background-color: aqua;*/
 	top: -15px;
-	left: 10px;
+	left: -13px;
+}
+
+.test3{
+	margin: auto;
+	position:  absolute;
+	/*	background-color: aqua;*/
+	top: 0px;
+	left: -50px;
 }
 
 .inputname,.inputx,.inputy{

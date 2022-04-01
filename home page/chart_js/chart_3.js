@@ -52,12 +52,20 @@ $(function () {
                         width:1,//这里是为了突出显示加上的
                     }
                 },
-/*                axisLabel:{
+                axisLabel:{
                     show:false
-                }*/
+                }
             },
             encode: {
                 tooltip: 2
+            },
+            visualMap: {
+                min: 0,
+                max: 100,
+                calculable: true,
+                orient: 'vertical',
+                left: '275',
+                top: 'center'
             },
             series: [{
                 type: 'effectScatter', symbolSize: 20,
