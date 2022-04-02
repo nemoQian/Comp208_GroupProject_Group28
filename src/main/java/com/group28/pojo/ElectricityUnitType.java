@@ -11,11 +11,8 @@ public class ElectricityUnitType extends FacilityType{
     private int MAX_CONSUMMPTION;
     private int MIN_CONSUMMPTION;
 
-    public ElectricityUnitType (String type_Id, int MAX_CONSUMMPTION, int MIN_CONSUMMPTION){
-        this.type_Id = type_Id;
-        this.MAX_CONSUMMPTION = MAX_CONSUMMPTION;
-        this.MIN_CONSUMMPTION = MIN_CONSUMMPTION;
-    }
+
+
     @Override
     public String toString() {
         return "ElectricityUnitType{" +

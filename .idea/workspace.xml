@@ -87,7 +87,20 @@
       <recent name="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ElectricityDaoTest">
+  <component name="RunManager" selected="Application.TestSimulateWorld">
+    <configuration name="TestSimulateWorld" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.group28.util.TestSimulateWorld" />
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.group28.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ElectricityDaoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
@@ -145,22 +158,6 @@
       <option name="PACKAGE_NAME" value="com.group28.util" />
       <option name="MAIN_CLASS_NAME" value="com.group28.util.TestSimulateMap" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestSqlOfZipCode.tsetSelect" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.group28.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.group28.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.group28.dao.TestSqlOfZipCode" />
-      <option name="METHOD_NAME" value="tsetSelect" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -255,11 +252,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestSimulateWorld" />
         <item itemvalue="JUnit.ElectricityDaoTest" />
         <item itemvalue="JUnit.TestSimulateMap" />
         <item itemvalue="JUnit.TestElectricityUnitDao" />
         <item itemvalue="JUnit.ElectricityDaoTest.AddTypeTest" />
-        <item itemvalue="JUnit.TestSqlOfZipCode.tsetSelect" />
       </list>
     </recent_temporary>
   </component>

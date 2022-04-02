@@ -13,6 +13,7 @@ public class ElectricityUnit extends Facility{
     private String electricityUnitId;
     private String electricityUnitName;
 
+
     @Override
     public String toString() {
         return "ElectricityUnit{" +
