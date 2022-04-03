@@ -64,7 +64,7 @@ $(function () {
                 max: 100,
                 calculable: true,
                 orient: 'vertical',
-                left: '275',
+                right: '-3',
                 top: 'center'
             },
             series: [{
