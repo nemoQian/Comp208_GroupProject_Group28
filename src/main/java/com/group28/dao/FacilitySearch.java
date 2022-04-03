@@ -6,16 +6,24 @@ import org.apache.ibatis.session.SqlSession;
 import java.util.List;
 
 public class FacilitySearch {
-    public ElectricityUnitType AddType(String type_Id, int MAX_CONSUMMPTION, int MIN_CONSUMMPTION){
+    public void AddType(String type_Id, int MAX_CONSUMMPTION, int MIN_CONSUMMPTION){
         SqlSession sqlsession = MyBatisUtil.getSqlSession();
         FacilityDao mapper = sqlsession.getMapper(FacilityDao.class);
 
-        mapper.AddType(type_Id, MAX_CONSUMMPTION, MIN_CONSUMMPTION);
+        ElectricityUnitType NewType = new ElectricityUnitType();
+
+        NewType.PutTypeId(NewType, type_Id);
+
+        NewType.PutMAX_CONSUMMPTION(NewType, MAX_CONSUMMPTION);
+
+        NewType.PutMIN_CONSUMMPTION(NewType, MIN_CONSUMMPTION);
+
+        mapper.AddType(NewType);
 
         sqlsession.commit();
 
-        ElectricityUnitType NewType = new ElectricityUnitType(type_Id, MAX_CONSUMMPTION, MIN_CONSUMMPTION);
-
-        return  NewType;
+        System.out.println(NewType);
     }
+
+    
 }

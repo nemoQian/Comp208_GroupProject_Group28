@@ -22,6 +22,18 @@ public class ElectricityUnitType extends FacilityType{
                 '}';
     }
 
+    public void PutTypeId(ElectricityUnitType NewType, String Id){
+        NewType.type_Id = Id;
+    }
+
+    public void PutMAX_CONSUMMPTION(ElectricityUnitType NewType, int MAX_CONSUMMPTION){
+        NewType.MAX_CONSUMMPTION = MAX_CONSUMMPTION;
+    }
+
+    public void PutMIN_CONSUMMPTION(ElectricityUnitType NewType, int MIN_CONSUMMPTION){
+        NewType.MIN_CONSUMMPTION = MIN_CONSUMMPTION;
+    }
+
     @Override
     public String getType_Id() {
         return type_Id;

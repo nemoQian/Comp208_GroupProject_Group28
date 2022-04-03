@@ -28,7 +28,7 @@ public interface FacilityDao {
      * @param NewType
      * @return Specific Facility
      */
-    void AddType(String type_Id, long MAX_CONSUMMPTION, long MIN_CONSUMMPTION);
+    void AddType(ElectricityUnitType NewType);
 
     /**
      * Gets user.
