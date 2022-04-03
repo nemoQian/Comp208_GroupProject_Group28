@@ -33,5 +33,6 @@
         <mapper resource="com/group28/dao/ZipCodeMapper.xml"/>
         <mapper resource="com/group28/dao/UserMapper.xml"/>
         <mapper resource="com/group28/dao/ElectricityUnitMapper.xml"/>
+        <mapper resource="com/group28/dao/ElectricityMapper.xml"/>
     </mappers>
 </configuration>
