@@ -12,11 +12,11 @@ public class FacilitySearch {
 
         ElectricityUnitType NewType = new ElectricityUnitType();
 
-        NewType.PutTypeId(NewType, type_Id);
+        NewType.PutTypeId(type_Id);
 
-        NewType.PutMAX_CONSUMMPTION(NewType, MAX_CONSUMMPTION);
+        NewType.PutMAX_CONSUMMPTION(MAX_CONSUMMPTION);
 
-        NewType.PutMIN_CONSUMMPTION(NewType, MIN_CONSUMMPTION);
+        NewType.PutMIN_CONSUMMPTION(MIN_CONSUMMPTION);
 
         mapper.AddType(NewType);
 

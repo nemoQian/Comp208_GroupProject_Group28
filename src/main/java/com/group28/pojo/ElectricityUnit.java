@@ -24,20 +24,20 @@ public class ElectricityUnit extends Facility{
                 '}';
     }
 
-    public void Put_electricityUnitType(ElectricityUnit NewUnit, ElectricityUnitType InsertType){
-        NewUnit.electricityUnitType = InsertType;
+    public void Put_electricityUnitType(ElectricityUnitType InsertType){
+        this.electricityUnitType = InsertType;
     }
 
-    public void Put_zipCode (ElectricityUnit NewUnit, ZipCode InsertCode){
-        NewUnit.zipCode = InsertCode;
+    public void Put_zipCode (ZipCode InsertCode){
+        this.zipCode = InsertCode;
     }
 
-    public void Put_electricityUnitId(ElectricityUnit NewUnit, String electricityUnitId){
-        NewUnit.electricityUnitId = electricityUnitId;
+    public void Put_electricityUnitId(String electricityUnitId){
+        this.electricityUnitId = electricityUnitId;
     }
 
-    public void Put_electricityUnitName(ElectricityUnit NewUnit, String electricityUnitName){
-        NewUnit.electricityUnitName = electricityUnitName;
+    public void Put_electricityUnitName(String electricityUnitName){
+        this.electricityUnitName = electricityUnitName;
     }
 
     @Override

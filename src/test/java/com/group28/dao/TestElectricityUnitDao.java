@@ -28,11 +28,11 @@ public class TestElectricityUnitDao {
 
         ElectricityUnitType NewType = new ElectricityUnitType();
 
-        NewType.PutTypeId(NewType, "HO");
+        NewType.PutTypeId("HO");
 
-        NewType.PutMAX_CONSUMMPTION(NewType, 200);
+        NewType.PutMAX_CONSUMMPTION(200);
 
-        NewType.PutMIN_CONSUMMPTION(NewType,100);
+        NewType.PutMIN_CONSUMMPTION(100);
 
         mapper.AddType(NewType);
 
@@ -40,4 +40,6 @@ public class TestElectricityUnitDao {
 
         System.out.println(NewType);
     }
+
+
 }
