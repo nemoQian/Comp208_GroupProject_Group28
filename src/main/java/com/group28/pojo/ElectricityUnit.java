@@ -24,6 +24,22 @@ public class ElectricityUnit extends Facility{
                 '}';
     }
 
+    public void Put_electricityUnitType(ElectricityUnit NewUnit, ElectricityUnitType InsertType){
+        NewUnit.electricityUnitType = InsertType;
+    }
+
+    public void Put_zipCode (ElectricityUnit NewUnit, ZipCode InsertCode){
+        NewUnit.zipCode = InsertCode;
+    }
+
+    public void Put_electricityUnitId(ElectricityUnit NewUnit, String electricityUnitId){
+        NewUnit.electricityUnitId = electricityUnitId;
+    }
+
+    public void Put_electricityUnitName(ElectricityUnit NewUnit, String electricityUnitName){
+        NewUnit.electricityUnitName = electricityUnitName;
+    }
+
     @Override
     public ElectricityUnitType getFacilityType() {
         return electricityUnitType;
