@@ -9,14 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce8041a5-b38d-4f18-ba2d-4c5256a43f85" name="Changes" comment="新方法要用到的mapper">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/group28/dao/ElectricityDaoTest.java" afterDir="false" />
+    <list default="true" id="ce8041a5-b38d-4f18-ba2d-4c5256a43f85" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilityDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilityDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilitySearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilitySearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/pojo/ElectricityUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/pojo/ElectricityUnit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/pojo/ElectricityUnitType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/pojo/ElectricityUnitType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ElectricityMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ElectricityMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/group28/dao/TestElectricityUnitDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/group28/dao/TestElectricityUnitDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,14 +36,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/pojo/PowerStation.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTimeInterface.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/test/java/com/group28/util/TestSimulateTime.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pom.xml" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateVirtualWorld.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTimeInterface.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTime.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateMap.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTime.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateVirtualWorld.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/pojo/PowerStation.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml" root0="SKIP_INSPECTION" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -72,6 +71,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -86,10 +86,24 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/group28/dao" />
       <recent name="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ElectricityDaoTest">
+  <component name="RunManager" selected="JUnit.TestElectricityUnitDao.AddTypeTest">
+    <configuration name="TestSimulateWorld" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.group28.util.TestSimulateWorld" />
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.group28.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ElectricityDaoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
@@ -105,7 +119,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ElectricityDaoTest.AddTypeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestElectricityUnitDao" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
         <pattern>
@@ -114,14 +128,29 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.group28.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.group28.dao.ElectricityDaoTest" />
+      <option name="MAIN_CLASS_NAME" value="com.group28.dao.TestElectricityUnitDao" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestElectricityUnitDao.AddTypeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.group28.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.group28.dao" />
+      <option name="MAIN_CLASS_NAME" value="com.group28.dao.TestElectricityUnitDao" />
       <option name="METHOD_NAME" value="AddTypeTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestSqlOfZipCode.tsetSelect" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestSqlOfZipCode.testSelectByZipCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
         <pattern>
@@ -131,7 +160,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.group28.dao" />
       <option name="MAIN_CLASS_NAME" value="com.group28.dao.TestSqlOfZipCode" />
-      <option name="METHOD_NAME" value="tsetSelect" />
+      <option name="METHOD_NAME" value="testSelectByZipCode" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -227,9 +256,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestElectricityUnitDao.AddTypeTest" />
+        <item itemvalue="JUnit.TestElectricityUnitDao" />
+        <item itemvalue="JUnit.TestSqlOfZipCode.testSelectByZipCode" />
+        <item itemvalue="Application.TestSimulateWorld" />
         <item itemvalue="JUnit.ElectricityDaoTest" />
-        <item itemvalue="JUnit.ElectricityDaoTest.AddTypeTest" />
-        <item itemvalue="JUnit.TestSqlOfZipCode.tsetSelect" />
       </list>
     </recent_temporary>
   </component>
@@ -251,7 +282,13 @@
       <workItem from="1648348603425" duration="3618000" />
       <workItem from="1648387270836" duration="761000" />
       <workItem from="1648567023921" duration="4732000" />
-      <workItem from="1648647163563" duration="3249000" />
+      <workItem from="1648647163563" duration="4499000" />
+      <workItem from="1648669326266" duration="785000" />
+      <workItem from="1648929286833" duration="240000" />
+      <workItem from="1648929554376" duration="21000" />
+      <workItem from="1648929646206" duration="1759000" />
+      <workItem from="1648935511146" duration="334000" />
+      <workItem from="1648978724446" duration="2386000" />
     </task>
     <task id="LOCAL-00001" summary="interlayer">
       <created>1648379637848</created>
@@ -281,7 +318,42 @@
       <option name="project" value="LOCAL" />
       <updated>1648583037732</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="mapper problem">
+      <created>1648650511008</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1648650511008</updated>
+    </task>
+    <task id="LOCAL-00006" summary="。">
+      <created>1648930498414</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1648930498414</updated>
+    </task>
+    <task id="LOCAL-00007" summary="。">
+      <created>1648930685834</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1648930685834</updated>
+    </task>
+    <task id="LOCAL-00008" summary="。">
+      <created>1648981084042</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1648981084042</updated>
+    </task>
+    <task id="LOCAL-00009" summary="。">
+      <created>1648982230208</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1648982230208</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,6 +374,8 @@
     <MESSAGE value="interlayer" />
     <MESSAGE value="新任务的方法接口" />
     <MESSAGE value="新方法要用到的mapper" />
-    <option name="LAST_COMMIT_MESSAGE" value="新方法要用到的mapper" />
+    <MESSAGE value="mapper problem" />
+    <MESSAGE value="。" />
+    <option name="LAST_COMMIT_MESSAGE" value="。" />
   </component>
 </project>
