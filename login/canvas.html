@@ -9,35 +9,60 @@
 <canvas id="canvas" width="300" height="300">
     <span>你的浏览器不支持 canvas，请升级你的浏览器。</span>
 </canvas>
-
+<button type="submit" onclick='asd()'>register</button>
+<button type="submit" onclick='as()'>恢复</button>
 </body>
 <canvas width="829px" height="515px" id="myCanvas"></canvas>
 <canvas width="829px" height="515px" id="myCanvass"></canvas>
 <script type="text/javascript">
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext('2d');
+
+    // img: 底图
+    // watermarkImg: 水印图片
+    // x, y 是画布上放置 img 的坐标
+    ctx.drawImage(img, x, y);
+    ctx.drawImage(watermarkImg, x, y);
 
 
 
+    /*
+     * @param { Number } sx 将要被提取的图像数据矩形区域的左上角 x 坐标
+     * @param { Number } sy 将要被提取的图像数据矩形区域的左上角 y 坐标
+     * @param { Number } sw 将要被提取的图像数据矩形区域的宽度
+     * @param { Number } sh 将要被提取的图像数据矩形区域的高度
+     * @return { Object } ImageData 包含 canvas 给定的矩形图像数据
+     */
+    ImageData ctx.getImageData(sx, sy, sw, sh);
+
+    /*
+    * @param { Object } imagedata 包含像素值的对象
+    * @param { Number } dx 源图像数据在目标画布中的位置偏移量（x 轴方向的偏移量）
+    * @param { Number } dy 源图像数据在目标画布中的位置偏移量（y 轴方向的偏移量）
+    */
+    void ctx.putImageData(imagedata, dx, dy);
 
 
-    var canvas=document.getElementById('myCanvas');
-    var ctx=canvas.getContext('2d');
-    ctx.fillText("sewewd",10,200)
-    // function draw(fromx,fromy,tox,toy){
-    //
-    //     ctx.moveTo(fromx,fromy);
-    //     ctx.lineTo(tox,toy);
-    //     ctx.stroke();
-    // }
-    //
-    // //grid
-    // ctx.lineWidth='1'
-    // ctx.strokeStyle='rgb(205,201,201)'
-    // for (let i = 0; i < 900; i+=30) {
-    //     draw(i,0,i,520)
-    // }
-    // for (let i = 0; i < 550; i+=30) {
-    //     draw(0,i,840,i)
-    // }
+    class WrappedCanvas {
+        constructor (canvas) {
+            this.ctx = canvas.getContext('2d');
+            this.width = this.ctx.canvas.width;
+            this.height = this.ctx.canvas.height;
+            this.imgStack = [];
+        }
+        drawImage (...params) {
+            const imgData = this.ctx.getImageData(0, 0, this.width, this.height);
+            this.imgStack.push(imgData);
+            this.ctx.drawImage(...params);
+        }
+        undo () {
+            if (this.imgStack.length > 0) {
+                const imgData = this.imgStack.pop();
+                this.ctx.putImageData(imgData, 0, 0);
+            }
+        }
+    }
+
 
 
 </script>

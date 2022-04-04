@@ -100,8 +100,8 @@
 
 
         </div>
-		<div class='operation'>
-
+		<div class='operation' >
+<!--style="border-left:1px solid #d3d3d3;"-->
 			<div class="input"><label >Name: &nbsp</label><input class="inputname" v-model='name' /></div>
 
 			<div class="input"><label >X-coordinate: &nbsp</label><input class="inputx" v-model='x' type="text"   /></div>
@@ -109,7 +109,7 @@
 			<div class="input"><label >Y-coordinate: &nbsp</label><input class="inputy" v-model='y' type="text"  /></div>
 
 			Power level:
-			<select class="consumption" v-model="con" >
+			<select class="consumption" v-model="consumption" >
 
 
 
@@ -124,6 +124,7 @@
 			<button class="add" type="submit" @click="addsubmit"> add </button>
 			<button class="reset" type="submit" @click="clearCanvas"> reset </button>
 			<button class="done" type="submit"  @click="addword"  > done </button>
+			<button class="rollback" type="submit"  onclick="copy()"> rollback </button>
 
 	    </div>
 
@@ -145,6 +146,9 @@
 
 	var canvas=document.getElementById('myCanvas');
 	var ctx=canvas.getContext('2d');
+    var imagedata = ctx.getImageData(0,0,829,515);
+    array=[]
+	array.push(imagedata)
 
 	function draw(fromx,fromy,tox,toy){
 		ctx.moveTo(fromx,fromy);
@@ -153,35 +157,55 @@
 	}
 
 
+
+
 	function communityposition(x,y){
 		var img = new Image()
 		img.src = 'picture/house.png'
 		img.onload = function(){
-			ctx.drawImage(this,x, y, 50, 40)
+			ctx.drawImage(this,x, y, 50, 45)
+			imagedata = ctx.getImageData(0,0,829,515)
+			array.push(imagedata)
 		}
+
+
+		console.log(array)
+
 	}
 
 	function houspitalposition(x,y){
 		var img = new Image()
 		img.src = 'picture/hospital.png'
 		img.onload = function(){
-			ctx.drawImage(this,x, y, 45, 45)
+			ctx.drawImage(this,x, y, 50, 50)
+			imagedata = ctx.getImageData(0,0,829,515)
+			array.push(imagedata)
 		}
+
+		console.log(array)
 	}
 	function shopposition(x,y){
 		var img = new Image()
 		img.src = 'picture/shopping centre.png'
 		img.onload = function(){
-			ctx.drawImage(this,x, y, 45, 45)
+			ctx.drawImage(this,x, y, 50, 50)
+			imagedata = ctx.getImageData(0,0,829,515)
+			array.push(imagedata)
 		}
+
+		console.log(array)
 	}
 
 	function schoolposition(x,y){
 		var img = new Image()
 		img.src = 'picture/school.png'
 		img.onload = function(){
-			ctx.drawImage(this,x, y, 45, 45)
+			ctx.drawImage(this,x, y, 50, 50)
+			imagedata = ctx.getImageData(0,0,829,515)
+			array.push(imagedata)
 		}
+
+		console.log(array)
 	}
 
 	function powerposition(x,y){
@@ -189,12 +213,14 @@
 		img.src = 'picture/power station.png'
 		img.onload = function(){
 			ctx.drawImage(this,x, y, 60, 60)
+			imagedata = ctx.getImageData(0,0,829,515)
+			array.push(imagedata)
 		}
+
+		console.log(array)
 	}
 
-    // function addw(x,y){
-	// 	ctx.fillText("text",  x+10, y+50)
-	// }
+
 
 
 	function isNumber(str){
@@ -206,11 +232,19 @@
 		}
 	}
 
+	function copy()
+	{
+        array.pop()
+		ctx.putImageData(array[array.length-1],0,0);
+
+	}
+
 
 	var vue = new Vue({
 		el: '#app',
 		data: {
-          x:"",y:"",name:"",con:"",stype:"",
+          x:"",y:"",name:"",consumption:"",stype:"",array:[],imagedata,
+
 			messagehouse:"low-level: medium-level: high-level: ",
 			messagehospital:"low-level: medium-level: high-level: ",
 			messageschool:"low-level: medium-level: high-level: ",
@@ -224,22 +258,37 @@
 
 
 	        addword:function(){
+	        	var len = this.name.length;
 				var con=document.getElementById("myCanvas");
 				var context=con.getContext("2d");
-				context.font = 'italic 12pt Calibri';
-				context.fillText(this.name,Number(this.x)+6,Number(this.y)+62)
+				context.font = 'italic 16px Calibri';
+				context.fillText(this.name,(Number(this.x)*2+50)/2-4.5*len,Number(this.y)+68)
 			},
+
+			// addword:function(x,y){
+			// 	var con=document.getElementById("myCanvas");
+			// 	var context=con.getContext("2d");
+			// 	context.font = 'italic 18px Calibri';
+			// 	context.fillText(this.name,x,y)
+			// },
 
 			addsubmit:function(){
 	        	var type = this.stype;
 				var x = this.x;
 				var y = this.y;
-				if(isNumber(x)==false||isNumber(y)==false){alert("please input the number")}
-				if(x.trim()==null){alert("please enter the value of x")}
-				if(y.trim()==null){alert("please enter the value of y")}
-				if(type=="Community"){
+
+
+				if(isNumber(x)==false||isNumber(y)==false){alert("Please input the number.")}
+
+
+
+				if(type==""){alert("Please choose the type first.")}
+				else if(x==""){alert("Please enter the value of x.")}
+				else if(y==""){alert("Please enter the value of y.")}
+				else if (this.consumption==""){alert("Please choose the consumption level.")}
+				else if(type=="Community"){
 					communityposition(x,y)
-					this.addword(x,y)
+					this.addword()
 				}
 				else if(type=="Shopping centre"){
 					shopposition(x,y)
@@ -255,17 +304,40 @@
 					this.addword(x,y)
 				}
 
+
+
+				let s = JSON.stringify(
+						{
+							Type:this.stype,
+							x:this.x,
+							y:this.y,
+							consumption:this.consumption,
+							name:this.name
+						}
+				);
+				// console.log(s)
+				// axios({
+				// 	url:'ajax/login',
+				// 	data: s,
+				// 	method:"post",
+				// 	dataType:"json",
+				// })
+
 			},
+
 
 		    clearCanvas:function (){
 		    var c=document.getElementById("myCanvas");
 		    var cxt=c.getContext("2d");
 		    cxt.clearRect(0,0,c.width,c.height);
+	        },
+
+
+
 	        }
-
-
-	}
 	})
+
+
 
 </script>
 

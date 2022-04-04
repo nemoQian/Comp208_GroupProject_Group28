@@ -194,22 +194,26 @@ img {
 	font-family: Microsoft YaHei;
     line-height: 30px;
  }
-.add,.reset,.done{
+.add,.reset,.done,.rollback{
 	width: 80px;
 	font-size: 20px;
 }.add{
 	 position: absolute;
 	 top:140px;
-	 left: 20px;
+	 left: 0px;
  }.reset{
 	   position: absolute;
 	   top:140px;
-	   left: 120px;
+	   left: 200px;
    }.done{
 		   position: absolute;
 		   top:140px;
-		   left: 220px;
-	   }
+		   left: 300px;
+	   }.rollback{
+				   position: absolute;
+				   top:140px;
+				   left: 100px;
+			   }
 .test{
 	margin: auto;
 	width: 330px;
@@ -318,4 +322,6 @@ position: absolute;
 	position: absolute;
 	left: 30px;
 }
+
+
 

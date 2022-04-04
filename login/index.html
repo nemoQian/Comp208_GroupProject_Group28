@@ -43,8 +43,8 @@
                 </template>
 
                 <template v-if='active === "login"'>
-                    <div class="input" ><input :class='{ hasValue: loginForm.Username }' v-model='loginForm.Username' type="text" name="Username" id="loginusername" /><label for="username">username</label></div>
-                    <div class="input" ><input :class='{ hasValue: loginForm.Password }' v-model='loginForm.Password' type="password" name="Password" id="loginPassword" /><label for="Password">password</label></div>
+                    <div class="input" ><input v-model='loginForm.Username' type="text" name="Username" id="loginusername" /><label for="username">username</label></div>
+                    <div class="input" ><input  v-model='loginForm.Password' type="password" name="Password" id="loginPassword" /><label for="Password">password</label></div>
                     <div class="rememberme" ><br><input :class='{ hasValue: loginForm.rememberme }' v-model='loginForm.rememberme' type="checkbox" name="rememberme" id="rememberMe" checked="checked">&nbsp remember me </div>
                     <span>forget your passport?</span>
                     <button type="submit" @click='loginsubmit'>log in </button>
