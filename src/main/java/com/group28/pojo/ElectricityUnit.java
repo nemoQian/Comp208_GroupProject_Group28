@@ -8,9 +8,9 @@ package com.group28.pojo;
  */
 public class ElectricityUnit extends Facility{
 
-    private ElectricityUnitType electricityUnitType;
-    private ZipCode zipCode;
     private String electricityUnitId;
+    private ZipCode zipCode;
+    private ElectricityUnitType electricityUnitType;
     private String electricityUnitName;
 
 

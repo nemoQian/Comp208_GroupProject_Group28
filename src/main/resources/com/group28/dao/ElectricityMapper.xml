@@ -9,7 +9,7 @@
     </insert>
 
     <insert id="AddFacility" parameterType="com.group28.pojo.ElectricityUnit">
-        insert into virtualWorld.ElectricityUnit values (#{FacilityId}, #{ZipCode}, #{FacilityType}, #{Name});
+        insert into virtualWorld.ElectricityUnit values (#{electricityUnitId}, #{zipCode}, #{electricityUnitType}, #{electricityUnitName});
     </insert>
 
     <select id="SearchFacility" parameterType="String">

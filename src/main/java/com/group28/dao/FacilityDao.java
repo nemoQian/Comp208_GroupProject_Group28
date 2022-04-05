@@ -14,13 +14,6 @@ import com.group28.pojo.ElectricityUnitData;
 public interface FacilityDao {
 
 
-    /**
-     * Gets user.
-     *
-     * @param FacilityId, ZipCode, FacilityType, Name
-     * @return Added Facility
-     */
-    ElectricityUnit AddFacility(String FacilityId, String ZipCode, String FacilityType, String Name);
 
     /**
      * Gets user.
@@ -29,6 +22,14 @@ public interface FacilityDao {
      * @return Specific Facility
      */
     void AddType(ElectricityUnitType NewType);
+
+    /**
+     * Gets user.
+     *
+     * @param Newunit
+     * @return Added Facility
+     */
+    void AddFacility(ElectricityUnit Newunit);
 
     /**
      * Gets user.

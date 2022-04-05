@@ -28,7 +28,7 @@ public class TestElectricityUnitDao {
 
         ElectricityUnitType NewType = new ElectricityUnitType();
 
-        NewType.PutTypeId("HO");
+        NewType.PutTypeId("PB9");
 
         NewType.PutMAX_CONSUMMPTION(200);
 
