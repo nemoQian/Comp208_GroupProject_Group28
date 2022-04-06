@@ -47,8 +47,14 @@ public interface FacilityDao {
     /**
      * Gets user.
      *
-     * @param ReferenceID, FacilityID, TimeOfStore, Consumption
+     * @param NewData
      * @return Specific Facility
      */
-    ElectricityUnitData InsertData(String ReferenceID, String FacilityID, String TimeOfStore, int Consumption);
+    void InsertData(ElectricityUnitData NewData);
+
+    String GetTypeId(String electricityUnitId);
+
+    int GetMaxConsumption(String type_Id);
+
+    int GetMinConsumption(String type_Id);
 }

@@ -30,4 +30,34 @@ public class ElectricityDaoTest {
 
         sqlsession.close();
     }
+
+    @Test
+    public void SearchTypeIDTest(){
+        SqlSession sqlsession = MyBatisUtil.getSqlSession();
+        FacilityDao mapper = sqlsession.getMapper(FacilityDao.class);
+
+        String TypeID = mapper.GetTypeId("SP1S1A02");
+
+        System.out.println(TypeID);
+    }
+
+    @Test
+    public void SearchMaxCon(){
+        SqlSession sqlsession = MyBatisUtil.getSqlSession();
+        FacilityDao mapper = sqlsession.getMapper(FacilityDao.class);
+
+        int MaxConsumption = mapper.GetMaxConsumption("SP1");
+
+        System.out.println(MaxConsumption);
+    }
+
+    @Test
+    public void SearchMinCon(){
+        SqlSession sqlsession = MyBatisUtil.getSqlSession();
+        FacilityDao mapper = sqlsession.getMapper(FacilityDao.class);
+
+        int MaxConsumption = mapper.GetMinConsumption("SP1");
+
+        System.out.println(MaxConsumption);
+    }
 }

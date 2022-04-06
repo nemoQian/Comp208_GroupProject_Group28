@@ -9,9 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce8041a5-b38d-4f18-ba2d-4c5256a43f85" name="Changes" comment="更新了添加unit的方法的测试，测试在我的电脑上可以通过">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/group28/dao/ZipCodeSearch.java" afterDir="false" />
+    <list default="true" id="ce8041a5-b38d-4f18-ba2d-4c5256a43f85" name="Changes" comment="新增zipcode的方法">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilityDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilityDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group28/dao/ElectricityMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group28/dao/ElectricityMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/group28/dao/ElectricityDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/group28/dao/ElectricityDaoTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,8 +88,8 @@
       <recent name="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestElectricityUnitDao.TestFacilitySearch_AddUnit">
-    <configuration name="ElectricityDaoTest.SearchTypeListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ElectricityDaoTest.SearchMinCon">
+    <configuration name="ElectricityDaoTest.SearchMaxCon" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
         <pattern>
@@ -97,13 +99,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.group28.dao" />
       <option name="MAIN_CLASS_NAME" value="com.group28.dao.ElectricityDaoTest" />
-      <option name="METHOD_NAME" value="SearchTypeListTest" />
+      <option name="METHOD_NAME" value="SearchMaxCon" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ElectricityDaoTest.SearchUnitListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ElectricityDaoTest.SearchMinCon" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
         <pattern>
@@ -113,13 +115,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.group28.dao" />
       <option name="MAIN_CLASS_NAME" value="com.group28.dao.ElectricityDaoTest" />
-      <option name="METHOD_NAME" value="SearchUnitListTest" />
+      <option name="METHOD_NAME" value="SearchMinCon" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestElectricityUnitDao.AddUnitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ElectricityDaoTest.SearchTypeIDTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
         <pattern>
@@ -128,8 +130,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.group28.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.group28.dao.TestElectricityUnitDao" />
-      <option name="METHOD_NAME" value="AddUnitTest" />
+      <option name="MAIN_CLASS_NAME" value="com.group28.dao.ElectricityDaoTest" />
+      <option name="METHOD_NAME" value="SearchTypeIDTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -257,11 +259,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ElectricityDaoTest.SearchMinCon" />
+        <item itemvalue="JUnit.ElectricityDaoTest.SearchMaxCon" />
+        <item itemvalue="JUnit.ElectricityDaoTest.SearchTypeIDTest" />
         <item itemvalue="JUnit.TestElectricityUnitDao.TestFacilitySearch_AddUnit" />
         <item itemvalue="JUnit.TestElectricityUnitDao.TestFacilitySearch" />
-        <item itemvalue="JUnit.TestElectricityUnitDao.AddUnitTest" />
-        <item itemvalue="JUnit.ElectricityDaoTest.SearchUnitListTest" />
-        <item itemvalue="JUnit.ElectricityDaoTest.SearchTypeListTest" />
       </list>
     </recent_temporary>
   </component>
@@ -293,7 +295,7 @@
       <workItem from="1648996805329" duration="582000" />
       <workItem from="1649183319016" duration="2272000" />
       <workItem from="1649233781468" duration="5123000" />
-      <workItem from="1649245796446" duration="2391000" />
+      <workItem from="1649245796446" duration="4536000" />
     </task>
     <task id="LOCAL-00001" summary="interlayer">
       <created>1648379637848</created>
@@ -400,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649246692500</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="新增zipcode的方法">
+      <created>1649252174163</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1649252174163</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,6 +437,7 @@
     <MESSAGE value="完善了各个数据结构的Set以及更新了ElectricityMapper和ZipcodeMapper的获得数据list的方法" />
     <MESSAGE value="更新了添加unit的方法" />
     <MESSAGE value="更新了添加unit的方法的测试，测试在我的电脑上可以通过" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新了添加unit的方法的测试，测试在我的电脑上可以通过" />
+    <MESSAGE value="新增zipcode的方法" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增zipcode的方法" />
   </component>
 </project>
