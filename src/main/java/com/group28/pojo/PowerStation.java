@@ -8,8 +8,8 @@ package com.group28.pojo;
  */
 public class PowerStation extends Facility{
 
-    private ZipCode zipCode;
-    private PowerStationType powerStationType;
+    private String zipCode;
+    private String powerStationType;
     private String powerStationId;
     private String powerStationName;
 
@@ -24,12 +24,12 @@ public class PowerStation extends Facility{
     }
 
     @Override
-    public PowerStationType getFacilityType() {
+    public String getFacilityType() {
         return powerStationType;
     }
 
     @Override
-    public ZipCode getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
