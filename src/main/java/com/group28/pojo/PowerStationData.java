@@ -54,4 +54,15 @@ public class PowerStationData {
                 ", productivityAmount=" + productivityAmount +
                 '}';
     }
+
+    public void Put_DATA_REFERENCE_ID(String DATA_REFERENCE_ID){
+        this.DATA_REFERENCE_ID = DATA_REFERENCE_ID;
+    }
+
+    public void Put_powerStationId(String powerStationId){
+        this.powerStationId = powerStationId;
+    }
+
+    public void Put_timeOfStore(String timeOfStore){this.timeOfStore = timeOfStore;}
+    public void Put_productivityAmount(int productivityAmount){this.productivityAmount = productivityAmount;}
 }

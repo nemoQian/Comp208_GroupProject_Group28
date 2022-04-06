@@ -23,6 +23,24 @@ public class ElectricityUnitDataDaoTest {
         sqlsession.close();
     }
 
+    @Test
+    public void insetDataTest(){
+        SqlSession sqlsession = MyBatisUtil.getSqlSession();
+
+        ElectricityUnitDataDao mapper = sqlsession.getMapper(ElectricityUnitDataDao.class);
+        ElectricityUnitData electricityUnitData = new ElectricityUnitData();
+
+        electricityUnitData.Put_DATA_REFERENCE_ID("E11");
+        electricityUnitData.Put_electricityUnitId("AP1S1A03");
+        electricityUnitData.Put_timeOfStore("2022-04-01-11");
+        electricityUnitData.Put_ConsumptionAmount(300);
+
+        mapper.insertData(electricityUnitData);
+
+
+        sqlsession.commit();
+        sqlsession.close();
+    }
 //    @Test
 //    public void getConsumptionAmountByTimePerMonth(){
 //        SqlSession sqlsession = MyBatisUtil.getSqlSession();

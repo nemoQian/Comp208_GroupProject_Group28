@@ -53,6 +53,7 @@ public class ElectricityUnitData {
         return electricityUnitId;
     }
 
+
     public void setElectricityUnitId(String electricityUnitId) {
         this.electricityUnitId = electricityUnitId;
     }
