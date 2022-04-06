@@ -11,6 +11,8 @@ public interface ElectricityUnitDataDao {
 
     int getAccumulatedConsumptionAmount(String Time);
 
+    void insertData(ElectricityUnitData electricityUnitData);
+
 
 
 //    int getConsumptionAmountByTimePerHour(String electricityUnit,String timeOfStore);

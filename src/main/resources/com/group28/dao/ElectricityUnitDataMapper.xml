@@ -12,14 +12,9 @@
     </select>
 
 
-
-
-<!--    <select id="getConsumptionAmountByTimePerYear" resultType="ElectricityUnitDataMap">-->
-<!--        select sum(ConsumptionAmount)  from electricityunit_datastore-->
-<!--        where DATA_REFERENCE_ID=#{DATA_REFERENCE_ID} and-->
-<!--            (select TimeOfStore from virtualworld.electricityunit_datastore-->
-<!--             where TimeOfStore like #{year}"%")-->
-<!--    </select>-->
+    <insert id="insertData" parameterType="com.group28.pojo.ElectricityUnitData">
+        insert into virtualworld.electricityunit_datastore (DATA_REFERENCE_ID, ElectricityUnitID,TimeOfStore,ConsumptionAmount) value (#{DATA_REFERENCE_ID}, #{electricityUnitId},#{timeOfStore},#{ConsumptionAmount})
+    </insert>
 
 
 <!--    <select id="getConsumptionAmountByTimePerHour" resultMap="ElectricityUnitDataMap">-->

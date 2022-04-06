@@ -11,4 +11,8 @@
         where psd.powerStationId = ps.powerStationId and psd.TimeOfStore like #{Time}"%";
     </select>
 
+    <insert id="insertData" parameterType="com.group28.pojo.PowerStationData">
+        insert into virtualworld.pwoerstation_datastore (DATA_REFERENCE_ID,powerStationId,TimeOfStore,ProductivityAmount) values(#{DATA_REFERENCE_ID},#{powerStationId},#{timeOfStore},#{productivityAmount})
+    </insert>
+
 </mapper>
