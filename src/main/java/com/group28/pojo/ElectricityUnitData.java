@@ -11,7 +11,7 @@ public class ElectricityUnitData {
     private String DATA_REFERENCE_ID;
     private String electricityUnitID;
     private String timeOfStore;
-    private Integer ConsumptionAmount;
+    private int ConsumptionAmount;
 
     /**
      * Instantiates a new Electricity unit data.
