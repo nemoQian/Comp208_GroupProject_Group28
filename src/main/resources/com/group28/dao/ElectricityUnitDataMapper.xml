@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.group28.dao.ElectricityUnitDataDao">
+
+    <select id="getAccumulatedConsumptionAmount" resultType="int">
+        select sum(eud.ConsumptionAmount) as AccumulatedConsumptionAmount
+        from virtualworld.electricityunit_datastore eud, virtualworld.electricityunit eu
+        where eud.ElectricityUnitID=eu.ElectricityUnitID and eud.TimeOfStore like #{Time}"%";
+    </select>
+
+
+
+
+<!--    <select id="getConsumptionAmountByTimePerYear" resultType="ElectricityUnitDataMap">-->
+<!--        select sum(ConsumptionAmount)  from electricityunit_datastore-->
+<!--        where DATA_REFERENCE_ID=#{DATA_REFERENCE_ID} and-->
+<!--            (select TimeOfStore from virtualworld.electricityunit_datastore-->
+<!--             where TimeOfStore like #{year}"%")-->
+<!--    </select>-->
+
+
+<!--    <select id="getConsumptionAmountByTimePerHour" resultMap="ElectricityUnitDataMap">-->
+<!--        select eud.DATA_REFERENCE_ID eudID ,eud.ConsumptionAmount eudConsumption,-->
+<!--               eu.ElectricityUnitID euID, eud.TimeOfStore eudTime-->
+<!--        from virtualworld.electricityunit eu, virtualworld.electricityunit_datastore eud-->
+<!--        where eud.ElectricityUnitID = eu.ElectricityUnitID and eud.TimeOfStore like #{TimeOfStore}%-->
+<!--    </select>-->
+
+<!--    <resultMap id="ElectricityUnitConsumption1" type="com.group28.pojo.ElectricityUnitData" >-->
+<!--        <result property="ConsumptionAmount"  column= "eudConsumption"/>-->
+<!--    </resultMap>-->
+
+</mapper>
