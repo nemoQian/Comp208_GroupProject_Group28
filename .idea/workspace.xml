@@ -9,12 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce8041a5-b38d-4f18-ba2d-4c5256a43f85" name="Changes" comment="新增zipcode的方法">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilityDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilityDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group28/dao/ElectricityMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group28/dao/ElectricityMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/group28/dao/ElectricityDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/group28/dao/ElectricityDaoTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,14 +29,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateMap.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTime.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateVirtualWorld.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTimeInterface.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/test/java/com/group28/util/TestSimulateTime.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateMap.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pom.xml" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/pojo/PowerStation.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTimeInterface.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTime.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/test/java/com/group28/util/TestSimulateTime.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/pojo/PowerStation.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -88,7 +83,7 @@
       <recent name="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ElectricityDaoTest.SearchMinCon">
+  <component name="RunManager" selected="JUnit.ElectricityDaoTest.SearchTypeIDTest">
     <configuration name="ElectricityDaoTest.SearchMaxCon" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
@@ -259,9 +254,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ElectricityDaoTest.SearchTypeIDTest" />
         <item itemvalue="JUnit.ElectricityDaoTest.SearchMinCon" />
         <item itemvalue="JUnit.ElectricityDaoTest.SearchMaxCon" />
-        <item itemvalue="JUnit.ElectricityDaoTest.SearchTypeIDTest" />
         <item itemvalue="JUnit.TestElectricityUnitDao.TestFacilitySearch_AddUnit" />
         <item itemvalue="JUnit.TestElectricityUnitDao.TestFacilitySearch" />
       </list>
