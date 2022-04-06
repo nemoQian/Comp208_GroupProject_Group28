@@ -9,17 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce8041a5-b38d-4f18-ba2d-4c5256a43f85" name="Changes" comment="电脑快没电了先存一下">
+    <list default="true" id="ce8041a5-b38d-4f18-ba2d-4c5256a43f85" name="Changes" comment="完善了各个数据结构的Set以及更新了ElectricityMapper和ZipcodeMapper的获得数据list的方法">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilityDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilityDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilitySearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilitySearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/dao/ZipCodeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/dao/ZipCodeDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/pojo/PowerStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/pojo/PowerStation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/pojo/PowerStationType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/pojo/PowerStationType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/group28/dao/ElectricityMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group28/dao/ElectricityMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group28/dao/ZipCodeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group28/dao/ZipCodeMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/group28/dao/ElectricityDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/group28/dao/ElectricityDaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/group28/dao/TestSqlOfZipCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/group28/dao/TestSqlOfZipCode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +89,7 @@
       <recent name="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ElectricityDaoTest.SearchTypeListTest">
+  <component name="RunManager" selected="JUnit.ElectricityDaoTest.SearchUnitListTest">
     <configuration name="ElectricityDaoTest.SearchTypeListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
@@ -111,7 +106,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestElectricityUnitDao" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ElectricityDaoTest.SearchUnitListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
         <pattern>
@@ -120,8 +115,9 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.group28.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.group28.dao.TestElectricityUnitDao" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="com.group28.dao.ElectricityDaoTest" />
+      <option name="METHOD_NAME" value="SearchUnitListTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -264,11 +260,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ElectricityDaoTest.SearchUnitListTest" />
         <item itemvalue="JUnit.ElectricityDaoTest.SearchTypeListTest" />
         <item itemvalue="JUnit.TestSqlOfZipCode.GetCodeListTest" />
         <item itemvalue="JUnit.TestElectricityUnitDao.AddUnitTest" />
         <item itemvalue="JUnit.TestElectricityUnitDao.AddTypeTest" />
-        <item itemvalue="JUnit.TestElectricityUnitDao" />
       </list>
     </recent_temporary>
   </component>
@@ -299,7 +295,7 @@
       <workItem from="1648978724446" duration="2386000" />
       <workItem from="1648996805329" duration="582000" />
       <workItem from="1649183319016" duration="2272000" />
-      <workItem from="1649233781468" duration="3351000" />
+      <workItem from="1649233781468" duration="4977000" />
     </task>
     <task id="LOCAL-00001" summary="interlayer">
       <created>1648379637848</created>
@@ -385,7 +381,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649235230631</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="完善了各个数据结构的Set以及更新了ElectricityMapper和ZipcodeMapper的获得数据list的方法">
+      <created>1649239812027</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1649239812027</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -410,6 +413,7 @@
     <MESSAGE value="。" />
     <MESSAGE value="原param用的是zipcode和unittype，导致在导入sql的时候出错，现将param改为对应sql中varchar的string，在ElectrcityUnit中的添加测试成功" />
     <MESSAGE value="电脑快没电了先存一下" />
-    <option name="LAST_COMMIT_MESSAGE" value="电脑快没电了先存一下" />
+    <MESSAGE value="完善了各个数据结构的Set以及更新了ElectricityMapper和ZipcodeMapper的获得数据list的方法" />
+    <option name="LAST_COMMIT_MESSAGE" value="完善了各个数据结构的Set以及更新了ElectricityMapper和ZipcodeMapper的获得数据list的方法" />
   </component>
 </project>

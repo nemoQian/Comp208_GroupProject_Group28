@@ -19,4 +19,15 @@ public class ElectricityDaoTest {
 
         sqlsession.close();
     }
+
+    @Test
+    public void SearchUnitListTest(){
+        SqlSession sqlsession = MyBatisUtil.getSqlSession();
+        FacilityDao mapper = sqlsession.getMapper(FacilityDao.class);
+
+        List<String> unit1 = mapper.GetUnitIdList();
+        System.out.println(unit1);
+
+        sqlsession.close();
+    }
 }

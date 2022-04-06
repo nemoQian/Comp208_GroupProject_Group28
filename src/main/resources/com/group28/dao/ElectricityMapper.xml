@@ -16,6 +16,9 @@
         select Type_ID from virtualWorld.ElectricityUnitType;
     </select>
 
+    <select id="GetUnitIdList" resultType="String">
+        select ElectricityUnitID from virtualWorld.ElectricityUnit;
+    </select>
 
     <insert id="InsertData" parameterType="com.group28.pojo.ElectricityUnitData">
         insert into virtualWorld.ElectricityUnit values (#{ReferenceID}, #{FacilityID}, #{TimeOfStore}, #{Consumption});

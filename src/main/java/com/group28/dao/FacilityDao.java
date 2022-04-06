@@ -41,6 +41,8 @@ public interface FacilityDao {
      */
     List<String> GetTypeIdList();
 
+    List<String> GetUnitIdList();
+
 
     /**
      * Gets user.
