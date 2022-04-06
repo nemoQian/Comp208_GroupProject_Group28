@@ -10,15 +10,15 @@ public class Facility {
 
     private String facilityId;
     private String facilityName;
-    private ZipCode zipCode;
-    private FacilityType facilityType;
+    private String zipCode;
+    private String facilityType;
 
     /**
      * Gets zip code.
      *
      * @return the zip code
      */
-    public ZipCode getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
@@ -27,7 +27,7 @@ public class Facility {
      *
      * @return the facility type
      */
-    public FacilityType getFacilityType() {
+    public String getFacilityType() {
         return facilityType;
     }
 

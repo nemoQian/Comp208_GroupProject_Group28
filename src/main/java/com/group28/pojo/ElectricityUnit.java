@@ -8,10 +8,11 @@ package com.group28.pojo;
  */
 public class ElectricityUnit extends Facility{
 
-    private ElectricityUnitType electricityUnitType;
-    private ZipCode zipCode;
     private String electricityUnitId;
+    private String zipCode;
+    private String electricityUnitType;
     private String electricityUnitName;
+
 
     @Override
     public String toString() {
@@ -23,13 +24,29 @@ public class ElectricityUnit extends Facility{
                 '}';
     }
 
+    public void Put_electricityUnitType(String InsertType){
+        this.electricityUnitType = InsertType;
+    }
+
+    public void Put_zipCode (String InsertCode){
+        this.zipCode = InsertCode;
+    }
+
+    public void Put_electricityUnitId(String electricityUnitId){
+        this.electricityUnitId = electricityUnitId;
+    }
+
+    public void Put_electricityUnitName(String electricityUnitName){
+        this.electricityUnitName = electricityUnitName;
+    }
+
     @Override
-    public ElectricityUnitType getFacilityType() {
+    public String getFacilityType() {
         return electricityUnitType;
     }
 
     @Override
-    public ZipCode getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
