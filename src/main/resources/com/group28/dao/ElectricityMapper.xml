@@ -9,11 +9,15 @@
     </insert>
 
     <insert id="AddFacility" parameterType="com.group28.pojo.ElectricityUnit">
-        insert into virtualWorld.ElectricityUnit values (#{FacilityId}, #{ZipCode}, #{FacilityType}, #{Name});
+        insert into virtualWorld.ElectricityUnit values (#{electricityUnitId}, #{zipCode}, #{electricityUnitType}, #{electricityUnitName});
     </insert>
 
-    <select id="SearchFacility" parameterType="String">
-        select * from virtualWorld.ElectricityUnit where ElectricityUnitID = #{FacilityId};
+    <select id="GetTypeIdList" resultType="String">
+        select Type_ID from virtualWorld.ElectricityUnitType;
+    </select>
+
+    <select id="GetUnitIdList" resultType="String">
+        select ElectricityUnitID from virtualWorld.ElectricityUnit;
     </select>
 
     <insert id="InsertData" parameterType="com.group28.pojo.ElectricityUnitData">
