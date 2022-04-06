@@ -67,5 +67,22 @@ public class TestElectricityUnitDao {
 
     }
 
+    @Test
+    public void TestFacilitySearch_AddType(){
+        FacilitySearch SearchTest1 = new FacilitySearch();
+
+        SearchTest1.AddType("PB1", 100, 200);
+        SearchTest1.AddType("SP1", 1000, 500);
+    }
+
+    @Test
+    public void TestFacilitySearch_AddUnit(){
+        FacilitySearch SearchTest_AddUnit = new FacilitySearch();
+
+        SearchTest_AddUnit.AddUnit("PB9S1A01", "S9 G86", "SP2", "Qyh's House");
+        SearchTest_AddUnit.AddUnit("SP1S1A02", "S9 G86", "SP2", "Qyh's House");
+        SearchTest_AddUnit.AddUnit("SP1S1A02", "S1 A02", "SP2", "Qyh's House");
+        SearchTest_AddUnit.AddUnit("SP1S1A02", "S1 A02", "SP1", "Qyh's House");
+    }
 
 }

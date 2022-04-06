@@ -9,12 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce8041a5-b38d-4f18-ba2d-4c5256a43f85" name="Changes" comment="完善了各个数据结构的Set以及更新了ElectricityMapper和ZipcodeMapper的获得数据list的方法">
+    <list default="true" id="ce8041a5-b38d-4f18-ba2d-4c5256a43f85" name="Changes" comment="更新了添加unit的方法">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilityDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilityDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilitySearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilitySearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group28/dao/ElectricityMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group28/dao/ElectricityMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/group28/dao/ElectricityDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/group28/dao/ElectricityDaoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/group28/dao/TestElectricityUnitDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/group28/dao/TestElectricityUnitDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +86,7 @@
       <recent name="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ElectricityDaoTest.SearchUnitListTest">
+  <component name="RunManager" selected="JUnit.TestElectricityUnitDao.TestFacilitySearch_AddUnit">
     <configuration name="ElectricityDaoTest.SearchTypeListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
@@ -122,22 +119,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestElectricityUnitDao.AddTypeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.group28.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.group28.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.group28.dao.TestElectricityUnitDao" />
-      <option name="METHOD_NAME" value="AddTypeTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TestElectricityUnitDao.AddUnitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
@@ -154,7 +135,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestSqlOfZipCode.GetCodeListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestElectricityUnitDao.TestFacilitySearch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
         <pattern>
@@ -163,8 +144,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.group28.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.group28.dao.TestSqlOfZipCode" />
-      <option name="METHOD_NAME" value="GetCodeListTest" />
+      <option name="MAIN_CLASS_NAME" value="com.group28.dao.TestElectricityUnitDao" />
+      <option name="METHOD_NAME" value="TestFacilitySearch" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestElectricityUnitDao.TestFacilitySearch_AddUnit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.group28.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.group28.dao" />
+      <option name="MAIN_CLASS_NAME" value="com.group28.dao.TestElectricityUnitDao" />
+      <option name="METHOD_NAME" value="TestFacilitySearch_AddUnit" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -260,11 +257,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestElectricityUnitDao.TestFacilitySearch_AddUnit" />
+        <item itemvalue="JUnit.TestElectricityUnitDao.TestFacilitySearch" />
+        <item itemvalue="JUnit.TestElectricityUnitDao.AddUnitTest" />
         <item itemvalue="JUnit.ElectricityDaoTest.SearchUnitListTest" />
         <item itemvalue="JUnit.ElectricityDaoTest.SearchTypeListTest" />
-        <item itemvalue="JUnit.TestSqlOfZipCode.GetCodeListTest" />
-        <item itemvalue="JUnit.TestElectricityUnitDao.AddUnitTest" />
-        <item itemvalue="JUnit.TestElectricityUnitDao.AddTypeTest" />
       </list>
     </recent_temporary>
   </component>
@@ -295,7 +292,8 @@
       <workItem from="1648978724446" duration="2386000" />
       <workItem from="1648996805329" duration="582000" />
       <workItem from="1649183319016" duration="2272000" />
-      <workItem from="1649233781468" duration="4977000" />
+      <workItem from="1649233781468" duration="5123000" />
+      <workItem from="1649245796446" duration="841000" />
     </task>
     <task id="LOCAL-00001" summary="interlayer">
       <created>1648379637848</created>
@@ -388,7 +386,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649239812027</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="更新了添加unit的方法">
+      <created>1649241363244</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1649241363244</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -414,6 +419,7 @@
     <MESSAGE value="原param用的是zipcode和unittype，导致在导入sql的时候出错，现将param改为对应sql中varchar的string，在ElectrcityUnit中的添加测试成功" />
     <MESSAGE value="电脑快没电了先存一下" />
     <MESSAGE value="完善了各个数据结构的Set以及更新了ElectricityMapper和ZipcodeMapper的获得数据list的方法" />
-    <option name="LAST_COMMIT_MESSAGE" value="完善了各个数据结构的Set以及更新了ElectricityMapper和ZipcodeMapper的获得数据list的方法" />
+    <MESSAGE value="更新了添加unit的方法" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新了添加unit的方法" />
   </component>
 </project>
