@@ -14,24 +14,24 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Override
     public String login(String user_Name, String user_Password) {
-        //0 is null,1 is not exist,2 is incorrect,2828 is success
-        if(user_Name == null || user_Password == null||user_Name.equals("") || user_Password.equals("")){
-            return "null";
-        }
+//        //0 is null,1 is not exist,2 is incorrect,2828 is success
+//        if(user_Name == null || user_Password == null||user_Name.equals("") || user_Password.equals("")){
+//            return "400";
+//        }
 
         UserSearch userSearch = new UserSearch();
         User user = userSearch.searchUser(user_Name);
 
         if (user == null) {
-            return "user is not exit";
+            return "401";
         }
 
         //user_Password = DigestUtils.md5DigestAsHex(user_Password);
         if (!user_Password.equals(user.getUser_Password())) {
-            return "password is not correct";
+            return "402";
         }
 
-        return "G5 2828";
+        return "200";
 
 
     }
@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
 
 
         if (UserNameList.contains(user_Name)){
-            return "User Already Exist, Register Failed";
+            return "403";
         }
 
 
@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
         else {
             UserSearch RegisterExecute = new UserSearch();
             RegisterExecute.UserRegister(user_Name, user_Password, user_Email);
-            return "Register Success!";
+            return "201";
         }
 
     }
