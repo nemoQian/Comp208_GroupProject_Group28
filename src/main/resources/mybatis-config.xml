@@ -34,7 +34,6 @@
         <mapper resource="com/group28/dao/UserMapper.xml"/>
         <mapper resource="com/group28/dao/ElectricityUnitMapper.xml"/>
         <mapper resource="com/group28/dao/ElectricityMapper.xml"/>
-        <mapper resource="com/group28/dao/ElectricityUnitDao.xml"/>
         <mapper resource="com/group28/dao/ElectricityUnitDataMapper.xml"/>
         <mapper resource="com/group28/dao/PowerStationDataMapper.xml"/>
     </mappers>
