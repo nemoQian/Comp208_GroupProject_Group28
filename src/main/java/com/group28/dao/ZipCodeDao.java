@@ -33,4 +33,6 @@ public interface ZipCodeDao {
      * @param zipCode the zipCode object
      */
     void addZipCode(ZipCode zipCode);
+
+    List<String> getZipCode_CodeList();
 }

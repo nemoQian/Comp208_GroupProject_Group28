@@ -25,5 +25,13 @@ public class FacilitySearch {
         System.out.println(NewType);
     }
 
+    public void AddUnit(String electricityUnitId, String zipCode, String electricityUnitType, String electricityUnitName){
+        SqlSession sqlsession = MyBatisUtil.getSqlSession();
+        FacilityDao mapper = sqlsession.getMapper(FacilityDao.class);
+        ZipCodeDao ZipMapper = sqlsession.getMapper(ZipCodeDao.class);
+
+
+    }
+
     
 }

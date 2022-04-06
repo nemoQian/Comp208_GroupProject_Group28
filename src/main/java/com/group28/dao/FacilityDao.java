@@ -4,6 +4,8 @@ import com.group28.pojo.ElectricityUnit;
 import com.group28.pojo.ElectricityUnitType;
 import com.group28.pojo.ElectricityUnitData;
 
+import java.util.List;
+
 /**
  * The interface Electricity Facility.
  *
@@ -34,10 +36,10 @@ public interface FacilityDao {
     /**
      * Gets user.
      *
-     * @param FacilityId
-     * @return Specific Facility
+     *
+     * @return FacilityList
      */
-    ElectricityUnit SearchFacility(String FacilityId);
+    List<String> GetTypeIdList();
 
 
     /**

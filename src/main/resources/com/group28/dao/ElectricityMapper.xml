@@ -12,9 +12,10 @@
         insert into virtualWorld.ElectricityUnit values (#{electricityUnitId}, #{zipCode}, #{electricityUnitType}, #{electricityUnitName});
     </insert>
 
-    <select id="SearchFacility" parameterType="String">
-        select * from virtualWorld.ElectricityUnit where ElectricityUnitID = #{FacilityId};
+    <select id="GetTypeIdList" resultType="String">
+        select Type_ID from virtualWorld.ElectricityUnitType;
     </select>
+
 
     <insert id="InsertData" parameterType="com.group28.pojo.ElectricityUnitData">
         insert into virtualWorld.ElectricityUnit values (#{ReferenceID}, #{FacilityID}, #{TimeOfStore}, #{Consumption});

@@ -8,9 +8,9 @@ package com.group28.pojo;
  */
 public class PowerStation extends Facility{
 
+    private String powerStationId;
     private String zipCode;
     private String powerStationType;
-    private String powerStationId;
     private String powerStationName;
 
     @Override
@@ -21,6 +21,22 @@ public class PowerStation extends Facility{
                 ", powerStationId=" + powerStationId +
                 ", powerStationName='" + powerStationName + '\'' +
                 '}';
+    }
+
+    public void Put_powerStationId(String powerStationId){
+        this.powerStationId = powerStationId;
+    }
+
+    public void Put_zipCode(String zipCode){
+        this.zipCode = zipCode;
+    }
+
+    public void Put_powerStationType(String powerStationType){
+        this.powerStationType = powerStationType;
+    }
+
+    public void Put_powerStationName(String powerStationName){
+        this.powerStationName = powerStationName;
     }
 
     @Override

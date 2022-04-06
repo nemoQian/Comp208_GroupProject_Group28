@@ -59,5 +59,17 @@ public class TestSqlOfZipCode {
         sqlSession.close();
     }
 
+    @Test
+    public void GetCodeListTest(){
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        ZipCodeDao mapper = sqlSession.getMapper(ZipCodeDao.class);
+
+        List<String> CodeList = mapper.getZipCode_CodeList();
+
+        System.out.println(CodeList);
+
+        sqlSession.close();
+    }
+
 
 }
