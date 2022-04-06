@@ -23,6 +23,24 @@ public class ElectricityUnitData {
                 '}';
     }
 
+    public void Put_DATA_REFERENCE_ID(String DATA_REFERENCE_ID){
+        this.DATA_REFERENCE_ID = DATA_REFERENCE_ID;
+    }
+
+    public void Put_electricityUnitId(String electricityUnitId){
+        this.electricityUnitId = electricityUnitId;
+    }
+
+    public void Put_timeOfStore(String timeOfStore){
+        this.timeOfStore = timeOfStore;
+    }
+
+    public void Put_ConsumptionAmount(int ConsumptionAmount){
+        this.ConsumptionAmount = ConsumptionAmount;
+    }
+
+
+
     public String getDATA_REFERENCE_ID() {
         return DATA_REFERENCE_ID;
     }

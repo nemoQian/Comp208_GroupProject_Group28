@@ -9,12 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce8041a5-b38d-4f18-ba2d-4c5256a43f85" name="Changes" comment="。">
+    <list default="true" id="ce8041a5-b38d-4f18-ba2d-4c5256a43f85" name="Changes" comment="原param用的是zipcode和unittype，导致在导入sql的时候出错，现将param改为对应sql中varchar的string，在ElectrcityUnit中的添加测试成功">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/pojo/ElectricityUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/pojo/ElectricityUnit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/pojo/Facility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/pojo/Facility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/pojo/PowerStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/pojo/PowerStation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/group28/dao/TestElectricityUnitDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/group28/dao/TestElectricityUnitDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/pojo/ElectricityUnitData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/pojo/ElectricityUnitData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -291,7 +288,7 @@
       <workItem from="1648978724446" duration="2386000" />
       <workItem from="1648996805329" duration="582000" />
       <workItem from="1649183319016" duration="2272000" />
-      <workItem from="1649233781468" duration="336000" />
+      <workItem from="1649233781468" duration="921000" />
     </task>
     <task id="LOCAL-00001" summary="interlayer">
       <created>1648379637848</created>
@@ -363,7 +360,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649183926715</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="原param用的是zipcode和unittype，导致在导入sql的时候出错，现将param改为对应sql中varchar的string，在ElectrcityUnit中的添加测试成功">
+      <created>1649234291141</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1649234291141</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -386,6 +390,7 @@
     <MESSAGE value="新方法要用到的mapper" />
     <MESSAGE value="mapper problem" />
     <MESSAGE value="。" />
-    <option name="LAST_COMMIT_MESSAGE" value="。" />
+    <MESSAGE value="原param用的是zipcode和unittype，导致在导入sql的时候出错，现将param改为对应sql中varchar的string，在ElectrcityUnit中的添加测试成功" />
+    <option name="LAST_COMMIT_MESSAGE" value="原param用的是zipcode和unittype，导致在导入sql的时候出错，现将param改为对应sql中varchar的string，在ElectrcityUnit中的添加测试成功" />
   </component>
 </project>
