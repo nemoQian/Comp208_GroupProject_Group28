@@ -11,4 +11,12 @@
     <insert id="AddStation" parameterType="com.group28.pojo.PowerStation">
         insert into virtualWorld.PowerStation values (#{powerStationId}, #{zipCode}, #{powerStationType}, #{powerStationName});
     </insert>
+
+    <select id="GetStationType_List" resultType="String">
+        select Type_ID from virtualWorld.PowerStationType;
+    </select>
+
+    <select id="GetStationList" resultType="String">
+        select powerStationId from virtualWorld.PowerStation;
+    </select>
 </mapper>

@@ -6,6 +6,8 @@ import com.group28.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.util.List;
+
 public class PowerStationDaoTest {
     @Test
     public void insertTypeTest(){
@@ -41,5 +43,27 @@ public class PowerStationDaoTest {
         sqlSession.close();
 
         System.out.println("Finish");
+    }
+
+    @Test
+    public void GetTypeListTest(){
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        PowerStationDao mapper = sqlSession.getMapper(PowerStationDao.class);
+
+        List<String> TypeList = mapper.GetStationType_List();
+
+        sqlSession.close();
+        System.out.println(TypeList);
+    }
+
+    @Test
+    public void GetStationListTest(){
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        PowerStationDao mapper = sqlSession.getMapper(PowerStationDao.class);
+
+        List<String> StationList = mapper.GetStationList();
+
+        sqlSession.close();
+        System.out.println(StationList);
     }
 }
