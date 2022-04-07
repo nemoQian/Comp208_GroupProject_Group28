@@ -9,9 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="get最小值">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/group28/dao/PowerStationDao.java" afterDir="false" />
+    <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="PowerStation 接口">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/group28/dao/PowerStation.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,9 +23,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="Tag Library Descriptor" />
         <option value="Class" />
         <option value="Interface" />
+        <option value="Tag Library Descriptor" />
+        <option value="Mapper" />
       </list>
     </option>
   </component>
@@ -71,16 +73,21 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/com/group28/dao" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/group28/dao" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/com/group28/dao" />
       <recent name="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login" />
@@ -295,7 +302,7 @@
       <workItem from="1649233781468" duration="5123000" />
       <workItem from="1649245796446" duration="4536000" />
       <workItem from="1649274716080" duration="175000" />
-      <workItem from="1649323339484" duration="567000" />
+      <workItem from="1649323339484" duration="3638000" />
     </task>
     <task id="LOCAL-00001" summary="interlayer">
       <created>1648379637848</created>
@@ -416,7 +423,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649259476390</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="PowerStation 接口">
+      <created>1649323926314</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1649323926314</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -446,6 +460,7 @@
     <MESSAGE value="更新了添加unit的方法的测试，测试在我的电脑上可以通过" />
     <MESSAGE value="新增zipcode的方法" />
     <MESSAGE value="get最小值" />
-    <option name="LAST_COMMIT_MESSAGE" value="get最小值" />
+    <MESSAGE value="PowerStation 接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="PowerStation 接口" />
   </component>
 </project>
