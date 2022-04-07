@@ -9,7 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="" />
+    <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="get最小值">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/group28/dao/PowerStationDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,10 +21,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="FxmlFile" />
         <option value="Tag Library Descriptor" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -265,7 +268,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ce8041a5-b38d-4f18-ba2d-4c5256a43f85" name="Changes" comment="" />
+      <changelist id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="get最小值" />
       <created>1648293669906</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -291,6 +294,8 @@
       <workItem from="1649183319016" duration="2272000" />
       <workItem from="1649233781468" duration="5123000" />
       <workItem from="1649245796446" duration="4536000" />
+      <workItem from="1649274716080" duration="175000" />
+      <workItem from="1649323339484" duration="567000" />
     </task>
     <task id="LOCAL-00001" summary="interlayer">
       <created>1648379637848</created>
@@ -404,7 +409,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649252174163</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="get最小值">
+      <created>1649259476390</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1649259476390</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -433,6 +445,7 @@
     <MESSAGE value="更新了添加unit的方法" />
     <MESSAGE value="更新了添加unit的方法的测试，测试在我的电脑上可以通过" />
     <MESSAGE value="新增zipcode的方法" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增zipcode的方法" />
+    <MESSAGE value="get最小值" />
+    <option name="LAST_COMMIT_MESSAGE" value="get最小值" />
   </component>
 </project>
