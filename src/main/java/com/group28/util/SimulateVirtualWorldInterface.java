@@ -3,7 +3,7 @@ package com.group28.util;
 import com.group28.pojo.Facility;
 import com.group28.pojo.FacilityData;
 
-public interface SimulateVirtualWroldInterface {
+public interface SimulateVirtualWorldInterface {
 
     void worldSimulateOpen ();
 
