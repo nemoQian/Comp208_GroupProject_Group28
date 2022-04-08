@@ -11,8 +11,8 @@ import java.util.concurrent.Executors;
 /**
  * The type Simulate virtual world.
 
- * @author Yihan Qian
- * @version 1.0
+ * @author Yihan Qian,Lingfang li
+ * @version 1.1
  */
 public class SimulateVirtualWorld implements SimulateVirtualWorldInterface{
 
