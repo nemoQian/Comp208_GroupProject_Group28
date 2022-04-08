@@ -10,11 +10,11 @@ import java.util.concurrent.Executors;
 
 /**
  * The type Simulate virtual world.
- *
+
  * @author Yihan Qian
  * @version 1.0
  */
-public class SimulateVirtualWorld implements SimulateVirtualWroldInterface{
+public class SimulateVirtualWorld implements SimulateVirtualWorldInterface{
 
     /**
      * The Simulate time.
@@ -157,6 +157,19 @@ public class SimulateVirtualWorld implements SimulateVirtualWroldInterface{
                 }
                 waitingAddList.clear();
             }
+            long rate = 1;
+            //半夜生产量减少30%
+            if(simulateTime.getHour()>=0 && simulateTime.getHour()<=7){
+                rate = (long) (rate* 0.7);
+            }
+            //夏季增加30%
+            if (simulateTime.getMonth() >= 6 && simulateTime.getMonth() <= 8) {
+                rate = (long) (rate*1.3);
+            }
+            //冬季增加40%
+            if ((simulateTime.getMonth()>=1 && simulateTime.getMonth()<=2) || simulateTime.getMonth()==12) {
+                rate = (long) (rate*1.4);
+            }
             if(simulateTime.getHour() - timeNow >= 1){
                 timeNow = simulateTime.getHour();
                 currentConsumption = 0;
@@ -164,7 +177,7 @@ public class SimulateVirtualWorld implements SimulateVirtualWroldInterface{
                     currentConsumption += electricityUnitList.get(i).getConsumption();
                 }
                 totalConsumption += currentConsumption;
-                totalProduction = currentConsumption + getTotalLose();
+                totalProduction = (currentConsumption + getTotalLose()) * rate;
                 System.out.println("currentConsumption " + currentConsumption);
                 System.out.println("totalProduction " + totalProduction);
             }
