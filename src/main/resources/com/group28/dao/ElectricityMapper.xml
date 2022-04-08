@@ -35,4 +35,13 @@
     <select id="GetMinConsumption" parameterType="String" resultType="int">
         select Min_Consumption from virtualWorld.ElectricityUnitType where Type_ID = #{type_Id};
     </select>
+
+    <delete id="DeleteElectricityUnit" parameterType="String">
+        delete from virtualWorld.ElectricityUnit where ElectricityUnitID = #{electricityUnitId}
+    </delete>
+    
+    
+    <delete id="DeleteElectricityType" parameterType="String">
+        delete from virtualWorld.ElectricityUnitType where Type_ID = #{type_Id}
+    </delete>
 </mapper>

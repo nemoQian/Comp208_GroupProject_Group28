@@ -57,4 +57,9 @@ public interface FacilityDao {
     int GetMaxConsumption(String type_Id);
 
     int GetMinConsumption(String type_Id);
+
+    void DeleteElectricityUnit(String electricityUnitId);
+
+    void DeleteElectricityType(String type_Id);
+
 }
