@@ -10,4 +10,6 @@ public interface PowerStationDao {
     void AddStation(PowerStation NewStation);
     List<String> GetStationType_List();
     List<String> GetStationList();
+    void DeleteStation(String powerStationId);
+    void DeleteStationType(String type_Id);
 }

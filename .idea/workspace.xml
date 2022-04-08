@@ -9,11 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="更新了查找powerstation 和 type的测试，测试成功">
+    <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="新增了删除electricity unit和electricity type中数据的方法">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilityDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilityDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/dao/PowerStationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/dao/PowerStationDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/group28/dao/ElectricityMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group28/dao/ElectricityMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/group28/dao/TestElectricityUnitDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/group28/dao/TestElectricityUnitDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group28/dao/PowerStation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group28/dao/PowerStation.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -304,7 +304,7 @@
       <workItem from="1649245796446" duration="4536000" />
       <workItem from="1649274716080" duration="175000" />
       <workItem from="1649323339484" duration="5911000" />
-      <workItem from="1649413595354" duration="1961000" />
+      <workItem from="1649413595354" duration="2760000" />
     </task>
     <task id="LOCAL-00001" summary="interlayer">
       <created>1648379637848</created>
@@ -453,7 +453,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649333131223</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="新增了删除electricity unit和electricity type中数据的方法">
+      <created>1649416874515</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1649416874515</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -486,6 +493,7 @@
     <MESSAGE value="PowerStation 接口" />
     <MESSAGE value="更新了新增powerstation type的测试，测试成功" />
     <MESSAGE value="更新了查找powerstation 和 type的测试，测试成功" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新了查找powerstation 和 type的测试，测试成功" />
+    <MESSAGE value="新增了删除electricity unit和electricity type中数据的方法" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增了删除electricity unit和electricity type中数据的方法" />
   </component>
 </project>

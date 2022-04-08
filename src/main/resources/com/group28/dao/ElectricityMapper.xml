@@ -37,11 +37,11 @@
     </select>
 
     <delete id="DeleteElectricityUnit" parameterType="String">
-        delete from virtualWorld.ElectricityUnit where ElectricityUnitID = #{electricityUnitId}
+        delete from virtualWorld.ElectricityUnit where ElectricityUnitID = #{electricityUnitId};
     </delete>
     
     
     <delete id="DeleteElectricityType" parameterType="String">
-        delete from virtualWorld.ElectricityUnitType where Type_ID = #{type_Id}
+        delete from virtualWorld.ElectricityUnitType where Type_ID = #{type_Id};
     </delete>
 </mapper>

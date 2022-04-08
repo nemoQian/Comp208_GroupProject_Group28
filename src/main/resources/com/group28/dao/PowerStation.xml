@@ -19,4 +19,12 @@
     <select id="GetStationList" resultType="String">
         select powerStationId from virtualWorld.PowerStation;
     </select>
+
+    <delete id="DeleteStation" parameterType="String">
+        delete from virtualWorld.PowerStation where powerStationId = #{powerStationId};
+    </delete>
+
+    <delete id="DeleteStationType" parameterType="String">
+        delete from virtualWorld.PowerStationType where  Type_ID = #{type_Id};
+    </delete>
 </mapper>
