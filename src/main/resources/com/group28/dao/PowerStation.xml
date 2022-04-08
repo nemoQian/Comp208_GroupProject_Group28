@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.group28.dao.PowerStationDao">
+    <insert id="AddStationType" parameterType="com.group28.pojo.PowerStationType">
+        insert into virtualWorld.PowerStationType values (#{type_Id}, #{MAX_PRODUCTION});
+    </insert>
+
+    <insert id="AddStation" parameterType="com.group28.pojo.PowerStation">
+        insert into virtualWorld.PowerStation values (#{powerStationId}, #{zipCode}, #{powerStationType}, #{powerStationName});
+    </insert>
+
+    <select id="GetStationType_List" resultType="String">
+        select Type_ID from virtualWorld.PowerStationType;
+    </select>
+
+    <select id="GetStationList" resultType="String">
+        select powerStationId from virtualWorld.PowerStation;
+    </select>
+
+    <delete id="DeleteStation" parameterType="String">
+        delete from virtualWorld.PowerStation where powerStationId = #{powerStationId};
+    </delete>
+
+    <delete id="DeleteStationType" parameterType="String">
+        delete from virtualWorld.PowerStationType where  Type_ID = #{type_Id};
+    </delete>
+</mapper>

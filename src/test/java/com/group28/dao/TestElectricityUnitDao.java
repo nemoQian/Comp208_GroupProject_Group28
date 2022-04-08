@@ -85,4 +85,20 @@ public class TestElectricityUnitDao {
         SearchTest_AddUnit.AddUnit("SP1S1A02", "S1 A02", "SP1", "Qyh's House");
     }
 
+    @Test
+    public void TestDeleteUnit(){
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        FacilityDao mapper = sqlSession.getMapper(FacilityDao.class);
+
+        mapper.DeleteElectricityUnit("SP1S1A02");
+
+        sqlSession.commit();
+
+        mapper.DeleteElectricityType("SP1");
+
+        sqlSession.commit();
+
+        sqlSession.close();
+    }
+
 }

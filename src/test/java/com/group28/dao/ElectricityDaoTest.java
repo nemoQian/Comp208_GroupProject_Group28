@@ -50,4 +50,14 @@ public class ElectricityDaoTest {
 
         System.out.println(MaxConsumption);
     }
+
+    @Test
+    public void SearchMinCon(){
+        SqlSession sqlsession = MyBatisUtil.getSqlSession();
+        FacilityDao mapper = sqlsession.getMapper(FacilityDao.class);
+
+        int Min = mapper.GetMinConsumption("SP1");
+
+        System.out.println(Min);
+    }
 }

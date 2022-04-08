@@ -9,11 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce8041a5-b38d-4f18-ba2d-4c5256a43f85" name="Changes" comment="新增zipcode的方法">
+    <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="新增了删除electricity unit和electricity type中数据的方法">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilityDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilityDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/dao/PowerStationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/dao/PowerStationDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/group28/dao/ElectricityMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group28/dao/ElectricityMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/group28/dao/ElectricityDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/group28/dao/ElectricityDaoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group28/dao/PowerStation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group28/dao/PowerStation.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,9 +23,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Tag Library Descriptor" />
+        <option value="Mapper" />
         <option value="Class" />
       </list>
     </option>
@@ -34,14 +35,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateMap.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTime.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateVirtualWorld.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTimeInterface.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/test/java/com/group28/util/TestSimulateTime.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateMap.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pom.xml" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/pojo/PowerStation.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTimeInterface.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTime.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/test/java/com/group28/util/TestSimulateTime.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/pojo/PowerStation.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -73,23 +74,28 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/com/group28/dao" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/group28/dao" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/com/group28/dao" />
       <recent name="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ElectricityDaoTest.SearchMinCon">
-    <configuration name="ElectricityDaoTest.SearchMaxCon" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.TestElectricityUnitDao.TestDeleteUnit">
+    <configuration name="PowerStationDaoTest.GetStationListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
         <pattern>
@@ -98,14 +104,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.group28.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.group28.dao.ElectricityDaoTest" />
-      <option name="METHOD_NAME" value="SearchMaxCon" />
+      <option name="MAIN_CLASS_NAME" value="com.group28.dao.PowerStationDaoTest" />
+      <option name="METHOD_NAME" value="GetStationListTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ElectricityDaoTest.SearchMinCon" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PowerStationDaoTest.GetTypeListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
         <pattern>
@@ -114,14 +120,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.group28.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.group28.dao.ElectricityDaoTest" />
-      <option name="METHOD_NAME" value="SearchMinCon" />
+      <option name="MAIN_CLASS_NAME" value="com.group28.dao.PowerStationDaoTest" />
+      <option name="METHOD_NAME" value="GetTypeListTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ElectricityDaoTest.SearchTypeIDTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PowerStationDaoTest.insertStationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
         <pattern>
@@ -130,14 +136,30 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.group28.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.group28.dao.ElectricityDaoTest" />
-      <option name="METHOD_NAME" value="SearchTypeIDTest" />
+      <option name="MAIN_CLASS_NAME" value="com.group28.dao.PowerStationDaoTest" />
+      <option name="METHOD_NAME" value="insertStationTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestElectricityUnitDao.TestFacilitySearch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PowerStationDaoTest.insertTypeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.group28.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.group28.dao" />
+      <option name="MAIN_CLASS_NAME" value="com.group28.dao.PowerStationDaoTest" />
+      <option name="METHOD_NAME" value="insertTypeTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestElectricityUnitDao.TestDeleteUnit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
         <pattern>
@@ -147,23 +169,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.group28.dao" />
       <option name="MAIN_CLASS_NAME" value="com.group28.dao.TestElectricityUnitDao" />
-      <option name="METHOD_NAME" value="TestFacilitySearch" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestElectricityUnitDao.TestFacilitySearch_AddUnit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.group28.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.group28.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.group28.dao.TestElectricityUnitDao" />
-      <option name="METHOD_NAME" value="TestFacilitySearch_AddUnit" />
+      <option name="METHOD_NAME" value="TestDeleteUnit" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -259,18 +265,18 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ElectricityDaoTest.SearchMinCon" />
-        <item itemvalue="JUnit.ElectricityDaoTest.SearchMaxCon" />
-        <item itemvalue="JUnit.ElectricityDaoTest.SearchTypeIDTest" />
-        <item itemvalue="JUnit.TestElectricityUnitDao.TestFacilitySearch_AddUnit" />
-        <item itemvalue="JUnit.TestElectricityUnitDao.TestFacilitySearch" />
+        <item itemvalue="JUnit.TestElectricityUnitDao.TestDeleteUnit" />
+        <item itemvalue="JUnit.PowerStationDaoTest.GetStationListTest" />
+        <item itemvalue="JUnit.PowerStationDaoTest.GetTypeListTest" />
+        <item itemvalue="JUnit.PowerStationDaoTest.insertStationTest" />
+        <item itemvalue="JUnit.PowerStationDaoTest.insertTypeTest" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ce8041a5-b38d-4f18-ba2d-4c5256a43f85" name="Changes" comment="" />
+      <changelist id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="get最小值" />
       <created>1648293669906</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -296,6 +302,9 @@
       <workItem from="1649183319016" duration="2272000" />
       <workItem from="1649233781468" duration="5123000" />
       <workItem from="1649245796446" duration="4536000" />
+      <workItem from="1649274716080" duration="175000" />
+      <workItem from="1649323339484" duration="5911000" />
+      <workItem from="1649413595354" duration="2760000" />
     </task>
     <task id="LOCAL-00001" summary="interlayer">
       <created>1648379637848</created>
@@ -409,7 +418,49 @@
       <option name="project" value="LOCAL" />
       <updated>1649252174163</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="get最小值">
+      <created>1649259476390</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1649259476390</updated>
+    </task>
+    <task id="LOCAL-00018" summary="PowerStation 接口">
+      <created>1649323926314</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1649323926314</updated>
+    </task>
+    <task id="LOCAL-00019" summary="PowerStation 接口">
+      <created>1649330436034</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1649330436034</updated>
+    </task>
+    <task id="LOCAL-00020" summary="更新了新增powerstation type的测试，测试成功">
+      <created>1649332095237</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1649332095237</updated>
+    </task>
+    <task id="LOCAL-00021" summary="更新了查找powerstation 和 type的测试，测试成功">
+      <created>1649333131223</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1649333131223</updated>
+    </task>
+    <task id="LOCAL-00022" summary="新增了删除electricity unit和electricity type中数据的方法">
+      <created>1649416874515</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1649416874515</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -438,6 +489,11 @@
     <MESSAGE value="更新了添加unit的方法" />
     <MESSAGE value="更新了添加unit的方法的测试，测试在我的电脑上可以通过" />
     <MESSAGE value="新增zipcode的方法" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增zipcode的方法" />
+    <MESSAGE value="get最小值" />
+    <MESSAGE value="PowerStation 接口" />
+    <MESSAGE value="更新了新增powerstation type的测试，测试成功" />
+    <MESSAGE value="更新了查找powerstation 和 type的测试，测试成功" />
+    <MESSAGE value="新增了删除electricity unit和electricity type中数据的方法" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增了删除electricity unit和electricity type中数据的方法" />
   </component>
 </project>
