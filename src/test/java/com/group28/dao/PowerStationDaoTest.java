@@ -82,4 +82,18 @@ public class PowerStationDaoTest {
 
         System.out.println("Type Deleted");
     }
+
+    @Test
+    public void GetProductionTest(){
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        PowerStationDao mapper = sqlSession.getMapper(PowerStationDao.class);
+
+        String type = mapper.GetType("FI1S1Z01");
+        System.out.println(type);
+
+        int Product = mapper.GetProduction(type);
+        System.out.println(Product);
+
+        sqlSession.close();
+    }
 }

@@ -2,6 +2,7 @@ package com.group28.dao;
 
 import com.group28.pojo.ElectricityUnit;
 import com.group28.pojo.ElectricityUnitType;
+import com.group28.pojo.PowerStationType;
 import com.group28.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import java.util.List;
@@ -59,6 +60,30 @@ public class FacilitySearch {
 
         sqlsession.close();
     }
+
+    public void AddStationType(String type_Id, int MAX_PRODUCTION){
+        SqlSession sqlsession = MyBatisUtil.getSqlSession();
+        PowerStationDao mapper = sqlsession.getMapper(PowerStationDao.class);
+
+        List<String> TypeList = mapper.GetStationType_List();
+
+        if (!(TypeList.contains(type_Id))){
+            PowerStationType NewType = new PowerStationType();
+            NewType.Put_type_Id(type_Id);
+            NewType.Put_MAX_PRODUCTION(MAX_PRODUCTION);
+
+            mapper.AddStationType(NewType);
+            sqlsession.commit();
+        }
+        else {
+            System.out.println("Type already existed");
+        }
+
+
+        sqlsession.close();
+        System.out.println("Add Finish");
+    }
+
 
     
 }

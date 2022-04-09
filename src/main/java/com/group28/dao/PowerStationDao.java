@@ -12,4 +12,6 @@ public interface PowerStationDao {
     List<String> GetStationList();
     void DeleteStation(String powerStationId);
     void DeleteStationType(String type_Id);
+    String GetType(String powerStationId);
+    int GetProduction(String type_Id);
 }

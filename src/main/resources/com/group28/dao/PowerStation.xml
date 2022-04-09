@@ -27,4 +27,12 @@
     <delete id="DeleteStationType" parameterType="String">
         delete from virtualWorld.PowerStationType where  Type_ID = #{type_Id};
     </delete>
+
+    <select id="GetType" parameterType="String" resultType="String">
+        select powerStationType from virtualWorld.PowerStation where powerStationId = #{powerStationId};
+    </select>
+    
+    <select id="GetProduction" parameterType="String" resultType="int">
+        select Max_Production from virtualWorld.PowerStationType where  Type_ID = #{type_Id};
+    </select>
 </mapper>
