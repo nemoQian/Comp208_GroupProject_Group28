@@ -9,8 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="新增了删除electricity unit和electricity type中数据的方法">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="新增了删除station unit和station type中数据的方法">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/dao/ZipCodeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/dao/ZipCodeDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group28/dao/ZipCodeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group28/dao/ZipCodeMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/group28/dao/TestSqlOfZipCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/group28/dao/TestSqlOfZipCode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +93,7 @@
       <recent name="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PowerStationDaoTest.DeleteStationTest">
+  <component name="RunManager" selected="JUnit.TestSqlOfZipCode.testDropZipCode">
     <configuration name="PowerStationDaoTest.DeleteStationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
@@ -124,38 +126,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PowerStationDaoTest.GetTypeListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.group28.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.group28.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.group28.dao.PowerStationDaoTest" />
-      <option name="METHOD_NAME" value="GetTypeListTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PowerStationDaoTest.insertStationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.group28.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.group28.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.group28.dao.PowerStationDaoTest" />
-      <option name="METHOD_NAME" value="insertStationTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TestElectricityUnitDao.TestDeleteUnit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
@@ -167,6 +137,38 @@
       <option name="PACKAGE_NAME" value="com.group28.dao" />
       <option name="MAIN_CLASS_NAME" value="com.group28.dao.TestElectricityUnitDao" />
       <option name="METHOD_NAME" value="TestDeleteUnit" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestSqlOfZipCode.testAddZipCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.group28.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.group28.dao" />
+      <option name="MAIN_CLASS_NAME" value="com.group28.dao.TestSqlOfZipCode" />
+      <option name="METHOD_NAME" value="testAddZipCode" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestSqlOfZipCode.testDropZipCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.group28.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.group28.dao" />
+      <option name="MAIN_CLASS_NAME" value="com.group28.dao.TestSqlOfZipCode" />
+      <option name="METHOD_NAME" value="testDropZipCode" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -262,11 +264,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestSqlOfZipCode.testDropZipCode" />
+        <item itemvalue="JUnit.TestSqlOfZipCode.testAddZipCode" />
         <item itemvalue="JUnit.PowerStationDaoTest.DeleteStationTest" />
         <item itemvalue="JUnit.TestElectricityUnitDao.TestDeleteUnit" />
         <item itemvalue="JUnit.PowerStationDaoTest.GetStationListTest" />
-        <item itemvalue="JUnit.PowerStationDaoTest.GetTypeListTest" />
-        <item itemvalue="JUnit.PowerStationDaoTest.insertStationTest" />
       </list>
     </recent_temporary>
   </component>
@@ -457,7 +459,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649416874515</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="新增了删除station unit和station type中数据的方法">
+      <created>1649519487898</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1649519487898</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -491,6 +500,7 @@
     <MESSAGE value="更新了新增powerstation type的测试，测试成功" />
     <MESSAGE value="更新了查找powerstation 和 type的测试，测试成功" />
     <MESSAGE value="新增了删除electricity unit和electricity type中数据的方法" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增了删除electricity unit和electricity type中数据的方法" />
+    <MESSAGE value="新增了删除station unit和station type中数据的方法" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增了删除station unit和station type中数据的方法" />
   </component>
 </project>

@@ -35,4 +35,6 @@ public interface ZipCodeDao {
     void addZipCode(ZipCode zipCode);
 
     List<String> getZipCode_CodeList();
+
+    void DeleteZipCode(String zipCode);
 }
