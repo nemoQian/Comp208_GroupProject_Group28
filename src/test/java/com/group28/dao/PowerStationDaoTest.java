@@ -66,4 +66,20 @@ public class PowerStationDaoTest {
         sqlSession.close();
         System.out.println(StationList);
     }
+
+    @Test
+    public void DeleteStationTest(){
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        PowerStationDao mapper = sqlSession.getMapper(PowerStationDao.class);
+
+        mapper.DeleteStation("NU1S1Z01");
+        sqlSession.commit();
+
+        System.out.println("Station Deleted");
+
+        mapper.DeleteStationType("NU");
+        sqlSession.commit();
+
+        System.out.println("Type Deleted");
+    }
 }
