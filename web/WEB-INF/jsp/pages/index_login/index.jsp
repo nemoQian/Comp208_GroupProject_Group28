@@ -127,17 +127,21 @@
                 );
                 axios.post('ajax/login', s)
                     .then(function (res) {
-                        // 因为层级比较深，匿名函数会导致this指向发生改变
-                        // 这个时候使用箭头函数解决
+
                         console.log("o:" + res.data)
                         if (res.data == 200) {
                             window.alert("successs")
                             window.location.href = "toMenu"
-                        } else {
-                            alert(res.data)
                         }
+                        else if(res.data==401){
+                                alert("User does not exist")
+                            }
+                        else if(res.data==402){
+                                alert("Password is wrong.")
+                            }
+
                     }).catch(function () {
-                    alert('网络超时, 请重新加载!')
+                    alert('Please refresh the website.')
                 });
 
             },
@@ -176,17 +180,30 @@
                         email: email,
                     }
                 );
-                axios({
-                    url: 'ajax/register',
-                    data: r,
-                    method: "post",
-                    dataType: "json",
-                    success: function (data) {
-                        if (data.success()) {
-                            alert("successs")
+                axios.post('ajax/register', r)
+                    .then(function (res) {
+
+                        console.log("o:" + res.data)
+                        if(res.data==402){
+                            alert("User has been existed,please use a new username")
                         }
-                    }
-                })
+                        else if(res.data==201){
+                            alert("Register has succeeded,please go back to the login page to login ")
+                        }
+                    }).catch(function () {
+                    alert('Please refresh the website.')
+                });
+                // axios({
+                //     url: 'ajax/register',
+                //     data: r,
+                //     method: "post",
+                //     dataType: "json",
+                //     success: function (data) {
+                //         if (data.success()) {
+                //             alert("success")
+                //         }
+                //     }
+                // })
             },
         },
     })
