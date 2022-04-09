@@ -15,4 +15,14 @@ public class Position {
         this.y=y;
     }
     Position(){}
+
+    public void printp(Position position){
+        System.out.print("type = " +position.type);
+        System.out.print("  name = " + position.name);
+        System.out.print("  x = "+position.x);
+        System.out.print("  y = "+position.y);
+        System.out.println("  consumption = "+position.consumption);
+    }
+
+
 }

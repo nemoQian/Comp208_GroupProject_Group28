@@ -193,17 +193,7 @@
                     }).catch(function () {
                     alert('Please refresh the website.')
                 });
-                // axios({
-                //     url: 'ajax/register',
-                //     data: r,
-                //     method: "post",
-                //     dataType: "json",
-                //     success: function (data) {
-                //         if (data.success()) {
-                //             alert("success")
-                //         }
-                //     }
-                // })
+
             },
         },
     })

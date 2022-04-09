@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.Map;
 import com.group28.controller.Position;
-
+import com.group28.controller.line;
 @Controller
 @RestController
 @RequestMapping("/ajax")
@@ -17,6 +17,8 @@ public class Ajaxcontroller {
 
     private UserServiceImpl userService;
     ArrayList <Position> positionArrayList= new ArrayList();
+    ArrayList <line> lineArrayList= new ArrayList();
+
     @PostMapping("/login")
     public  String getluser(@RequestParam(value = "Username",required = false) String username,
                            @RequestParam(value = "password",required = false) String password){
@@ -50,13 +52,45 @@ public class Ajaxcontroller {
                             @RequestParam(value = "y",required = false) int y,
                             @RequestParam(value = "consumption",required = false) String consumption){
 
-//        System.out.println("type = " +type);
-//        System.out.println("name = " + name);
-//        System.out.println("x = "+x);
-//        System.out.println("y = "+y);
-//        System.out.println("consumption = "+consumption);
+
         Position position = new Position(type,name,x,y,consumption);
         positionArrayList.add(position);
+        System.out.println("add");
+        printarray(positionArrayList);
 
     }
+
+    @RequestMapping("/reset")
+    public void reset(){
+
+            positionArrayList.clear();
+
+        System.out.println("reset");
+    }
+
+    @RequestMapping("/rollback")
+    public void rollback(){
+        positionArrayList.remove(positionArrayList.size()-1);
+
+        System.out.println("rollbcak");
+        printarray(positionArrayList);
+    }
+
+    @RequestMapping("/done")
+    public ArrayList<line> drawline(){
+        line line1 = new line(0,0,100,100);
+        line line2 = new line(100,100,300,450);
+        lineArrayList.add(line1);
+        lineArrayList.add(line2);
+        return lineArrayList;
+    }
+
+    public void printarray(ArrayList<Position> pa){
+        Position P =  new Position();
+        for (int i = 0; i < pa.size(); i++) {
+            System.out.print(" "+i+" ");
+            P.printp(pa.get(i));
+        }
+    }
+
 }
