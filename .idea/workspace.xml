@@ -261,6 +261,14 @@
         </option>
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.PowerStationDaoTest.DeleteStationTest" />
+      <item itemvalue="JUnit.PowerStationDaoTest.GetProductionTest" />
+      <item itemvalue="JUnit.TestSqlOfZipCode.testAddZipCode" />
+      <item itemvalue="JUnit.TestSqlOfZipCode.testDropZipCode" />
+      <item itemvalue="JUnit.TestElectricityUnitDao.TestDeleteUnit" />
+      <item itemvalue="Tomcat 服务器.Tomcat 8.5.57" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.PowerStationDaoTest.GetProductionTest" />
