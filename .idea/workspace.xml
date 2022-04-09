@@ -9,15 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="arraylist">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/group28/controller/line.java" afterDir="false" />
+    <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="获取station的production的方法">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/db.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/db.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/controller/Ajaxcontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/controller/Ajaxcontroller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/controller/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/controller/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilitySearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilitySearch.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,14 +33,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateVirtualWorld.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/pojo/PowerStation.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/test/java/com/group28/util/TestSimulateTime.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pom.xml" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTime.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateMap.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTimeInterface.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTime.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/test/java/com/group28/util/TestSimulateTime.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/pojo/PowerStation.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -77,14 +71,13 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/com/group28/dao" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="工件" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
@@ -95,20 +88,12 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/group28/dao" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/web" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/group28/dao" />
       <recent name="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="excludedTypes">
-      <set>
-        <option value="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" />
-      </set>
-    </option>
-  </component>
-  <component name="RunManager" selected="Tomcat 服务器.Tomcat 8.5.57">
-    <configuration name="PowerStationDaoTest.GetStationListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.PowerStationDaoTest.GetProductionTest">
+    <configuration name="PowerStationDaoTest.DeleteStationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
         <pattern>
@@ -118,13 +103,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.group28.dao" />
       <option name="MAIN_CLASS_NAME" value="com.group28.dao.PowerStationDaoTest" />
-      <option name="METHOD_NAME" value="GetStationListTest" />
+      <option name="METHOD_NAME" value="DeleteStationTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PowerStationDaoTest.GetTypeListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PowerStationDaoTest.GetProductionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
         <pattern>
@@ -134,39 +119,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.group28.dao" />
       <option name="MAIN_CLASS_NAME" value="com.group28.dao.PowerStationDaoTest" />
-      <option name="METHOD_NAME" value="GetTypeListTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PowerStationDaoTest.insertStationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.group28.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.group28.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.group28.dao.PowerStationDaoTest" />
-      <option name="METHOD_NAME" value="insertStationTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PowerStationDaoTest.insertTypeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.group28.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.group28.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.group28.dao.PowerStationDaoTest" />
-      <option name="METHOD_NAME" value="insertTypeTest" />
+      <option name="METHOD_NAME" value="GetProductionTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -188,29 +141,58 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat 8.5.57" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.57" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER" value="false" />
-      <option name="START_JAVASCRIPT_DEBUGGER" value="true" />
+    <configuration name="TestSqlOfZipCode.testAddZipCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.group28.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.group28.dao" />
+      <option name="MAIN_CLASS_NAME" value="com.group28.dao.TestSqlOfZipCode" />
+      <option name="METHOD_NAME" value="testAddZipCode" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestSqlOfZipCode.testDropZipCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.group28.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.group28.dao" />
+      <option name="MAIN_CLASS_NAME" value="com.group28.dao.TestSqlOfZipCode" />
+      <option name="METHOD_NAME" value="testDropZipCode" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat 8.5.57" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.57" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.8" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="Project:war exploded">
           <settings>
-            <option name="CONTEXT_PATH" value="/Project_war_exploded" />
+            <option name="CONTEXT_PATH" value="" />
           </settings>
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="98067d20-0920-454a-80bb-379558dcfa50" />
-        <option name="DEPLOY_TOMCAT_APPS" value="true" />
-        <option name="PRESERVE_SESSIONS" value="true" />
+        <option name="BASE_DIRECTORY_NAME" value="37c9d242-c451-445f-b9a1-bda5a4c2e90d" />
       </server-settings>
+      <log_file alias="Tomcat Manager Log" path="%IDEA_RUN:CATALINA_BASE%/logs/manager.*" />
+      <log_file alias="Tomcat Host Manager Log" path="%IDEA_RUN:CATALINA_BASE%/logs/host-manager.*" />
+      <log_file alias="Tomcat Localhost Access Log" path="%IDEA_RUN:CATALINA_BASE%/logs/localhost_access_log.*" />
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
-      <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="58562" />
+        <option name="DEBUG_PORT" value="62905" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -279,21 +261,13 @@
         </option>
       </method>
     </configuration>
-    <list>
-      <item itemvalue="JUnit.PowerStationDaoTest.GetStationListTest" />
-      <item itemvalue="JUnit.PowerStationDaoTest.GetTypeListTest" />
-      <item itemvalue="JUnit.PowerStationDaoTest.insertStationTest" />
-      <item itemvalue="JUnit.PowerStationDaoTest.insertTypeTest" />
-      <item itemvalue="JUnit.TestElectricityUnitDao.TestDeleteUnit" />
-      <item itemvalue="Tomcat 服务器.Tomcat 8.5.57" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PowerStationDaoTest.GetStationListTest" />
+        <item itemvalue="JUnit.PowerStationDaoTest.GetProductionTest" />
+        <item itemvalue="JUnit.TestSqlOfZipCode.testDropZipCode" />
+        <item itemvalue="JUnit.TestSqlOfZipCode.testAddZipCode" />
+        <item itemvalue="JUnit.PowerStationDaoTest.DeleteStationTest" />
         <item itemvalue="JUnit.TestElectricityUnitDao.TestDeleteUnit" />
-        <item itemvalue="JUnit.PowerStationDaoTest.GetTypeListTest" />
-        <item itemvalue="JUnit.PowerStationDaoTest.insertStationTest" />
-        <item itemvalue="JUnit.PowerStationDaoTest.insertTypeTest" />
       </list>
     </recent_temporary>
   </component>
@@ -329,8 +303,7 @@
       <workItem from="1649274716080" duration="175000" />
       <workItem from="1649323339484" duration="5911000" />
       <workItem from="1649413595354" duration="2760000" />
-      <workItem from="1649469049866" duration="9041000" />
-      <workItem from="1649531816454" duration="5755000" />
+      <workItem from="1649531904065" duration="3883000" />
     </task>
     <task id="LOCAL-00001" summary="interlayer">
       <created>1648379637848</created>
@@ -486,26 +459,26 @@
       <option name="project" value="LOCAL" />
       <updated>1649416874515</updated>
     </task>
-    <task id="LOCAL-00023" summary="交互">
-      <created>1649470235381</created>
+    <task id="LOCAL-00023" summary="新增了删除station unit和station type中数据的方法">
+      <created>1649519487898</created>
       <option name="number" value="00023" />
       <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
-      <updated>1649470235381</updated>
+      <updated>1649519487898</updated>
     </task>
-    <task id="LOCAL-00024" summary="homepage data">
-      <created>1649509489571</created>
+    <task id="LOCAL-00024" summary="修复了addzipcode的方法以及更新了删除zipcode数据的方法">
+      <created>1649519878757</created>
       <option name="number" value="00024" />
       <option name="presentableId" value="LOCAL-00024" />
       <option name="project" value="LOCAL" />
-      <updated>1649509489571</updated>
+      <updated>1649519878757</updated>
     </task>
-    <task id="LOCAL-00025" summary="arraylist">
-      <created>1649510340649</created>
+    <task id="LOCAL-00025" summary="获取station的production的方法">
+      <created>1649522912272</created>
       <option name="number" value="00025" />
       <option name="presentableId" value="LOCAL-00025" />
       <option name="project" value="LOCAL" />
-      <updated>1649510340649</updated>
+      <updated>1649522912272</updated>
     </task>
     <option name="localTasksCounter" value="26" />
     <servers />
@@ -541,9 +514,9 @@
     <MESSAGE value="更新了新增powerstation type的测试，测试成功" />
     <MESSAGE value="更新了查找powerstation 和 type的测试，测试成功" />
     <MESSAGE value="新增了删除electricity unit和electricity type中数据的方法" />
-    <MESSAGE value="交互" />
-    <MESSAGE value="homepage data" />
-    <MESSAGE value="arraylist" />
-    <option name="LAST_COMMIT_MESSAGE" value="arraylist" />
+    <MESSAGE value="新增了删除station unit和station type中数据的方法" />
+    <MESSAGE value="修复了addzipcode的方法以及更新了删除zipcode数据的方法" />
+    <MESSAGE value="获取station的production的方法" />
+    <option name="LAST_COMMIT_MESSAGE" value="获取station的production的方法" />
   </component>
 </project>

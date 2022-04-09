@@ -13,10 +13,14 @@
     </select>
 
     <select id="addZipCode" parameterType="com.group28.pojo.ZipCode">
-        insert into virtualworld.zip_code (ZipCode, Block_Name) value (#{ZipCode}, #{block_Name});
+        insert into virtualworld.zip_code (ZipCode, Block_Name) value (#{zipCode}, #{block_Name});
     </select>
 
     <select id = "getZipCode_CodeList" resultType = "String">
         select ZipCode from virtualworld.zip_code;
     </select>
+
+    <delete id="DeleteZipCode" parameterType="String">
+        delete from virtualWorld.zip_code where ZipCode = #{zipCode};
+    </delete>
 </mapper>

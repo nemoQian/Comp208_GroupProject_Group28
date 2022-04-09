@@ -71,5 +71,15 @@ public class TestSqlOfZipCode {
         sqlSession.close();
     }
 
+    @Test
+    public void testDropZipCode(){
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        ZipCodeDao mapper = sqlSession.getMapper(ZipCodeDao.class);
+
+        mapper.DeleteZipCode("V42");
+        sqlSession.commit();
+        sqlSession.close();
+    }
+
 
 }
