@@ -10,10 +10,143 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="新增了删除electricity unit和electricity type中数据的方法">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_9_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_9.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Project_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Project_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/dao/PowerStationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/dao/PowerStationDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group28/dao/ElectricityMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group28/dao/ElectricityMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/group28/dao/PowerStation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/group28/dao/PowerStation.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/UserMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/ZipCodeMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/applicationContext.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/controller/Ajaxcontroller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/controller/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/dao/UserDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/dao/UserSearch.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/dao/ZipCodeDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/pojo/ElectricityUnit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/pojo/ElectricityUnitData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/pojo/ElectricityUnitType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/pojo/Facility.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/pojo/FacilityData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/pojo/FacilityType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/pojo/PowerStation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/pojo/PowerStationData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/pojo/PowerStationType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/pojo/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/pojo/ZipCode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/service/UserServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/util/MyBatisUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/util/SimulateMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/util/SimulateMapInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/util/SimulateTime.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/util/SimulateTimeInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/util/SimulateVirtualWorld.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/util/SimulateVirtualWroldInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/db.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/mvc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/mybatis-config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/spring-core.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/spring-mvc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/lib/mybatis-3.5.7.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/lib/mybatis-spring-2.0.7.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/lib/mysql-connector-java-8.0.26.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/lib/protobuf-java-3.11.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/lib/spring-aop-5.3.15.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/lib/spring-beans-5.3.15.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/lib/spring-context-5.3.15.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/lib/spring-core-5.3.15.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/lib/spring-expression-5.3.15.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/lib/spring-jcl-5.3.15.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/lib/spring-jdbc-5.3.15.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/lib/spring-tx-5.3.15.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/lib/spring-web-5.3.15.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/lib/spring-webmvc-5.3.15.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/data.josn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/newtry.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/picture/28logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/picture/log_background 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/picture/log_background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/try.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/UserMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/ZipCodeMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/applicationContext.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/controller/Ajaxcontroller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/controller/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/dao/UserDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/dao/UserSearch.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/dao/ZipCodeDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/pojo/ElectricityUnit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/pojo/ElectricityUnitData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/pojo/ElectricityUnitType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/pojo/Facility.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/pojo/FacilityData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/pojo/FacilityType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/pojo/PowerStation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/pojo/PowerStationData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/pojo/PowerStationType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/pojo/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/pojo/ZipCode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/service/UserServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/util/MyBatisUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/util/SimulateMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/util/SimulateMapInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/util/SimulateTime.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/util/SimulateTimeInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/util/SimulateVirtualWorld.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/com/group28/util/SimulateVirtualWroldInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/db.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/mvc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/mybatis-config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/spring-core.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/spring-mvc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/data.josn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/newtry.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/picture/28logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/picture/log_background 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/picture/log_background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test/try.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/controller/Ajaxcontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/controller/Ajaxcontroller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mvc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/chart_js/best.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/chart_js/chart_1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/chart_js/chart_2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/chart_js/chart_2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/chart_js/chart_3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/chart_js/chart_3.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/chart_js/chart_5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/chart_js/chart_5.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/js/echarts.helper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/js/echarts.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/js/httpVueloader.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/js/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/js/jquery-2.2.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/js/vue.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/menu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/menu.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/picture/28logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/picture/download.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/picture/exit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/picture/grid.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/picture/hospital.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/picture/house.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/picture/power station.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/picture/school.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/picture/shopping centre.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/picture/user.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/reset/reset.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,14 +168,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateVirtualWorld.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateMap.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/pom.xml" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTimeInterface.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTime.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/test/java/com/group28/util/TestSimulateTime.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateVirtualWorld.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/pojo/PowerStation.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/test/java/com/group28/util/TestSimulateTime.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTime.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateMap.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTimeInterface.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -73,13 +206,14 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/com/group28/dao" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="工件" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
@@ -94,7 +228,14 @@
       <recent name="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestElectricityUnitDao.TestDeleteUnit">
+  <component name="RunDashboard">
+    <option name="excludedTypes">
+      <set>
+        <option value="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Tomcat 服务器.Tomcat 8.5.57">
     <configuration name="PowerStationDaoTest.GetStationListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
@@ -175,26 +316,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat 8.5.57" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.57" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.8" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080" />
+    <configuration name="Tomcat 8.5.57" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.57" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="Project:war exploded">
           <settings>
-            <option name="CONTEXT_PATH" value="" />
+            <option name="CONTEXT_PATH" value="/Project_war_exploded" />
           </settings>
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="37c9d242-c451-445f-b9a1-bda5a4c2e90d" />
+        <option name="BASE_DIRECTORY_NAME" value="98067d20-0920-454a-80bb-379558dcfa50" />
       </server-settings>
-      <log_file alias="Tomcat Manager Log" path="%IDEA_RUN:CATALINA_BASE%/logs/manager.*" />
-      <log_file alias="Tomcat Host Manager Log" path="%IDEA_RUN:CATALINA_BASE%/logs/host-manager.*" />
-      <log_file alias="Tomcat Localhost Access Log" path="%IDEA_RUN:CATALINA_BASE%/logs/localhost_access_log.*" />
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="62905" />
+        <option name="DEBUG_PORT" value="58562" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -263,10 +403,18 @@
         </option>
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.PowerStationDaoTest.GetStationListTest" />
+      <item itemvalue="JUnit.PowerStationDaoTest.GetTypeListTest" />
+      <item itemvalue="JUnit.PowerStationDaoTest.insertStationTest" />
+      <item itemvalue="JUnit.PowerStationDaoTest.insertTypeTest" />
+      <item itemvalue="JUnit.TestElectricityUnitDao.TestDeleteUnit" />
+      <item itemvalue="Tomcat 服务器.Tomcat 8.5.57" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestElectricityUnitDao.TestDeleteUnit" />
         <item itemvalue="JUnit.PowerStationDaoTest.GetStationListTest" />
+        <item itemvalue="JUnit.TestElectricityUnitDao.TestDeleteUnit" />
         <item itemvalue="JUnit.PowerStationDaoTest.GetTypeListTest" />
         <item itemvalue="JUnit.PowerStationDaoTest.insertStationTest" />
         <item itemvalue="JUnit.PowerStationDaoTest.insertTypeTest" />
@@ -305,6 +453,7 @@
       <workItem from="1649274716080" duration="175000" />
       <workItem from="1649323339484" duration="5911000" />
       <workItem from="1649413595354" duration="2760000" />
+      <workItem from="1649469049866" duration="1065000" />
     </task>
     <task id="LOCAL-00001" summary="interlayer">
       <created>1648379637848</created>

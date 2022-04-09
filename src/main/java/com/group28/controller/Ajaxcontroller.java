@@ -1,18 +1,21 @@
 package com.group28.controller;
 import com.group28.service.UserServiceImpl;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
 @Controller
+@RestController
 @RequestMapping("/ajax")
 public class Ajaxcontroller {
 
     private UserServiceImpl userService;
 
-    @RequestMapping("/login")
+    @PostMapping("/login")
     public  String getluser(@RequestParam(value = "Username",required = false) String username,
                            @RequestParam(value = "password",required = false) String password){
         userService = new UserServiceImpl();
@@ -22,7 +25,8 @@ public class Ajaxcontroller {
         System.out.println(statCode);
 
 //        return "/index.jsp";
-        return "pages/index_login/index";
+//        return "pages/index_login/index";
+        return statCode;
     }
 
     @RequestMapping("/register")

@@ -10,4 +10,8 @@ public class UserController {
     public String toindex(){
         return "pages/index_login/index";
     }
+    @RequestMapping("toMenu")
+    public String toMenu(){
+        return "home page/menu";
+    }
 }
