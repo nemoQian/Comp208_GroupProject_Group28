@@ -9,13 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="交互">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="homepage data">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/group28/controller/Position.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/db.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/test/WEB-INF/classes/db.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/controller/Ajaxcontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/controller/Ajaxcontroller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -326,7 +325,7 @@
       <workItem from="1649274716080" duration="175000" />
       <workItem from="1649323339484" duration="5911000" />
       <workItem from="1649413595354" duration="2760000" />
-      <workItem from="1649469049866" duration="7174000" />
+      <workItem from="1649469049866" duration="8216000" />
     </task>
     <task id="LOCAL-00001" summary="interlayer">
       <created>1648379637848</created>
@@ -489,7 +488,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649470235381</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="homepage data">
+      <created>1649509489571</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1649509489571</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -524,6 +530,7 @@
     <MESSAGE value="更新了查找powerstation 和 type的测试，测试成功" />
     <MESSAGE value="新增了删除electricity unit和electricity type中数据的方法" />
     <MESSAGE value="交互" />
-    <option name="LAST_COMMIT_MESSAGE" value="交互" />
+    <MESSAGE value="homepage data" />
+    <option name="LAST_COMMIT_MESSAGE" value="homepage data" />
   </component>
 </project>
