@@ -31,7 +31,8 @@ public class Interation implements IntegrationInterface{
     private SimulateVirtualWorld virtualWorld;
 
     public Interation(){
-
+        resetDB();
+        virtualWorld = new SimulateVirtualWorld();
     }
 
     @Override
