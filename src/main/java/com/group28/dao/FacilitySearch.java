@@ -11,7 +11,7 @@ import java.util.List;
 public class FacilitySearch {
     public void AddType(String type_Id, int MAX_CONSUMMPTION, int MIN_CONSUMMPTION){
         SqlSession sqlsession = MyBatisUtil.getSqlSession();
-        FacilityDao mapper = sqlsession.getMapper(FacilityDao.class);
+        ElectricityUnitDao mapper = sqlsession.getMapper(ElectricityUnitDao.class);
 
         List<String> TypeList = mapper.GetTypeIdList();
 
@@ -36,7 +36,7 @@ public class FacilitySearch {
 
     public void AddUnit(String electricityUnitId, String zipCode, String electricityUnitType, String electricityUnitName){
         SqlSession sqlsession = MyBatisUtil.getSqlSession();
-        FacilityDao mapper = sqlsession.getMapper(FacilityDao.class);
+        ElectricityUnitDao mapper = sqlsession.getMapper(ElectricityUnitDao.class);
         ZipCodeDao ZipMapper = sqlsession.getMapper(ZipCodeDao.class);
 
         List<String> ZipCodeList = ZipMapper.getZipCode_CodeList();
@@ -119,7 +119,7 @@ public class FacilitySearch {
 
     public int GetUnitMaxConsumption(String electricityUnitId){
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
-        FacilityDao mapper = sqlSession.getMapper(FacilityDao.class);
+        ElectricityUnitDao mapper = sqlSession.getMapper(ElectricityUnitDao.class);
         int MaxConsumption;
         List<String> UnitList = mapper.GetUnitIdList();
         if (UnitList.contains(electricityUnitId)){
@@ -137,7 +137,7 @@ public class FacilitySearch {
 
     public int GetMinUnitConsumption(String electricityUnitId){
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
-        FacilityDao mapper = sqlSession.getMapper(FacilityDao.class);
+        ElectricityUnitDao mapper = sqlSession.getMapper(ElectricityUnitDao.class);
 
         int MinConsumption;
         List<String> UnitList = mapper.GetUnitIdList();
