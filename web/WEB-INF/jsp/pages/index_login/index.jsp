@@ -115,10 +115,10 @@
                     alert("username is empty")
                 }
 
-                if (lpassword == null || lpassword.trim() == "") {
+                else if (lpassword == null || lpassword.trim() == "") {
                     alert("password is empty")
                 }
-
+                else{
                 let s = window.Qs.stringify(
                     {
                         Username: lusername,
@@ -142,7 +142,7 @@
 
                     }).catch(function () {
                     alert('Please refresh the website.')
-                });
+                });}
 
             },
 
@@ -172,7 +172,7 @@
                 }
                 if (repeat.length < 8) {
                     alert("The length of the password must exceed 8")
-                }
+                }else{
                 let r = window.Qs.stringify(
                     {
                         Username: rusername,
@@ -192,8 +192,7 @@
                         }
                     }).catch(function () {
                     alert('Please refresh the website.')
-                });
-
+                });}
             },
         },
     })
