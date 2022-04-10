@@ -144,13 +144,11 @@
 	array.push(imagedata)
 
 	function draw(fromx,fromy,tox,toy){
+		ctx.lineWidth=0.5;
 		ctx.moveTo(fromx,fromy);
 		ctx.lineTo(tox,toy);
 		ctx.stroke();
 	}
-
-
-
 
 	function communityposition(x,y){
 		var img = new Image()
@@ -160,10 +158,6 @@
 			imagedata = ctx.getImageData(0,0,829,515)
 			array.push(imagedata)
 		}
-
-
-
-
 	}
 
 	function houspitalposition(x,y){
@@ -212,9 +206,6 @@
 
 
 	}
-
-
-
 
 	function isNumber(str){
 		var n = Number(str);
@@ -296,7 +287,9 @@
 						}
 				);
 				console.log(p)
-				axios.post('ajax/position',p)
+				axios.post('ajax/position',p).catch(function () {
+					alert('Please refresh the website.')
+				});
 
 
 			},
@@ -306,8 +299,9 @@
 				var c=document.getElementById("myCanvas");
 				var cxt=c.getContext("2d");
 				cxt.clearRect(0,0,c.width,c.height);
-
-				axios.post('ajax/reset')
+				axios.post('ajax/reset').catch(function () {
+					alert('Please refresh the website.')
+				});
 			},
 
             rollback:function (){
@@ -316,7 +310,9 @@
 				}else{
 					array.pop()
 					ctx.putImageData(array[array.length - 1], 0, 0);
-					axios.post('ajax/rollback')
+					axios.post('ajax/rollback').catch(function () {
+						alert('Please refresh the website.')
+					});
 				}
 			},
 
@@ -326,10 +322,11 @@
 
 					console.log(res.data)
 					for (let i = 0; i < res.data.length; i+=4) {
-
 						draw(res.data[i],res.data[i+1],res.data[i+2],res.data[i+3])
 					}
-				})
+				}).catch(function () {
+					alert('Please refresh the website.')
+				});
 
 			}
 		}

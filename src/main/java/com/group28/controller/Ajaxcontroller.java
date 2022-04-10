@@ -71,7 +71,6 @@ public class Ajaxcontroller {
     @RequestMapping("/rollback")
     public void rollback(){
         positionArrayList.remove(positionArrayList.size()-1);
-
         System.out.println("rollbcak");
         printarray(positionArrayList);
     }
