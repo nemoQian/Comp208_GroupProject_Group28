@@ -10,9 +10,25 @@ import java.util.List;
 
 public class ElectricityDaoTest {
     @Test
+    public void searchElectricityUnitByName(){
+        SqlSession sqlsession = MyBatisUtil.getSqlSession();
+        ElectricityUnitDao mapper = sqlsession.getMapper(ElectricityUnitDao.class);
+        System.out.println(mapper.findElectricityUnit("Louvre Mseum"));
+        sqlsession.close();
+    }
+
+    @Test
+    public void searchPowerStationTypeByName(){
+        SqlSession sqlsession = MyBatisUtil.getSqlSession();
+        ElectricityUnitDao mapper = sqlsession.getMapper(ElectricityUnitDao.class);
+        System.out.println(mapper.findElectricityUnitType("AP1"));
+        sqlsession.close();
+    }
+
+    @Test
     public void SearchTypeListTest(){
         SqlSession sqlsession = MyBatisUtil.getSqlSession();
-        FacilityDao mapper = sqlsession.getMapper(FacilityDao.class);
+        ElectricityUnitDao mapper = sqlsession.getMapper(ElectricityUnitDao.class);
 
         List<String> unit1 = mapper.GetTypeIdList();
         System.out.println(unit1);
@@ -23,7 +39,7 @@ public class ElectricityDaoTest {
     @Test
     public void SearchUnitListTest(){
         SqlSession sqlsession = MyBatisUtil.getSqlSession();
-        FacilityDao mapper = sqlsession.getMapper(FacilityDao.class);
+        ElectricityUnitDao mapper = sqlsession.getMapper(ElectricityUnitDao.class);
 
         List<String> unit1 = mapper.GetUnitIdList();
         System.out.println(unit1);
@@ -34,9 +50,9 @@ public class ElectricityDaoTest {
     @Test
     public void SearchTypeIDTest(){
         SqlSession sqlsession = MyBatisUtil.getSqlSession();
-        FacilityDao mapper = sqlsession.getMapper(FacilityDao.class);
+        ElectricityUnitDao mapper = sqlsession.getMapper(ElectricityUnitDao.class);
 
-        String TypeID = mapper.GetTypeId("SP1S1A02");
+        String TypeID = mapper.GetTypeId("AP1S1A03");
 
         System.out.println(TypeID);
     }
@@ -44,7 +60,7 @@ public class ElectricityDaoTest {
     @Test
     public void SearchMaxCon(){
         SqlSession sqlsession = MyBatisUtil.getSqlSession();
-        FacilityDao mapper = sqlsession.getMapper(FacilityDao.class);
+        ElectricityUnitDao mapper = sqlsession.getMapper(ElectricityUnitDao.class);
 
         int MaxConsumption = mapper.GetMaxConsumption("SP1");
 
@@ -54,7 +70,7 @@ public class ElectricityDaoTest {
     @Test
     public void SearchMinCon(){
         SqlSession sqlsession = MyBatisUtil.getSqlSession();
-        FacilityDao mapper = sqlsession.getMapper(FacilityDao.class);
+        ElectricityUnitDao mapper = sqlsession.getMapper(ElectricityUnitDao.class);
 
         int Min = mapper.GetMinConsumption("SP1");
 

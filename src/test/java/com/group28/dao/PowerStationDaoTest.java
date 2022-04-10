@@ -10,6 +10,23 @@ import java.util.List;
 
 public class PowerStationDaoTest {
     @Test
+    public void searchPowerStationByName(){
+        SqlSession sqlsession = MyBatisUtil.getSqlSession();
+        PowerStationDao mapper = sqlsession.getMapper(PowerStationDao.class);
+        System.out.println(null == mapper.findPowerStation("Vindagnyr Pwer Station"));
+        sqlsession.close();
+    }
+
+    @Test
+    public void searchPowerStationTypeByName(){
+        SqlSession sqlsession = MyBatisUtil.getSqlSession();
+        PowerStationDao mapper = sqlsession.getMapper(PowerStationDao.class);
+        System.out.println(mapper.findPowerStationType("FI"));
+        sqlsession.close();
+    }
+
+
+    @Test
     public void insertTypeTest(){
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         PowerStationDao mapper = sqlSession.getMapper(PowerStationDao.class);
@@ -65,5 +82,35 @@ public class PowerStationDaoTest {
 
         sqlSession.close();
         System.out.println(StationList);
+    }
+
+    @Test
+    public void DeleteStationTest(){
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        PowerStationDao mapper = sqlSession.getMapper(PowerStationDao.class);
+
+        mapper.DeleteStation("NU1S1Z01");
+        sqlSession.commit();
+
+        System.out.println("Station Deleted");
+
+        mapper.DeleteStationType("NU");
+        sqlSession.commit();
+
+        System.out.println("Type Deleted");
+    }
+
+    @Test
+    public void GetProductionTest(){
+        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+        PowerStationDao mapper = sqlSession.getMapper(PowerStationDao.class);
+
+        String type = mapper.GetType("FI1S1Z01");
+        System.out.println(type);
+
+        int Product = mapper.GetProduction(type);
+        System.out.println(Product);
+
+        sqlSession.close();
     }
 }
