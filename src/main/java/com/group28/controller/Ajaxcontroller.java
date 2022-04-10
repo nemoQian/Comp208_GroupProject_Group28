@@ -77,12 +77,9 @@ public class Ajaxcontroller {
     }
 
     @RequestMapping("/done")
-    public ArrayList<line> drawline(){
-        line line1 = new line(0,0,100,100);
-        line line2 = new line(100,100,300,450);
-        lineArrayList.add(line1);
-        lineArrayList.add(line2);
-        return lineArrayList;
+    public int[] drawline(){
+         int array[] =new int []{0,0,100,200,100,200,400,150};
+        return array;
     }
 
     public void printarray(ArrayList<Position> pa){
