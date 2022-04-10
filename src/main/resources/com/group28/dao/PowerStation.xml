@@ -4,6 +4,21 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.group28.dao.PowerStationDao">
+    <select id="findPowerStation" resultType="String">
+        select powerStationId from virtualWorld.powerstation
+        where powerStationName = #{powerStationName};
+    </select>
+
+    <select id="findPowerStationType" resultMap="findpst">
+        select Type_ID, Max_Production from virtualWorld.powerstationtype
+        where Type_ID = #{powerStationType};
+    </select>
+
+    <resultMap id="findpst" type="com.group28.pojo.PowerStationType">
+        <id property="type_Id" jdbcType="VARCHAR" column="Type_ID"/>
+        <result property="MAX_PRODUCTION" jdbcType="INTEGER" column="Max_Production"/>
+    </resultMap>
+
     <insert id="AddStationType" parameterType="com.group28.pojo.PowerStationType">
         insert into virtualWorld.PowerStationType values (#{type_Id}, #{MAX_PRODUCTION});
     </insert>

@@ -10,6 +10,23 @@ import java.util.List;
 
 public class PowerStationDaoTest {
     @Test
+    public void searchPowerStationByName(){
+        SqlSession sqlsession = MyBatisUtil.getSqlSession();
+        PowerStationDao mapper = sqlsession.getMapper(PowerStationDao.class);
+        System.out.println(null == mapper.findPowerStation("Vindagnyr Pwer Station"));
+        sqlsession.close();
+    }
+
+    @Test
+    public void searchPowerStationTypeByName(){
+        SqlSession sqlsession = MyBatisUtil.getSqlSession();
+        PowerStationDao mapper = sqlsession.getMapper(PowerStationDao.class);
+        System.out.println(mapper.findPowerStationType("FI"));
+        sqlsession.close();
+    }
+
+
+    @Test
     public void insertTypeTest(){
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         PowerStationDao mapper = sqlSession.getMapper(PowerStationDao.class);

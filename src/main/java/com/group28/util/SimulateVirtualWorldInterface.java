@@ -11,13 +11,13 @@ public interface SimulateVirtualWorldInterface {
 
     int addNewFacility (FacilityData facilityData, int[] location);
 
-    long getTotalProduction ();
+    int getTotalProduction ();
 
-    long getTotalConsumption ();
+    int getTotalConsumption ();
 
-    long getMaxConsumption();
+    int getMaxConsumption();
 
-    long getFacilityConsumption (Facility facility);
+    int getFacilityConsumption (Facility facility);
 
     int getTotalLose ();
 

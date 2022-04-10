@@ -6,6 +6,8 @@ import com.group28.pojo.PowerStationType;
 import java.util.List;
 
 public interface PowerStationDao {
+    String findPowerStation (String powerStationName);
+    PowerStationType findPowerStationType(String powerStationType);
     void AddStationType(PowerStationType NewType);
     void AddStation(PowerStation NewStation);
     List<String> GetStationType_List();

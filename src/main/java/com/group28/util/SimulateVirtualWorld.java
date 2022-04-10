@@ -11,7 +11,7 @@ import java.util.concurrent.Executors;
 /**
  * The type Simulate virtual world.
 
- * @author Yihan Qian,Lingfang li
+ * @author Yihan Qian, Lingfang li
  * @version 1.1
  */
 public class SimulateVirtualWorld implements SimulateVirtualWorldInterface{
@@ -25,15 +25,15 @@ public class SimulateVirtualWorld implements SimulateVirtualWorldInterface{
      */
     static SimulateMap simulateMap = new SimulateMap();
 
-    private long totalProduction;
-    private long totalConsumption;
-    private long currentConsumption;
-    private long totalLose;
-    private long maxConsumption;
+    private int totalProduction;
+    private int totalConsumption;
+    private int currentConsumption;
+    private int totalLose;
+    private int maxConsumption;
+    private int maxProduction;
 
     private LinkedList<FacilityData> powerStationList;
     private LinkedList<FacilityData> electricityUnitList;
-    private LinkedList<FacilityData> waitingAddList;
     private LinkedList<int[]> locationList;
 
     private static boolean flag = true;
@@ -53,19 +53,21 @@ public class SimulateVirtualWorld implements SimulateVirtualWorldInterface{
 
         powerStationList = new LinkedList<FacilityData>();
         electricityUnitList = new LinkedList<FacilityData>();
-        waitingAddList = new LinkedList<FacilityData>();
         locationList = new LinkedList<int[]>();
 
-        totalProduction = 0L;
-        totalConsumption = 0L;
-        totalLose = 0L;
+        totalProduction = 0;
+        totalConsumption = 0;
+        totalLose = 0;
+
+        maxConsumption = 0;
+        maxProduction = 0;
 
     }
 
     @Override
     public void worldSimulateOpen() {
-//        fixeedThreadPool.execute(() -> {worldSimulation();});
-//        fixeedThreadPool.execute(() -> {simulateTime.simulationOpen();});
+        fixeedThreadPool.execute(() -> {worldSimulation();});
+        fixeedThreadPool.execute(() -> {simulateTime.simulationOpen();});
     }
 
     @Override
@@ -85,36 +87,44 @@ public class SimulateVirtualWorld implements SimulateVirtualWorldInterface{
          * */
         int[] findExist = simulateMap.getFacilityLocation(facilityData.getFacility());
         if(findExist[ROW] == -1 && findExist[COL] == -1){
-            waitingAddList.add(facilityData);
             locationList.add(location);
+            simulateMap.addNewFacility(facilityData.getFacility(),location);
+            if(facilityData.getFacility() instanceof PowerStation){
+                powerStationList.add(facilityData);
+                maxProduction += facilityData.getMaximum();
+            }
+            else {
+                electricityUnitList.add(facilityData);
+                maxConsumption += facilityData.getMaximum();
+            }
             return 1;
         }
         else { return -1; }
     }
 
     @Override
-    public long getTotalProduction() {
+    public int getTotalProduction() {
         return totalProduction;
     }
 
     @Override
-    public long getTotalConsumption() {
+    public int getTotalConsumption() {
         return totalConsumption;
     }
 
     @Override
-    public long getMaxConsumption(){
+    public int getMaxConsumption(){
         return maxConsumption + getTotalLose();
     }
 
     @Override
-    public long getFacilityConsumption(Facility facility) {
+    public int getFacilityConsumption(Facility facility) {
         return 0;
     }
 
     @Override
     public int getTotalLose() {
-        return 10 * simulateMap.getWorstTotalDistance();
+        return 10 * simulateMap.getBestDistance();
     }
 
     @Override
@@ -135,7 +145,6 @@ public class SimulateVirtualWorld implements SimulateVirtualWorldInterface{
     @Override
     public String getFrontReferenceId(Facility facility) { return null; }
 
-
     /**
      * World simulation.
      */
@@ -143,32 +152,18 @@ public class SimulateVirtualWorld implements SimulateVirtualWorldInterface{
         System.out.println("World simulation open!");
         int timeNow = 0;
         while(flag){
-            if(timeNow == 0 && waitingAddList.size() != 0){
-                System.out.println(waitingAddList.size());
-                for (int i = 0; i<waitingAddList.size(); i++){
-                    if(waitingAddList.get(i).getFacility() instanceof PowerStation){
-                        powerStationList.add(waitingAddList.get(i));
-                    }
-                    else {
-                        electricityUnitList.add(waitingAddList.get(i));
-                        maxConsumption += waitingAddList.get(i).getMaximum();
-                    }
-                    simulateMap.addNewFacility(waitingAddList.get(i).getFacility(), locationList.get(i));
-                }
-                waitingAddList.clear();
-            }
-            long rate = 1;
+            double rate = 1;
             //半夜生产量减少30%
             if(simulateTime.getHour()>=0 && simulateTime.getHour()<=7){
-                rate = (long) (rate* 0.7);
+                rate = rate* 0.7;
             }
             //夏季增加30%
             if (simulateTime.getMonth() >= 6 && simulateTime.getMonth() <= 8) {
-                rate = (long) (rate*1.3);
+                rate = rate*1.3;
             }
             //冬季增加40%
             if ((simulateTime.getMonth()>=1 && simulateTime.getMonth()<=2) || simulateTime.getMonth()==12) {
-                rate = (long) (rate*1.4);
+                rate = rate*1.4;
             }
             if(simulateTime.getHour() - timeNow >= 1){
                 timeNow = simulateTime.getHour();
@@ -177,7 +172,7 @@ public class SimulateVirtualWorld implements SimulateVirtualWorldInterface{
                     currentConsumption += electricityUnitList.get(i).getConsumption();
                 }
                 totalConsumption += currentConsumption;
-                totalProduction = (currentConsumption + getTotalLose()) * rate;
+                totalProduction = (int) ((currentConsumption + getTotalLose()) * rate);
                 System.out.println("currentConsumption " + currentConsumption);
                 System.out.println("totalProduction " + totalProduction);
             }
@@ -187,5 +182,16 @@ public class SimulateVirtualWorld implements SimulateVirtualWorldInterface{
                 e.printStackTrace();
             }
         }
+    }
+
+    public boolean judgement(){
+        if(maxConsumption + getTotalLose() > maxProduction){
+            return false;
+        }
+        else { return true; }
+    }
+
+    public int[] prim(){
+        return simulateMap.prim(0);
     }
 }

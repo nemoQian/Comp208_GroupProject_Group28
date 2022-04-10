@@ -3,7 +3,22 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.group28.dao.FacilityDao">
+<mapper namespace="com.group28.dao.ElectricityUnitDao">
+    <select id="findElectricityUnit" resultType="String">
+        select ElectricityUnitID from virtualWorld.ElectricityUnit
+        where electricityUnitName = #{electricityUnitName};
+    </select>
+
+    <select id="findElectricityUnitType" resultMap="findeut">
+        select Type_ID, Max_Consumption, Min_Consumption from virtualWorld.electricityunittype where Type_ID = #{electricityUnitType};
+    </select>
+
+    <resultMap id="findeut" type="com.group28.pojo.ElectricityUnitType">
+        <id property="type_Id" jdbcType="VARCHAR" column="Type_ID"/>
+        <result property="MAX_CONSUMMPTION" jdbcType="INTEGER" column="Max_Consumption"/>
+        <result property="MIN_CONSUMMPTION" jdbcType="INTEGER" column="Min_Consumption"/>
+    </resultMap>
+
     <insert id="AddType" parameterType="com.group28.pojo.ElectricityUnitType">
         insert into virtualWorld.ElectricityUnitType(Type_ID, Max_Consumption, Min_Consumption) values (#{type_Id}, #{MAX_CONSUMMPTION}, #{MIN_CONSUMMPTION});
     </insert>
