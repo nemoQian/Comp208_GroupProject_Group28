@@ -73,7 +73,7 @@ public class Interation implements IntegrationInterface{
     @Override
     public int addNewFacility(String facilityType, String facilityName, int locationX, int locationY, String facilityLevel) {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
-        int[] location = {locationX / 100, locationY / 100};
+        int[] location = {locationX, locationY};
 
         if (facilityType == powerStationTypeName){
             PowerStationDao mapper = sqlSession.getMapper(PowerStationDao.class);

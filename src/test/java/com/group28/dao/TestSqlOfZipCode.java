@@ -54,7 +54,25 @@ public class TestSqlOfZipCode {
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         ZipCodeDao mapper = sqlSession.getMapper(ZipCodeDao.class);
 
-        mapper.addZipCode(new ZipCode("V42","fourthBlock"));
+        for(int i = 1; i <= 16; i++){
+            for(int j = 1; j<=9; j++){
+                String a = "";
+                if(i < 10){
+                    if( j < 10){
+                        a = "S0" + i + " A0" + j;
+                    }
+                    else { a = "S0" + i + " A" + j; }
+                }
+                else {
+                    if (j < 10) {
+                        a = "S" + i + " A0" + j;
+                    } else {
+                        a = "S" + i + " A" + j;
+                    }
+                }
+                mapper.addZipCode(new ZipCode(a,a));
+            }
+        }
         sqlSession.commit();
         sqlSession.close();
     }

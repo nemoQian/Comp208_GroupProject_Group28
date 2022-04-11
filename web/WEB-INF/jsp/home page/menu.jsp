@@ -199,12 +199,10 @@
 		var img = new Image()
 		img.src = 'picture/power station.png'
 		img.onload = function(){
-			ctx.drawImage(this,x, y, 60, 60)
+			ctx.drawImage(this,x, y, 50, 50)
 			imagedata = ctx.getImageData(0,0,829,515)
 			array.push(imagedata)
 		}
-
-
 	}
 
 	function isNumber(str){
@@ -240,15 +238,15 @@
 				var con=document.getElementById("myCanvas");
 				var context=con.getContext("2d");
 				context.font = 'italic 16px Calibri';
-				context.fillText(this.name,(Number(this.x)*2+50)/2-4.5*len,Number(this.y)+68)
+				context.fillText(this.name,(Number(this.x*50)*2+50)/2-4.5*len,Number(this.y*50)+60)
 			},
 
 
 
 			addsubmit:function(){
 				var type = this.stype;
-				var x = this.x;
-				var y = this.y;
+				var x = this.x*50;
+				var y = this.y*50;
 
 
 				if(isNumber(x)==false||isNumber(y)==false){alert("Please input the number.")}
@@ -259,9 +257,24 @@
 				else if(x==""){alert("Please enter the value of x.")}
 				else if(y==""){alert("Please enter the value of y.")}
 				else if (this.consumption==""){alert("Please choose the consumption level.")}
-				else if(type=="Community"){
+				else{
+					let p = window.Qs.stringify(
+							{
+								type:this.stype,
+								name:this.name,
+								x:this.x,
+								y:this.y,
+								consumption:this.consumption,
+							}
+					);
+					console.log(p)
+					axios.post('ajax/position',p).catch(function () {
+						alert('Please refresh the website.')
+					});
+				}
+				if(type=="Community"){
 					communityposition(x,y)
-					this.addword()
+					this.addword(x,y)
 				}
 				else if(type=="Shopping centre"){
 					shopposition(x,y)
@@ -277,19 +290,7 @@
 					this.addword(x,y)
 				}
 
-				let p = window.Qs.stringify(
-						{
-							type:this.stype,
-							name:this.name,
-							x:this.x,
-							y:this.y,
-							consumption:this.consumption,
-						}
-				);
-				console.log(p)
-				axios.post('ajax/position',p).catch(function () {
-					alert('Please refresh the website.')
-				});
+
 
 
 			},
