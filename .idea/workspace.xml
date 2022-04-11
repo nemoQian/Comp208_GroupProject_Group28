@@ -9,9 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="获取station的production的方法">
+    <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="finished3">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/group28/controller/echart_1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilitySearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilitySearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/controller/Ajaxcontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/controller/Ajaxcontroller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/pojo/NewFacility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/pojo/NewFacility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/pojo/addNewFacilityImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/pojo/addNewFacilityImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/menu.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,14 +38,20 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateVirtualWorld.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateMap.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/pom.xml" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTimeInterface.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTime.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/test/java/com/group28/util/TestSimulateTime.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login/index.jsp" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/pojo/PowerStation.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/test/java/com/group28/util/TestSimulateTime.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/pojo/addNewFacilityImpl.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateVirtualWorld.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/controller/Ajaxcontroller.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTime.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/controller/Position.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateMap.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/web/WEB-INF/jsp/home page/menu.jsp" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/pojo/NewFacility.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTimeInterface.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -92,7 +103,7 @@
       <recent name="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PowerStationDaoTest.GetProductionTest">
+  <component name="RunManager" selected="Tomcat 服务器.Tomcat 8.5.57">
     <configuration name="PowerStationDaoTest.DeleteStationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
@@ -174,6 +185,7 @@
       </method>
     </configuration>
     <configuration name="Tomcat 8.5.57" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.57" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.8" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER" value="false" />
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -261,6 +273,14 @@
         </option>
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.PowerStationDaoTest.DeleteStationTest" />
+      <item itemvalue="JUnit.PowerStationDaoTest.GetProductionTest" />
+      <item itemvalue="JUnit.TestSqlOfZipCode.testAddZipCode" />
+      <item itemvalue="JUnit.TestSqlOfZipCode.testDropZipCode" />
+      <item itemvalue="JUnit.TestElectricityUnitDao.TestDeleteUnit" />
+      <item itemvalue="Tomcat 服务器.Tomcat 8.5.57" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.PowerStationDaoTest.GetProductionTest" />
@@ -304,6 +324,7 @@
       <workItem from="1649323339484" duration="5911000" />
       <workItem from="1649413595354" duration="2760000" />
       <workItem from="1649531904065" duration="3883000" />
+      <workItem from="1649587379934" duration="21616000" />
     </task>
     <task id="LOCAL-00001" summary="interlayer">
       <created>1648379637848</created>
@@ -480,7 +501,35 @@
       <option name="project" value="LOCAL" />
       <updated>1649522912272</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="finished">
+      <created>1649585850476</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1649585850476</updated>
+    </task>
+    <task id="LOCAL-00027" summary="finished1">
+      <created>1649587960757</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1649587960757</updated>
+    </task>
+    <task id="LOCAL-00028" summary="finished2">
+      <created>1649616741897</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1649616741897</updated>
+    </task>
+    <task id="LOCAL-00029" summary="finished3">
+      <created>1649629647937</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1649629647937</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -491,7 +540,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -517,6 +578,10 @@
     <MESSAGE value="新增了删除station unit和station type中数据的方法" />
     <MESSAGE value="修复了addzipcode的方法以及更新了删除zipcode数据的方法" />
     <MESSAGE value="获取station的production的方法" />
-    <option name="LAST_COMMIT_MESSAGE" value="获取station的production的方法" />
+    <MESSAGE value="finished" />
+    <MESSAGE value="finished1" />
+    <MESSAGE value="finished2" />
+    <MESSAGE value="finished3" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished3" />
   </component>
 </project>
