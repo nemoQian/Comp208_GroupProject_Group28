@@ -6,4 +6,6 @@ public interface PowerStationDataDao {
     int getAccumulatedProductivityAmount(String Time);
 
     void insertData(PowerStationData powerStationData);
+
+    void deletePowerStation(String powerStationId);
 }

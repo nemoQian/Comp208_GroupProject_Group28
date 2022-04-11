@@ -37,4 +37,16 @@ public class PowerStationDataDaoTest {
         sqlsession.commit();
         sqlsession.close();
     }
+
+    @Test
+    public void deletePowerStation(){
+        SqlSession sqlsession = MyBatisUtil.getSqlSession();
+
+        PowerStationDataDao mapper = sqlsession.getMapper(PowerStationDataDao.class);
+
+       mapper.deletePowerStation("FI1S1Z01");
+
+        sqlsession.commit();
+        sqlsession.close();
+    }
 }
