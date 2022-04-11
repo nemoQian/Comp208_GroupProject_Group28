@@ -1,4 +1,6 @@
 package com.group28.controller;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.group28.service.UserServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.Map;
 import com.group28.controller.Position;
+import com.group28.controller.echart_1;
 import com.group28.controller.line;
 @Controller
 @RestController
@@ -27,8 +30,6 @@ public class Ajaxcontroller {
         System.out.println("username = "  + username);
         System.out.println("password = "  + password);
         System.out.println(statCode);
-
-
         return statCode;
     }
 
@@ -87,6 +88,14 @@ public class Ajaxcontroller {
             System.out.print(" "+i+" ");
             P.printp(pa.get(i));
         }
+    }
+
+    @RequestMapping("/test")
+    public String echarts() throws JsonProcessingException {
+        echart_1  a = new echart_1("asdasd",1);
+        ObjectMapper c =new ObjectMapper();
+        String res = c.writeValueAsString(a);
+        return res; //返回一个json对象
     }
 
 }

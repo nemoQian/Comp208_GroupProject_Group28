@@ -206,12 +206,7 @@
 	}
 
 	function isNumber(str){
-		var n = Number(str);
-		if (!isNaN(n)){
-			return true;
-		}else{
-			return false;
-		}
+		return str%1 === 0;
 	}
 
 
@@ -238,58 +233,59 @@
 				var con=document.getElementById("myCanvas");
 				var context=con.getContext("2d");
 				context.font = 'italic 16px Calibri';
-				context.fillText(this.name,(Number(this.x*50)*2+50)/2-4.5*len,Number(this.y*50)+60)
+				context.fillText(this.name,(Number(this.x*50)*2+50)/2-5*len-40,Number(this.y*50)+52)
 			},
 
 
 
 			addsubmit:function(){
 				var type = this.stype;
-				var x = this.x*50;
-				var y = this.y*50;
+				var x = (this.x-1)*50+13;
+				var y = this.y*50-10;
+                var rx = this.x;
+				var ry = this.y;
 
-
-				if(isNumber(x)==false||isNumber(y)==false){alert("Please input the number.")}
-
-
-
-				if(type==""){alert("Please choose the type first.")}
+				if(!Number.isInteger(x)){alert("Please input the Integer x.")}
+				else if(!Number.isInteger(y)){alert("Please input the Integer y.")}
+				else if(rx<1||rx>16){alert("The range of x is from 1 to 16.")}
+				else if(ry<1||ry>9){alert("And the range of y os from 1 to 9.")}
+				else if(type==""){alert("Please choose the type first.")}
 				else if(x==""){alert("Please enter the value of x.")}
 				else if(y==""){alert("Please enter the value of y.")}
 				else if (this.consumption==""){alert("Please choose the consumption level.")}
-				else{
+				else {
+					// draw(38,65,388,415)
 					let p = window.Qs.stringify(
 							{
-								type:this.stype,
-								name:this.name,
-								x:this.x,
-								y:this.y,
-								consumption:this.consumption,
+								type: this.stype,
+								name: this.name,
+								x: (this.x - 1) * 50 + 13 + 25,
+								y: this.y * 50 - 10 + 25,
+								consumption: this.consumption,
 							}
 					);
 					console.log(p)
-					axios.post('ajax/position',p).catch(function () {
+					axios.post('ajax/position', p).catch(function () {
 						alert('Please refresh the website.')
 					});
-				}
-				if(type=="Community"){
-					communityposition(x,y)
-					this.addword(x,y)
-				}
-				else if(type=="Shopping centre"){
-					shopposition(x,y)
-					this.addword(x,y)
-				}else if(type=="Hospital"){
-					houspitalposition(x,y)
-					this.addword(x,y)
-				}else if(type=="School"){
-					schoolposition(x,y)
-					this.addword(x,y)
-				}else {
-					powerposition(x,y)
-					this.addword(x,y)
-				}
 
+					if (type == "Community") {
+						communityposition(x, y)
+						this.addword(x, y)
+					} else if (type == "Shopping centre") {
+						shopposition(x, y)
+						this.addword(x, y)
+					} else if (type == "Hospital") {
+						houspitalposition(x, y)
+						this.addword(x, y)
+					} else if (type == "School") {
+						schoolposition(x, y)
+						this.addword(x, y)
+					} else {
+						powerposition(x, y)
+						this.addword(x, y)
+					}
+				}
 
 
 
