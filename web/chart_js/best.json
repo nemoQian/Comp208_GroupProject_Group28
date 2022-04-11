@@ -1,0 +1,13 @@
+{
+  "list": [
+    {
+      "part": "Consumption",
+      "kW": 1
+
+    },
+    {
+      "part": "Generation",
+      "kW": 1
+    }
+  ]
+}
