@@ -24,7 +24,7 @@ public class ElectricityUnitDataDaoTest {
     }
 
     @Test
-    public void insetDataTest(){
+    public void insertDataTest(){
         SqlSession sqlsession = MyBatisUtil.getSqlSession();
 
         ElectricityUnitDataDao mapper = sqlsession.getMapper(ElectricityUnitDataDao.class);
@@ -41,39 +41,19 @@ public class ElectricityUnitDataDaoTest {
         sqlsession.commit();
         sqlsession.close();
     }
-//    @Test
-//    public void getConsumptionAmountByTimePerMonth(){
-//        SqlSession sqlsession = MyBatisUtil.getSqlSession();
-//
-//        ElectricityUnitDataDao mapper = sqlsession.getMapper(ElectricityUnitDataDao.class);
-//
-//        int MonthConsumption = mapper.getConsumptionAmountByTimePerMonth();
-//        System.out.println(MonthConsumption);
-//
-//        sqlsession.close();
-//    }
-//
-//    @Test
-//    public void getConsumptionAmountByTimePerYear(){
-//        SqlSession sqlsession = MyBatisUtil.getSqlSession();
-//
-//        ElectricityUnitDataDao mapper = sqlsession.getMapper(ElectricityUnitDataDao.class);
-//
-//        int yearConsumption = mapper.getConsumptionAmountByTimePerYear();
-//        System.out.println(yearConsumption);
-//
-//        sqlsession.close();
-//    }
-//
-//    @Test
-//    public void getConsumptionAmountByTimePerDay(){
-//        SqlSession sqlsession = MyBatisUtil.getSqlSession();
-//
-//        ElectricityUnitDataDao mapper = sqlsession.getMapper(ElectricityUnitDataDao.class);
-//
-//        int dayConsumption = mapper.getConsumptionAmountByTimePerDay();
-//        System.out.println(dayConsumption);
-//
-//        sqlsession.close();
-//    }
+
+    @Test
+    public void deleteElectricityUnitData(){
+        SqlSession sqlsession = MyBatisUtil.getSqlSession();
+
+        ElectricityUnitDataDao mapper = sqlsession.getMapper(ElectricityUnitDataDao.class);
+        mapper.deleteElectricityUnitData("AP1S1A03");
+
+
+        sqlsession.commit();
+        sqlsession.close();
+    }
+
+
+
 }

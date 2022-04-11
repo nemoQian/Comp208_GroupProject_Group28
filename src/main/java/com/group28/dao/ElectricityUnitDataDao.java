@@ -13,6 +13,7 @@ public interface ElectricityUnitDataDao {
 
     void insertData(ElectricityUnitData electricityUnitData);
 
+    void deleteElectricityUnitData(String electricityUnitID);
 
 
 //    int getConsumptionAmountByTimePerHour(String electricityUnit,String timeOfStore);
