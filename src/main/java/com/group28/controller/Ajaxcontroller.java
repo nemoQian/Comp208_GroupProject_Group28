@@ -90,12 +90,55 @@ public class Ajaxcontroller {
         }
     }
 
-    @RequestMapping("/test")
+/*    @RequestMapping("/test")
     public String echarts() throws JsonProcessingException {
         echart_1  a = new echart_1("asdasd",1);
         ObjectMapper c =new ObjectMapper();
         String res = c.writeValueAsString(a);
         return res; //返回一个json对象
+    }*/
+
+    @RequestMapping("/test")
+    public echart_1 chart_2(){
+        echart_1 a = new echart_1();
+        a.part = "qqq";
+        a.kw = 22;
+        a.part2 = "ew";
+        a.kw2 = 234;
+        return a; //返回一个json对象
+    }
+
+    @RequestMapping("/test3")
+    public ArrayList<ArrayList<Integer>> chart_3(){
+        ArrayList<ArrayList<Integer>>list=new ArrayList<>();
+        ArrayList<Integer> l = new ArrayList<> ();
+        ArrayList<Integer> l2 = new ArrayList<> ();
+        l.add(12);
+        l.add(23);
+        l.add(50);
+        l2.add(2);
+        l2.add(3);
+        l2.add(50);
+        list.add(l);
+        list.add(l2);
+        return list; //返回一个json对象
+    }
+
+    @RequestMapping("/test4")
+    public int[] chart_4(){
+        int[] l = new int[]{12,34,45,43,30};
+        return l; //返回一个json对象
+    }
+
+    @RequestMapping("/test5")
+    public ArrayList<Object> chart_5(){
+        ArrayList<Object> aa = new ArrayList<>();
+        aa.add("16:00");
+        double a = Math.random();
+        double b = Math.random();
+        aa.add(300*a);
+        aa.add(400*b);
+        return null; //返回一个json对象
     }
 
 }

@@ -1,12 +1,11 @@
-{
-  "list": [
+[
     {
       "department": "Community",
-      "num": 480
+      "num": 200
     },
     {
       "department": "Hospital",
-      "num": 380
+      "num": 100
     },
     {
       "department": "School",
@@ -20,5 +19,5 @@
       "department": "Shop",
       "num": 300
     }
-  ]
-}
+]
+

@@ -32,7 +32,7 @@
 	<img src="picture/user.png" width=25px height=25px class="user">
 	<img src="picture/exit.png" width=25px height=25px class="exit">
 
-	<div class="title">City energy management and Computational Sustainability System</div>
+	<div class="title">city energy management and Computational Sustainability System</div>
 	<div class="user"></div>
 </header>
 <div class="boxset">
@@ -55,7 +55,7 @@
 
 	<div class="box3">
 		<div class="box3_header">Power generation and consumption</div>
-		<div id="chart_2" class="test" style="width: 100%; height: 190px;"></div>
+		<div id="chart_2" class="chart_2" style="width: 100%; height: 190px;"></div>
 	</div>
 	<div class="box4">
 		<div class="box4_header">Facilities number and consumption</div>

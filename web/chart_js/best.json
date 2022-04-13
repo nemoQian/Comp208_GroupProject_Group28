@@ -2,12 +2,12 @@
   "list": [
     {
       "part": "Consumption",
-      "kW": 1
+      "kW": 190
 
     },
     {
       "part": "Generation",
-      "kW": 1
+      "kW": 10
     }
   ]
 }

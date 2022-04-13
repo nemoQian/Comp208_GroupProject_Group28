@@ -71,17 +71,23 @@ $(function () {
         function cs(){
             $.ajax({
                 type: 'post',
-                url: 'chart_js/chart_5.json',//请求数据的地址
+                url: 'ajax/test5',//请求数据的地址
                 dataType: "json",        //返回数据形式为json
                 success: function (result) {
                     //请求成功时执行该函数内容，result即为服务器返回的json对象
-                    $.each(result.jinJian, function (index, item) {
+/*                    $.each(result.jinJian, function (index, item) {
                         names.push(item.AREA);    //挨个取出类别并填入类别数组
                         series1.push(item.LANDNUM);
                     });
+
                     $.each(result.banJie, function (index, item) {
                         series2.push(item.LANDNUM);
-                    });
+                    });*/
+
+                    names.push(result[0]);    //挨个取出类别并填入类别数组
+                    series1.push(result[1]);
+                    series2.push(result[2]);
+
                     myChart.hideLoading();    //隐藏加载动画
                     myChart.setOption({        //加载数据图表
                         xAxis: {
@@ -94,9 +100,9 @@ $(function () {
                                 data: series2
                             }]
                     });
-                    names = [];    //类别数组（实际用来盛放X轴坐标值）
+/*                    names = [];    //类别数组（实际用来盛放X轴坐标值）
                     series1 = [];
-                    series2 = [];
+                    series2 = [];*/
 
                 },
                 error: function (errorMsg) {
@@ -105,7 +111,7 @@ $(function () {
                     myChart.hideLoading();
                 }
             });
-            setTimeout(cs,500);
+            setTimeout(cs,5000);
         }
         cs();
     }

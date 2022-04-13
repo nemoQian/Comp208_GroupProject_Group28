@@ -92,14 +92,19 @@ $(function () {
             $.ajax({
                 type : "post",
                 async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
-                url : "chart_js/chart_3.json",    //请求发送到TestServlet处
+                /*url : "chart_js/chart_3.json",    //请求发送到TestServlet处*/
+                url : "ajax/test3",
                 dataType : "json",        //返回数据形式为json
                 success : function(result) {
                     //请求成功时执行该函数内容，result即为服务器返回的json对象
                     if (result) {
-                        $.each(result.list, function (index, item) {
+
+                        $.each(result, function (index, item) {
                             nums.push(item);    //挨个取出类别并填入类别数组
                         });
+
+                        /*nums.push(result);*/
+
                         /*myChart.hideLoading(); */   //隐藏加载动画
                         myChart.setOption({        //加载数据图表
                             series: [
