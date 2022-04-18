@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.group28.dao.PowerStationDataDao">
+
+    <select id="getAccumulatedProductivityAmount" resultType="int">
+        select sum(psd.ProductivityAmount) as AccumulatedProductivityAmount
+        from virtualworld.pwoerstation_datastore psd, virtualworld.powerstation ps
+        where psd.powerStationId = ps.powerStationId and psd.TimeOfStore like #{Time}"%";
+    </select>
+
+    <insert id="insertData" parameterType="com.group28.pojo.PowerStationData">
+        insert into virtualworld.pwoerstation_datastore (DATA_REFERENCE_ID,powerStationId,TimeOfStore,ProductivityAmount) values(#{DATA_REFERENCE_ID},#{powerStationId},#{timeOfStore},#{productivityAmount})
+    </insert>
+    
+    <delete id="deletePowerStation" parameterType="String">
+        delete from virtualworld.pwoerstation_datastore where powerStationId = #{powerStationId};
+    </delete>
+
+</mapper>

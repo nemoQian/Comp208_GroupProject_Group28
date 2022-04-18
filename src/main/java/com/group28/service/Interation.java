@@ -7,6 +7,8 @@ import com.group28.util.MyBatisUtil;
 import com.group28.util.SimulateVirtualWorld;
 import org.apache.ibatis.session.SqlSession;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Interation implements IntegrationInterface{
@@ -18,8 +20,17 @@ public class Interation implements IntegrationInterface{
 
     private int state = 0;
 
-    private final String[] electricityUnitTypeName = {"Community", "Hospital", "ShoppingMall", "School"};
-    private final String powerStationTypeName = "PowerStation";
+    private static final String[] electricityUnitTypeName = {"Community", "Hospital", "Shopping centre", "School"};
+    private final String powerStationTypeName = "Power station";
+
+    private final String[] communityType = {"COL","COM","COH"};
+    private final String[] schoolType = {"SCL","SCM","SCH"};
+    private final String[] hospitalType = {"HOL","HOM","HOH"};
+    private final String[] shoppingCentreType = {"SHL","SHM","SHH"};
+    private final String[] powerStationType = {"PSL","PSM","PSH"};
+
+    private HashMap<String, String[]> typeMapper;
+    private HashMap<String, Integer> levelMapper;
 
     private ElectricityUnit electricityUnit;
     private PowerStation powerStation;
@@ -32,13 +43,20 @@ public class Interation implements IntegrationInterface{
 
     public Interation(){
         resetDB();
+        typeMapper = new HashMap<>();
+        levelMapper = new HashMap<>();
+        typeMapper.put("Community", communityType);
+        typeMapper.put("Hospital", hospitalType);
+        typeMapper.put("Shopping centre", shoppingCentreType);
+        typeMapper.put("School", schoolType);
+        levelMapper.put("low-level",0);
+        levelMapper.put("medium-level",1);
+        levelMapper.put("high-level",2);
         virtualWorld = new SimulateVirtualWorld();
     }
 
     @Override
     public int worldSimulationOpen(){
-        resetDB();
-        virtualWorld = new SimulateVirtualWorld();
         if(virtualWorld.judgement()){
             virtualWorld.worldSimulateOpen();
             return SUCCESS;
@@ -48,11 +66,13 @@ public class Interation implements IntegrationInterface{
 
     @Override
     public int worldSimulationReset() {
+        resetDB();
         virtualWorld.worldSimulateStop();
+        virtualWorld.restWorld();
         return SUCCESS;
     }
 
-    private void resetDB(){
+    public void resetDB(){
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         PowerStationDao mapper1 = sqlSession.getMapper(PowerStationDao.class);
         List<String> powerStationList = mapper1.GetStationList();
@@ -75,11 +95,11 @@ public class Interation implements IntegrationInterface{
         SqlSession sqlSession = MyBatisUtil.getSqlSession();
         int[] location = {locationX, locationY};
 
-        if (facilityType == powerStationTypeName){
+        if (facilityType.equals(powerStationTypeName)){
             PowerStationDao mapper = sqlSession.getMapper(PowerStationDao.class);
             if(mapper.findPowerStation(facilityName) == null){
                 generatePowerStation(facilityName,facilityLevel,location[ROW],location[COL]);
-                facilityData = new FacilityData(powerStation, mapper.findPowerStationType(facilityLevel));
+                facilityData = new FacilityData(powerStation, mapper.findPowerStationType(powerStationType[levelMapper.get(facilityLevel)]),facilityType);
                 state =  virtualWorld.addNewFacility(facilityData, location);
                 if(state == 1){
                     mapper.AddStation(powerStation);
@@ -97,12 +117,14 @@ public class Interation implements IntegrationInterface{
                 return FAIL;
             }
         }
-        else if (facilityType == electricityUnitTypeName[0] || facilityType == electricityUnitTypeName[1] ||
-                 facilityType == electricityUnitTypeName[2] || facilityType == electricityUnitTypeName[3]){
+        else if (facilityType.equals(electricityUnitTypeName[0]) || facilityType.equals(electricityUnitTypeName[1]) ||
+                 facilityType.equals(electricityUnitTypeName[2]) || facilityType.equals(electricityUnitTypeName[3])){
             ElectricityUnitDao mapper = sqlSession.getMapper(ElectricityUnitDao.class);
             if(mapper.findElectricityUnit(facilityName) == null){
-                generateElectricityUnit(facilityName,facilityLevel,location[ROW],location[COL]);
-                facilityData = new FacilityData(electricityUnit, mapper.findElectricityUnitType(facilityLevel));
+                generateElectricityUnit(facilityType,facilityName,facilityLevel,location[ROW],location[COL]);
+                facilityData = new FacilityData(electricityUnit,
+                                                mapper.findElectricityUnitType(typeMapper.get(facilityType)[levelMapper.get(facilityLevel)]),
+                                                facilityType);
                 state =  virtualWorld.addNewFacility(facilityData, location);
                 if(state == 1){
                     mapper.AddFacility(electricityUnit);
@@ -120,6 +142,7 @@ public class Interation implements IntegrationInterface{
                 return FAIL;
             }
         }
+
         else { return FAIL; }
     }
 
@@ -185,19 +208,19 @@ public class Interation implements IntegrationInterface{
         }
     }
 
-    private void generatePowerStation(String powerStationName, String powerStationType, int x, int y){
+    private void generatePowerStation(String powerStationName, String powerStationLevel, int x, int y){
         powerStation = new PowerStation();
-        powerStation.Put_powerStationId(generateId(powerStationType,x,y));
-        powerStation.Put_zipCode(generateZipCode(x,y));
-        powerStation.Put_powerStationType(powerStationType);
+        powerStation.Put_powerStationId(generateId(powerStationType[levelMapper.get(powerStationLevel)],x,y));
+        powerStation.Put_zipCode(generateZipCode((x-38)/50+1,(y-15)/50));
+        powerStation.Put_powerStationType(powerStationType[levelMapper.get(powerStationLevel)]);
         powerStation.Put_powerStationName(powerStationName);
     }
 
-    private void generateElectricityUnit(String electricityUnitName, String electricityUnitType, int x, int y){
+    private void generateElectricityUnit(String typeName, String electricityUnitName, String electricityUnitLevel, int x, int y){
         electricityUnit = new ElectricityUnit();
-        electricityUnit.Put_electricityUnitId(generateId(electricityUnitType,x,y));
-        electricityUnit.Put_zipCode(generateZipCode(x,y));
-        electricityUnit.Put_electricityUnitType(electricityUnitType);
+        electricityUnit.Put_electricityUnitId(generateId(typeMapper.get(typeName)[levelMapper.get(electricityUnitLevel)],x,y));
+        electricityUnit.Put_zipCode(generateZipCode((x-38)/50+1,(y-15)/50));
+        electricityUnit.Put_electricityUnitType(typeMapper.get(typeName)[levelMapper.get(electricityUnitLevel)]);
         electricityUnit.Put_electricityUnitName(electricityUnitName);
     }
 
@@ -207,5 +230,19 @@ public class Interation implements IntegrationInterface{
 
     public int getLose(){
         return virtualWorld.getTotalLose();
+    }
+
+    public int getCurrentConsumption(){ return virtualWorld.getCurrentConsumption(); }
+
+    public int getCurrentProduction(){ return virtualWorld.getCurrentProduction(); }
+
+    public String getTime(){ return virtualWorld.getTime(); }
+
+    public ArrayList<ArrayList<Integer>> getHeightList(){
+        return virtualWorld.getHeightList();
+    }
+
+    public int[] getFanChart(){
+        return virtualWorld.getFanChart();
     }
 }

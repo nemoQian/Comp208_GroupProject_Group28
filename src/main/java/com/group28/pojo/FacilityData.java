@@ -4,10 +4,12 @@ public class FacilityData {
 
     private final Facility facility;
     private final FacilityType facilityType;
+    private final String facilityName;
 
-    public FacilityData(Facility facility, FacilityType facilityType) {
+    public FacilityData(Facility facility, FacilityType facilityType, String facilityName) {
         this.facility = facility;
         this.facilityType = facilityType;
+        this.facilityName = facilityName;
     }
 
     public long getMaximum(){ return facilityType.getMAX_NUMERICAL(); }
@@ -19,4 +21,6 @@ public class FacilityData {
     public Facility getFacility(){
         return facility;
     }
+
+    public String getFacilityName() { return facilityName; }
 }

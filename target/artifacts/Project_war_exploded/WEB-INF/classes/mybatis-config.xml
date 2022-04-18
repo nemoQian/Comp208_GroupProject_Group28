@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <properties resource="db.properties" />
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc_driver}" />
+                <property name="url" value="${db_UserUrl}"/>
+                <property name="username" value="${db_name}" />
+                <property name="password" value="${db_pwd}" />
+            </dataSource>
+        </environment>
+
+        <environment id="development1">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc_driver}" />
+                <property name="url" value= "${db_WorldUrl}"/>
+                <property name="username" value="${db_name}" />
+                <property name="password" value="${db_pwd}" />
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="com/group28/dao/ZipCodeMapper.xml"/>
+        <mapper resource="com/group28/dao/UserMapper.xml"/>
+        <mapper resource="com/group28/dao/ElectricityMapper.xml"/>
+        <mapper resource="com/group28/dao/ElectricityUnitDataMapper.xml"/>
+        <mapper resource="com/group28/dao/PowerStationDataMapper.xml"/>
+        <mapper resource="com/group28/dao/PowerStation.xml"/>
+    </mappers>
+</configuration>

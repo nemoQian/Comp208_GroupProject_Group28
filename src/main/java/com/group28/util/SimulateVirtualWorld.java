@@ -4,6 +4,7 @@ import com.group28.pojo.Facility;
 import com.group28.pojo.FacilityData;
 import com.group28.pojo.PowerStation;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -28,13 +29,20 @@ public class SimulateVirtualWorld implements SimulateVirtualWorldInterface{
     private int totalProduction;
     private int totalConsumption;
     private int currentConsumption;
+    private int currentProduction;
     private int totalLose;
     private int maxConsumption;
     private int maxProduction;
+    private double rate;
 
     private LinkedList<FacilityData> powerStationList;
     private LinkedList<FacilityData> electricityUnitList;
     private LinkedList<int[]> locationList;
+    private int[] fanChart;
+
+    private ArrayList<ArrayList<Integer>> heightList;
+
+    private static final String[] facilityTypeName = {"Community", "Hospital", "School", "PowerStation", "Shopping centre"};
 
     private static boolean flag = true;
 
@@ -54,6 +62,7 @@ public class SimulateVirtualWorld implements SimulateVirtualWorldInterface{
         powerStationList = new LinkedList<FacilityData>();
         electricityUnitList = new LinkedList<FacilityData>();
         locationList = new LinkedList<int[]>();
+        heightList = new ArrayList<>();
 
         totalProduction = 0;
         totalConsumption = 0;
@@ -61,6 +70,12 @@ public class SimulateVirtualWorld implements SimulateVirtualWorldInterface{
 
         maxConsumption = 0;
         maxProduction = 0;
+        rate = 1;
+
+        fanChart = new int[5];
+        for(int i = 0; i<5;i++){
+            fanChart[i] = 0;
+        }
 
     }
 
@@ -103,9 +118,7 @@ public class SimulateVirtualWorld implements SimulateVirtualWorldInterface{
     }
 
     @Override
-    public int getTotalProduction() {
-        return totalProduction;
-    }
+    public int getTotalProduction() { return totalProduction; }
 
     @Override
     public int getTotalConsumption() {
@@ -124,7 +137,7 @@ public class SimulateVirtualWorld implements SimulateVirtualWorldInterface{
 
     @Override
     public int getTotalLose() {
-        return 10 * simulateMap.getBestDistance();
+        return (int) (simulateMap.getBestDistance() * 0.5);
     }
 
     @Override
@@ -145,36 +158,102 @@ public class SimulateVirtualWorld implements SimulateVirtualWorldInterface{
     @Override
     public String getFrontReferenceId(Facility facility) { return null; }
 
+    public int getCurrentConsumption(){ return currentConsumption; }
+
+    public int getCurrentProduction(){ return currentProduction; }
+
+//    public String getTime(){ return simulateTime.getHour() + ":00"; }
+
+    public String getTime(){ return simulateTime.getTimeNow(); }
+
+    public ArrayList<ArrayList<Integer>> getHeightList(){
+        return heightList;
+    }
+
+    public int[] getFanChart(){
+        return fanChart;
+    }
+
+    public void generateHeightList(FacilityData facilityData, int consumption){
+        ArrayList<Integer> heightData = new ArrayList<>();
+        heightData = new ArrayList<>();
+        int[] lo = simulateMap.getFacilityLocation(facilityData.getFacility());
+        heightData.add((int)(((lo[0]-13)/50)+1));
+        heightData.add(9-(lo[1]+10) /50);
+        heightData.add(consumption);
+        heightList.add(heightData);
+    }
+
+    public void generateFanChart(FacilityData facilityData, int consumption){
+        if (facilityData.getFacilityName().equals(facilityTypeName[0])){
+            fanChart[0] += consumption;
+        }
+        else if (facilityData.getFacilityName().equals(facilityTypeName[1])){
+            fanChart[1] += consumption;
+        }
+        else if (facilityData.getFacilityName().equals(facilityTypeName[2])){
+            fanChart[2] += consumption;
+        }
+        else if (facilityData.getFacilityName().equals(facilityTypeName[4])){
+            fanChart[4] += consumption;
+        }
+    }
+
+    private void update(){
+        heightList.clear();
+        rate = 1;
+        //半夜生产量减少30%
+        if(simulateTime.getHour()>=0 && simulateTime.getHour()<=7){
+            rate = rate* 0.7;
+        }
+        //夏季增加30%
+        if (simulateTime.getMonth() >= 6 && simulateTime.getMonth() <= 8) {
+            rate = rate*1.3;
+        }
+        //冬季增加40%
+        if ((simulateTime.getMonth()>=1 && simulateTime.getMonth()<=2) || simulateTime.getMonth()==12) {
+            rate = rate*1.4;
+        }
+        fanChart = new int[5];
+        for(int i = 0; i<5;i++){
+            fanChart[i] = 0;
+        }
+        currentConsumption = 0;
+        for (int i = 0; i<electricityUnitList.size(); i++){
+            int consumption = (int) (electricityUnitList.get(i).getConsumption() * rate);
+            currentConsumption += consumption;
+            generateHeightList(electricityUnitList.get(i),consumption);
+            generateFanChart(electricityUnitList.get(i),consumption);
+        }
+        totalConsumption += currentConsumption;
+        currentProduction = currentConsumption + getTotalLose();
+        fanChart[3] = currentProduction;
+        totalProduction += currentProduction;
+        System.out.println("currentConsumption " + currentConsumption);
+        System.out.println("totalConsumption " + totalConsumption);
+        System.out.println("totalProduction " + totalProduction);
+    }
+
     /**
      * World simulation.
      */
     public void worldSimulation() {
         System.out.println("World simulation open!");
         int timeNow = 0;
+
+        boolean zero = true;
         while(flag){
-            double rate = 1;
-            //半夜生产量减少30%
-            if(simulateTime.getHour()>=0 && simulateTime.getHour()<=7){
-                rate = rate* 0.7;
-            }
-            //夏季增加30%
-            if (simulateTime.getMonth() >= 6 && simulateTime.getMonth() <= 8) {
-                rate = rate*1.3;
-            }
-            //冬季增加40%
-            if ((simulateTime.getMonth()>=1 && simulateTime.getMonth()<=2) || simulateTime.getMonth()==12) {
-                rate = rate*1.4;
-            }
             if(simulateTime.getHour() - timeNow >= 1){
+                update();
                 timeNow = simulateTime.getHour();
-                currentConsumption = 0;
-                for (int i = 0; i<electricityUnitList.size(); i++){
-                    currentConsumption += electricityUnitList.get(i).getConsumption();
+                if (timeNow == 23){
+                    zero = true;
                 }
-                totalConsumption += currentConsumption;
-                totalProduction = (int) ((currentConsumption + getTotalLose()) * rate);
-                System.out.println("currentConsumption " + currentConsumption);
-                System.out.println("totalProduction " + totalProduction);
+            }
+            if(zero && simulateTime.getHour() == 0){
+                update();
+                zero = false;
+                timeNow = simulateTime.getHour();
             }
             try {
                 Thread.sleep(1);
@@ -193,5 +272,13 @@ public class SimulateVirtualWorld implements SimulateVirtualWorldInterface{
 
     public int[] prim(){
         return simulateMap.prim(0);
+    }
+
+    public void restWorld(){
+        simulateTime = new SimulateTime();
+        simulateMap.resetMap();
+        powerStationList.clear();
+        locationList.clear();
+        electricityUnitList.clear();
     }
 }

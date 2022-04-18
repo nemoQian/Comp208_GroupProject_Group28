@@ -1,4 +1,7 @@
 package com.group28.controller;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.group28.service.Interation;
 import com.group28.service.UserServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.Map;
 import com.group28.controller.Position;
+import com.group28.controller.echart_1;
 import com.group28.controller.line;
 @Controller
 @RestController
@@ -17,11 +21,12 @@ public class Ajaxcontroller {
 
     private UserServiceImpl userService;
     ArrayList <Position> positionArrayList= new ArrayList();
-    ArrayList <line> lineArrayList= new ArrayList();
+
+    private static Interation interation = new Interation();
 
     @PostMapping("/login")
     public  String getluser(@RequestParam(value = "Username",required = false) String username,
-                           @RequestParam(value = "password",required = false) String password){
+                            @RequestParam(value = "password",required = false) String password){
         userService = new UserServiceImpl();
         String statCode = userService.login(username, password);
         System.out.println("username = "  + username);
@@ -35,7 +40,7 @@ public class Ajaxcontroller {
     @RequestMapping("/register")
     public String getruser(@RequestParam(value = "Username",required = false) String username,
                            @RequestParam(value = "password",required = false) String password,
-                            @RequestParam(value = "email",required = false) String email){
+                           @RequestParam(value = "email",required = false) String email){
         userService = new UserServiceImpl();
         String statCode = userService.Register(username, password,email);
         System.out.println("username = "  + username);
@@ -62,8 +67,8 @@ public class Ajaxcontroller {
 
     @RequestMapping("/reset")
     public void reset(){
-
-            positionArrayList.clear();
+        interation.worldSimulationReset();
+        positionArrayList.clear();
 
         System.out.println("reset");
     }
@@ -77,7 +82,18 @@ public class Ajaxcontroller {
 
     @RequestMapping("/done")
     public int[] drawline(){
-         int array[] =new int []{0,0,100,200,100,200,400,150};
+        for(int i = 0; i < positionArrayList.size(); i++){
+            System.out.println(interation.addNewFacility(positionArrayList.get(i).type,
+                    positionArrayList.get(i).name,
+                    positionArrayList.get(i).x,
+                    positionArrayList.get(i).y,
+                    positionArrayList.get(i).consumption));
+        }
+        int array[] = interation.prim();
+        for (int i = 0; i<array.length; i++){
+            System.out.print(array[i] + " ");
+        }
+        System.out.println(interation.worldSimulationOpen());
         return array;
     }
 
@@ -87,6 +103,44 @@ public class Ajaxcontroller {
             System.out.print(" "+i+" ");
             P.printp(pa.get(i));
         }
+    }
+
+/*    @RequestMapping("/test")
+    public String echarts() throws JsonProcessingException {
+        echart_1  a = new echart_1("asdasd",1);
+        ObjectMapper c =new ObjectMapper();
+        String res = c.writeValueAsString(a);
+        return res; //返回一个json对象
+    }*/
+
+    @RequestMapping("/test")
+    public echart_1 chart_2(){
+        echart_1 a = new echart_1();
+        a.part = "Total Consumption";
+        a.kw = interation.getTotalConsumption();
+        a.part2 = "Total Production";
+        a.kw2 = interation.getTotalProduction();
+        return a; //返回一个json对象
+    }
+
+    @RequestMapping("/test3")
+    public ArrayList<ArrayList<Integer>> chart_3(){
+        return interation.getHeightList(); //返回一个json对象
+    }
+
+    @RequestMapping("/test4")
+    public int[] chart_4(){
+        //代表功率：["Community","Hospital","School","Station","Shop"]
+        return interation.getFanChart();
+    }
+
+    @RequestMapping("/test5")
+    public ArrayList<Object> chart_5(){
+        ArrayList<Object> aa = new ArrayList<>();
+        aa.add(interation.getTime());
+        aa.add(interation.getCurrentProduction());
+        aa.add(interation.getCurrentConsumption());
+        return aa; //返回一个json对象
     }
 
 }
