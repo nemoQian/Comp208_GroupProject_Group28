@@ -61,6 +61,9 @@ public class Ajaxcontroller {
         Position position = new Position(type,name,x,y,consumption);
         if(positionArrayList.size() < 1){
             positionArrayList.add(position);
+            System.out.println("add");
+            printarray(positionArrayList);
+            return 1;
         }
         else {
             for(Position p : positionArrayList){
