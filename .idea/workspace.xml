@@ -9,16 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="new">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="guest login">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/controller/Ajaxcontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/controller/Ajaxcontroller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/controller/Ajaxcontroller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/controller/Ajaxcontroller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/WEB-INF/classes/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/WEB-INF/classes/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/WEB-INF/jsp/pages/index_login/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/WEB-INF/jsp/pages/index_login/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/menu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group28/controller/Ajaxcontroller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group28/controller/Ajaxcontroller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/db.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/chart_js/best.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/web/chart_js/chart_1.js" beforeDir="false" />
@@ -269,7 +263,7 @@
       <workItem from="1650129874321" duration="2821000" />
       <workItem from="1650289408253" duration="1955000" />
       <workItem from="1650291433408" duration="3936000" />
-      <workItem from="1650308948471" duration="3659000" />
+      <workItem from="1650308948471" duration="4100000" />
     </task>
     <task id="LOCAL-00001" summary="interlayer">
       <created>1648379637848</created>
@@ -460,7 +454,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650306632951</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="guest login">
+      <created>1650314227735</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1650314227735</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -499,6 +500,7 @@
     <MESSAGE value="获取station的production的方法" />
     <MESSAGE value="整合" />
     <MESSAGE value="new" />
-    <option name="LAST_COMMIT_MESSAGE" value="new" />
+    <MESSAGE value="guest login" />
+    <option name="LAST_COMMIT_MESSAGE" value="guest login" />
   </component>
 </project>

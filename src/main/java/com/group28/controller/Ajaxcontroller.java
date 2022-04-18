@@ -39,7 +39,7 @@ public class Ajaxcontroller {
         return statCode;
     }
     @RequestMapping("/guestlogin")
-    public void ifguest(@RequestParam(value = "ifguest",required = false) int ifguest){
+    public void ifguest(@RequestParam(value = "ifguest",required = false) String ifguest){
         System.out.println(ifguest);
     }
 

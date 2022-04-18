@@ -82,7 +82,7 @@
             active: 'login',
             registerForm: {email: '', Username: '', Password: '', repeat: '',},
             loginForm: {Username: '', Password: '', rememberme: ''},
-            ifguest:0
+            ifguest:"notguest"
         },
         methods: {
             go: function (type) {
@@ -118,7 +118,7 @@
             },
             guestlogin:function (){
                 window.location.href = "toMenu"
-                this.ifguest=1;
+                this.ifguest="guest login";
                 let t = window.Qs.stringify(
                     {
                        ifguest:this.ifguest
