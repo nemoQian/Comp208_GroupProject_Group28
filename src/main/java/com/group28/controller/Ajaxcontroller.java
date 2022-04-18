@@ -74,6 +74,7 @@ public class Ajaxcontroller {
                 }
             }
         }
+        positionArrayList.add(position);
         System.out.println("add");
         printarray(positionArrayList);
         return 1;
