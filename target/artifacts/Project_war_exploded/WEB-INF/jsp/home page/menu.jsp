@@ -46,10 +46,7 @@
 
 	<div class="box2_header">Map</div>
 	<div class="box2">
-
 		<canvas width="829px" height="515px" id="myCanvas"></canvas>
-
-
 	</div>
 
 
@@ -66,7 +63,7 @@
 			<div class="box5_header">Add and modify facilities </div>
 			<div class="select">
 				<div class="raselect">
-					<img src="picture/house.png" class="house" width="50px"  v-bind:title="messagehouse"><br><br>
+					<img src="picture/house1.png" class="house" width="50px" height="50px" v-bind:title="messagehouse"><br><br>
 					<input type="radio" name="type" id="house" value="Community" v-model="stype"> Community
 				</div>
 
@@ -76,12 +73,12 @@
 				</div>
 
 				<div class="schoolselect">
-					<img src="picture/school.png" class="school" width="60px"  v-bind:title="messageschool"><br><br>
+					<img src="picture/school1.png" class="school" width="60px"  v-bind:title="messageschool"><br><br>
 					<input type="radio" name="type" id="school" value="School"  v-model="stype"> School
 				</div>
 
 				<div class="powerselect">
-					<img src="picture/power%20station.png" class="power" width="60px"  v-bind:title="messagepower"><br><br>
+					<img src="picture/power station.png" class="power" width="65px"  v-bind:title="messagepower"><br><br>
 					<input type="radio"  name="type" id="power" value="Power station" v-model="stype"> Power station
 				</div>
 
@@ -93,33 +90,19 @@
 
 			</div>
 			<div class='operation' >
-				<!--style="border-left:1px solid #d3d3d3;"-->
 				<div class="input"><label >Name: &nbsp</label><input class="inputname" v-model='name' /></div>
-
 				<div class="input"><label >X-coordinate: &nbsp</label><input class="inputx" v-model='x' type="text"   /></div>
-
 				<div class="input"><label >Y-coordinate: &nbsp</label><input class="inputy" v-model='y' type="text"  /></div>
-
-				Power level:
-				<select class="consumption" v-model="consumption" >
-
-
-
-					<option>low-level</option>
-
-					<option>medium-level</option>
-
-					<option>high-level</option>
-
-				</select>
-
+				Power level:<select class="consumption" v-model="consumption" >
+				<option>low-level</option>
+				<option>medium-level</option>
+				<option>high-level</option>
+			</select>
 				<button class="add" type="submit" @click="addsubmit"> add </button>
-				<button class="reset" type="submit" @click="clearCanvas"> reset </button>
+				<button class="reset" type="submit" @click="reset"> reset </button>
 				<button class="done" type="submit"  @click="done"  > done </button>
-				<button class="rollback" type="submit"  @click="rollback"> rollback </button>
-
+				<button class="rollback" type="submit" @click="rollback"> rollback </button>
 			</div>
-
 		</div>
 	</div>
 
@@ -127,7 +110,6 @@
 	<div class="box6">
 		<div class="box6_header">Energymonitor</div>
 		<div id="chart_5" class="test3" style="width: 1320px;height:350px;"></div>
-
 	</div>
 
 </div>
@@ -137,6 +119,14 @@
 <script src="https://cdn.bootcdn.net/ajax/libs/qs/6.9.4/qs.min.js"></script>
 <script type="text/javascript">
 
+	window.addEventListener("onbeforeunload", function (e) {
+		var confirmationMessage = "You may lose all the data.";
+		e.returnValue = confirmationMessage;
+		return confirmationMessage;
+		reset()
+	});
+
+
 	var canvas=document.getElementById('myCanvas');
 	var ctx=canvas.getContext('2d');
 	var imagedata = ctx.getImageData(0,0,829,515);
@@ -144,72 +134,13 @@
 	array.push(imagedata)
 
 	function draw(fromx,fromy,tox,toy){
-		ctx.lineWidth=0.5;
+		ctx.beginPath()
+		ctx.strokeStyle="blue"
+		ctx.lineWidth=1;
 		ctx.moveTo(fromx,fromy);
 		ctx.lineTo(tox,toy);
 		ctx.stroke();
 	}
-
-	function communityposition(x,y){
-		var img = new Image()
-		img.src = 'picture/house.png'
-		img.onload = function(){
-			ctx.drawImage(this,x, y, 50, 45)
-			imagedata = ctx.getImageData(0,0,829,515)
-			array.push(imagedata)
-		}
-	}
-
-	function houspitalposition(x,y){
-		var img = new Image()
-		img.src = 'picture/hospital.png'
-		img.onload = function(){
-			ctx.drawImage(this,x, y, 50, 50)
-			imagedata = ctx.getImageData(0,0,829,515)
-			array.push(imagedata)
-		}
-
-
-	}
-	function shopposition(x,y){
-		var img = new Image()
-		img.src = 'picture/shopping centre.png'
-		img.onload = function(){
-			ctx.drawImage(this,x, y, 50, 50)
-			imagedata = ctx.getImageData(0,0,829,515)
-			array.push(imagedata)
-		}
-
-
-	}
-
-	function schoolposition(x,y){
-		var img = new Image()
-		img.src = 'picture/school.png'
-		img.onload = function(){
-			ctx.drawImage(this,x, y, 50, 50)
-			imagedata = ctx.getImageData(0,0,829,515)
-			array.push(imagedata)
-		}
-
-
-	}
-
-	function powerposition(x,y){
-		var img = new Image()
-		img.src = 'picture/power station.png'
-		img.onload = function(){
-			ctx.drawImage(this,x, y, 50, 50)
-			imagedata = ctx.getImageData(0,0,829,515)
-			array.push(imagedata)
-		}
-	}
-
-	function isNumber(str){
-		return str%1 === 0;
-	}
-
-
 
 	var vue = new Vue({
 		el: '#app',
@@ -224,25 +155,35 @@
 
 
 		},
+		mounted(){
+			window.reset=this.refresh();
+		},
 		methods: {
-
-
 
 			addword:function(){
 				var len = this.name.length;
 				var con=document.getElementById("myCanvas");
 				var context=con.getContext("2d");
 				context.font = 'italic 16px Calibri';
-				context.fillText(this.name,(Number(this.x*50)*2+50)/2-5*len-40,Number(this.y*50)+52)
+				context.fillText(this.name,(Number(this.x*50)*2+50)/2-4.5*len-36,Number(this.y*50)+52)
 			},
 
-
+			position:function (x,y,src){
+				var img = new Image()
+				img.src = src
+				img.onload = function(){
+					ctx.drawImage(this,x, y, 50, 50)
+					imagedata = ctx.getImageData(0,0,829,515)
+					array.push(imagedata)
+				}
+				this.addword()
+			},
 
 			addsubmit:function(){
 				var type = this.stype;
 				var x = (this.x-1)*50+13;
 				var y = this.y*50-10;
-                var rx = this.x;
+				var rx = this.x;
 				var ry = this.y;
 
 				if(!Number.isInteger(x)){alert("Please input the Integer x.")}
@@ -254,7 +195,7 @@
 				else if(y==""){alert("Please enter the value of y.")}
 				else if (this.consumption==""){alert("Please choose the consumption level.")}
 				else {
-					// draw(38,65,388,415)
+
 					let p = window.Qs.stringify(
 							{
 								type: this.stype,
@@ -264,44 +205,25 @@
 								consumption: this.consumption,
 							}
 					);
-					console.log(p)
-					axios.post('ajax/position', p).catch(function () {
-						alert('Please refresh the website.')
-					});
 
-					if (type == "Community") {
-						communityposition(x, y)
-						this.addword(x, y)
-					} else if (type == "Shopping centre") {
-						shopposition(x, y)
-						this.addword(x, y)
-					} else if (type == "Hospital") {
-						houspitalposition(x, y)
-						this.addword(x, y)
-					} else if (type == "School") {
-						schoolposition(x, y)
-						this.addword(x, y)
-					} else {
-						powerposition(x, y)
-						this.addword(x, y)
+					axios.post('ajax/position', p).then(function (res){
+						console.log(res.data)
+					})
+							.catch(function () {
+								alert('Please refresh the website.')
+							});
+
+					switch (this.stype){
+						case "Community":this.position(x,y,"picture/house1.png");break;
+						case "Shopping centre":this.position(x,y,"picture/shopping centre.png");break;
+						case "Hospital":this.position(x,y,"picture/hospital.png");break;
+						case "School":this.position(x,y,"picture/school1.png");break;
+						case "Power station":this.position(x,y,"picture/power station1.png");break;
 					}
 				}
-
-
-
 			},
 
-
-			clearCanvas:function (){
-				var c=document.getElementById("myCanvas");
-				var cxt=c.getContext("2d");
-				cxt.clearRect(0,0,c.width,c.height);
-				axios.post('ajax/reset').catch(function () {
-					alert('Please refresh the website.')
-				});
-			},
-
-            rollback:function (){
+			rollback:function (){
 				if(array.length==1) {
 					alert("There is no previous operation.")
 				}else{
@@ -314,24 +236,38 @@
 			},
 
 			done:function (){
-
-				axios.post('ajax/done').then(function (res) {
-
+				// ctx.putImageData(array[array.length - 1], 0, 0);
+				axios.post('ajax/done').then(function (res){
 					console.log(res.data)
-					for (let i = 0; i < res.data.length; i+=4) {
-						draw(res.data[i],res.data[i+1],res.data[i+2],res.data[i+3])
-					}
-				}).catch(function () {
+					for (let i = 0; i < res.data.length; i+=4) {draw(res.data[i],res.data[i+1],res.data[i+2],res.data[i+3])}
+				}) .catch(function () {alert('Please refresh the website.')});
+			},
+
+			reset:function() {
+				if(confirm("After reset, you may lose all the previous.")){
+					this.refresh()
+				}
+			},
+
+			refresh:function (){
+				ctx.putImageData(array[0], 0, 0);
+				array.length=0;
+				imagedata = ctx.getImageData(0,0,829,515)
+				array.push(imagedata)
+				axios.post('ajax/reset').catch(function () {
 					alert('Please refresh the website.')
 				});
-
 			}
-		}
-	})
 
+
+
+		}
+
+	})
 
 
 </script>
 
 </html>
+
 

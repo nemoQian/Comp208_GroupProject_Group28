@@ -10,30 +10,60 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="整合">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Tomcat_8_5_57.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/db.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/controller/Ajaxcontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/controller/Ajaxcontroller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/pojo/FacilityData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/pojo/FacilityData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/pojo/NewFacility.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/pojo/addNewFacility.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/pojo/addNewFacilityImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/service/Interation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/service/Interation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/util/SimulateMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/util/SimulateMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTime.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/util/SimulateVirtualWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/util/SimulateVirtualWorld.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/group28/dao/TestElectricityUnitDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/group28/service/InterationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/group28/service/InterationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/menu.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/data.josn" beforeDir="false" afterPath="$PROJECT_DIR$/web/data.josn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/menu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/newtry.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/newtry.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/reset/reset.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/reset/reset.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/try.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/try.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/controller/Ajaxcontroller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/controller/Ajaxcontroller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/WEB-INF/classes/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/WEB-INF/classes/db.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/WEB-INF/classes/spring-mvc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/WEB-INF/jsp/home page/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/WEB-INF/jsp/home page/menu.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/data.josn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/menu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/newtry.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/picture/grid.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/picture/log_background 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/try.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/group28/controller/Ajaxcontroller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group28/controller/Ajaxcontroller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/db.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spring-mvc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/menu.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/chart_js/best.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/chart_js/chart_1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/chart_js/chart_2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/chart_js/chart_2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/chart_js/chart_3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/chart_js/chart_3.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/chart_js/chart_5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/chart_js/chart_5.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/data.josn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/js/echarts.helper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/js/echarts.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/js/httpVueloader.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/js/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/js/jquery-2.2.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/js/vue.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/menu.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/newtry.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/picture/28logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/picture/download.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/picture/exit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/picture/grid.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/picture/hospital.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/picture/house.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/picture/log_background 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/picture/log_background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/picture/power station.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/picture/school.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/picture/shopping centre.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/picture/user.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/reset/reset.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/try.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,18 +93,16 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login/index.jsp" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateMap.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/web/WEB-INF/jsp/home page/menu.jsp" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" root2="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/test/java/com/group28/util/TestSimulateTime.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pom.xml" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTime.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/controller/Position.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateMap.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTimeInterface.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateVirtualWorld.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/pojo/PowerStation.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/controller/Ajaxcontroller.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTimeInterface.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/pojo/PowerStation.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/controller/Position.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/test/java/com/group28/util/TestSimulateTime.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -85,6 +113,13 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectId" id="26vAQOD0ihMV26ruYhun9J6JAnu" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -117,12 +152,13 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/group28/dao" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="E:\QYH'S Private Things\UOL\Y2\COMP208\Comp208_GroupProject_Group28\web\WEB-INF\jsp\home page" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/group28/dao" />
       <recent name="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat 服务器.Tomcat 9.0.58">
+  <component name="RunManager" selected="Tomcat 服务器.Tomcat 8.5.57">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -211,101 +247,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat 9.0.58" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.57" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.8" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080" />
-      <option name="BROWSER_ID" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-      <option name="UPDATING_POLICY" value="restart-server" />
-      <deployment>
-        <artifact name="Project:war exploded">
-          <settings>
-            <option name="CONTEXT_PATH" value="" />
-          </settings>
-        </artifact>
-      </deployment>
-      <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="37c9d242-c451-445f-b9a1-bda5a4c2e90d" />
-      </server-settings>
-      <log_file alias="Tomcat Manager Log" path="%IDEA_RUN:CATALINA_BASE%/logs/manager.*" />
-      <log_file alias="Tomcat Host Manager Log" path="%IDEA_RUN:CATALINA_BASE%/logs/host-manager.*" />
-      <log_file alias="Tomcat Localhost Access Log" path="%IDEA_RUN:CATALINA_BASE%/logs/localhost_access_log.*" />
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="62905" />
-      </RunnerSettings>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <method v="2">
-        <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="Project:war exploded" />
-        </option>
-      </method>
-    </configuration>
     <list>
       <item itemvalue="JUnit.PowerStationDaoTest.GetProductionTest" />
       <item itemvalue="JUnit.TestSqlOfZipCode.testAddZipCode" />
       <item itemvalue="JUnit.TestSqlOfZipCode.testDropZipCode" />
       <item itemvalue="JUnit.primTest.primAlgotest" />
-      <item itemvalue="Tomcat 服务器.Tomcat 9.0.58" />
+      <item itemvalue="Tomcat 服务器.Tomcat 8.5.57" />
       <item itemvalue="应用程序.InterationTest" />
     </list>
     <recent_temporary>

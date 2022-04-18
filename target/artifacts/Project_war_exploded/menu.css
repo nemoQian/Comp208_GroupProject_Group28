@@ -140,13 +140,12 @@ header{
 .box2{
 	width: 829px;
 	height: 515px;
-	background-image: url("picture/grid.png");
+	background-image: url("picture/grid1.png");
 	position: absolute;
 	left: 351px;
 	z-index: 3;
-
 }
-
+/*?*/
 .box2_header{
 	width: 830px;
 	position:  absolute;

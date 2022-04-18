@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 import com.group28.controller.Position;
 import com.group28.controller.echart_1;
@@ -16,6 +17,7 @@ import com.group28.controller.line;
 @Controller
 @RestController
 @RequestMapping("/ajax")
+
 public class Ajaxcontroller {
 
 
@@ -51,18 +53,17 @@ public class Ajaxcontroller {
         return statCode;
     }
     @RequestMapping("/position")
-    public void getposition(@RequestParam(value = "type",required = false) String type,
-                            @RequestParam(value = "name",required = false) String name,
-                            @RequestParam(value = "x",required = false) int x,
-                            @RequestParam(value = "y",required = false) int y,
-                            @RequestParam(value = "consumption",required = false) String consumption){
-
-
+    public int getposition(@RequestParam(value = "type",required = false) String type,
+                           @RequestParam(value = "name",required = false) String name,
+                           @RequestParam(value = "x",required = false) int x,
+                           @RequestParam(value = "y",required = false) int y,
+                           @RequestParam(value = "consumption",required = false) String consumption){
         Position position = new Position(type,name,x,y,consumption);
         positionArrayList.add(position);
         System.out.println("add");
         printarray(positionArrayList);
-
+        int fault=0;
+        return fault;
     }
 
     @RequestMapping("/reset")
@@ -90,11 +91,10 @@ public class Ajaxcontroller {
                     positionArrayList.get(i).consumption));
         }
         int array[] = interation.prim();
-        for (int i = 0; i<array.length; i++){
-            System.out.print(array[i] + " ");
-        }
+        System.out.println(Arrays.toString(array));
         System.out.println(interation.worldSimulationOpen());
         return array;
+//        return new int[]{100,100,232,123,232,123,400,200};
     }
 
     public void printarray(ArrayList<Position> pa){
@@ -105,13 +105,7 @@ public class Ajaxcontroller {
         }
     }
 
-/*    @RequestMapping("/test")
-    public String echarts() throws JsonProcessingException {
-        echart_1  a = new echart_1("asdasd",1);
-        ObjectMapper c =new ObjectMapper();
-        String res = c.writeValueAsString(a);
-        return res; //返回一个json对象
-    }*/
+
 
     @RequestMapping("/test")
     public echart_1 chart_2(){
