@@ -27,7 +27,7 @@ public class Ajaxcontroller {
     private static Interation interation = new Interation();
 
     @PostMapping("/login")
-    public  String getluser(@RequestParam(value = "Username",required = false) String username,
+    public String getluser(@RequestParam(value = "Username",required = false) String username,
                             @RequestParam(value = "password",required = false) String password){
         userService = new UserServiceImpl();
         String statCode = userService.login(username, password);
@@ -37,10 +37,6 @@ public class Ajaxcontroller {
 
 
         return statCode;
-    }
-    @RequestMapping("/guestlogin")
-    public void ifguest(@RequestParam(value = "ifguest",required = false) String ifguest){
-        System.out.println(ifguest);
     }
 
     @RequestMapping("/register")
@@ -63,11 +59,24 @@ public class Ajaxcontroller {
                            @RequestParam(value = "y",required = false) int y,
                            @RequestParam(value = "consumption",required = false) String consumption){
         Position position = new Position(type,name,x,y,consumption);
-        positionArrayList.add(position);
+        if(positionArrayList.size() < 1){
+            positionArrayList.add(position);
+        }
+        else {
+            for(Position p : positionArrayList){
+                if(name.equals(p.name)){
+                    System.out.println("名字重复");
+                    return -1;
+                }
+                if(x == p.x && y == p.y){
+                    System.out.println("位置占用");
+                    return -2;
+                }
+            }
+        }
         System.out.println("add");
         printarray(positionArrayList);
-        int fault=0;
-        return fault;
+        return 1;
     }
 
     @RequestMapping("/reset")
