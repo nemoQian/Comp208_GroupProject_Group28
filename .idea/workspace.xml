@@ -9,29 +9,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="整合">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Tomcat_8_5_57.xml" afterDir="false" />
+    <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="new">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/controller/Ajaxcontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/controller/Ajaxcontroller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/controller/Ajaxcontroller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/WEB-INF/classes/com/group28/controller/Ajaxcontroller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/WEB-INF/classes/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/WEB-INF/classes/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/WEB-INF/classes/spring-mvc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/WEB-INF/jsp/home page/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/WEB-INF/jsp/home page/menu.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/data.josn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/WEB-INF/jsp/pages/index_login/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/WEB-INF/jsp/pages/index_login/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/menu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/newtry.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/picture/grid.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/picture/log_background 2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/try.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/artifacts/Project_war_exploded/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/group28/controller/Ajaxcontroller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group28/controller/Ajaxcontroller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spring-mvc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/menu.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/web/chart_js/best.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/web/chart_js/chart_1.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/web/chart_js/chart_2.js" beforeDir="false" />
@@ -40,30 +28,6 @@
       <change beforePath="$PROJECT_DIR$/web/chart_js/chart_3.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/web/chart_js/chart_5.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/web/chart_js/chart_5.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/data.josn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/echarts.helper.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/echarts.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/httpVueloader.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/jquery-2.2.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/vue.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/menu.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/newtry.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/picture/28logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/picture/download.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/picture/exit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/picture/grid.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/picture/hospital.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/picture/house.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/picture/log_background 2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/picture/log_background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/picture/power station.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/picture/school.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/picture/shopping centre.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/picture/user.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/reset/reset.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/try.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,6 +116,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/group28/dao" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$" />
       <recent name="E:\QYH'S Private Things\UOL\Y2\COMP208\Comp208_GroupProject_Group28\web\WEB-INF\jsp\home page" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/group28/dao" />
@@ -304,6 +269,7 @@
       <workItem from="1650129874321" duration="2821000" />
       <workItem from="1650289408253" duration="1955000" />
       <workItem from="1650291433408" duration="3936000" />
+      <workItem from="1650308948471" duration="3659000" />
     </task>
     <task id="LOCAL-00001" summary="interlayer">
       <created>1648379637848</created>
@@ -487,7 +453,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649669803833</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="new">
+      <created>1650306632951</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1650306632951</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -525,6 +498,7 @@
     <MESSAGE value="修复了addzipcode的方法以及更新了删除zipcode数据的方法" />
     <MESSAGE value="获取station的production的方法" />
     <MESSAGE value="整合" />
-    <option name="LAST_COMMIT_MESSAGE" value="整合" />
+    <MESSAGE value="new" />
+    <option name="LAST_COMMIT_MESSAGE" value="new" />
   </component>
 </project>

@@ -38,6 +38,10 @@ public class Ajaxcontroller {
 
         return statCode;
     }
+    @RequestMapping("/guestlogin")
+    public void ifguest(@RequestParam(value = "ifguest",required = false) int ifguest){
+        System.out.println(ifguest);
+    }
 
     @RequestMapping("/register")
     public String getruser(@RequestParam(value = "Username",required = false) String username,
