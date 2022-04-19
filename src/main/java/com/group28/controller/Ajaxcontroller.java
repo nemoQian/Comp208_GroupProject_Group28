@@ -21,10 +21,9 @@ import com.group28.controller.line;
 public class Ajaxcontroller {
 
 
-    private UserServiceImpl userService;
+    public UserServiceImpl userService;
     ArrayList <Position> positionArrayList= new ArrayList();
-
-    private static Interation interation = new Interation();
+    public static Interation interation = new Interation();
 
     @PostMapping("/login")
     public String getluser(@RequestParam(value = "Username",required = false) String username,
@@ -34,8 +33,6 @@ public class Ajaxcontroller {
         System.out.println("username = "  + username);
         System.out.println("password = "  + password);
         System.out.println(statCode);
-
-
         return statCode;
     }
 
@@ -52,8 +49,12 @@ public class Ajaxcontroller {
 
         return statCode;
     }
+    @RequestMapping("/guest-login")
+    public void guestlogin(@RequestParam(value = "ifguest",required = false) String ifguest){
+        System.out.println(ifguest);
+    }
     @RequestMapping("/position")
-    public int getposition(@RequestParam(value = "type",required = false) String type,
+    public String getposition(@RequestParam(value = "type",required = false) String type,
                            @RequestParam(value = "name",required = false) String name,
                            @RequestParam(value = "x",required = false) int x,
                            @RequestParam(value = "y",required = false) int y,
@@ -63,24 +64,24 @@ public class Ajaxcontroller {
             positionArrayList.add(position);
             System.out.println("add");
             printarray(positionArrayList);
-            return 1;
+            return "insert success";
         }
         else {
             for(Position p : positionArrayList){
                 if(name.equals(p.name)){
-                    System.out.println("名字重复");
-                    return -1;
+                    System.out.println("name repeat");
+                    return "This name has existed";
                 }
                 if(x == p.x && y == p.y){
-                    System.out.println("位置占用");
-                    return -2;
+                    System.out.println("position occupied");
+                    return "This position has been a building.";
                 }
             }
         }
         positionArrayList.add(position);
         System.out.println("add");
         printarray(positionArrayList);
-        return 1;
+        return "insert success";
     }
 
     @RequestMapping("/reset")
@@ -108,10 +109,11 @@ public class Ajaxcontroller {
                     positionArrayList.get(i).consumption));
         }
         int array[] = interation.prim();
-        System.out.println(Arrays.toString(array));
-        System.out.println(interation.worldSimulationOpen());
+//        System.out.println(Arrays.toString(array));
+//        System.out.println(interation.worldSimulationOpen());
+//        return array;
+
         return array;
-//        return new int[]{100,100,232,123,232,123,400,200};
     }
 
     public void printarray(ArrayList<Position> pa){

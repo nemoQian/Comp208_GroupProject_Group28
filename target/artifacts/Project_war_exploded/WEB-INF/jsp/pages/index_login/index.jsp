@@ -116,6 +116,7 @@
                     });}
 
             },
+
             guestlogin:function (){
                 window.location.href = "toMenu"
                 this.ifguest="guest login";
@@ -123,8 +124,9 @@
                     {
                        ifguest:this.ifguest
                     });
-                axios.post('ajax/guestlogin',t)
+                axios.post('ajax/guest-login',t)
             },
+
             registersubmit: function () {
 
                 var rusername = this.registerForm.Username;

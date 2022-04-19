@@ -206,20 +206,34 @@
 							}
 					);
 
-					axios.post('ajax/position', p).then(function (res){
-						console.log(res.data)
-					})
-							.catch(function () {
-								alert('Please refresh the website.')
-							});
+					axios.post('ajax/position', p).then((res)=>{
 
-					switch (this.stype){
-						case "Community":this.position(x,y,"picture/house1.png");break;
-						case "Shopping centre":this.position(x,y,"picture/shopping centre.png");break;
-						case "Hospital":this.position(x,y,"picture/hospital.png");break;
-						case "School":this.position(x,y,"picture/school1.png");break;
-						case "Power station":this.position(x,y,"picture/power station1.png");break;
-					}
+						console.log(res.data)
+						if (res.data == "insert success") {
+							console.log(type)
+							switch (this.stype) {
+								case "Community":
+									this.position(x, y, "picture/house1.png");
+									break;
+								case "Shopping centre":
+									this.position(x, y, "picture/shopping centre.png");
+									break;
+								case "Hospital":
+									this.position(x, y, "picture/hospital.png");
+									break;
+								case "School":
+									this.position(x, y, "picture/school1.png");
+									break;
+								case "Power station":
+									this.position(x, y, "picture/power station1.png");
+									break;
+							}
+						} else {
+							alert(res.data)
+						}
+					}).catch(function () {
+						alert('Please refresh the website.')
+					});
 				}
 			},
 
@@ -237,10 +251,10 @@
 
 			done:function (){
 				// ctx.putImageData(array[array.length - 1], 0, 0);
-				axios.post('ajax/done').then(function (res){
+				axios.get('ajax/done').then(function (res){
 					console.log(res.data)
 					for (let i = 0; i < res.data.length; i+=4) {draw(res.data[i],res.data[i+1],res.data[i+2],res.data[i+3])}
-				}) .catch(function () {alert('Please refresh the website.')});
+				})
 			},
 
 			reset:function() {
