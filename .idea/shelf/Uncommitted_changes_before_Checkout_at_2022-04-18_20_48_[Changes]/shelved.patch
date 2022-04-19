@@ -1,0 +1,1525 @@
+Index: src/main/java/com/group28/util/SimulateTime.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.group28.util;\r\n\r\nimport java.util.ArrayList;\r\n\r\n/**\r\n * The type Simulate time.\r\n *\r\n * @author Yihan Qian\r\n * @version 1.0\r\n */\r\npublic class SimulateTime implements SimulateTimeInterface {\r\n    private static String[][] JANUARY = new String[31][24];\r\n    private static String[][] FEBRUARY = new String[29][24];\r\n    private static String[][] MARCH = new String[31][24];\r\n    private static String[][] APRIL = new String[30][24];\r\n    private static String[][] MAY = new String[31][24];\r\n    private static String[][] JUNE = new String[30][24];\r\n    private static String[][] JULY = new String[31][24];\r\n    private static String[][] AUGUST = new String[31][24];\r\n    private static String[][] SEPTEMBER = new String[30][24];\r\n    private static String[][] OCTOBER = new String[31][24];\r\n    private static String[][] NOVEMBER = new String[30][24];\r\n    private static String[][] DECEMBER = new String[31][24];\r\n\r\n    private static ArrayList<String[][]> MONTH;\r\n    private static final int HOUR = 23;\r\n    private static final int MINUTE = 59;\r\n    private static final int SECOND = 60;\r\n    private static long year = 2022;\r\n\r\n    private static int second = 0;\r\n    private static int minute = 0;\r\n    private static int hour = 0;\r\n    private static int day = 1;\r\n    private static int month = 1;\r\n\r\n    private static boolean flag = true;\r\n    private final int CRITICAL_VALUE = 10;\r\n\r\n    static {\r\n        MONTH = new ArrayList<String[][]>();\r\n        MONTH.add(JANUARY);\r\n        MONTH.add(FEBRUARY);\r\n        MONTH.add(MARCH);\r\n        MONTH.add(APRIL);\r\n        MONTH.add(MAY);\r\n        MONTH.add(JUNE);\r\n        MONTH.add(JULY);\r\n        MONTH.add(AUGUST);\r\n        MONTH.add(SEPTEMBER);\r\n        MONTH.add(OCTOBER);\r\n        MONTH.add(NOVEMBER);\r\n        MONTH.add(DECEMBER);\r\n    }\r\n\r\n    /**\r\n     * Instantiates a new Simulate time.\r\n     */\r\n    public SimulateTime()  {\r\n\r\n    }\r\n\r\n    @Override\r\n    public void simulationOpen() {\r\n        System.out.println(\"Time simulation open!\");\r\n        MONTH.get(month-1)[day-1][hour] = year*1000000 + 10000 + 100 + 0 + \"\";\r\n        System.out.println(MONTH.get(month - 1)[day - 1][hour]);\r\n        while (flag){\r\n            simulateSeconds();\r\n            try {\r\n                Thread.sleep(10);\r\n            } catch (InterruptedException e) {\r\n                e.printStackTrace();\r\n            }\r\n        }\r\n        System.out.println(\"Time simulation stop!\");\r\n    }\r\n\r\n    @Override\r\n    public void simulationStop(){\r\n        flag = false;\r\n    }\r\n\r\n    @Override\r\n    public void simulateSeconds(){\r\n        if(second == SECOND){\r\n            second = 0;\r\n            simulateMinutes();\r\n        }\r\n        else{\r\n            second += 1;\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public void simulateMinutes(){\r\n        if(minute == MINUTE){\r\n            minute = 0;\r\n            simulateHours();\r\n        }\r\n        else{\r\n            minute += 1;\r\n            System.out.println(minute);\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public void simulateHours(){\r\n        if(hour == HOUR){\r\n            hour = 0;\r\n            simulateDays();\r\n        }\r\n        else {\r\n            MONTH.get(month-1)[day-1][hour+1] = year*1000000 + month*10000 + day*100 + (hour+1) + \"\";\r\n            System.out.println(MONTH.get(month - 1)[day - 1][hour]);\r\n            hour += 1;\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public void simulateDays(){\r\n        if(day == MONTH.get(month-1).length){\r\n            day = 1;\r\n            simulateMonths();\r\n        }\r\n        else {\r\n            day += 1;\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public void simulateMonths(){\r\n        if (month == MONTH.size()){\r\n            month = 1;\r\n            year += 1;\r\n        }\r\n        else {\r\n            month += 1;\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public int getHour(){\r\n        return hour;\r\n    }\r\n\r\n    @Override\r\n    public int getDay(){\r\n        return day;\r\n    }\r\n\r\n    @Override\r\n    public int getMonth(){\r\n        return month;\r\n    }\r\n\r\n    @Override\r\n    public long getYear(){\r\n        return year;\r\n    }\r\n\r\n    @Override\r\n    public String getTimeNow(){\r\n        String monthString = \"\";\r\n        String dayString = \"\";\r\n        String hourString = \"\";\r\n        String minuteString = \"\";\r\n        String secondString = \"\";\r\n        String zero = \"0\";\r\n        if (month < CRITICAL_VALUE) {monthString += zero + month;}\r\n        else {monthString += month;}\r\n        if (day < CRITICAL_VALUE) {dayString += zero + day;}\r\n        else {dayString += day;}\r\n        if (hour < CRITICAL_VALUE) {hourString += zero + hour;}\r\n        else {hourString += hour;}\r\n        if (minute < CRITICAL_VALUE) {minuteString += zero + minute;}\r\n        else {minuteString += minute;}\r\n        if (second < CRITICAL_VALUE) {secondString += zero + second;}\r\n        else {secondString += second;}\r\n\r\n        return \"\" + year + \" - \" + monthString + \" - \" + dayString + \" - \" +\r\n                hourString + \" : \" + minuteString + \" : \" + secondString;\r\n    }\r\n\r\n    @Override\r\n    public String getFrontReferenceId(){\r\n        return MONTH.get(month-1)[day-1][hour];\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/group28/util/SimulateTime.java b/src/main/java/com/group28/util/SimulateTime.java
+--- a/src/main/java/com/group28/util/SimulateTime.java	(revision 70cca781d9fa4fb03a17bf6dcd18d728f418e8de)
++++ b/src/main/java/com/group28/util/SimulateTime.java	(date 1649872149456)
+@@ -68,7 +68,7 @@
+         while (flag){
+             simulateSeconds();
+             try {
+-                Thread.sleep(10);
++                Thread.sleep(2);
+             } catch (InterruptedException e) {
+                 e.printStackTrace();
+             }
+Index: src/main/java/com/group28/util/SimulateMap.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.group28.util;\r\n\r\nimport com.group28.pojo.Facility;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.HashMap;\r\nimport java.util.LinkedList;\r\nimport java.util.concurrent.ConcurrentHashMap;\r\n\r\n/**\r\n * The type Simulate map.\r\n *\r\n * @Yihan Qian\r\n * @version 1.1\r\n */\r\npublic class SimulateMap implements SimulateMapInterface {\r\n\r\n    private LinkedList<int[]> facilitiesMap;\r\n    private ConcurrentHashMap<Facility, int[]> facilityLocationMap;\r\n    private LinkedList<Facility> facilitiesList;\r\n    private int numOfFacility;\r\n\r\n    private final int ROW = 0;\r\n    private final int COL = 1;\r\n    private final int[] FAIL = new int[]{-1,-1};\r\n\r\n    private int worstDistance = 0;\r\n    private int bestDistance = 0;\r\n\r\n    private int[][] matrix;\r\n    private LinkedList<int[]> connection;\r\n    private ArrayList<Integer> connectionLocation;\r\n    private static final int INF = Integer.MAX_VALUE;\r\n\r\n    /**\r\n     * Instantiates a new Simulate map.\r\n     *\r\n     */\r\n    public SimulateMap(){\r\n\r\n        this.facilitiesMap = new LinkedList<int[]>();\r\n        this.facilityLocationMap = new ConcurrentHashMap<Facility, int[]>();\r\n        this.facilitiesList = new LinkedList<Facility>();\r\n\r\n        System.out.println(\"Map created!\");\r\n\r\n    }\r\n\r\n    @Override\r\n    public int addNewFacility(Facility facility, int[] location) {\r\n        /*\r\n        * -1 means fail\r\n        * 1 means successful\r\n        * */\r\n        if(location[ROW] < 0 || location[COL] < 0) { return -1; }\r\n\r\n        if(!facilityLocationMap.containsValue(location) && !facilityLocationMap.containsKey(facility)){\r\n            facilitiesMap.add(location);\r\n            facilityLocationMap.put(facility,location);\r\n            facilitiesList.add(facility);\r\n        }\r\n        else { return -1; }\r\n\r\n        if(facilitiesList.size() < 1){\r\n\r\n        }\r\n        else {\r\n            for (int i = 0; i<facilitiesList.size(); i++){\r\n                worstDistance += getDistance(facility, facilitiesList.get(i));\r\n            }\r\n        }\r\n\r\n        return 1;\r\n    }\r\n\r\n    @Override\r\n    public int[] getFacilityLocation(Facility facility) {\r\n        if (facilityLocationMap.containsKey(facility)) { return facilityLocationMap.get(facility); }\r\n        else { return FAIL; }\r\n    }\r\n\r\n    @Override\r\n    public int getDistance(Facility facility1, Facility facility2) {\r\n        int[] firstLocation = getFacilityLocation(facility1);\r\n        int[] secondLocation = getFacilityLocation(facility2);\r\n\r\n        if(firstLocation != FAIL && secondLocation != FAIL){\r\n            int distance = Math.abs(firstLocation[ROW] - secondLocation[ROW]) +\r\n                           Math.abs(firstLocation[COL] - secondLocation[COL]);\r\n            return distance;\r\n        }\r\n        else { return -1; }\r\n    }\r\n\r\n    public int getWorstTotalDistance(){\r\n        return worstDistance;\r\n    }\r\n\r\n    public int getBestDistance() { return bestDistance; }\r\n\r\n    private void generateMatrix(){\r\n        numOfFacility = facilitiesList.size();\r\n        matrix = new int[numOfFacility][numOfFacility];\r\n        for(int i = 0; i<numOfFacility; i++){\r\n            for(int j = 0; j<numOfFacility; j++){\r\n                if(i == j){\r\n                    matrix[i][j] = 0;\r\n                }\r\n                else {\r\n                    matrix[i][j] = getDistance(facilitiesList.get(i), facilitiesList.get(j));\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    private int getPosition(Facility facility){\r\n        for(int i = 0; i<numOfFacility; i++){\r\n            if(facilitiesList.get(i) == facility){\r\n                return i;\r\n            }\r\n        }\r\n        return -1;\r\n    }\r\n\r\n    public int[] prim(int start){\r\n        generateMatrix();\r\n        int index = 0;\r\n        numOfFacility = facilitiesList.size();\r\n        Facility[] prims = new Facility[numOfFacility];\r\n        int[] weights = new int[numOfFacility];\r\n\r\n        prims[index++] = facilitiesList.get(start);\r\n\r\n        for(int i = 0; i<numOfFacility; i++){\r\n            weights[i] = matrix[start][i];\r\n        }\r\n        weights[start] = 0;\r\n\r\n        for(int i = 0; i<numOfFacility; i++){\r\n            if(start == i){\r\n                continue;\r\n            }\r\n            int j = 0;\r\n            int k = 0;\r\n            int min = INF;\r\n\r\n            while(j < numOfFacility){\r\n                if(weights[j] != 0 && weights[j] < min){\r\n                    min = weights[j];\r\n                    k = j;\r\n                }\r\n                j++;\r\n            }\r\n\r\n            prims[index++] = facilitiesList.get(k);\r\n            weights[k] = 0;\r\n\r\n            for(j = 0; j < numOfFacility; j++){\r\n                if(weights[j] != 0 && matrix[k][j] < weights[j]){\r\n                    weights[j] = matrix[k][j];\r\n                }\r\n            }\r\n        }\r\n\r\n        connection = new LinkedList<>();\r\n        connectionLocation = new ArrayList<>();\r\n        for(int i = 1; i < index; i++){\r\n            int min = INF;\r\n            int n = getPosition(prims[i]);\r\n\r\n            for(int j = 0; j < i; j++){\r\n                int m = getPosition(prims[j]);\r\n                if(matrix[m][n] < min){\r\n                    min = matrix[m][n];\r\n                    connection.add(new int[]{m,n});\r\n                }\r\n            }\r\n            bestDistance += min;\r\n        }\r\n\r\n        for(int i = 0; i<connection.size(); i++){\r\n            Facility f1 = prims[connection.get(i)[0]];\r\n            Facility f2 = prims[connection.get(i)[1]];\r\n            connectionLocation.add(getFacilityLocation(f1)[0]);\r\n            connectionLocation.add(getFacilityLocation(f1)[1]);\r\n            connectionLocation.add(getFacilityLocation(f2)[0]);\r\n            connectionLocation.add(getFacilityLocation(f2)[1]);\r\n        }\r\n\r\n        int[] locationArray = new int[connectionLocation.size()];\r\n        for(int i = 0; i<connectionLocation.size(); i++){\r\n            locationArray[i] = connectionLocation.get(i);\r\n        }\r\n        return locationArray;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/group28/util/SimulateMap.java b/src/main/java/com/group28/util/SimulateMap.java
+--- a/src/main/java/com/group28/util/SimulateMap.java	(revision 70cca781d9fa4fb03a17bf6dcd18d728f418e8de)
++++ b/src/main/java/com/group28/util/SimulateMap.java	(date 1649706671385)
+@@ -1,10 +1,14 @@
+ package com.group28.util;
+ 
+ import com.group28.pojo.Facility;
++import com.group28.pojo.Graph;
++import com.group28.pojo.Prim;
++import com.group28.pojo.ShortEdge;
+ 
+ import java.util.ArrayList;
+ import java.util.HashMap;
+ import java.util.LinkedList;
++import java.util.Map;
+ import java.util.concurrent.ConcurrentHashMap;
+ 
+ /**
+@@ -46,6 +50,12 @@
+ 
+     }
+ 
++    public void resetMap(){
++        facilitiesMap.clear();
++        facilityLocationMap.clear();
++        facilitiesList.clear();
++    }
++
+     @Override
+     public int addNewFacility(Facility facility, int[] location) {
+         /*
+@@ -164,6 +174,8 @@
+ 
+         connection = new LinkedList<>();
+         connectionLocation = new ArrayList<>();
++        int a = 0;
++        int b = 0;
+         for(int i = 1; i < index; i++){
+             int min = INF;
+             int n = getPosition(prims[i]);
+@@ -172,9 +184,11 @@
+                 int m = getPosition(prims[j]);
+                 if(matrix[m][n] < min){
+                     min = matrix[m][n];
+-                    connection.add(new int[]{m,n});
++                    a = m;
++                    b = n;
+                 }
+             }
++            connection.add(new int[]{a,b});
+             bestDistance += min;
+         }
+ 
+@@ -191,6 +205,8 @@
+         for(int i = 0; i<connectionLocation.size(); i++){
+             locationArray[i] = connectionLocation.get(i);
+         }
++        System.out.println(bestDistance);
+         return locationArray;
+     }
++
+ }
+Index: web/WEB-INF/jsp/home page/menu.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n\r\n\t<meta charset=\"utf-8\">\r\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n\t<title>homepage</title>\r\n\t<link rel=\"shortcut icon\" href=\"picture/28logo.png\">\r\n\t<link rel=\"stylesheet\" href=\"./reset/reset.css\">\r\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"./menu.css\">\r\n\t<script src=\"https://cdn.staticfile.org/vue/2.6.9/vue.js\"></script>\r\n\t<script src=\"https://unpkg.com/http-vue-loader\"></script>\r\n\t<script src=\"js/echarts.min.js\"></script>\r\n\t<script src=\"js/jquery-2.2.1.min.js\"></script>\r\n\t<script src=\"js/echarts.helper.js\"></script>\r\n\t<script src=\"chart_js/chart_1.js\"></script>\r\n\t<script src=\"chart_js/chart_2.js\"></script>\r\n\t<script src=\"chart_js/chart_3.js\"></script>\r\n\t<script src=\"chart_js/chart_5.js\"></script>\r\n\t<script src=\"https://unpkg.com/axios/dist/axios.min.js\"></script>\r\n</head>\r\n<style>\r\n\r\n</style>\r\n<body>\r\n\r\n<header>\r\n\t<img src=\"picture/28logo.png\" width=25px height=25px class=\"logo\">\r\n\t<img src=\"picture/download.png\" width=25px height=25px class=\"download\">\r\n\t<img src=\"picture/user.png\" width=25px height=25px class=\"user\">\r\n\t<img src=\"picture/exit.png\" width=25px height=25px class=\"exit\">\r\n\r\n\t<div class=\"title\">City energy management and Computational Sustainability System</div>\r\n\t<div class=\"user\"></div>\r\n</header>\r\n<div class=\"boxset\">\r\n\t<div class=\"box1\">\r\n\t\t<div class=\"box1_header\">Power scatter diagram of electric facilities</div>\r\n\t\t<div id=\"chart_3\" class=\"test2\" style=\"width: 340px; height: 290px;\"></div>\r\n\r\n\r\n\t</div>\r\n\r\n\r\n\t<div class=\"box2_header\">Map</div>\r\n\t<div class=\"box2\">\r\n\r\n\t\t<canvas width=\"829px\" height=\"515px\" id=\"myCanvas\"></canvas>\r\n\r\n\r\n\t</div>\r\n\r\n\r\n\t<div class=\"box3\">\r\n\t\t<div class=\"box3_header\">Power generation and consumption</div>\r\n\t\t<div id=\"chart_2\" class=\"test\" style=\"width: 100%; height: 190px;\"></div>\r\n\t</div>\r\n\t<div class=\"box4\">\r\n\t\t<div class=\"box4_header\">Facilities number and consumption</div>\r\n\t\t<div id=\"chart_4\" class=\"test1\" style=\"width: 100%;height:270px;\"></div>\r\n\t</div>\r\n\t<div id='app' class=\"container\">\r\n\t\t<div class=\"box5\">\r\n\t\t\t<div class=\"box5_header\">Add and modify facilities </div>\r\n\t\t\t<div class=\"select\">\r\n\t\t\t\t<div class=\"raselect\">\r\n\t\t\t\t\t<img src=\"picture/house.png\" class=\"house\" width=\"50px\"  v-bind:title=\"messagehouse\"><br><br>\r\n\t\t\t\t\t<input type=\"radio\" name=\"type\" id=\"house\" value=\"Community\" v-model=\"stype\"> Community\r\n\t\t\t\t</div>\r\n\r\n\t\t\t\t<div class=\"hosselect\">\r\n\t\t\t\t\t<img src=\"picture/hospital.png\" class=\"hospital\" width=\"50px\"  v-bind:title=\"messagehospital\"><br><br>\r\n\t\t\t\t\t<input type=\"radio\" name=\"type\" id=\"Hospital\"  value=\"Hospital\" v-model=\"stype\"> Hospital\r\n\t\t\t\t</div>\r\n\r\n\t\t\t\t<div class=\"schoolselect\">\r\n\t\t\t\t\t<img src=\"picture/school.png\" class=\"school\" width=\"60px\"  v-bind:title=\"messageschool\"><br><br>\r\n\t\t\t\t\t<input type=\"radio\" name=\"type\" id=\"school\" value=\"School\"  v-model=\"stype\"> School\r\n\t\t\t\t</div>\r\n\r\n\t\t\t\t<div class=\"powerselect\">\r\n\t\t\t\t\t<img src=\"picture/power%20station.png\" class=\"power\" width=\"60px\"  v-bind:title=\"messagepower\"><br><br>\r\n\t\t\t\t\t<input type=\"radio\"  name=\"type\" id=\"power\" value=\" Power station\" v-model=\"stype\"> Power station\r\n\t\t\t\t</div>\r\n\r\n\t\t\t\t<div class=\"shopselect\">\r\n\t\t\t\t\t<img src=\"picture/shopping%20centre.png\" class=\"shop\" width=\"50px\"  v-bind:title=\"messageshop\"><br><br>\r\n\t\t\t\t\t<input type=\"radio\" name=\"type\" id=\"shop\"  value=\"Shopping centre\" v-model=\"stype\"> Shopping <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspcentre\r\n\t\t\t\t</div>\r\n\r\n\r\n\t\t\t</div>\r\n\t\t\t<div class='operation' >\r\n\t\t\t\t<!--style=\"border-left:1px solid #d3d3d3;\"-->\r\n\t\t\t\t<div class=\"input\"><label >Name: &nbsp</label><input class=\"inputname\" v-model='name' /></div>\r\n\r\n\t\t\t\t<div class=\"input\"><label >X-coordinate: &nbsp</label><input class=\"inputx\" v-model='x' type=\"text\"   /></div>\r\n\r\n\t\t\t\t<div class=\"input\"><label >Y-coordinate: &nbsp</label><input class=\"inputy\" v-model='y' type=\"text\"  /></div>\r\n\r\n\t\t\t\tPower level:\r\n\t\t\t\t<select class=\"consumption\" v-model=\"consumption\" >\r\n\r\n\r\n\r\n\t\t\t\t\t<option>low-level</option>\r\n\r\n\t\t\t\t\t<option>medium-level</option>\r\n\r\n\t\t\t\t\t<option>high-level</option>\r\n\r\n\t\t\t\t</select>\r\n\r\n\t\t\t\t<button class=\"add\" type=\"submit\" @click=\"addsubmit\"> add </button>\r\n\t\t\t\t<button class=\"reset\" type=\"submit\" @click=\"clearCanvas\"> reset </button>\r\n\t\t\t\t<button class=\"done\" type=\"submit\"  @click=\"done\"  > done </button>\r\n\t\t\t\t<button class=\"rollback\" type=\"submit\"  @click=\"rollback\"> rollback </button>\r\n\r\n\t\t\t</div>\r\n\r\n\t\t</div>\r\n\t</div>\r\n\r\n\r\n\t<div class=\"box6\">\r\n\t\t<div class=\"box6_header\">Energymonitor</div>\r\n\t\t<div id=\"chart_5\" class=\"test3\" style=\"width: 1320px;height:350px;\"></div>\r\n\r\n\t</div>\r\n\r\n</div>\r\n\r\n</body>\r\n<script src=\"https://unpkg.com/axios/dist/axios.min.js\"></script>\r\n<script src=\"https://cdn.bootcdn.net/ajax/libs/qs/6.9.4/qs.min.js\"></script>\r\n<script type=\"text/javascript\">\r\n\r\n\tvar canvas=document.getElementById('myCanvas');\r\n\tvar ctx=canvas.getContext('2d');\r\n\tvar imagedata = ctx.getImageData(0,0,829,515);\r\n\tarray=[]\r\n\tarray.push(imagedata)\r\n\r\n\tfunction draw(fromx,fromy,tox,toy){\r\n\t\tctx.lineWidth=0.5;\r\n\t\tctx.moveTo(fromx,fromy);\r\n\t\tctx.lineTo(tox,toy);\r\n\t\tctx.stroke();\r\n\t}\r\n\r\n\tfunction communityposition(x,y){\r\n\t\tvar img = new Image()\r\n\t\timg.src = 'picture/house.png'\r\n\t\timg.onload = function(){\r\n\t\t\tctx.drawImage(this,x, y, 50, 45)\r\n\t\t\timagedata = ctx.getImageData(0,0,829,515)\r\n\t\t\tarray.push(imagedata)\r\n\t\t}\r\n\t}\r\n\r\n\tfunction houspitalposition(x,y){\r\n\t\tvar img = new Image()\r\n\t\timg.src = 'picture/hospital.png'\r\n\t\timg.onload = function(){\r\n\t\t\tctx.drawImage(this,x, y, 50, 50)\r\n\t\t\timagedata = ctx.getImageData(0,0,829,515)\r\n\t\t\tarray.push(imagedata)\r\n\t\t}\r\n\r\n\r\n\t}\r\n\tfunction shopposition(x,y){\r\n\t\tvar img = new Image()\r\n\t\timg.src = 'picture/shopping centre.png'\r\n\t\timg.onload = function(){\r\n\t\t\tctx.drawImage(this,x, y, 50, 50)\r\n\t\t\timagedata = ctx.getImageData(0,0,829,515)\r\n\t\t\tarray.push(imagedata)\r\n\t\t}\r\n\r\n\r\n\t}\r\n\r\n\tfunction schoolposition(x,y){\r\n\t\tvar img = new Image()\r\n\t\timg.src = 'picture/school.png'\r\n\t\timg.onload = function(){\r\n\t\t\tctx.drawImage(this,x, y, 50, 50)\r\n\t\t\timagedata = ctx.getImageData(0,0,829,515)\r\n\t\t\tarray.push(imagedata)\r\n\t\t}\r\n\r\n\r\n\t}\r\n\r\n\tfunction powerposition(x,y){\r\n\t\tvar img = new Image()\r\n\t\timg.src = 'picture/power station.png'\r\n\t\timg.onload = function(){\r\n\t\t\tctx.drawImage(this,x, y, 50, 50)\r\n\t\t\timagedata = ctx.getImageData(0,0,829,515)\r\n\t\t\tarray.push(imagedata)\r\n\t\t}\r\n\t}\r\n\r\n\tfunction isNumber(str){\r\n\t\tvar n = Number(str);\r\n\t\tif (!isNaN(n)){\r\n\t\t\treturn true;\r\n\t\t}else{\r\n\t\t\treturn false;\r\n\t\t}\r\n\t}\r\n\r\n\r\n\r\n\tvar vue = new Vue({\r\n\t\tel: '#app',\r\n\t\tdata: {\r\n\t\t\tx:\"\",y:\"\",name:\"\",consumption:\"\",stype:\"\",array:[],imagedata,\r\n\r\n\t\t\tmessagehouse:\"low-level: medium-level: high-level: \",\r\n\t\t\tmessagehospital:\"low-level: medium-level: high-level: \",\r\n\t\t\tmessageschool:\"low-level: medium-level: high-level: \",\r\n\t\t\tmessagepower:\"low-level: medium-level: high-level: \",\r\n\t\t\tmessageshop:\"low-level: medium-level: high-level: \",\r\n\r\n\r\n\t\t},\r\n\t\tmethods: {\r\n\r\n\r\n\r\n\t\t\taddword:function(){\r\n\t\t\t\tvar len = this.name.length;\r\n\t\t\t\tvar con=document.getElementById(\"myCanvas\");\r\n\t\t\t\tvar context=con.getContext(\"2d\");\r\n\t\t\t\tcontext.font = 'italic 16px Calibri';\r\n\t\t\t\tcontext.fillText(this.name,(Number(this.x*50)*2+50)/2-4.5*len,Number(this.y*50)+60)\r\n\t\t\t},\r\n\r\n\r\n\r\n\t\t\taddsubmit:function(){\r\n\t\t\t\tvar type = this.stype;\r\n\t\t\t\tvar x = this.x*50;\r\n\t\t\t\tvar y = this.y*50;\r\n\r\n\r\n\t\t\t\tif(isNumber(x)==false||isNumber(y)==false){alert(\"Please input the number.\")}\r\n\r\n\r\n\r\n\t\t\t\tif(type==\"\"){alert(\"Please choose the type first.\")}\r\n\t\t\t\telse if(x==\"\"){alert(\"Please enter the value of x.\")}\r\n\t\t\t\telse if(y==\"\"){alert(\"Please enter the value of y.\")}\r\n\t\t\t\telse if (this.consumption==\"\"){alert(\"Please choose the consumption level.\")}\r\n\t\t\t\telse{\r\n\t\t\t\t\tlet p = window.Qs.stringify(\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\ttype:this.stype,\r\n\t\t\t\t\t\t\t\tname:this.name,\r\n\t\t\t\t\t\t\t\tx:this.x,\r\n\t\t\t\t\t\t\t\ty:this.y,\r\n\t\t\t\t\t\t\t\tconsumption:this.consumption,\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t);\r\n\t\t\t\t\tconsole.log(p)\r\n\t\t\t\t\taxios.post('ajax/position',p).catch(function () {\r\n\t\t\t\t\t\talert('Please refresh the website.')\r\n\t\t\t\t\t});\r\n\t\t\t\t}\r\n\t\t\t\tif(type==\"Community\"){\r\n\t\t\t\t\tcommunityposition(x,y)\r\n\t\t\t\t\tthis.addword(x,y)\r\n\t\t\t\t}\r\n\t\t\t\telse if(type==\"Shopping centre\"){\r\n\t\t\t\t\tshopposition(x,y)\r\n\t\t\t\t\tthis.addword(x,y)\r\n\t\t\t\t}else if(type==\"Hospital\"){\r\n\t\t\t\t\thouspitalposition(x,y)\r\n\t\t\t\t\tthis.addword(x,y)\r\n\t\t\t\t}else if(type==\"School\"){\r\n\t\t\t\t\tschoolposition(x,y)\r\n\t\t\t\t\tthis.addword(x,y)\r\n\t\t\t\t}else {\r\n\t\t\t\t\tpowerposition(x,y)\r\n\t\t\t\t\tthis.addword(x,y)\r\n\t\t\t\t}\r\n\r\n\r\n\r\n\r\n\t\t\t},\r\n\r\n\r\n\t\t\tclearCanvas:function (){\r\n\t\t\t\tvar c=document.getElementById(\"myCanvas\");\r\n\t\t\t\tvar cxt=c.getContext(\"2d\");\r\n\t\t\t\tcxt.clearRect(0,0,c.width,c.height);\r\n\t\t\t\taxios.post('ajax/reset').catch(function () {\r\n\t\t\t\t\talert('Please refresh the website.')\r\n\t\t\t\t});\r\n\t\t\t},\r\n\r\n            rollback:function (){\r\n\t\t\t\tif(array.length==1) {\r\n\t\t\t\t\talert(\"There is no previous operation.\")\r\n\t\t\t\t}else{\r\n\t\t\t\t\tarray.pop()\r\n\t\t\t\t\tctx.putImageData(array[array.length - 1], 0, 0);\r\n\t\t\t\t\taxios.post('ajax/rollback').catch(function () {\r\n\t\t\t\t\t\talert('Please refresh the website.')\r\n\t\t\t\t\t});\r\n\t\t\t\t}\r\n\t\t\t},\r\n\r\n\t\t\tdone:function (){\r\n\r\n\t\t\t\taxios.post('ajax/done').then(function (res) {\r\n\r\n\t\t\t\t\tconsole.log(res.data)\r\n\t\t\t\t\tfor (let i = 0; i < res.data.length; i+=4) {\r\n\t\t\t\t\t\tdraw(res.data[i],res.data[i+1],res.data[i+2],res.data[i+3])\r\n\t\t\t\t\t}\r\n\t\t\t\t}).catch(function () {\r\n\t\t\t\t\talert('Please refresh the website.')\r\n\t\t\t\t});\r\n\r\n\t\t\t}\r\n\t\t}\r\n\t})\r\n\r\n\r\n\r\n</script>\r\n\r\n</html>\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/web/WEB-INF/jsp/home page/menu.jsp b/web/WEB-INF/jsp/home page/menu.jsp
+--- a/web/WEB-INF/jsp/home page/menu.jsp	(revision 70cca781d9fa4fb03a17bf6dcd18d728f418e8de)
++++ b/web/WEB-INF/jsp/home page/menu.jsp	(date 1649859402247)
+@@ -32,7 +32,7 @@
+ 	<img src="picture/user.png" width=25px height=25px class="user">
+ 	<img src="picture/exit.png" width=25px height=25px class="exit">
+ 
+-	<div class="title">City energy management and Computational Sustainability System</div>
++	<div class="title">city energy management and Computational Sustainability System</div>
+ 	<div class="user"></div>
+ </header>
+ <div class="boxset">
+@@ -55,7 +55,7 @@
+ 
+ 	<div class="box3">
+ 		<div class="box3_header">Power generation and consumption</div>
+-		<div id="chart_2" class="test" style="width: 100%; height: 190px;"></div>
++		<div id="chart_2" class="chart_2" style="width: 100%; height: 190px;"></div>
+ 	</div>
+ 	<div class="box4">
+ 		<div class="box4_header">Facilities number and consumption</div>
+@@ -82,7 +82,7 @@
+ 
+ 				<div class="powerselect">
+ 					<img src="picture/power%20station.png" class="power" width="60px"  v-bind:title="messagepower"><br><br>
+-					<input type="radio"  name="type" id="power" value=" Power station" v-model="stype"> Power station
++					<input type="radio"  name="type" id="power" value="Power station" v-model="stype"> Power station
+ 				</div>
+ 
+ 				<div class="shopselect">
+@@ -206,12 +206,7 @@
+ 	}
+ 
+ 	function isNumber(str){
+-		var n = Number(str);
+-		if (!isNaN(n)){
+-			return true;
+-		}else{
+-			return false;
+-		}
++		return str%1 === 0;
+ 	}
+ 
+ 
+@@ -238,58 +233,59 @@
+ 				var con=document.getElementById("myCanvas");
+ 				var context=con.getContext("2d");
+ 				context.font = 'italic 16px Calibri';
+-				context.fillText(this.name,(Number(this.x*50)*2+50)/2-4.5*len,Number(this.y*50)+60)
++				context.fillText(this.name,(Number(this.x*50)*2+50)/2-5*len-40,Number(this.y*50)+52)
+ 			},
+ 
+ 
+ 
+ 			addsubmit:function(){
+ 				var type = this.stype;
+-				var x = this.x*50;
+-				var y = this.y*50;
+-
+-
+-				if(isNumber(x)==false||isNumber(y)==false){alert("Please input the number.")}
+-
++				var x = (this.x-1)*50+13;
++				var y = this.y*50-10;
++                var rx = this.x;
++				var ry = this.y;
+ 
+-
+-				if(type==""){alert("Please choose the type first.")}
++				if(!Number.isInteger(x)){alert("Please input the Integer x.")}
++				else if(!Number.isInteger(y)){alert("Please input the Integer y.")}
++				else if(rx<1||rx>16){alert("The range of x is from 1 to 16.")}
++				else if(ry<1||ry>9){alert("And the range of y os from 1 to 9.")}
++				else if(type==""){alert("Please choose the type first.")}
+ 				else if(x==""){alert("Please enter the value of x.")}
+ 				else if(y==""){alert("Please enter the value of y.")}
+ 				else if (this.consumption==""){alert("Please choose the consumption level.")}
+-				else{
++				else {
++					// draw(38,65,388,415)
+ 					let p = window.Qs.stringify(
+ 							{
+-								type:this.stype,
+-								name:this.name,
+-								x:this.x,
+-								y:this.y,
+-								consumption:this.consumption,
++								type: this.stype,
++								name: this.name,
++								x: (this.x - 1) * 50 + 13 + 25,
++								y: this.y * 50 - 10 + 25,
++								consumption: this.consumption,
+ 							}
+ 					);
+ 					console.log(p)
+-					axios.post('ajax/position',p).catch(function () {
++					axios.post('ajax/position', p).catch(function () {
+ 						alert('Please refresh the website.')
+ 					});
+-				}
+-				if(type=="Community"){
+-					communityposition(x,y)
+-					this.addword(x,y)
+-				}
+-				else if(type=="Shopping centre"){
+-					shopposition(x,y)
+-					this.addword(x,y)
+-				}else if(type=="Hospital"){
+-					houspitalposition(x,y)
+-					this.addword(x,y)
+-				}else if(type=="School"){
+-					schoolposition(x,y)
+-					this.addword(x,y)
+-				}else {
+-					powerposition(x,y)
+-					this.addword(x,y)
++
++					if (type == "Community") {
++						communityposition(x, y)
++						this.addword(x, y)
++					} else if (type == "Shopping centre") {
++						shopposition(x, y)
++						this.addword(x, y)
++					} else if (type == "Hospital") {
++						houspitalposition(x, y)
++						this.addword(x, y)
++					} else if (type == "School") {
++						schoolposition(x, y)
++						this.addword(x, y)
++					} else {
++						powerposition(x, y)
++						this.addword(x, y)
++					}
+ 				}
+-
+ 
+ 
+ 
+Index: src/test/java/com/group28/service/InterationTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.group28.service;\r\n\r\nimport org.junit.Test;\r\n\r\nimport java.util.Scanner;\r\n\r\npublic class InterationTest {\r\n    Interation interation = new Interation();\r\n    @Test\r\n    public void addNewFacilityTest(){\r\n        System.out.println(interation.addNewFacility(\"PowerStation\",\r\n                \"New powers\", 500, 300, \"FI\"));\r\n\r\n        System.out.println(interation.addNewFacility(\"PowerStation\",\r\n                \"New powers\", 520, 330, \"FI\"));\r\n\r\n        System.out.println(interation.addNewFacility(\"PowerStation\",\r\n                \"New powers\", 620, 330, \"FI\"));\r\n\r\n        System.out.println(interation.addNewFacility(\"PowerStation\",\r\n                \"New powerst\", 620, 330, \"FI\"));\r\n\r\n        System.out.println(interation.addNewFacility(\"Hospital\",\r\n                \"HD\", 234, 544, \"AP1\"));\r\n\r\n        interation.worldSimulationOpen();\r\n    }\r\n\r\n    public static void main(String[] args){\r\n        Interation interation = new Interation();\r\n        System.out.println(interation.addNewFacility(\"PowerStation\",\r\n                \"New powers\", 500, 300, \"FI\")); // 1\r\n\r\n        System.out.println(interation.addNewFacility(\"PowerStation\",\r\n                \"New powers\", 520, 330, \"FI\")); // -1\r\n\r\n        System.out.println(interation.addNewFacility(\"PowerStation\",\r\n                \"New powers\", 620, 330, \"FI\")); // -1\r\n\r\n        System.out.println(interation.addNewFacility(\"PowerStation\",\r\n                \"New powerst\", 620, 330, \"FI\")); // 1\r\n\r\n        System.out.println(interation.addNewFacility(\"Hospital\",\r\n                \"HD\", 234, 544, \"AP1\")); // 1\r\n\r\n        interation.worldSimulationOpen();\r\n        boolean s = true;\r\n        Scanner scanner = new Scanner(System.in);\r\n\r\n        while (s) {\r\n            int a = scanner.nextInt();\r\n            if(a == 1){\r\n                System.out.println(interation.getTotalConsumption());\r\n            } else if (a == 2) {\r\n                System.out.println(interation.getTotalProduction());\r\n            }\r\n            else if(a == 3){\r\n                int[] aaa = interation.prim();\r\n                for (int i = 0; i<aaa.length; i++){\r\n                    System.out.print(aaa[i] + \" \");\r\n                }\r\n            }\r\n            else if(a == 4){\r\n                System.out.println(interation.getLose());\r\n            }\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/com/group28/service/InterationTest.java b/src/test/java/com/group28/service/InterationTest.java
+--- a/src/test/java/com/group28/service/InterationTest.java	(revision 70cca781d9fa4fb03a17bf6dcd18d728f418e8de)
++++ b/src/test/java/com/group28/service/InterationTest.java	(date 1649860028931)
+@@ -9,7 +9,7 @@
+     @Test
+     public void addNewFacilityTest(){
+         System.out.println(interation.addNewFacility("PowerStation",
+-                "New powers", 500, 300, "FI"));
++                "New powers", 500, 300, "PSL"));
+ 
+         System.out.println(interation.addNewFacility("PowerStation",
+                 "New powers", 520, 330, "FI"));
+@@ -18,32 +18,40 @@
+                 "New powers", 620, 330, "FI"));
+ 
+         System.out.println(interation.addNewFacility("PowerStation",
+-                "New powerst", 620, 330, "FI"));
++                "New powerst", 620, 330, "PSM"));
+ 
+         System.out.println(interation.addNewFacility("Hospital",
+-                "HD", 234, 544, "AP1"));
++                "HD", 234, 544, "HOL"));
+ 
+         interation.worldSimulationOpen();
+     }
+ 
+     public static void main(String[] args){
+         Interation interation = new Interation();
+-        System.out.println(interation.addNewFacility("PowerStation",
+-                "New powers", 500, 300, "FI")); // 1
++
++        System.out.println(interation.addNewFacility("Power station",
++                "New powers", 238, 165, "high-level")); // 1
+ 
+-        System.out.println(interation.addNewFacility("PowerStation",
+-                "New powers", 520, 330, "FI")); // -1
++        System.out.println(interation.addNewFacility("Power station",
++                "New powers", 238, 165, "high-level")); // -1
+ 
+-        System.out.println(interation.addNewFacility("PowerStation",
+-                "New powers", 620, 330, "FI")); // -1
++        System.out.println(interation.addNewFacility(" Power station",
++                "New powers", 288, 165, "low-level")); // -1
+ 
+-        System.out.println(interation.addNewFacility("PowerStation",
+-                "New powerst", 620, 330, "FI")); // 1
++        System.out.println(interation.addNewFacility("Power station",
++                "New powerst", 288, 165, "high-level")); // 1
+ 
+-        System.out.println(interation.addNewFacility("Hospital",
+-                "HD", 234, 544, "AP1")); // 1
++        System.out.println(interation.addNewFacility("Community",
++                "HD", 88, 265, "medium-level")); // 1
++
++        System.out.println(interation.addNewFacility("Shopping centre",
++                "HDa", 38, 115, "low-level")); // 1
++
++        System.out.println(interation.addNewFacility("Shopping centre",
++                "HDaa", 138, 115, "low-level")); // 1
+ 
+         interation.worldSimulationOpen();
++        int[] aaa = interation.prim();
+         boolean s = true;
+         Scanner scanner = new Scanner(System.in);
+ 
+@@ -55,7 +63,7 @@
+                 System.out.println(interation.getTotalProduction());
+             }
+             else if(a == 3){
+-                int[] aaa = interation.prim();
++
+                 for (int i = 0; i<aaa.length; i++){
+                     System.out.print(aaa[i] + " ");
+                 }
+Index: src/main/java/com/group28/util/SimulateVirtualWorld.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.group28.util;\r\n\r\nimport com.group28.pojo.Facility;\r\nimport com.group28.pojo.FacilityData;\r\nimport com.group28.pojo.PowerStation;\r\n\r\nimport java.util.LinkedList;\r\nimport java.util.concurrent.ExecutorService;\r\nimport java.util.concurrent.Executors;\r\n\r\n/**\r\n * The type Simulate virtual world.\r\n\r\n * @author Yihan Qian, Lingfang li\r\n * @version 1.1\r\n */\r\npublic class SimulateVirtualWorld implements SimulateVirtualWorldInterface{\r\n\r\n    /**\r\n     * The Simulate time.\r\n     */\r\n    static SimulateTime simulateTime = new SimulateTime();\r\n    /**\r\n     * The Simulate map.\r\n     */\r\n    static SimulateMap simulateMap = new SimulateMap();\r\n\r\n    private int totalProduction;\r\n    private int totalConsumption;\r\n    private int currentConsumption;\r\n    private int totalLose;\r\n    private int maxConsumption;\r\n    private int maxProduction;\r\n\r\n    private LinkedList<FacilityData> powerStationList;\r\n    private LinkedList<FacilityData> electricityUnitList;\r\n    private LinkedList<int[]> locationList;\r\n\r\n    private static boolean flag = true;\r\n\r\n    /**\r\n     * The Fixeed thread pool.\r\n     */\r\n    ExecutorService fixeedThreadPool = Executors.newFixedThreadPool(5);\r\n\r\n    private final int ROW = 0;\r\n    private final int COL = 1;\r\n\r\n    /**\r\n     * Instantiates a new Simulate virtual world.\r\n     */\r\n    public SimulateVirtualWorld() {\r\n\r\n        powerStationList = new LinkedList<FacilityData>();\r\n        electricityUnitList = new LinkedList<FacilityData>();\r\n        locationList = new LinkedList<int[]>();\r\n\r\n        totalProduction = 0;\r\n        totalConsumption = 0;\r\n        totalLose = 0;\r\n\r\n        maxConsumption = 0;\r\n        maxProduction = 0;\r\n\r\n    }\r\n\r\n    @Override\r\n    public void worldSimulateOpen() {\r\n        fixeedThreadPool.execute(() -> {worldSimulation();});\r\n        fixeedThreadPool.execute(() -> {simulateTime.simulationOpen();});\r\n    }\r\n\r\n    @Override\r\n    public void worldSimulateStop() {\r\n        flag = false;\r\n\r\n        simulateTime.simulationStop();\r\n        fixeedThreadPool.shutdown();\r\n        System.out.println(\"World Simulation Stop!\");\r\n    }\r\n\r\n    @Override\r\n    public int addNewFacility(FacilityData facilityData, int[] location) {\r\n        /*\r\n         * -1 means fail\r\n         * 1 means successful\r\n         * */\r\n        int[] findExist = simulateMap.getFacilityLocation(facilityData.getFacility());\r\n        if(findExist[ROW] == -1 && findExist[COL] == -1){\r\n            locationList.add(location);\r\n            simulateMap.addNewFacility(facilityData.getFacility(),location);\r\n            if(facilityData.getFacility() instanceof PowerStation){\r\n                powerStationList.add(facilityData);\r\n                maxProduction += facilityData.getMaximum();\r\n            }\r\n            else {\r\n                electricityUnitList.add(facilityData);\r\n                maxConsumption += facilityData.getMaximum();\r\n            }\r\n            return 1;\r\n        }\r\n        else { return -1; }\r\n    }\r\n\r\n    @Override\r\n    public int getTotalProduction() {\r\n        return totalProduction;\r\n    }\r\n\r\n    @Override\r\n    public int getTotalConsumption() {\r\n        return totalConsumption;\r\n    }\r\n\r\n    @Override\r\n    public int getMaxConsumption(){\r\n        return maxConsumption + getTotalLose();\r\n    }\r\n\r\n    @Override\r\n    public int getFacilityConsumption(Facility facility) {\r\n        return 0;\r\n    }\r\n\r\n    @Override\r\n    public int getTotalLose() {\r\n        return 10 * simulateMap.getBestDistance();\r\n    }\r\n\r\n    @Override\r\n    public int getNumOfFacility() {\r\n        return powerStationList.size() + electricityUnitList.size();\r\n    }\r\n\r\n    @Override\r\n    public int getNumOfPowerStation() {\r\n        return powerStationList.size();\r\n    }\r\n\r\n    @Override\r\n    public int getNumOfElectricityUnit() {\r\n        return electricityUnitList.size();\r\n    }\r\n\r\n    @Override\r\n    public String getFrontReferenceId(Facility facility) { return null; }\r\n\r\n    /**\r\n     * World simulation.\r\n     */\r\n    public void worldSimulation() {\r\n        System.out.println(\"World simulation open!\");\r\n        int timeNow = 0;\r\n        while(flag){\r\n            double rate = 1;\r\n            //半夜生产量减少30%\r\n            if(simulateTime.getHour()>=0 && simulateTime.getHour()<=7){\r\n                rate = rate* 0.7;\r\n            }\r\n            //夏季增加30%\r\n            if (simulateTime.getMonth() >= 6 && simulateTime.getMonth() <= 8) {\r\n                rate = rate*1.3;\r\n            }\r\n            //冬季增加40%\r\n            if ((simulateTime.getMonth()>=1 && simulateTime.getMonth()<=2) || simulateTime.getMonth()==12) {\r\n                rate = rate*1.4;\r\n            }\r\n            if(simulateTime.getHour() - timeNow >= 1){\r\n                timeNow = simulateTime.getHour();\r\n                currentConsumption = 0;\r\n                for (int i = 0; i<electricityUnitList.size(); i++){\r\n                    currentConsumption += electricityUnitList.get(i).getConsumption();\r\n                }\r\n                totalConsumption += currentConsumption;\r\n                totalProduction = (int) ((currentConsumption + getTotalLose()) * rate);\r\n                System.out.println(\"currentConsumption \" + currentConsumption);\r\n                System.out.println(\"totalProduction \" + totalProduction);\r\n            }\r\n            try {\r\n                Thread.sleep(1);\r\n            } catch (InterruptedException e) {\r\n                e.printStackTrace();\r\n            }\r\n        }\r\n    }\r\n\r\n    public boolean judgement(){\r\n        if(maxConsumption + getTotalLose() > maxProduction){\r\n            return false;\r\n        }\r\n        else { return true; }\r\n    }\r\n\r\n    public int[] prim(){\r\n        return simulateMap.prim(0);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/group28/util/SimulateVirtualWorld.java b/src/main/java/com/group28/util/SimulateVirtualWorld.java
+--- a/src/main/java/com/group28/util/SimulateVirtualWorld.java	(revision 70cca781d9fa4fb03a17bf6dcd18d728f418e8de)
++++ b/src/main/java/com/group28/util/SimulateVirtualWorld.java	(date 1649873009228)
+@@ -4,6 +4,7 @@
+ import com.group28.pojo.FacilityData;
+ import com.group28.pojo.PowerStation;
+ 
++import java.util.ArrayList;
+ import java.util.LinkedList;
+ import java.util.concurrent.ExecutorService;
+ import java.util.concurrent.Executors;
+@@ -28,13 +29,20 @@
+     private int totalProduction;
+     private int totalConsumption;
+     private int currentConsumption;
++    private int currentProduction;
+     private int totalLose;
+     private int maxConsumption;
+     private int maxProduction;
++    private double rate;
+ 
+     private LinkedList<FacilityData> powerStationList;
+     private LinkedList<FacilityData> electricityUnitList;
+     private LinkedList<int[]> locationList;
++    private int[] fanChart;
++
++    private ArrayList<ArrayList<Integer>> heightList;
++
++    private static final String[] facilityTypeName = {"Community", "Hospital", "School", "PowerStation", "Shopping centre"};
+ 
+     private static boolean flag = true;
+ 
+@@ -54,6 +62,7 @@
+         powerStationList = new LinkedList<FacilityData>();
+         electricityUnitList = new LinkedList<FacilityData>();
+         locationList = new LinkedList<int[]>();
++        heightList = new ArrayList<>();
+ 
+         totalProduction = 0;
+         totalConsumption = 0;
+@@ -61,6 +70,12 @@
+ 
+         maxConsumption = 0;
+         maxProduction = 0;
++        rate = 1;
++
++        fanChart = new int[5];
++        for(int i = 0; i<5;i++){
++            fanChart[i] = 0;
++        }
+ 
+     }
+ 
+@@ -103,9 +118,7 @@
+     }
+ 
+     @Override
+-    public int getTotalProduction() {
+-        return totalProduction;
+-    }
++    public int getTotalProduction() { return totalProduction; }
+ 
+     @Override
+     public int getTotalConsumption() {
+@@ -124,7 +137,7 @@
+ 
+     @Override
+     public int getTotalLose() {
+-        return 10 * simulateMap.getBestDistance();
++        return (int) (simulateMap.getBestDistance() * 0.5);
+     }
+ 
+     @Override
+@@ -145,37 +158,103 @@
+     @Override
+     public String getFrontReferenceId(Facility facility) { return null; }
+ 
+-    /**
+-     * World simulation.
+-     */
+-    public void worldSimulation() {
+-        System.out.println("World simulation open!");
+-        int timeNow = 0;
+-        while(flag){
+-            double rate = 1;
+-            //半夜生产量减少30%
+-            if(simulateTime.getHour()>=0 && simulateTime.getHour()<=7){
+-                rate = rate* 0.7;
+-            }
+-            //夏季增加30%
+-            if (simulateTime.getMonth() >= 6 && simulateTime.getMonth() <= 8) {
+-                rate = rate*1.3;
+-            }
+-            //冬季增加40%
+-            if ((simulateTime.getMonth()>=1 && simulateTime.getMonth()<=2) || simulateTime.getMonth()==12) {
+-                rate = rate*1.4;
+-            }
+-            if(simulateTime.getHour() - timeNow >= 1){
+-                timeNow = simulateTime.getHour();
+-                currentConsumption = 0;
+-                for (int i = 0; i<electricityUnitList.size(); i++){
+-                    currentConsumption += electricityUnitList.get(i).getConsumption();
+-                }
+-                totalConsumption += currentConsumption;
+-                totalProduction = (int) ((currentConsumption + getTotalLose()) * rate);
+-                System.out.println("currentConsumption " + currentConsumption);
+-                System.out.println("totalProduction " + totalProduction);
++    public int getCurrentConsumption(){ return currentConsumption; }
++
++    public int getCurrentProduction(){ return currentProduction; }
++
++//    public String getTime(){ return simulateTime.getHour() + ":00"; }
++
++    public String getTime(){ return simulateTime.getTimeNow(); }
++
++    public ArrayList<ArrayList<Integer>> getHeightList(){
++        return heightList;
++    }
++
++    public int[] getFanChart(){
++        return fanChart;
++    }
++
++    public void generateHeightList(FacilityData facilityData, int consumption){
++        ArrayList<Integer> heightData = new ArrayList<>();
++        heightData = new ArrayList<>();
++        int[] lo = simulateMap.getFacilityLocation(facilityData.getFacility());
++        heightData.add(lo[0]);
++        heightData.add(lo[1]);
++        heightData.add(consumption);
++        heightList.add(heightData);
++    }
++
++    public void generateFanChart(FacilityData facilityData, int consumption){
++        if (facilityData.getFacilityName().equals(facilityTypeName[0])){
++            fanChart[0] += consumption;
++        }
++        else if (facilityData.getFacilityName().equals(facilityTypeName[1])){
++            fanChart[1] += consumption;
++        }
++        else if (facilityData.getFacilityName().equals(facilityTypeName[2])){
++            fanChart[2] += consumption;
++        }
++        else if (facilityData.getFacilityName().equals(facilityTypeName[4])){
++            fanChart[4] += consumption;
++        }
++    }
++
++    private void update(){
++        heightList.clear();
++        rate = 1;
++        //半夜生产量减少30%
++        if(simulateTime.getHour()>=0 && simulateTime.getHour()<=7){
++            rate = rate* 0.7;
++        }
++        //夏季增加30%
++        if (simulateTime.getMonth() >= 6 && simulateTime.getMonth() <= 8) {
++            rate = rate*1.3;
++        }
++        //冬季增加40%
++        if ((simulateTime.getMonth()>=1 && simulateTime.getMonth()<=2) || simulateTime.getMonth()==12) {
++            rate = rate*1.4;
++        }
++        fanChart = new int[5];
++        for(int i = 0; i<5;i++){
++            fanChart[i] = 0;
++        }
++        currentConsumption = 0;
++        for (int i = 0; i<electricityUnitList.size(); i++){
++            int consumption = (int) (electricityUnitList.get(i).getConsumption() * rate);
++            currentConsumption += consumption;
++            generateHeightList(electricityUnitList.get(i),consumption);
++            generateFanChart(electricityUnitList.get(i),consumption);
++        }
++        totalConsumption += currentConsumption;
++        currentProduction = currentConsumption + getTotalLose();
++        fanChart[3] = currentProduction;
++        totalProduction += currentProduction;
++        System.out.println("currentConsumption " + currentConsumption);
++        System.out.println("totalConsumption " + totalConsumption);
++        System.out.println("totalProduction " + totalProduction);
++    }
++
++    /**
++     * World simulation.
++     */
++    public void worldSimulation() {
++        System.out.println("World simulation open!");
++        int timeNow = 0;
++
++        boolean zero = true;
++        while(flag){
++            if(simulateTime.getHour() - timeNow >= 1){
++                update();
++                timeNow = simulateTime.getHour();
++                if (timeNow == 23){
++                    zero = true;
++                }
+             }
++            if(zero && simulateTime.getHour() == 0){
++                update();
++                zero = false;
++                timeNow = simulateTime.getHour();
++            }
+             try {
+                 Thread.sleep(1);
+             } catch (InterruptedException e) {
+@@ -194,4 +273,12 @@
+     public int[] prim(){
+         return simulateMap.prim(0);
+     }
++
++    public void restWorld(){
++        simulateTime = new SimulateTime();
++        simulateMap.resetMap();
++        powerStationList.clear();
++        locationList.clear();
++        electricityUnitList.clear();
++    }
+ }
+Index: src/main/resources/db.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>jdbc_driver = com.mysql.cj.jdbc.Driver\r\ndb_UserUrl = jdbc:mysql://localhost:3306/User_information?useSSL=false&serverTimezone=GMT\r\ndb_WorldUrl = jdbc:mysql://localhost:3306/User_information?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=GMT\r\ndb_name = root\r\ndb_pwd =..hcjSy.21
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/db.properties b/src/main/resources/db.properties
+--- a/src/main/resources/db.properties	(revision 70cca781d9fa4fb03a17bf6dcd18d728f418e8de)
++++ b/src/main/resources/db.properties	(date 1650311310410)
+@@ -1,5 +1,5 @@
+ jdbc_driver = com.mysql.cj.jdbc.Driver
+ db_UserUrl = jdbc:mysql://localhost:3306/User_information?useSSL=false&serverTimezone=GMT
+-db_WorldUrl = jdbc:mysql://localhost:3306/User_information?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=GMT
++db_WorldUrl = jdbc:mysql://localhost:3306/User_information?useSSL=false&serverTimezone=GMT
+ db_name = root
+-db_pwd =..hcjSy.21
+\ No newline at end of file
++db_pwd = q9I3a2N7
+\ No newline at end of file
+Index: src/main/java/com/group28/controller/Ajaxcontroller.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.group28.controller;\r\nimport com.group28.service.UserServiceImpl;\r\nimport org.springframework.stereotype.Controller;\r\nimport org.springframework.web.bind.annotation.PostMapping;\r\nimport org.springframework.web.bind.annotation.RequestMapping;\r\nimport org.springframework.web.bind.annotation.RequestParam;\r\nimport org.springframework.web.bind.annotation.RestController;\r\nimport java.util.ArrayList;\r\nimport java.util.Map;\r\nimport com.group28.controller.Position;\r\nimport com.group28.controller.line;\r\n@Controller\r\n@RestController\r\n@RequestMapping(\"/ajax\")\r\npublic class Ajaxcontroller {\r\n\r\n\r\n    private UserServiceImpl userService;\r\n    ArrayList <Position> positionArrayList= new ArrayList();\r\n    ArrayList <line> lineArrayList= new ArrayList();\r\n\r\n    @PostMapping(\"/login\")\r\n    public  String getluser(@RequestParam(value = \"Username\",required = false) String username,\r\n                           @RequestParam(value = \"password\",required = false) String password){\r\n        userService = new UserServiceImpl();\r\n        String statCode = userService.login(username, password);\r\n        System.out.println(\"username = \"  + username);\r\n        System.out.println(\"password = \"  + password);\r\n        System.out.println(statCode);\r\n\r\n\r\n        return statCode;\r\n    }\r\n\r\n    @RequestMapping(\"/register\")\r\n    public String getruser(@RequestParam(value = \"Username\",required = false) String username,\r\n                           @RequestParam(value = \"password\",required = false) String password,\r\n                            @RequestParam(value = \"email\",required = false) String email){\r\n        userService = new UserServiceImpl();\r\n        String statCode = userService.Register(username, password,email);\r\n        System.out.println(\"username = \"  + username);\r\n        System.out.println(\"password = \"  + password);\r\n        System.out.println(\"email = \" + email);\r\n        System.out.println(statCode);\r\n\r\n        return statCode;\r\n    }\r\n    @RequestMapping(\"/position\")\r\n    public void getposition(@RequestParam(value = \"type\",required = false) String type,\r\n                            @RequestParam(value = \"name\",required = false) String name,\r\n                            @RequestParam(value = \"x\",required = false) int x,\r\n                            @RequestParam(value = \"y\",required = false) int y,\r\n                            @RequestParam(value = \"consumption\",required = false) String consumption){\r\n\r\n\r\n        Position position = new Position(type,name,x,y,consumption);\r\n        positionArrayList.add(position);\r\n        System.out.println(\"add\");\r\n        printarray(positionArrayList);\r\n\r\n    }\r\n\r\n    @RequestMapping(\"/reset\")\r\n    public void reset(){\r\n\r\n            positionArrayList.clear();\r\n\r\n        System.out.println(\"reset\");\r\n    }\r\n\r\n    @RequestMapping(\"/rollback\")\r\n    public void rollback(){\r\n        positionArrayList.remove(positionArrayList.size()-1);\r\n        System.out.println(\"rollbcak\");\r\n        printarray(positionArrayList);\r\n    }\r\n\r\n    @RequestMapping(\"/done\")\r\n    public int[] drawline(){\r\n         int array[] =new int []{0,0,100,200,100,200,400,150};\r\n        return array;\r\n    }\r\n\r\n    public void printarray(ArrayList<Position> pa){\r\n        Position P =  new Position();\r\n        for (int i = 0; i < pa.size(); i++) {\r\n            System.out.print(\" \"+i+\" \");\r\n            P.printp(pa.get(i));\r\n        }\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/group28/controller/Ajaxcontroller.java b/src/main/java/com/group28/controller/Ajaxcontroller.java
+--- a/src/main/java/com/group28/controller/Ajaxcontroller.java	(revision 70cca781d9fa4fb03a17bf6dcd18d728f418e8de)
++++ b/src/main/java/com/group28/controller/Ajaxcontroller.java	(date 1649869701255)
+@@ -1,4 +1,7 @@
+ package com.group28.controller;
++import com.fasterxml.jackson.core.JsonProcessingException;
++import com.fasterxml.jackson.databind.ObjectMapper;
++import com.group28.service.Interation;
+ import com.group28.service.UserServiceImpl;
+ import org.springframework.stereotype.Controller;
+ import org.springframework.web.bind.annotation.PostMapping;
+@@ -8,6 +11,7 @@
+ import java.util.ArrayList;
+ import java.util.Map;
+ import com.group28.controller.Position;
++import com.group28.controller.echart_1;
+ import com.group28.controller.line;
+ @Controller
+ @RestController
+@@ -17,11 +21,12 @@
+ 
+     private UserServiceImpl userService;
+     ArrayList <Position> positionArrayList= new ArrayList();
+-    ArrayList <line> lineArrayList= new ArrayList();
++
++    private static Interation interation = new Interation();
+ 
+     @PostMapping("/login")
+     public  String getluser(@RequestParam(value = "Username",required = false) String username,
+-                           @RequestParam(value = "password",required = false) String password){
++                            @RequestParam(value = "password",required = false) String password){
+         userService = new UserServiceImpl();
+         String statCode = userService.login(username, password);
+         System.out.println("username = "  + username);
+@@ -35,7 +40,7 @@
+     @RequestMapping("/register")
+     public String getruser(@RequestParam(value = "Username",required = false) String username,
+                            @RequestParam(value = "password",required = false) String password,
+-                            @RequestParam(value = "email",required = false) String email){
++                           @RequestParam(value = "email",required = false) String email){
+         userService = new UserServiceImpl();
+         String statCode = userService.Register(username, password,email);
+         System.out.println("username = "  + username);
+@@ -62,8 +67,8 @@
+ 
+     @RequestMapping("/reset")
+     public void reset(){
+-
+-            positionArrayList.clear();
++        interation.worldSimulationReset();
++        positionArrayList.clear();
+ 
+         System.out.println("reset");
+     }
+@@ -77,7 +82,18 @@
+ 
+     @RequestMapping("/done")
+     public int[] drawline(){
+-         int array[] =new int []{0,0,100,200,100,200,400,150};
++        for(int i = 0; i < positionArrayList.size(); i++){
++            System.out.println(interation.addNewFacility(positionArrayList.get(i).type,
++                    positionArrayList.get(i).name,
++                    positionArrayList.get(i).x,
++                    positionArrayList.get(i).y,
++                    positionArrayList.get(i).consumption));
++        }
++        int array[] = interation.prim();
++        for (int i = 0; i<array.length; i++){
++            System.out.print(array[i] + " ");
++        }
++        System.out.println(interation.worldSimulationOpen());
+         return array;
+     }
+ 
+@@ -89,4 +105,42 @@
+         }
+     }
+ 
++/*    @RequestMapping("/test")
++    public String echarts() throws JsonProcessingException {
++        echart_1  a = new echart_1("asdasd",1);
++        ObjectMapper c =new ObjectMapper();
++        String res = c.writeValueAsString(a);
++        return res; //返回一个json对象
++    }*/
++
++    @RequestMapping("/test")
++    public echart_1 chart_2(){
++        echart_1 a = new echart_1();
++        a.part = "Total Consumption";
++        a.kw = interation.getTotalConsumption();
++        a.part2 = "Total Production";
++        a.kw2 = interation.getTotalProduction();
++        return a; //返回一个json对象
++    }
++
++    @RequestMapping("/test3")
++    public ArrayList<ArrayList<Integer>> chart_3(){
++        return interation.getHeightList(); //返回一个json对象
++    }
++
++    @RequestMapping("/test4")
++    public int[] chart_4(){
++        //代表功率：["Community","Hospital","School","Station","Shop"]
++        return interation.getFanChart();
++    }
++
++    @RequestMapping("/test5")
++    public ArrayList<Object> chart_5(){
++        ArrayList<Object> aa = new ArrayList<>();
++        aa.add(interation.getTime());
++        aa.add(interation.getCurrentProduction());
++        aa.add(interation.getCurrentConsumption());
++        return aa; //返回一个json对象
++    }
++
+ }
+Index: src/main/java/com/group28/service/Interation.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.group28.service;\r\n\r\nimport com.group28.dao.ElectricityUnitDao;\r\nimport com.group28.dao.PowerStationDao;\r\nimport com.group28.pojo.*;\r\nimport com.group28.util.MyBatisUtil;\r\nimport com.group28.util.SimulateVirtualWorld;\r\nimport org.apache.ibatis.session.SqlSession;\r\n\r\nimport java.util.List;\r\n\r\npublic class Interation implements IntegrationInterface{\r\n\r\n    private final int FAIL = -1;\r\n    private final int SUCCESS = 1;\r\n    private final int ROW = 0;\r\n    private final int COL = 1;\r\n\r\n    private int state = 0;\r\n\r\n    private final String[] electricityUnitTypeName = {\"Community\", \"Hospital\", \"ShoppingMall\", \"School\"};\r\n    private final String powerStationTypeName = \"PowerStation\";\r\n\r\n    private ElectricityUnit electricityUnit;\r\n    private PowerStation powerStation;\r\n    private FacilityData facilityData;\r\n\r\n    private int numberOfPowerStation = 0;\r\n    private int numberOfElectricity = 0;\r\n\r\n    private SimulateVirtualWorld virtualWorld;\r\n\r\n    public Interation(){\r\n        resetDB();\r\n        virtualWorld = new SimulateVirtualWorld();\r\n    }\r\n\r\n    @Override\r\n    public int worldSimulationOpen(){\r\n        resetDB();\r\n        virtualWorld = new SimulateVirtualWorld();\r\n        if(virtualWorld.judgement()){\r\n            virtualWorld.worldSimulateOpen();\r\n            return SUCCESS;\r\n        }\r\n        else { return FAIL; }\r\n    }\r\n\r\n    @Override\r\n    public int worldSimulationReset() {\r\n        virtualWorld.worldSimulateStop();\r\n        return SUCCESS;\r\n    }\r\n\r\n    private void resetDB(){\r\n        SqlSession sqlSession = MyBatisUtil.getSqlSession();\r\n        PowerStationDao mapper1 = sqlSession.getMapper(PowerStationDao.class);\r\n        List<String> powerStationList = mapper1.GetStationList();\r\n        for(String id : powerStationList){\r\n            mapper1.DeleteStation(id);\r\n        }\r\n        sqlSession.commit();\r\n\r\n        ElectricityUnitDao mapper2 = sqlSession.getMapper(ElectricityUnitDao.class);\r\n        List<String> electricityUnitList = mapper2.GetUnitIdList();\r\n        for (String id : electricityUnitList) {\r\n            mapper2.DeleteElectricityUnit(id);\r\n        }\r\n        sqlSession.commit();\r\n        sqlSession.close();\r\n    }\r\n\r\n    @Override\r\n    public int addNewFacility(String facilityType, String facilityName, int locationX, int locationY, String facilityLevel) {\r\n        SqlSession sqlSession = MyBatisUtil.getSqlSession();\r\n        int[] location = {locationX, locationY};\r\n\r\n        if (facilityType == powerStationTypeName){\r\n            PowerStationDao mapper = sqlSession.getMapper(PowerStationDao.class);\r\n            if(mapper.findPowerStation(facilityName) == null){\r\n                generatePowerStation(facilityName,facilityLevel,location[ROW],location[COL]);\r\n                facilityData = new FacilityData(powerStation, mapper.findPowerStationType(facilityLevel));\r\n                state =  virtualWorld.addNewFacility(facilityData, location);\r\n                if(state == 1){\r\n                    mapper.AddStation(powerStation);\r\n                    sqlSession.commit();\r\n                    sqlSession.close();\r\n                    return SUCCESS;\r\n                }\r\n                else {\r\n                    sqlSession.close();\r\n                    return FAIL;\r\n                }\r\n            }\r\n            else {\r\n                sqlSession.close();\r\n                return FAIL;\r\n            }\r\n        }\r\n        else if (facilityType == electricityUnitTypeName[0] || facilityType == electricityUnitTypeName[1] ||\r\n                 facilityType == electricityUnitTypeName[2] || facilityType == electricityUnitTypeName[3]){\r\n            ElectricityUnitDao mapper = sqlSession.getMapper(ElectricityUnitDao.class);\r\n            if(mapper.findElectricityUnit(facilityName) == null){\r\n                generateElectricityUnit(facilityName,facilityLevel,location[ROW],location[COL]);\r\n                facilityData = new FacilityData(electricityUnit, mapper.findElectricityUnitType(facilityLevel));\r\n                state =  virtualWorld.addNewFacility(facilityData, location);\r\n                if(state == 1){\r\n                    mapper.AddFacility(electricityUnit);\r\n                    sqlSession.commit();\r\n                    sqlSession.close();\r\n                    return SUCCESS;\r\n                }\r\n                else {\r\n                    sqlSession.close();\r\n                    return FAIL;\r\n                }\r\n            }\r\n            else {\r\n                sqlSession.close();\r\n                return FAIL;\r\n            }\r\n        }\r\n        else { return FAIL; }\r\n    }\r\n\r\n    @Override\r\n    public int getTotalConsumption() {\r\n        return virtualWorld.getTotalConsumption();\r\n    }\r\n\r\n    @Override\r\n    public int getTotalProduction() {\r\n        return virtualWorld.getTotalProduction();\r\n    }\r\n\r\n    @Override\r\n    public int getElectricityUnitConsumption(String electricityUnitName) {\r\n        return 0;\r\n    }\r\n\r\n    @Override\r\n    public int getPowerStationProduction(String powerStationName) {\r\n        return 0;\r\n    }\r\n\r\n    @Override\r\n    public int getTypicalTypeConsumption(String electricityUnitType) {\r\n        return 0;\r\n    }\r\n\r\n    @Override\r\n    public int getRateOfTypicalType(String electricityUnitType) {\r\n        return 0;\r\n    }\r\n\r\n    private String generateZipCode(int x, int y) {\r\n        if(x < 10){\r\n            if( y < 10){\r\n                return \"S0\" + x + \" A0\" + y;\r\n            }\r\n            else { return \"S0\" + x + \" A\" + y; }\r\n        }\r\n        else {\r\n            if (y < 10) {\r\n                return \"S\" + x + \" A0\" + y;\r\n            } else {\r\n                return \"S\" + x + \" A\" + y;\r\n            }\r\n        }\r\n    }\r\n\r\n    private String generateId(String powerStationType, int x, int y){\r\n        if(x < 10){\r\n            if( y < 10){\r\n                return powerStationType + \"S0\" + x + \"A0\" + y;\r\n            }\r\n            else { return powerStationType + \"S0\" + x + \"A\" + y; }\r\n        }\r\n        else {\r\n            if (y < 10) {\r\n                return powerStationType + \"S\" + x + \"A0\" + y;\r\n            } else {\r\n                return powerStationType + \"S\" + x + \"A\" + y;\r\n            }\r\n        }\r\n    }\r\n\r\n    private void generatePowerStation(String powerStationName, String powerStationType, int x, int y){\r\n        powerStation = new PowerStation();\r\n        powerStation.Put_powerStationId(generateId(powerStationType,x,y));\r\n        powerStation.Put_zipCode(generateZipCode(x,y));\r\n        powerStation.Put_powerStationType(powerStationType);\r\n        powerStation.Put_powerStationName(powerStationName);\r\n    }\r\n\r\n    private void generateElectricityUnit(String electricityUnitName, String electricityUnitType, int x, int y){\r\n        electricityUnit = new ElectricityUnit();\r\n        electricityUnit.Put_electricityUnitId(generateId(electricityUnitType,x,y));\r\n        electricityUnit.Put_zipCode(generateZipCode(x,y));\r\n        electricityUnit.Put_electricityUnitType(electricityUnitType);\r\n        electricityUnit.Put_electricityUnitName(electricityUnitName);\r\n    }\r\n\r\n    public int[] prim(){\r\n        return virtualWorld.prim();\r\n    }\r\n\r\n    public int getLose(){\r\n        return virtualWorld.getTotalLose();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/group28/service/Interation.java b/src/main/java/com/group28/service/Interation.java
+--- a/src/main/java/com/group28/service/Interation.java	(revision 70cca781d9fa4fb03a17bf6dcd18d728f418e8de)
++++ b/src/main/java/com/group28/service/Interation.java	(date 1649869701235)
+@@ -7,6 +7,8 @@
+ import com.group28.util.SimulateVirtualWorld;
+ import org.apache.ibatis.session.SqlSession;
+ 
++import java.util.ArrayList;
++import java.util.HashMap;
+ import java.util.List;
+ 
+ public class Interation implements IntegrationInterface{
+@@ -18,8 +20,17 @@
+ 
+     private int state = 0;
+ 
+-    private final String[] electricityUnitTypeName = {"Community", "Hospital", "ShoppingMall", "School"};
+-    private final String powerStationTypeName = "PowerStation";
++    private static final String[] electricityUnitTypeName = {"Community", "Hospital", "Shopping centre", "School"};
++    private final String powerStationTypeName = "Power station";
++
++    private final String[] communityType = {"COL","COM","COH"};
++    private final String[] schoolType = {"SCL","SCM","SCH"};
++    private final String[] hospitalType = {"HOL","HOM","HOH"};
++    private final String[] shoppingCentreType = {"SHL","SHM","SHH"};
++    private final String[] powerStationType = {"PSL","PSM","PSH"};
++
++    private HashMap<String, String[]> typeMapper;
++    private HashMap<String, Integer> levelMapper;
+ 
+     private ElectricityUnit electricityUnit;
+     private PowerStation powerStation;
+@@ -32,13 +43,20 @@
+ 
+     public Interation(){
+         resetDB();
++        typeMapper = new HashMap<>();
++        levelMapper = new HashMap<>();
++        typeMapper.put("Community", communityType);
++        typeMapper.put("Hospital", hospitalType);
++        typeMapper.put("Shopping centre", shoppingCentreType);
++        typeMapper.put("School", schoolType);
++        levelMapper.put("low-level",0);
++        levelMapper.put("medium-level",1);
++        levelMapper.put("high-level",2);
+         virtualWorld = new SimulateVirtualWorld();
+     }
+ 
+     @Override
+     public int worldSimulationOpen(){
+-        resetDB();
+-        virtualWorld = new SimulateVirtualWorld();
+         if(virtualWorld.judgement()){
+             virtualWorld.worldSimulateOpen();
+             return SUCCESS;
+@@ -48,11 +66,13 @@
+ 
+     @Override
+     public int worldSimulationReset() {
++        resetDB();
+         virtualWorld.worldSimulateStop();
++        virtualWorld.restWorld();
+         return SUCCESS;
+     }
+ 
+-    private void resetDB(){
++    public void resetDB(){
+         SqlSession sqlSession = MyBatisUtil.getSqlSession();
+         PowerStationDao mapper1 = sqlSession.getMapper(PowerStationDao.class);
+         List<String> powerStationList = mapper1.GetStationList();
+@@ -75,11 +95,11 @@
+         SqlSession sqlSession = MyBatisUtil.getSqlSession();
+         int[] location = {locationX, locationY};
+ 
+-        if (facilityType == powerStationTypeName){
++        if (facilityType.equals(powerStationTypeName)){
+             PowerStationDao mapper = sqlSession.getMapper(PowerStationDao.class);
+             if(mapper.findPowerStation(facilityName) == null){
+                 generatePowerStation(facilityName,facilityLevel,location[ROW],location[COL]);
+-                facilityData = new FacilityData(powerStation, mapper.findPowerStationType(facilityLevel));
++                facilityData = new FacilityData(powerStation, mapper.findPowerStationType(powerStationType[levelMapper.get(facilityLevel)]),facilityType);
+                 state =  virtualWorld.addNewFacility(facilityData, location);
+                 if(state == 1){
+                     mapper.AddStation(powerStation);
+@@ -97,12 +117,14 @@
+                 return FAIL;
+             }
+         }
+-        else if (facilityType == electricityUnitTypeName[0] || facilityType == electricityUnitTypeName[1] ||
+-                 facilityType == electricityUnitTypeName[2] || facilityType == electricityUnitTypeName[3]){
++        else if (facilityType.equals(electricityUnitTypeName[0]) || facilityType.equals(electricityUnitTypeName[1]) ||
++                 facilityType.equals(electricityUnitTypeName[2]) || facilityType.equals(electricityUnitTypeName[3])){
+             ElectricityUnitDao mapper = sqlSession.getMapper(ElectricityUnitDao.class);
+             if(mapper.findElectricityUnit(facilityName) == null){
+-                generateElectricityUnit(facilityName,facilityLevel,location[ROW],location[COL]);
+-                facilityData = new FacilityData(electricityUnit, mapper.findElectricityUnitType(facilityLevel));
++                generateElectricityUnit(facilityType,facilityName,facilityLevel,location[ROW],location[COL]);
++                facilityData = new FacilityData(electricityUnit,
++                                                mapper.findElectricityUnitType(typeMapper.get(facilityType)[levelMapper.get(facilityLevel)]),
++                                                facilityType);
+                 state =  virtualWorld.addNewFacility(facilityData, location);
+                 if(state == 1){
+                     mapper.AddFacility(electricityUnit);
+@@ -120,6 +142,7 @@
+                 return FAIL;
+             }
+         }
++
+         else { return FAIL; }
+     }
+ 
+@@ -185,19 +208,19 @@
+         }
+     }
+ 
+-    private void generatePowerStation(String powerStationName, String powerStationType, int x, int y){
++    private void generatePowerStation(String powerStationName, String powerStationLevel, int x, int y){
+         powerStation = new PowerStation();
+-        powerStation.Put_powerStationId(generateId(powerStationType,x,y));
+-        powerStation.Put_zipCode(generateZipCode(x,y));
+-        powerStation.Put_powerStationType(powerStationType);
++        powerStation.Put_powerStationId(generateId(powerStationType[levelMapper.get(powerStationLevel)],x,y));
++        powerStation.Put_zipCode(generateZipCode((x-38)/50+1,(y-15)/50));
++        powerStation.Put_powerStationType(powerStationType[levelMapper.get(powerStationLevel)]);
+         powerStation.Put_powerStationName(powerStationName);
+     }
+ 
+-    private void generateElectricityUnit(String electricityUnitName, String electricityUnitType, int x, int y){
++    private void generateElectricityUnit(String typeName, String electricityUnitName, String electricityUnitLevel, int x, int y){
+         electricityUnit = new ElectricityUnit();
+-        electricityUnit.Put_electricityUnitId(generateId(electricityUnitType,x,y));
+-        electricityUnit.Put_zipCode(generateZipCode(x,y));
+-        electricityUnit.Put_electricityUnitType(electricityUnitType);
++        electricityUnit.Put_electricityUnitId(generateId(typeMapper.get(typeName)[levelMapper.get(electricityUnitLevel)],x,y));
++        electricityUnit.Put_zipCode(generateZipCode((x-38)/50+1,(y-15)/50));
++        electricityUnit.Put_electricityUnitType(typeMapper.get(typeName)[levelMapper.get(electricityUnitLevel)]);
+         electricityUnit.Put_electricityUnitName(electricityUnitName);
+     }
+ 
+@@ -208,4 +231,18 @@
+     public int getLose(){
+         return virtualWorld.getTotalLose();
+     }
++
++    public int getCurrentConsumption(){ return virtualWorld.getCurrentConsumption(); }
++
++    public int getCurrentProduction(){ return virtualWorld.getCurrentProduction(); }
++
++    public String getTime(){ return virtualWorld.getTime(); }
++
++    public ArrayList<ArrayList<Integer>> getHeightList(){
++        return virtualWorld.getHeightList();
++    }
++
++    public int[] getFanChart(){
++        return virtualWorld.getFanChart();
++    }
+ }
+Index: src/main/java/com/group28/pojo/FacilityData.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.group28.pojo;\r\n\r\npublic class FacilityData {\r\n\r\n    private final Facility facility;\r\n    private final FacilityType facilityType;\r\n\r\n    public FacilityData(Facility facility, FacilityType facilityType) {\r\n        this.facility = facility;\r\n        this.facilityType = facilityType;\r\n    }\r\n\r\n    public long getMaximum(){ return facilityType.getMAX_NUMERICAL(); }\r\n\r\n    public double getConsumption(){\r\n        return Math.random()*(facilityType.getMAX_NUMERICAL()-facilityType.getMIN_NUMERICAL())+facilityType.getMIN_NUMERICAL();\r\n    }\r\n\r\n    public Facility getFacility(){\r\n        return facility;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/group28/pojo/FacilityData.java b/src/main/java/com/group28/pojo/FacilityData.java
+--- a/src/main/java/com/group28/pojo/FacilityData.java	(revision 70cca781d9fa4fb03a17bf6dcd18d728f418e8de)
++++ b/src/main/java/com/group28/pojo/FacilityData.java	(date 1649869701225)
+@@ -4,10 +4,12 @@
+ 
+     private final Facility facility;
+     private final FacilityType facilityType;
++    private final String facilityName;
+ 
+-    public FacilityData(Facility facility, FacilityType facilityType) {
++    public FacilityData(Facility facility, FacilityType facilityType, String facilityName) {
+         this.facility = facility;
+         this.facilityType = facilityType;
++        this.facilityName = facilityName;
+     }
+ 
+     public long getMaximum(){ return facilityType.getMAX_NUMERICAL(); }
+@@ -19,4 +21,6 @@
+     public Facility getFacility(){
+         return facility;
+     }
++
++    public String getFacilityName() { return facilityName; }
+ }
+Index: out/artifacts/Project_war_exploded/WEB-INF/classes/db.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/out/artifacts/Project_war_exploded/WEB-INF/classes/db.properties b/out/artifacts/Project_war_exploded/WEB-INF/classes/db.properties
+deleted file mode 100644
+--- a/out/artifacts/Project_war_exploded/WEB-INF/classes/db.properties	(revision 70cca781d9fa4fb03a17bf6dcd18d728f418e8de)
++++ /dev/null	(revision 70cca781d9fa4fb03a17bf6dcd18d728f418e8de)
+@@ -1,4 +0,0 @@
+-jdbc_driver = com.mysql.cj.jdbc.Driver
+-db_url = jdbc:mysql://localhost:3306/User_information?useSSL=false&serverTimezone=GMT
+-db_name = root
+-db_pwd = 12345678
+Index: src/main/java/com/group28/pojo/addNewFacility.java
+===================================================================
+diff --git a/src/main/java/com/group28/pojo/addNewFacility.java b/src/main/java/com/group28/pojo/addNewFacility.java
+deleted file mode 100644
+--- a/src/main/java/com/group28/pojo/addNewFacility.java	(revision 70cca781d9fa4fb03a17bf6dcd18d728f418e8de)
++++ /dev/null	(revision 70cca781d9fa4fb03a17bf6dcd18d728f418e8de)
+@@ -1,7 +0,0 @@
+-package com.group28.pojo;
+-
+-public interface addNewFacility {
+-
+-    String addFacility(String facilityId,String type_Id,String facilityName,String x,String y);
+-
+-}
+Index: src/test/java/com/group28/dao/TestElectricityUnitDao.java
+===================================================================
+diff --git a/src/test/java/com/group28/dao/TestElectricityUnitDao.java b/src/test/java/com/group28/dao/TestElectricityUnitDao.java
+deleted file mode 100644
+--- a/src/test/java/com/group28/dao/TestElectricityUnitDao.java	(revision 70cca781d9fa4fb03a17bf6dcd18d728f418e8de)
++++ /dev/null	(revision 70cca781d9fa4fb03a17bf6dcd18d728f418e8de)
+@@ -1,104 +0,0 @@
+-package com.group28.dao;
+-
+-import com.group28.pojo.ElectricityUnit;
+-import com.group28.pojo.ElectricityUnitType;
+-import com.group28.pojo.ZipCode;
+-import com.group28.util.MyBatisUtil;
+-import org.apache.ibatis.session.SqlSession;
+-import org.junit.Test;
+-
+-import java.util.List;
+-
+-
+-public class TestElectricityUnitDao {
+-    @Test
+-    public void searchElectricityUnitTest(){
+-        SqlSession sqlsession = MyBatisUtil.getSqlSession();
+-        ElectricityUnitDao mapper = sqlsession.getMapper(ElectricityUnitDao.class);
+-        List<ElectricityUnit> euList = mapper.getElectricityUnit();
+-        for (ElectricityUnit eu : euList) {
+-            System.out.println(eu);
+-        }
+-        sqlsession.close();
+-    }
+-
+-    @Test
+-    public void AddTypeTest(){
+-        SqlSession sqlsession = MyBatisUtil.getSqlSession();
+-        FacilityDao mapper = sqlsession.getMapper(FacilityDao.class);
+-
+-        ElectricityUnitType NewType = new ElectricityUnitType();
+-
+-        NewType.PutTypeId("PB9");
+-
+-        NewType.PutMAX_CONSUMMPTION(200);
+-
+-        NewType.PutMIN_CONSUMMPTION(100);
+-
+-        mapper.AddType(NewType);
+-
+-        sqlsession.commit();
+-
+-        System.out.println(NewType);
+-    }
+-
+-    @Test
+-    public void AddUnitTest(){
+-        SqlSession sqlsession = MyBatisUtil.getSqlSession();
+-
+-        FacilityDao mapper = sqlsession.getMapper(FacilityDao.class);
+-
+-        String ElectricityUnitID = "PB9S1A01";
+-
+-        String PlaceName = "CYY's House";
+-
+-        ElectricityUnit NewUnit = new ElectricityUnit();
+-
+-        NewUnit.Put_electricityUnitId(ElectricityUnitID);
+-        NewUnit.Put_zipCode("S1 A01");
+-        NewUnit.Put_electricityUnitType("PB9");
+-        NewUnit.Put_electricityUnitName(PlaceName);
+-
+-        mapper.AddFacility(NewUnit);
+-
+-        sqlsession.commit();
+-        sqlsession.close();
+-
+-
+-    }
+-
+-    @Test
+-    public void TestFacilitySearch_AddType(){
+-        FacilitySearch SearchTest1 = new FacilitySearch();
+-
+-        SearchTest1.AddType("PB1", 100, 200);
+-        SearchTest1.AddType("SP1", 1000, 500);
+-    }
+-
+-    @Test
+-    public void TestFacilitySearch_AddUnit(){
+-        FacilitySearch SearchTest_AddUnit = new FacilitySearch();
+-
+-        SearchTest_AddUnit.AddUnit("PB9S1A01", "S9 G86", "SP2", "Qyh's House");
+-        SearchTest_AddUnit.AddUnit("SP1S1A02", "S9 G86", "SP2", "Qyh's House");
+-        SearchTest_AddUnit.AddUnit("SP1S1A02", "S1 A02", "SP2", "Qyh's House");
+-        SearchTest_AddUnit.AddUnit("SP1S1A02", "S1 A02", "SP1", "Qyh's House");
+-    }
+-
+-    @Test
+-    public void TestDeleteUnit(){
+-        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+-        FacilityDao mapper = sqlSession.getMapper(FacilityDao.class);
+-
+-        mapper.DeleteElectricityUnit("SP1S1A02");
+-
+-        sqlSession.commit();
+-
+-        mapper.DeleteElectricityType("SP1");
+-
+-        sqlSession.commit();
+-
+-        sqlSession.close();
+-    }
+-
+-}
+\ No newline at end of file
+Index: src/main/java/com/group28/pojo/addNewFacilityImpl.java
+===================================================================
+diff --git a/src/main/java/com/group28/pojo/addNewFacilityImpl.java b/src/main/java/com/group28/pojo/addNewFacilityImpl.java
+deleted file mode 100644
+--- a/src/main/java/com/group28/pojo/addNewFacilityImpl.java	(revision 70cca781d9fa4fb03a17bf6dcd18d728f418e8de)
++++ /dev/null	(revision 70cca781d9fa4fb03a17bf6dcd18d728f418e8de)
+@@ -1,45 +0,0 @@
+-package com.group28.pojo;
+-
+-import com.group28.dao.FacilityDao;
+-import com.group28.dao.UserDao;
+-import com.group28.util.MyBatisUtil;
+-import org.apache.ibatis.session.SqlSession;
+-/**
+- *
+- * @author Yuyuan Cao
+- * @version 1.1
+- */
+-
+-public class addNewFacilityImpl implements addNewFacility{
+-
+-    public String addFacility(String facilityId,String type_Id,String facilityName,String x,String y){
+-        NewFacility facility = new NewFacility();
+-
+-        //location to zipcode
+-        String zipCode = "S" + x +" " + "A" + y;
+-
+-        ZipCode fac = facility.searchFacility(zipCode);
+-
+-
+-        if(zipCode.equals(fac.getZipCode())){
+-            return "Not addable";
+-
+-        }else{
+-            SqlSession sqlSession = MyBatisUtil.getSqlSession();
+-            FacilityDao mapper = sqlSession.getMapper(FacilityDao.class);
+-            int maxint = mapper.GetMaxConsumption(type_Id);
+-            FacilityDao mapper2 = sqlSession.getMapper(FacilityDao.class);
+-            int minint = mapper2.GetMinConsumption(type_Id);
+-            sqlSession.close();
+-            Long max = new Long(maxint);
+-            Long min = new Long(minint);
+-            FacilityType facilityType = new FacilityType(type_Id,max,min);
+-            NewFacility newOne = new NewFacility();
+-            String block_name = "G5 2828 block";
+-            ZipCode newZip = new ZipCode(zipCode,block_name);
+-            newOne.FacilityAdd(facilityId,newZip,facilityType,facilityName);
+-            return "Right";
+-        }
+-    }
+-
+-}
+Index: src/main/java/com/group28/pojo/NewFacility.java
+===================================================================
+diff --git a/src/main/java/com/group28/pojo/NewFacility.java b/src/main/java/com/group28/pojo/NewFacility.java
+deleted file mode 100644
+--- a/src/main/java/com/group28/pojo/NewFacility.java	(revision 70cca781d9fa4fb03a17bf6dcd18d728f418e8de)
++++ /dev/null	(revision 70cca781d9fa4fb03a17bf6dcd18d728f418e8de)
+@@ -1,61 +0,0 @@
+-package com.group28.pojo;
+-
+-import com.group28.dao.FacilityDao;
+-import com.group28.dao.PowerStationDao;
+-import com.group28.dao.ZipCodeDao;
+-import com.group28.util.MyBatisUtil;
+-import org.apache.ibatis.session.SqlSession;
+-
+-import java.util.List;
+-/**
+- *
+- * @author Yuyuan Cao
+- * @version 1.1
+- */
+-public class NewFacility {
+-    public ZipCode searchFacility(String zipCode){
+-        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+-        ZipCodeDao mapper = sqlSession.getMapper(ZipCodeDao.class);
+-        ZipCode facilityZip = mapper.getZipCode(zipCode);
+-        sqlSession.close();
+-        return facilityZip;
+-    }
+-
+-    public List<ZipCode> GetZipCodeList() {
+-        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+-        ZipCodeDao mapper = sqlSession.getMapper(ZipCodeDao.class);
+-
+-        List<ZipCode> ZipCodeList = mapper.getZipCodeList();
+-
+-        sqlSession.close();
+-        return  ZipCodeList;
+-    }
+-
+-    public void FacilityAdd(String facilityId,ZipCode zipCode, FacilityType facilityType, String facilityName){
+-
+-        if(facilityType.getType_Id().length()==3){
+-            SqlSession sqlSession = MyBatisUtil.getSqlSession();
+-            FacilityDao mapper = sqlSession.getMapper(FacilityDao.class);
+-            ElectricityUnitType electricityUnitType = new ElectricityUnitType(facilityType.getType_Id(), facilityType.getMAX_NUMERICAL(),facilityType.getMIN_NUMERICAL());
+-            ElectricityUnit newEle = new ElectricityUnit(zipCode, electricityUnitType, facilityId,facilityName);
+-            mapper.AddFacility(newEle);
+-            sqlSession.commit();
+-            System.out.println("Data inserted");
+-            System.out.println("New Facility:" + newEle);
+-        }else{
+-            SqlSession sqlSession2 = MyBatisUtil.getSqlSession();
+-            PowerStationDao mapper2 = sqlSession2.getMapper(PowerStationDao.class);
+-
+-            PowerStationType powerStationType = new PowerStationType(facilityType.getType_Id(), facilityType.getMAX_NUMERICAL());
+-            PowerStation newPow = new PowerStation(zipCode, powerStationType, facilityId,facilityName);
+-
+-            mapper2.AddStation(newPow);
+-            sqlSession2.commit();
+-            System.out.println("Data inserted");
+-            System.out.println("New Facility:" + newPow);
+-        }
+-
+-    }
+-
+-
+-}
+Index: web/WEB-INF/jsp/pages/index_login/index.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%--\r\n  Created by IntelliJ IDEA.\r\n  User: finnik\r\n  Date: 2022/3/5\r\n  Time: 21:33\r\n  To change this template use File | Settings | File Templates.\r\n--%>\r\n<%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<%--<%@ taglib prefix=\"c\" uri=\"http://java.sun.com/jsp/jstl/core\" %>--%>\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\r\n\r\n    <title>City energy management and Computational Sustainability System</title>\r\n    <link rel=\"icon\" href=\"picture/28logo.png\">\r\n\r\n\r\n    <%--    <link rel=\"stylesheet\" href=\"<c:url value='style.css'></c:url>\"/>--%>\r\n    <link rel=\"stylesheet\" href=\"style.css\">\r\n    <script src=\"https://cdn.staticfile.org/vue/2.6.9/vue.js\"></script>\r\n    <script src=\"https://unpkg.com/axios/dist/axios.min.js\"></script>\r\n\r\n</head>\r\n\r\n<body>\r\n\r\n<div id='app' class=\"container\">\r\n    <img src=\"picture/log_background.png\">\r\n    <div class=\"panel\">\r\n        <div class=\"content login\">\r\n            <div class=\"switch\">\r\n                <br>\r\n                <span :class='{\"active\": active === \"login\"}' @click='go(\"login\")'>log in</span>\r\n                <span>/</span>\r\n                <span :class='{\"active\": active === \"register\"}' @click='go(\"register\")'>register</span>\r\n            </div>\r\n            <div class='form' id=\"fromLogin\">\r\n                <template v-if='active === \"register\"'>\r\n                    <div class=\"input\"><input :class='{ hasValue: registerForm.email }' v-model='registerForm.email'\r\n                                              type=\"text\" name=\"email\" id='email'/><label for=\"email\">email</label>\r\n                    </div>\r\n                    <div class=\"input\"><input :class='{ hasValue: registerForm.Username }'\r\n                                              v-model='registerForm.Username' type=\"text\" name=\"Username\"\r\n                                              id=\"registerusername\"/><label for=\"username\">username</label></div>\r\n                    <div class=\"input\"><input :class='{ hasValue: registerForm.Password }'\r\n                                              v-model='registerForm.Password' type=\"password\" name=\"Password\"\r\n                                              id=\"registerPassword\"/><label for=\"Password\">password</label></div>\r\n                    <div class=\"input\"><input :class='{ hasValue: registerForm.repeat }' v-model='registerForm.repeat'\r\n                                              type=\"password\" name=\"repeat\" id=\"Passwordrepeat\"/><label\r\n                            for=\"Passwordrepeat\">repeat your password</label></div>\r\n                    <button type=\"submit\" @click='registersubmit'>register</button>\r\n                </template>\r\n\r\n                <template v-if='active === \"login\"'>\r\n                    <div class=\"input\"><input :class='{ hasValue: loginForm.Username }' v-model='loginForm.Username'\r\n                                              type=\"text\" name=\"Username\" id=\"loginusername\"/><label for=\"username\">username</label>\r\n                    </div>\r\n                    <div class=\"input\"><input :class='{ hasValue: loginForm.Password }' v-model='loginForm.Password'\r\n                                              type=\"password\" name=\"Password\" id=\"loginPassword\"/><label for=\"Password\">password</label>\r\n                    </div>\r\n                    <div class=\"rememberme\"><br><input :class='{ hasValue: loginForm.rememberme }'\r\n                                                       v-model='loginForm.rememberme' type=\"checkbox\" name=\"rememberme\"\r\n                                                       checked=\"checked\">&nbsp remember me\r\n                    </div>\r\n                    <span>forget your passport?</span>\r\n                    <button type=\"submit\" @click='loginsubmit'>log in</button>\r\n                </template>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n    <div class=\"title\">\r\n            <span>\r\n                City energy<br>management<br> and<br> Computational<br>Sustainability<br> System\r\n            </span>\r\n    </div>\r\n    <div class=\"titlebelow\">\r\n            <span>\r\n                Pressures on the energy system are not going to relent in<br> the coming decades. The energy sector is responsible for<br> almost three-quarters of the emissions that have already<br> pushed global average temperatures 1.1 °C higher since<br> the pre-industrial age, with visible impacts on weather<br> and climate extremes. The energy sector has to be at <br>the heart of the solution to climate change.\r\n                <br>——World Energy Outlook\r\n            </span>\r\n    </div>\r\n</div>\r\n\r\n\r\n</body>\r\n\r\n<script src=\"https://cdn.bootcdn.net/ajax/libs/qs/6.9.4/qs.min.js\"></script>\r\n\r\n<script>\r\n    var vue = new Vue({\r\n        el: '#app',\r\n        data: {\r\n            active: 'login',\r\n            registerForm: {email: '', Username: '', Password: '', repeat: '',},\r\n            loginForm: {Username: '', Password: '', rememberme: ''}\r\n        },\r\n        methods: {\r\n            go: function (type) {\r\n                this.active = type\r\n            },\r\n\r\n            loginsubmit: function () {\r\n                var lusername = this.loginForm.Username;\r\n                var lpassword = this.loginForm.Password;\r\n                console.log(lusername)\r\n                if (lusername == null || lusername.trim() == \"\") {\r\n                    alert(\"username is empty\")\r\n                }\r\n\r\n                if (lpassword == null || lpassword.trim() == \"\") {\r\n                    alert(\"password is empty\")\r\n                }\r\n\r\n                let s = window.Qs.stringify(\r\n                    {\r\n                        Username: lusername,\r\n                        password: lpassword\r\n                    }\r\n                );\r\n                axios.post('ajax/login', s)\r\n                    .then(function (res) {\r\n\r\n                        console.log(\"o:\" + res.data)\r\n                        if (res.data == 200) {\r\n                            window.alert(\"successs\")\r\n                            window.location.href = \"toMenu\"\r\n                        }\r\n                        else if(res.data==401){\r\n                                alert(\"User does not exist\")\r\n                            }\r\n                        else if(res.data==402){\r\n                                alert(\"Password is wrong.\")\r\n                            }\r\n\r\n                    }).catch(function () {\r\n                    alert('Please refresh the website.')\r\n                });\r\n\r\n            },\r\n\r\n            registersubmit: function () {\r\n\r\n                var rusername = this.registerForm.Username;\r\n                var rpassword = this.registerForm.Password;\r\n                var email = this.registerForm.email;\r\n                var repeat = this.registerForm.repeat;\r\n\r\n                if (rusername == null || rusername.trim() == \"\") {\r\n                    alert(\"username can not be empty\")\r\n                }\r\n\r\n                if (rpassword == null || rpassword.trim() == \"\") {\r\n                    alert(\"password can not be empty\")\r\n                }\r\n                if (email == null || email.trim() == \"\") {\r\n                    alert(\"email can not be empty\")\r\n                }\r\n                if (repeat == null || repeat.trim() == \"\") {\r\n                    alert(\"please repeat your password\")\r\n                }\r\n\r\n                if (rpassword != repeat) {\r\n                    alert(\"Repetitive password is different from the original one\")\r\n                }\r\n                if (repeat.length < 8) {\r\n                    alert(\"The length of the password must exceed 8\")\r\n                }\r\n                let r = window.Qs.stringify(\r\n                    {\r\n                        Username: rusername,\r\n                        password: rpassword,\r\n                        email: email,\r\n                    }\r\n                );\r\n                axios.post('ajax/register', r)\r\n                    .then(function (res) {\r\n\r\n                        console.log(\"o:\" + res.data)\r\n                        if(res.data==402){\r\n                            alert(\"User has been existed,please use a new username\")\r\n                        }\r\n                        else if(res.data==201){\r\n                            alert(\"Register has succeeded,please go back to the login page to login \")\r\n                        }\r\n                    }).catch(function () {\r\n                    alert('Please refresh the website.')\r\n                });\r\n\r\n            },\r\n        },\r\n    })\r\n</script>\r\n\r\n\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/web/WEB-INF/jsp/pages/index_login/index.jsp b/web/WEB-INF/jsp/pages/index_login/index.jsp
+--- a/web/WEB-INF/jsp/pages/index_login/index.jsp	(revision 70cca781d9fa4fb03a17bf6dcd18d728f418e8de)
++++ b/web/WEB-INF/jsp/pages/index_login/index.jsp	(date 1649826163000)
+@@ -115,10 +115,10 @@
+                     alert("username is empty")
+                 }
+ 
+-                if (lpassword == null || lpassword.trim() == "") {
++                else if (lpassword == null || lpassword.trim() == "") {
+                     alert("password is empty")
+                 }
+-
++                else{
+                 let s = window.Qs.stringify(
+                     {
+                         Username: lusername,
+@@ -142,7 +142,7 @@
+ 
+                     }).catch(function () {
+                     alert('Please refresh the website.')
+-                });
++                });}
+ 
+             },
+ 
+@@ -172,7 +172,7 @@
+                 }
+                 if (repeat.length < 8) {
+                     alert("The length of the password must exceed 8")
+-                }
++                }else{
+                 let r = window.Qs.stringify(
+                     {
+                         Username: rusername,
+@@ -192,8 +192,7 @@
+                         }
+                     }).catch(function () {
+                     alert('Please refresh the website.')
+-                });
+-
++                });}
+             },
+         },
+     })
+Index: .idea/inspectionProfiles/Project_Default.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/inspectionProfiles/Project_Default.xml b/.idea/inspectionProfiles/Project_Default.xml
+new file mode 100644
+--- /dev/null	(date 1649797011960)
++++ b/.idea/inspectionProfiles/Project_Default.xml	(date 1649797011960)
+@@ -0,0 +1,36 @@
++<component name="InspectionProjectProfileManager">
++  <profile version="1.0">
++    <option name="myName" value="Project Default" />
++    <inspection_tool class="JavaDoc" enabled="true" level="WARNING" enabled_by_default="true">
++      <option name="TOP_LEVEL_CLASS_OPTIONS">
++        <value>
++          <option name="ACCESS_JAVADOC_REQUIRED_FOR" value="none" />
++          <option name="REQUIRED_TAGS" value="" />
++        </value>
++      </option>
++      <option name="INNER_CLASS_OPTIONS">
++        <value>
++          <option name="ACCESS_JAVADOC_REQUIRED_FOR" value="none" />
++          <option name="REQUIRED_TAGS" value="" />
++        </value>
++      </option>
++      <option name="METHOD_OPTIONS">
++        <value>
++          <option name="ACCESS_JAVADOC_REQUIRED_FOR" value="none" />
++          <option name="REQUIRED_TAGS" value="@return@param@throws or @exception" />
++        </value>
++      </option>
++      <option name="FIELD_OPTIONS">
++        <value>
++          <option name="ACCESS_JAVADOC_REQUIRED_FOR" value="none" />
++          <option name="REQUIRED_TAGS" value="" />
++        </value>
++      </option>
++      <option name="IGNORE_DEPRECATED" value="false" />
++      <option name="IGNORE_JAVADOC_PERIOD" value="true" />
++      <option name="IGNORE_DUPLICATED_THROWS" value="false" />
++      <option name="IGNORE_POINT_TO_ITSELF" value="false" />
++      <option name="myAdditionalJavadocTags" value="date" />
++    </inspection_tool>
++  </profile>
++</component>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ArtifactsWorkspaceSettings\">\r\n    <artifacts-to-build>\r\n      <artifact name=\"Project:war exploded\" />\r\n    </artifacts-to-build>\r\n  </component>\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"763b8252-7652-4b0d-ae32-b26ba8b4805a\" name=\"Changes\" comment=\"获取station的production的方法\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/group28/dao/FacilitySearch.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/group28/dao/FacilitySearch.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"FxmlFile\" />\r\n        <option value=\"Interface\" />\r\n        <option value=\"Tag Library Descriptor\" />\r\n        <option value=\"Mapper\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"HighlightingSettingsPerFile\">\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateVirtualWorld.java\" root0=\"SKIP_INSPECTION\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateMap.java\" root0=\"SKIP_INSPECTION\" />\r\n    <setting file=\"file://$PROJECT_DIR$/pom.xml\" root0=\"SKIP_INSPECTION\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTimeInterface.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTime.java\" root0=\"SKIP_INSPECTION\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/test/java/com/group28/util/TestSimulateTime.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml\" root0=\"SKIP_INSPECTION\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/group28/pojo/PowerStation.java\" root0=\"SKIP_INSPECTION\" />\r\n  </component>\r\n  <component name=\"LogFilters\">\r\n    <option name=\"FILTER_ERRORS\" value=\"false\" />\r\n    <option name=\"FILTER_WARNINGS\" value=\"false\" />\r\n    <option name=\"FILTER_INFO\" value=\"true\" />\r\n    <option name=\"FILTER_DEBUG\" value=\"true\" />\r\n    <option name=\"CUSTOM_FILTER\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"useMavenConfig\" value=\"true\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"26vAQOD0ihMV26ruYhun9J6JAnu\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"DatabaseDriversLRU\" value=\"mysql\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/src/main/resources/com/group28/dao\" />\r\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\r\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\r\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\r\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Modules\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.15\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.2\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"fileTemplates\" />\r\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/src/main/resources/com/group28/dao\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/src/main/resources/com/group28/dao\" />\r\n      <recent name=\"$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"JUnit.PowerStationDaoTest.GetProductionTest\">\r\n    <configuration name=\"PowerStationDaoTest.DeleteStationTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.group28.dao.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.group28.dao\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.group28.dao.PowerStationDaoTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"DeleteStationTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"PowerStationDaoTest.GetProductionTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.group28.dao.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.group28.dao\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.group28.dao.PowerStationDaoTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"GetProductionTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"TestElectricityUnitDao.TestDeleteUnit\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.group28.dao.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.group28.dao\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.group28.dao.TestElectricityUnitDao\" />\r\n      <option name=\"METHOD_NAME\" value=\"TestDeleteUnit\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"TestSqlOfZipCode.testAddZipCode\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.group28.dao.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.group28.dao\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.group28.dao.TestSqlOfZipCode\" />\r\n      <option name=\"METHOD_NAME\" value=\"testAddZipCode\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"TestSqlOfZipCode.testDropZipCode\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.group28.dao.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.group28.dao\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.group28.dao.TestSqlOfZipCode\" />\r\n      <option name=\"METHOD_NAME\" value=\"testDropZipCode\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Tomcat 8.5.57\" type=\"#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory\" factoryName=\"Local\" APPLICATION_SERVER_NAME=\"Tomcat 8.5.57\" ALTERNATIVE_JRE_ENABLED=\"true\" ALTERNATIVE_JRE_PATH=\"1.8\" nameIsGenerated=\"true\">\r\n      <option name=\"OPEN_IN_BROWSER_URL\" value=\"http://localhost:8080\" />\r\n      <option name=\"UPDATING_POLICY\" value=\"restart-server\" />\r\n      <deployment>\r\n        <artifact name=\"Project:war exploded\">\r\n          <settings>\r\n            <option name=\"CONTEXT_PATH\" value=\"\" />\r\n          </settings>\r\n        </artifact>\r\n      </deployment>\r\n      <server-settings>\r\n        <option name=\"BASE_DIRECTORY_NAME\" value=\"37c9d242-c451-445f-b9a1-bda5a4c2e90d\" />\r\n      </server-settings>\r\n      <log_file alias=\"Tomcat Manager Log\" path=\"%IDEA_RUN:CATALINA_BASE%/logs/manager.*\" />\r\n      <log_file alias=\"Tomcat Host Manager Log\" path=\"%IDEA_RUN:CATALINA_BASE%/logs/host-manager.*\" />\r\n      <log_file alias=\"Tomcat Localhost Access Log\" path=\"%IDEA_RUN:CATALINA_BASE%/logs/localhost_access_log.*\" />\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat\" />\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat Catalina\" />\r\n      <RunnerSettings RunnerId=\"Debug\">\r\n        <option name=\"DEBUG_PORT\" value=\"62905\" />\r\n      </RunnerSettings>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Cover\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Debug\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Profile\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Run\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n        <option name=\"BuildArtifacts\" enabled=\"true\">\r\n          <artifact name=\"Project:war exploded\" />\r\n        </option>\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JUnit.PowerStationDaoTest.GetProductionTest\" />\r\n        <item itemvalue=\"JUnit.TestSqlOfZipCode.testDropZipCode\" />\r\n        <item itemvalue=\"JUnit.TestSqlOfZipCode.testAddZipCode\" />\r\n        <item itemvalue=\"JUnit.PowerStationDaoTest.DeleteStationTest\" />\r\n        <item itemvalue=\"JUnit.TestElectricityUnitDao.TestDeleteUnit\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"763b8252-7652-4b0d-ae32-b26ba8b4805a\" name=\"Changes\" comment=\"get最小值\" />\r\n      <created>1648293669906</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1648293669906</updated>\r\n      <workItem from=\"1648293671087\" duration=\"95000\" />\r\n      <workItem from=\"1648293771859\" duration=\"3623000\" />\r\n      <workItem from=\"1648298976747\" duration=\"9863000\" />\r\n      <workItem from=\"1648339087431\" duration=\"1963000\" />\r\n      <workItem from=\"1648344582255\" duration=\"609000\" />\r\n      <workItem from=\"1648345226064\" duration=\"1070000\" />\r\n      <workItem from=\"1648347170348\" duration=\"816000\" />\r\n      <workItem from=\"1648348603425\" duration=\"3618000\" />\r\n      <workItem from=\"1648387270836\" duration=\"761000\" />\r\n      <workItem from=\"1648567023921\" duration=\"4732000\" />\r\n      <workItem from=\"1648647163563\" duration=\"4499000\" />\r\n      <workItem from=\"1648669326266\" duration=\"785000\" />\r\n      <workItem from=\"1648929286833\" duration=\"240000\" />\r\n      <workItem from=\"1648929554376\" duration=\"21000\" />\r\n      <workItem from=\"1648929646206\" duration=\"1759000\" />\r\n      <workItem from=\"1648935511146\" duration=\"334000\" />\r\n      <workItem from=\"1648978724446\" duration=\"2386000\" />\r\n      <workItem from=\"1648996805329\" duration=\"582000\" />\r\n      <workItem from=\"1649183319016\" duration=\"2272000\" />\r\n      <workItem from=\"1649233781468\" duration=\"5123000\" />\r\n      <workItem from=\"1649245796446\" duration=\"4536000\" />\r\n      <workItem from=\"1649274716080\" duration=\"175000\" />\r\n      <workItem from=\"1649323339484\" duration=\"5911000\" />\r\n      <workItem from=\"1649413595354\" duration=\"2760000\" />\r\n      <workItem from=\"1649531904065\" duration=\"3883000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"interlayer\">\r\n      <created>1648379637848</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1648379637848</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"新任务的方法接口\">\r\n      <created>1648580759871</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1648580759871</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"新方法要用到的mapper\">\r\n      <created>1648582990629</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1648582990629</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"新方法要用到的mapper\">\r\n      <created>1648583037732</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1648583037732</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"mapper problem\">\r\n      <created>1648650511008</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1648650511008</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"。\">\r\n      <created>1648930498414</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1648930498414</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"。\">\r\n      <created>1648930685834</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1648930685834</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"。\">\r\n      <created>1648981084042</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1648981084042</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"。\">\r\n      <created>1648982230208</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1648982230208</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"。\">\r\n      <created>1649183926715</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649183926715</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"原param用的是zipcode和unittype，导致在导入sql的时候出错，现将param改为对应sql中varchar的string，在ElectrcityUnit中的添加测试成功\">\r\n      <created>1649234291141</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649234291141</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"电脑快没电了先存一下\">\r\n      <created>1649235230631</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649235230631</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"完善了各个数据结构的Set以及更新了ElectricityMapper和ZipcodeMapper的获得数据list的方法\">\r\n      <created>1649239812027</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649239812027</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"更新了添加unit的方法\">\r\n      <created>1649241363244</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649241363244</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"更新了添加unit的方法的测试，测试在我的电脑上可以通过\">\r\n      <created>1649246692500</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649246692500</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"新增zipcode的方法\">\r\n      <created>1649252174163</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649252174163</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00017\" summary=\"get最小值\">\r\n      <created>1649259476390</created>\r\n      <option name=\"number\" value=\"00017\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00017\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649259476390</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00018\" summary=\"PowerStation 接口\">\r\n      <created>1649323926314</created>\r\n      <option name=\"number\" value=\"00018\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00018\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649323926314</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00019\" summary=\"PowerStation 接口\">\r\n      <created>1649330436034</created>\r\n      <option name=\"number\" value=\"00019\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00019\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649330436034</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00020\" summary=\"更新了新增powerstation type的测试，测试成功\">\r\n      <created>1649332095237</created>\r\n      <option name=\"number\" value=\"00020\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00020\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649332095237</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00021\" summary=\"更新了查找powerstation 和 type的测试，测试成功\">\r\n      <created>1649333131223</created>\r\n      <option name=\"number\" value=\"00021\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00021\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649333131223</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00022\" summary=\"新增了删除electricity unit和electricity type中数据的方法\">\r\n      <created>1649416874515</created>\r\n      <option name=\"number\" value=\"00022\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00022\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649416874515</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00023\" summary=\"新增了删除station unit和station type中数据的方法\">\r\n      <created>1649519487898</created>\r\n      <option name=\"number\" value=\"00023\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00023\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649519487898</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00024\" summary=\"修复了addzipcode的方法以及更新了删除zipcode数据的方法\">\r\n      <created>1649519878757</created>\r\n      <option name=\"number\" value=\"00024\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00024\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649519878757</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00025\" summary=\"获取station的production的方法\">\r\n      <created>1649522912272</created>\r\n      <option name=\"number\" value=\"00025\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00025\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649522912272</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"26\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"interlayer\" />\r\n    <MESSAGE value=\"新任务的方法接口\" />\r\n    <MESSAGE value=\"新方法要用到的mapper\" />\r\n    <MESSAGE value=\"mapper problem\" />\r\n    <MESSAGE value=\"。\" />\r\n    <MESSAGE value=\"原param用的是zipcode和unittype，导致在导入sql的时候出错，现将param改为对应sql中varchar的string，在ElectrcityUnit中的添加测试成功\" />\r\n    <MESSAGE value=\"电脑快没电了先存一下\" />\r\n    <MESSAGE value=\"完善了各个数据结构的Set以及更新了ElectricityMapper和ZipcodeMapper的获得数据list的方法\" />\r\n    <MESSAGE value=\"更新了添加unit的方法\" />\r\n    <MESSAGE value=\"更新了添加unit的方法的测试，测试在我的电脑上可以通过\" />\r\n    <MESSAGE value=\"新增zipcode的方法\" />\r\n    <MESSAGE value=\"get最小值\" />\r\n    <MESSAGE value=\"PowerStation 接口\" />\r\n    <MESSAGE value=\"更新了新增powerstation type的测试，测试成功\" />\r\n    <MESSAGE value=\"更新了查找powerstation 和 type的测试，测试成功\" />\r\n    <MESSAGE value=\"新增了删除electricity unit和electricity type中数据的方法\" />\r\n    <MESSAGE value=\"新增了删除station unit和station type中数据的方法\" />\r\n    <MESSAGE value=\"修复了addzipcode的方法以及更新了删除zipcode数据的方法\" />\r\n    <MESSAGE value=\"获取station的production的方法\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"获取station的production的方法\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 70cca781d9fa4fb03a17bf6dcd18d728f418e8de)
++++ b/.idea/workspace.xml	(date 1650308397925)
+@@ -9,9 +9,31 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="获取station的production的方法">
++    <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="整合">
++      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilitySearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilitySearch.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/db.properties" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/controller/Ajaxcontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/controller/Ajaxcontroller.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/pojo/FacilityData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/pojo/FacilityData.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/pojo/NewFacility.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/pojo/addNewFacility.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/pojo/addNewFacilityImpl.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/service/Interation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/service/Interation.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/util/SimulateMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/util/SimulateMap.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTime.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/util/SimulateVirtualWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/util/SimulateVirtualWorld.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/com/group28/dao/TestElectricityUnitDao.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/com/group28/service/InterationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/group28/service/InterationTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/menu.jsp" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login/index.jsp" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/web/data.josn" beforeDir="false" afterPath="$PROJECT_DIR$/web/data.josn" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/web/menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/menu.css" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/web/newtry.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/newtry.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/web/reset/reset.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/reset/reset.css" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/web/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/style.css" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/web/try.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/try.html" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -31,16 +53,28 @@
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++  </component>
++  <component name="GitSEFilterConfiguration">
++    <file-type-list>
++      <filtered-out-file-type name="LOCAL_BRANCH" />
++      <filtered-out-file-type name="REMOTE_BRANCH" />
++      <filtered-out-file-type name="TAG" />
++      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
++    </file-type-list>
+   </component>
+   <component name="HighlightingSettingsPerFile">
++    <setting file="file://$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login/index.jsp" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
++    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/controller/Position.java" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateVirtualWorld.java" root0="SKIP_INSPECTION" />
+-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateMap.java" root0="SKIP_INSPECTION" />
+-    <setting file="file://$PROJECT_DIR$/pom.xml" root0="SKIP_INSPECTION" />
+     <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTimeInterface.java" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTime.java" root0="SKIP_INSPECTION" />
+-    <setting file="file://$PROJECT_DIR$/src/test/java/com/group28/util/TestSimulateTime.java" root0="FORCE_HIGHLIGHTING" />
++    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateMap.java" root0="SKIP_INSPECTION" />
+     <setting file="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml" root0="SKIP_INSPECTION" />
+     <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/pojo/PowerStation.java" root0="SKIP_INSPECTION" />
++    <setting file="file://$PROJECT_DIR$/pom.xml" root0="SKIP_INSPECTION" />
++    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/controller/Ajaxcontroller.java" root0="FORCE_HIGHLIGHTING" />
++    <setting file="file://$PROJECT_DIR$/web/WEB-INF/jsp/home page/menu.jsp" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" root2="SKIP_INSPECTION" />
++    <setting file="file://$PROJECT_DIR$/src/test/java/com/group28/util/TestSimulateTime.java" root0="FORCE_HIGHLIGHTING" />
+   </component>
+   <component name="LogFilters">
+     <option name="FILTER_ERRORS" value="false" />
+@@ -51,13 +85,6 @@
+   </component>
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+-  </component>
+-  <component name="MavenImportPreferences">
+-    <option name="generalSettings">
+-      <MavenGeneralSettings>
+-        <option name="useMavenConfig" value="true" />
+-      </MavenGeneralSettings>
+-    </option>
+   </component>
+   <component name="ProjectId" id="26vAQOD0ihMV26ruYhun9J6JAnu" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+@@ -71,8 +98,10 @@
+     <property name="DatabaseDriversLRU" value="mysql" />
+     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
++    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/com/group28/dao" />
++    <property name="aspect.path.notification.shown" value="true" />
++    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+     <property name="node.js.detected.package.eslint" value="true" />
+     <property name="node.js.detected.package.tslint" value="true" />
+     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+@@ -88,23 +117,21 @@
+       <recent name="$PROJECT_DIR$/src/main/resources/com/group28/dao" />
+     </key>
+     <key name="MoveFile.RECENT_KEYS">
++      <recent name="E:\QYH'S Private Things\UOL\Y2\COMP208\Comp208_GroupProject_Group28\web\WEB-INF\jsp\home page" />
+       <recent name="$PROJECT_DIR$/src/main/resources/com/group28/dao" />
+       <recent name="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login" />
+     </key>
+   </component>
+-  <component name="RunManager" selected="JUnit.PowerStationDaoTest.GetProductionTest">
+-    <configuration name="PowerStationDaoTest.DeleteStationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.58">
++    <configuration name="InterationTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.group28.service.InterationTest" />
+       <module name="Project" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="com.group28.dao.*" />
++          <option name="PATTERN" value="com.group28.service.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+-      <option name="PACKAGE_NAME" value="com.group28.dao" />
+-      <option name="MAIN_CLASS_NAME" value="com.group28.dao.PowerStationDaoTest" />
+-      <option name="METHOD_NAME" value="DeleteStationTest" />
+-      <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+@@ -125,7 +152,7 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="TestElectricityUnitDao.TestDeleteUnit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="TestSqlOfZipCode.testAddZipCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="Project" />
+       <extension name="coverage">
+         <pattern>
+@@ -134,14 +161,14 @@
+         </pattern>
+       </extension>
+       <option name="PACKAGE_NAME" value="com.group28.dao" />
+-      <option name="MAIN_CLASS_NAME" value="com.group28.dao.TestElectricityUnitDao" />
+-      <option name="METHOD_NAME" value="TestDeleteUnit" />
++      <option name="MAIN_CLASS_NAME" value="com.group28.dao.TestSqlOfZipCode" />
++      <option name="METHOD_NAME" value="testAddZipCode" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="TestSqlOfZipCode.testAddZipCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="TestSqlOfZipCode.testDropZipCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="Project" />
+       <extension name="coverage">
+         <pattern>
+@@ -151,30 +178,31 @@
+       </extension>
+       <option name="PACKAGE_NAME" value="com.group28.dao" />
+       <option name="MAIN_CLASS_NAME" value="com.group28.dao.TestSqlOfZipCode" />
+-      <option name="METHOD_NAME" value="testAddZipCode" />
++      <option name="METHOD_NAME" value="testDropZipCode" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="TestSqlOfZipCode.testDropZipCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="primTest.primAlgotest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="Project" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="com.group28.dao.*" />
++          <option name="PATTERN" value="com.group28.pojo.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+-      <option name="PACKAGE_NAME" value="com.group28.dao" />
+-      <option name="MAIN_CLASS_NAME" value="com.group28.dao.TestSqlOfZipCode" />
+-      <option name="METHOD_NAME" value="testDropZipCode" />
++      <option name="PACKAGE_NAME" value="com.group28.pojo" />
++      <option name="MAIN_CLASS_NAME" value="com.group28.pojo.primTest" />
++      <option name="METHOD_NAME" value="primAlgotest" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="Tomcat 8.5.57" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.57" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.8" nameIsGenerated="true">
++    <configuration name="Tomcat 9.0.58" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.58" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.8" nameIsGenerated="true">
+       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080" />
++      <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+       <option name="UPDATING_POLICY" value="restart-server" />
+       <deployment>
+         <artifact name="Project:war exploded">
+@@ -261,13 +289,21 @@
+         </option>
+       </method>
+     </configuration>
++    <list>
++      <item itemvalue="Application.InterationTest" />
++      <item itemvalue="JUnit.PowerStationDaoTest.GetProductionTest" />
++      <item itemvalue="JUnit.TestSqlOfZipCode.testAddZipCode" />
++      <item itemvalue="JUnit.TestSqlOfZipCode.testDropZipCode" />
++      <item itemvalue="JUnit.primTest.primAlgotest" />
++      <item itemvalue="Tomcat Server.Tomcat 9.0.58" />
++    </list>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Application.InterationTest" />
++        <item itemvalue="JUnit.primTest.primAlgotest" />
++        <item itemvalue="JUnit.TestSqlOfZipCode.testAddZipCode" />
+         <item itemvalue="JUnit.PowerStationDaoTest.GetProductionTest" />
+         <item itemvalue="JUnit.TestSqlOfZipCode.testDropZipCode" />
+-        <item itemvalue="JUnit.TestSqlOfZipCode.testAddZipCode" />
+-        <item itemvalue="JUnit.PowerStationDaoTest.DeleteStationTest" />
+-        <item itemvalue="JUnit.TestElectricityUnitDao.TestDeleteUnit" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -304,6 +340,10 @@
+       <workItem from="1649323339484" duration="5911000" />
+       <workItem from="1649413595354" duration="2760000" />
+       <workItem from="1649531904065" duration="3883000" />
++      <workItem from="1649668517539" duration="19970000" />
++      <workItem from="1649796985456" duration="2697000" />
++      <workItem from="1649856943067" duration="15785000" />
++      <workItem from="1650304695335" duration="596000" />
+     </task>
+     <task id="LOCAL-00001" summary="interlayer">
+       <created>1648379637848</created>
+@@ -480,7 +520,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1649522912272</updated>
+     </task>
+-    <option name="localTasksCounter" value="26" />
++    <task id="LOCAL-00026" summary="整合">
++      <created>1649669803833</created>
++      <option name="number" value="00026" />
++      <option name="presentableId" value="LOCAL-00026" />
++      <option name="project" value="LOCAL" />
++      <updated>1649669803833</updated>
++    </task>
++    <option name="localTasksCounter" value="27" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -496,6 +543,7 @@
+         </entry>
+       </map>
+     </option>
++    <option name="oldMeFiltersMigrated" value="true" />
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="interlayer" />
+@@ -517,6 +565,7 @@
+     <MESSAGE value="新增了删除station unit和station type中数据的方法" />
+     <MESSAGE value="修复了addzipcode的方法以及更新了删除zipcode数据的方法" />
+     <MESSAGE value="获取station的production的方法" />
+-    <option name="LAST_COMMIT_MESSAGE" value="获取station的production的方法" />
++    <MESSAGE value="整合" />
++    <option name="LAST_COMMIT_MESSAGE" value="整合" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: web/menu.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>html{\r\n\tfont-size: 70px;/*设置html字体大小以便rem*/\r\n}\r\nbody{\r\n\tbackground-color: rgb(245, 245, 245);\r\n}\r\n\r\nheader{\r\n\r\n\tbackground-color: rgb(58, 98, 215);\r\n\theight: 36px;\r\n\tfont-size: 16px;\r\n\r\n}\r\n\r\n.title{\r\n\tcolor: white;\r\n\tpadding: 13px;\r\n\tposition:absolute;\r\n\ttop: -4px;\r\n\tleft: 25px;\r\n}\r\n\r\n.boxset{\r\n\tmargin: auto;\r\n\twidth: 1180px;\r\n\theight: 1200px;\r\n\tbackground-color: rgb(245, 245, 245);\r\n\tposition:  relative;\r\n\ttop: 20px;\r\n\tleft: 0px;\r\n}\r\n\r\n.box1,.box2,.box3,.box4,.box5,.box6{\r\n\tborder: 1px solid #BBBBBB;\r\n\tborder-radius: 10px;\r\n\tbox-shadow: 0px 5px 5px #B9B9B9;\r\n}\r\n\r\n.box1{\r\n\tmargin: auto;\r\n\twidth: 330px;\r\n\theight: 224px;\r\n\tbackground-color: #FFFFFF;\r\n\tposition:  absolute;\r\n\ttop: 0px;\r\n\tleft: 0px;\r\n}\r\n\r\n.box1_header,.box2_header,.box3_header,.box4_header,.box5_header,.box6_header{\r\n\t/*\tborder: 1px solid #BBBBBB;*/\r\n\tcolor: #353535;\r\n\tborder-bottom: 1px solid #BBBBBB;\r\n\tbackground-color: #EEEEEE;\r\n\ttext-align:center;\r\n\tpadding-top: 6px;\r\n\theight: 25px;\r\n\tborder-radius: 10px 10px 0px 0px;\r\n\tfont-size: 16px;\r\n}\r\n\r\n.box1_header{\r\n\twidth: 330px;\r\n\tposition:  absolute;\r\n\ttop: 0px;\r\n\tleft: 0px;\r\n}\r\n\r\n\r\n\r\n\r\n.box3{\r\n\tmargin: auto;\r\n\twidth: 330px;\r\n\theight: 173px;\r\n\tbackground-color: #ffffff;\r\n\tposition:  absolute;\r\n\ttop: 244px;\r\n\tleft: 0px;\r\n}\r\n\r\n.box3_header{\r\n\twidth: 330px;\r\n\tposition:  absolute;\r\n\ttop: 0px;\r\n\tleft: 0px;\r\n}\r\n\r\n.box4{\r\n\tmargin: auto;\r\n\twidth: 330px;\r\n\theight: 355px;\r\n\tbackground-color: #FFFFFF;\r\n\tposition:  absolute;\r\n\ttop: 437px;\r\n\tleft: 0px;\r\n}\r\n\r\n.box4_header{\r\n\twidth: 330px;\r\n\tposition:  absolute;\r\n\ttop: 0px;\r\n\tleft: 0px;\r\n}\r\n\r\n.box5{\r\n\twidth: 829px;\r\n\theight: 257px;\r\n\tbackground-color: #FFFFFF;\r\n\tposition: absolute;\r\n\ttop:  535px;\r\n\tleft: 351px;\r\n\r\n}\r\n\r\n.box5_header{\r\n\twidth: 829px;\r\n\tposition:  absolute;\r\n\ttop: 0px;\r\n\tleft: 0px;\r\n}\r\n\r\n.box6{\r\n\tmargin: auto;\r\n\twidth: 1180px;\r\n\theight: 323px;\r\n\tbackground-color: #FFFFFF;\r\n\tposition:  absolute;\r\n\ttop: 812px;\r\n\tleft: 0px;\r\n}\r\n\r\n.box6_header{\r\n\twidth: 1180px;\r\n\tposition:  absolute;\r\n\ttop: 0px;\r\n\tleft: 0px;\r\n}\r\n\r\n.box2{\r\n\twidth: 829px;\r\n\theight: 515px;\r\n\tbackground-image: url(\"picture/grid.png\");\r\n\tposition: absolute;\r\n\tleft: 351px;\r\n\tz-index: 3;\r\n\r\n}\r\n\r\n.box2_header{\r\n\twidth: 830px;\r\n\tposition:  absolute;\r\n\ttop: 0px;\r\n\tleft: 351px;\r\n\tz-index:4;\r\n}\r\n.canvas{\r\n\tz-index: 4;\r\n}\r\n\r\nimg {\r\n}.logo{\r\n\t position: absolute;\r\n\t left: 8px;\r\n\t top: 3px;\r\n } .user{\r\n\t   position: absolute;\r\n\t   right:80px;\r\n\t   top: 4px;\r\n   }  .download{\r\n\t\t  position: absolute;\r\n\t\t  right:45px;\r\n\t\t  top: 4px;\r\n\t  } .exit{\r\n\t\t\tposition: absolute;\r\n\t\t\tright: 10px;\r\n\t\t\ttop: 4px;\r\n\t\t}.house1{\r\n\t\t\t position: absolute;\r\n\t\t\t left: 20px;\r\n\t\t\t top: 40px;\r\n\t\t\t width: 50px;\r\n\t\t }\r\n\r\n.operation{\r\n\tborder-left: 10px;\r\n\twidth: 300px;\r\n\theight: 50px;\r\n\tposition: absolute;\r\n\tleft: 400px;\r\n\ttop: 60px;\r\n\tfont-size: 20px;\r\n\tfont-family: Microsoft YaHei;\r\n\tline-height: 30px;\r\n}\r\n.add,.reset,.done,.rollback{\r\n\twidth: 80px;\r\n\tfont-size: 20px;\r\n}.add{\r\n\t position: absolute;\r\n\t top:140px;\r\n\t left: 0px;\r\n }.reset{\r\n\t  position: absolute;\r\n\t  top:140px;\r\n\t  left: 200px;\r\n  }.done{\r\n\t   position: absolute;\r\n\t   top:140px;\r\n\t   left: 300px;\r\n   }.rollback{\r\n\t\tposition: absolute;\r\n\t\ttop:140px;\r\n\t\tleft: 100px;\r\n\t}\r\n.test{\r\n\tmargin: auto;\r\n\twidth: 330px;\r\n\theight: 230px;\r\n\tposition:  absolute;\r\n\ttop: -15px;\r\n\tleft: -3px;\r\n}\r\n.test1{\r\n\tmargin: auto;\r\n\twidth: 400px;\r\n\theight: 357px;\r\n\tposition:  absolute;\r\n\t/*\tbackground-color: aqua;*/\r\n\ttop: 90px;\r\n\tleft: 5px;\r\n}\r\n.test2{\r\n\tmargin: auto;\r\n\tposition:  absolute;\r\n\t/*\tbackground-color: aqua;*/\r\n\ttop: -15px;\r\n\tleft: -13px;\r\n}\r\n\r\n.test3{\r\n\tmargin: auto;\r\n\tposition:  absolute;\r\n\t/*\tbackground-color: aqua;*/\r\n\ttop: 0px;\r\n\tleft: -50px;\r\n}\r\n\r\n.inputname,.inputx,.inputy{\r\n\tposition: absolute;\r\n\tleft: 140px;\r\n}\r\n.inputname{\r\n\ttop: 5px;\r\n}\r\n.inputx{\r\n\ttop: 35px;\r\n}\r\n.inputy{\r\n\ttop: 65px;\r\n}\r\n.consumption{\r\n\tposition: absolute;\r\n\tleft: 140px;\r\n\ttop:97px;\r\n}\r\n.raselect{\r\n\tposition: absolute;\r\n\tleft: 5px;\r\n\twidth: 150px;\r\n\ttop: 60px;\r\n}\r\n.house{\r\n\tposition: absolute;\r\n\tleft: 40px;\r\n}\r\n.select{\r\n\tposition: absolute;\r\n\tleft: 10px;\r\n\tfont-size: 16px;\r\n\tline-height: 25px;\r\n}\r\n.hosselect{\r\n\tposition: absolute;\r\n\tleft: 260px;\r\n\ttop: 60px;\r\n\twidth: 150px;\r\n}\r\n.hospital{\r\n\tposition: absolute;\r\n\tleft: 23px;\r\n}\r\n.schoolselect{\r\n\tposition: absolute;\r\n\tleft: 80px;\r\n\ttop:160px;\r\n\twidth: 150px;\r\n}\r\n.school{\r\n\tposition: absolute;\r\n\tleft: 20px;\r\n}\r\n.powerselect{\r\n\tposition: absolute;\r\n\tleft: 180px;\r\n\ttop: 160px;\r\n\twidth: 250px;\r\n}\r\n.power{\r\n\tposition: absolute;\r\n\tleft: 40px;\r\n}\r\n\r\n.shopselect{\r\n\tposition: absolute;\r\n\tleft: 140px;\r\n\twidth: 100px;\r\n\ttop:60px;\r\n}\r\n.shop{\r\n\tposition: absolute;\r\n\tleft: 30px;\r\n}\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/web/menu.css b/web/menu.css
+--- a/web/menu.css	(revision 70cca781d9fa4fb03a17bf6dcd18d728f418e8de)
++++ b/web/menu.css	(date 1649826163000)
+@@ -213,7 +213,7 @@
+ 		top:140px;
+ 		left: 100px;
+ 	}
+-.test{
++.chart_2{
+ 	margin: auto;
+ 	width: 330px;
+ 	height: 230px;

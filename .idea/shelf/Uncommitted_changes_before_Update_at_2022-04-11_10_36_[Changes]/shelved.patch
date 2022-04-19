@@ -1,0 +1,61 @@
+Index: src/main/resources/db.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>jdbc_driver = com.mysql.cj.jdbc.Driver\r\ndb_UserUrl = jdbc:mysql://localhost:3306/User_information?useSSL=false&serverTimezone=GMT\r\ndb_WorldUrl = jdbc:mysql://localhost:3306/User_information?useSSL=false&serverTimezone=GMT\r\ndb_name = root\r\ndb_pwd = \r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/db.properties b/src/main/resources/db.properties
+--- a/src/main/resources/db.properties	
++++ b/src/main/resources/db.properties	
+@@ -2,4 +2,5 @@
+ db_UserUrl = jdbc:mysql://localhost:3306/User_information?useSSL=false&serverTimezone=GMT
+ db_WorldUrl = jdbc:mysql://localhost:3306/User_information?useSSL=false&serverTimezone=GMT
+ db_name = root
+-db_pwd = 
++db_pwd = q9I3a2N7
++
+Index: .idea/inspectionProfiles/Project_Default.xml
+===================================================================
+diff --git a/.idea/inspectionProfiles/Project_Default.xml b/.idea/inspectionProfiles/Project_Default.xml
+new file mode 100644
+--- /dev/null	
++++ b/.idea/inspectionProfiles/Project_Default.xml	
+@@ -0,0 +1,36 @@
++<component name="InspectionProjectProfileManager">
++  <profile version="1.0">
++    <option name="myName" value="Project Default" />
++    <inspection_tool class="JavaDoc" enabled="true" level="WARNING" enabled_by_default="true">
++      <option name="TOP_LEVEL_CLASS_OPTIONS">
++        <value>
++          <option name="ACCESS_JAVADOC_REQUIRED_FOR" value="none" />
++          <option name="REQUIRED_TAGS" value="" />
++        </value>
++      </option>
++      <option name="INNER_CLASS_OPTIONS">
++        <value>
++          <option name="ACCESS_JAVADOC_REQUIRED_FOR" value="none" />
++          <option name="REQUIRED_TAGS" value="" />
++        </value>
++      </option>
++      <option name="METHOD_OPTIONS">
++        <value>
++          <option name="ACCESS_JAVADOC_REQUIRED_FOR" value="none" />
++          <option name="REQUIRED_TAGS" value="@return@param@throws or @exception" />
++        </value>
++      </option>
++      <option name="FIELD_OPTIONS">
++        <value>
++          <option name="ACCESS_JAVADOC_REQUIRED_FOR" value="none" />
++          <option name="REQUIRED_TAGS" value="" />
++        </value>
++      </option>
++      <option name="IGNORE_DEPRECATED" value="false" />
++      <option name="IGNORE_JAVADOC_PERIOD" value="true" />
++      <option name="IGNORE_DUPLICATED_THROWS" value="false" />
++      <option name="IGNORE_POINT_TO_ITSELF" value="false" />
++      <option name="myAdditionalJavadocTags" value="date" />
++    </inspection_tool>
++  </profile>
++</component>
+\ No newline at end of file

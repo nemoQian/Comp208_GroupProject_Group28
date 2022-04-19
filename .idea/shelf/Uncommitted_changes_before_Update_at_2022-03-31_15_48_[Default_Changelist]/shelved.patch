@@ -1,0 +1,32 @@
+Index: Project.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule=\"true\" type=\"JAVA_MODULE\" version=\"4\">\r\n  <component name=\"FacetManager\">\r\n    <facet type=\"Spring\" name=\"Spring\">\r\n      <configuration />\r\n    </facet>\r\n  </component>\r\n  <component name=\"NewModuleRootManager\" LANGUAGE_LEVEL=\"JDK_1_6\">\r\n    <output url=\"file://$MODULE_DIR$/target/classes\" />\r\n    <output-test url=\"file://$MODULE_DIR$/target/test-classes\" />\r\n    <content url=\"file://$MODULE_DIR$\">\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src/main/java\" isTestSource=\"false\" />\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src/main/resources\" type=\"java-resource\" />\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src/test/java\" isTestSource=\"true\" />\r\n      <excludeFolder url=\"file://$MODULE_DIR$/target\" />\r\n    </content>\r\n    <orderEntry type=\"inheritedJdk\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.mybatis:mybatis:3.5.7\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: mysql:mysql-connector-java:8.0.26\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: com.google.protobuf:protobuf-java:3.11.4\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: junit:junit:4.12\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.hamcrest:hamcrest-core:1.3\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-webmvc:5.3.15\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-aop:5.3.15\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-beans:5.3.15\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-context:5.3.15\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-core:5.3.15\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-jcl:5.3.15\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-expression:5.3.15\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-web:5.3.15\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-jdbc:5.3.15\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-tx:5.3.15\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: javax.servlet:servlet-api:2.5\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.mybatis:mybatis-spring:2.0.7\" level=\"project\" />\r\n  </component>\r\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Project.iml b/Project.iml
+--- a/Project.iml	(revision 08a8291bdb2719ae1c6383aca2bfaf1784228d07)
++++ b/Project.iml	(date 1648738030302)
+@@ -2,7 +2,20 @@
+ <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+   <component name="FacetManager">
+     <facet type="Spring" name="Spring">
+-      <configuration />
++      <configuration>
++        <fileset id="fileset" name="ApplicationContext" removed="false">
++          <file>file://$MODULE_DIR$/src/main/resources/applicationContext.xml</file>
++          <file>file://$MODULE_DIR$/src/main/resources/spring-mvc.xml</file>
++          <file>file://$MODULE_DIR$/src/main/resources/spring-service.xml</file>
++          <file>file://$MODULE_DIR$/src/main/resources/spring-dao.xml</file>
++        </fileset>
++        <fileset id="web application context" name="MVC application context" removed="true">
++          <file>file://$MODULE_DIR$/src/main/resources/applicationContext.xml</file>
++        </fileset>
++        <fileset id="web SpringMVC servlet context" name="MVC SpringMVC servlet context" removed="true">
++          <file>file://$MODULE_DIR$/src/main/resources/spring-mvc.xml</file>
++        </fileset>
++      </configuration>
+     </facet>
+   </component>
+   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6">

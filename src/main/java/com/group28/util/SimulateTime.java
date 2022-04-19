@@ -62,13 +62,14 @@ public class SimulateTime implements SimulateTimeInterface {
 
     @Override
     public void simulationOpen() {
+        flag = true;
         System.out.println("Time simulation open!");
         MONTH.get(month-1)[day-1][hour] = year*1000000 + 10000 + 100 + 0 + "";
         System.out.println(MONTH.get(month - 1)[day - 1][hour]);
         while (flag){
             simulateSeconds();
             try {
-                Thread.sleep(10);
+                Thread.sleep(2);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

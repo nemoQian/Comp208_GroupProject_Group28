@@ -1,10 +1,14 @@
 package com.group28.util;
 
 import com.group28.pojo.Facility;
+import com.group28.pojo.Graph;
+import com.group28.pojo.Prim;
+import com.group28.pojo.ShortEdge;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -44,6 +48,12 @@ public class SimulateMap implements SimulateMapInterface {
 
         System.out.println("Map created!");
 
+    }
+
+    public void resetMap(){
+        facilitiesMap.clear();
+        facilityLocationMap.clear();
+        facilitiesList.clear();
     }
 
     @Override
@@ -164,6 +174,8 @@ public class SimulateMap implements SimulateMapInterface {
 
         connection = new LinkedList<>();
         connectionLocation = new ArrayList<>();
+        int a = 0;
+        int b = 0;
         for(int i = 1; i < index; i++){
             int min = INF;
             int n = getPosition(prims[i]);
@@ -172,9 +184,11 @@ public class SimulateMap implements SimulateMapInterface {
                 int m = getPosition(prims[j]);
                 if(matrix[m][n] < min){
                     min = matrix[m][n];
-                    connection.add(new int[]{m,n});
+                    a = m;
+                    b = n;
                 }
             }
+            connection.add(new int[]{a,b});
             bestDistance += min;
         }
 
@@ -191,6 +205,8 @@ public class SimulateMap implements SimulateMapInterface {
         for(int i = 0; i<connectionLocation.size(); i++){
             locationArray[i] = connectionLocation.get(i);
         }
+        System.out.println(bestDistance);
         return locationArray;
     }
+
 }

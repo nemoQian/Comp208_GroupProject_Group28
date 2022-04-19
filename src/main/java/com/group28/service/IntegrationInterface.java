@@ -2,7 +2,7 @@ package com.group28.service;
 
 public interface IntegrationInterface {
 
-    int worldSimulationOpen () throws InterruptedException;
+    int[] worldSimulationOpen () throws InterruptedException;
 
     int worldSimulationReset ();
 

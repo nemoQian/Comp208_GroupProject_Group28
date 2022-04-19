@@ -1,0 +1,452 @@
+Index: src/main/java/com/group28/controller/Ajaxcontroller.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.group28.controller;\r\nimport com.group28.service.UserServiceImpl;\r\nimport org.springframework.stereotype.Controller;\r\nimport org.springframework.web.bind.annotation.PostMapping;\r\nimport org.springframework.web.bind.annotation.RequestMapping;\r\nimport org.springframework.web.bind.annotation.RequestParam;\r\nimport org.springframework.web.bind.annotation.RestController;\r\nimport java.util.ArrayList;\r\nimport java.util.Map;\r\nimport com.group28.controller.Position;\r\nimport com.group28.controller.line;\r\n@Controller\r\n@RestController\r\n@RequestMapping(\"/ajax\")\r\npublic class Ajaxcontroller {\r\n\r\n\r\n    private UserServiceImpl userService;\r\n    ArrayList <Position> positionArrayList= new ArrayList();\r\n    ArrayList <line> lineArrayList= new ArrayList();\r\n\r\n    @PostMapping(\"/login\")\r\n    public  String getluser(@RequestParam(value = \"Username\",required = false) String username,\r\n                           @RequestParam(value = \"password\",required = false) String password){\r\n        userService = new UserServiceImpl();\r\n        String statCode = userService.login(username, password);\r\n        System.out.println(\"username = \"  + username);\r\n        System.out.println(\"password = \"  + password);\r\n        System.out.println(statCode);\r\n\r\n\r\n        return statCode;\r\n    }\r\n\r\n    @RequestMapping(\"/register\")\r\n    public String getruser(@RequestParam(value = \"Username\",required = false) String username,\r\n                           @RequestParam(value = \"password\",required = false) String password,\r\n                            @RequestParam(value = \"email\",required = false) String email){\r\n        userService = new UserServiceImpl();\r\n        String statCode = userService.Register(username, password,email);\r\n        System.out.println(\"username = \"  + username);\r\n        System.out.println(\"password = \"  + password);\r\n        System.out.println(\"email = \" + email);\r\n        System.out.println(statCode);\r\n\r\n        return statCode;\r\n    }\r\n    @RequestMapping(\"/position\")\r\n    public void getposition(@RequestParam(value = \"type\",required = false) String type,\r\n                            @RequestParam(value = \"name\",required = false) String name,\r\n                            @RequestParam(value = \"x\",required = false) int x,\r\n                            @RequestParam(value = \"y\",required = false) int y,\r\n                            @RequestParam(value = \"consumption\",required = false) String consumption){\r\n\r\n\r\n        Position position = new Position(type,name,x,y,consumption);\r\n        positionArrayList.add(position);\r\n        System.out.println(\"add\");\r\n        printarray(positionArrayList);\r\n\r\n    }\r\n\r\n    @RequestMapping(\"/reset\")\r\n    public void reset(){\r\n\r\n            positionArrayList.clear();\r\n\r\n        System.out.println(\"reset\");\r\n    }\r\n\r\n    @RequestMapping(\"/rollback\")\r\n    public void rollback(){\r\n        positionArrayList.remove(positionArrayList.size()-1);\r\n        System.out.println(\"rollbcak\");\r\n        printarray(positionArrayList);\r\n    }\r\n\r\n    @RequestMapping(\"/done\")\r\n    public int[] drawline(){\r\n         int array[] =new int []{0,0,100,200,100,200,400,150};\r\n        return array;\r\n    }\r\n\r\n    public void printarray(ArrayList<Position> pa){\r\n        Position P =  new Position();\r\n        for (int i = 0; i < pa.size(); i++) {\r\n            System.out.print(\" \"+i+\" \");\r\n            P.printp(pa.get(i));\r\n        }\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/group28/controller/Ajaxcontroller.java b/src/main/java/com/group28/controller/Ajaxcontroller.java
+--- a/src/main/java/com/group28/controller/Ajaxcontroller.java	
++++ b/src/main/java/com/group28/controller/Ajaxcontroller.java	
+@@ -1,4 +1,5 @@
+ package com.group28.controller;
++import com.group28.service.Interation;
+ import com.group28.service.UserServiceImpl;
+ import org.springframework.stereotype.Controller;
+ import org.springframework.web.bind.annotation.PostMapping;
+@@ -19,6 +20,8 @@
+     ArrayList <Position> positionArrayList= new ArrayList();
+     ArrayList <line> lineArrayList= new ArrayList();
+ 
++    private Interation interation = new Interation();
++
+     @PostMapping("/login")
+     public  String getluser(@RequestParam(value = "Username",required = false) String username,
+                            @RequestParam(value = "password",required = false) String password){
+Index: src/main/java/com/group28/dao/FacilitySearch.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.group28.dao;\r\n\r\nimport com.group28.pojo.ElectricityUnit;\r\nimport com.group28.pojo.ElectricityUnitType;\r\nimport com.group28.pojo.PowerStation;\r\nimport com.group28.pojo.PowerStationType;\r\nimport com.group28.util.MyBatisUtil;\r\nimport org.apache.ibatis.session.SqlSession;\r\nimport java.util.List;\r\n\r\npublic class FacilitySearch {\r\n    public void AddType(String type_Id, int MAX_CONSUMMPTION, int MIN_CONSUMMPTION){\r\n        SqlSession sqlsession = MyBatisUtil.getSqlSession();\r\n        ElectricityUnitDao mapper = sqlsession.getMapper(ElectricityUnitDao.class);\r\n\r\n        List<String> TypeList = mapper.GetTypeIdList();\r\n\r\n        ElectricityUnitType NewType = new ElectricityUnitType();\r\n\r\n        NewType.PutTypeId(type_Id);\r\n\r\n        NewType.PutMAX_CONSUMMPTION(MAX_CONSUMMPTION);\r\n\r\n        NewType.PutMIN_CONSUMMPTION(MIN_CONSUMMPTION);\r\n\r\n        if(!(TypeList.contains(type_Id))){\r\n            mapper.AddType(NewType);\r\n            sqlsession.commit();\r\n            System.out.println(\"New Type is:\" + NewType);\r\n        }\r\n        else {\r\n            System.out.println(\"Add Fail, break the primary key.\");\r\n        }\r\n        sqlsession.close();\r\n    }\r\n\r\n    public void AddUnit(String electricityUnitId, String zipCode, String electricityUnitType, String electricityUnitName){\r\n        SqlSession sqlsession = MyBatisUtil.getSqlSession();\r\n        ElectricityUnitDao mapper = sqlsession.getMapper(ElectricityUnitDao.class);\r\n        ZipCodeDao ZipMapper = sqlsession.getMapper(ZipCodeDao.class);\r\n\r\n        List<String> ZipCodeList = ZipMapper.getZipCode_CodeList();\r\n        List<String> TypeList = mapper.GetTypeIdList();\r\n        List<String> UnitList = mapper.GetUnitIdList();\r\n\r\n        if (ZipCodeList.contains(zipCode) && TypeList.contains(electricityUnitType) && !(UnitList.contains(electricityUnitId))){\r\n            ElectricityUnit NewUnit = new ElectricityUnit();\r\n\r\n            NewUnit.Put_electricityUnitName(electricityUnitName);\r\n            NewUnit.Put_electricityUnitId(electricityUnitId);\r\n            NewUnit.Put_electricityUnitType(electricityUnitType);\r\n            NewUnit.Put_zipCode(zipCode);\r\n\r\n            mapper.AddFacility(NewUnit);\r\n            sqlsession.commit();\r\n            System.out.println(\"New Unit is\" + NewUnit);\r\n        }\r\n        else {\r\n            System.out.println(\"Add fail, break the foreign key rule or primary key rule\");\r\n        }\r\n\r\n        sqlsession.close();\r\n    }\r\n\r\n    public void AddStationType(String type_Id, int MAX_PRODUCTION){\r\n        SqlSession sqlsession = MyBatisUtil.getSqlSession();\r\n        PowerStationDao mapper = sqlsession.getMapper(PowerStationDao.class);\r\n\r\n        List<String> TypeList = mapper.GetStationType_List();\r\n\r\n        if (!(TypeList.contains(type_Id))){\r\n            PowerStationType NewType = new PowerStationType();\r\n            NewType.Put_type_Id(type_Id);\r\n            NewType.Put_MAX_PRODUCTION(MAX_PRODUCTION);\r\n\r\n            mapper.AddStationType(NewType);\r\n            sqlsession.commit();\r\n        }\r\n        else {\r\n            System.out.println(\"Type already existed\");\r\n        }\r\n\r\n\r\n        sqlsession.close();\r\n        System.out.println(\"Add Finish\");\r\n    }\r\n\r\n    public void AddStation(String powerStationId, String zipCode, String powerStationType, String powerStationName){\r\n        SqlSession sqlSession = MyBatisUtil.getSqlSession();\r\n        PowerStationDao mapper = sqlSession.getMapper(PowerStationDao.class);\r\n        ZipCodeDao ZipMapper = sqlSession.getMapper(ZipCodeDao.class);\r\n\r\n        List<String> ZipCodeList = ZipMapper.getZipCode_CodeList();\r\n        List<String> StationIDList = mapper.GetStationList();\r\n        List<String> TypeList = mapper.GetStationType_List();\r\n\r\n        if (ZipCodeList.contains(zipCode) && !(StationIDList.contains(powerStationId)) && TypeList.contains(powerStationType)){\r\n            PowerStation NewStation = new PowerStation();\r\n\r\n            NewStation.Put_powerStationId(powerStationId);\r\n            NewStation.Put_zipCode(zipCode);\r\n            NewStation.Put_powerStationType(powerStationType);\r\n            NewStation.Put_powerStationName(powerStationName);\r\n\r\n            mapper.AddStation(NewStation);\r\n            sqlSession.commit();\r\n        }\r\n        else {\r\n            System.out.println(\"Add fail, station already exist or invalid zipcode and type\");\r\n        }\r\n        sqlSession.close();\r\n\r\n        System.out.println(\"add finish\");\r\n\r\n\r\n    }\r\n\r\n\r\n\r\n    public int GetUnitMaxConsumption(String electricityUnitId){\r\n        SqlSession sqlSession = MyBatisUtil.getSqlSession();\r\n        ElectricityUnitDao mapper = sqlSession.getMapper(ElectricityUnitDao.class);\r\n        int MaxConsumption;\r\n        List<String> UnitList = mapper.GetUnitIdList();\r\n        if (UnitList.contains(electricityUnitId)){\r\n            String UnitType = mapper.GetTypeId(electricityUnitId);\r\n            MaxConsumption = mapper.GetMaxConsumption(UnitType);\r\n            sqlSession.close();\r\n            return MaxConsumption;\r\n        }\r\n        else{\r\n            sqlSession.close();\r\n            return -1;\r\n        }\r\n\r\n    }\r\n\r\n    public int GetMinUnitConsumption(String electricityUnitId){\r\n        SqlSession sqlSession = MyBatisUtil.getSqlSession();\r\n        ElectricityUnitDao mapper = sqlSession.getMapper(ElectricityUnitDao.class);\r\n\r\n        int MinConsumption;\r\n        List<String> UnitList = mapper.GetUnitIdList();\r\n\r\n        if (UnitList.contains(electricityUnitId)){\r\n            String UnitType = mapper.GetTypeId(electricityUnitId);\r\n            MinConsumption = mapper.GetMinConsumption(UnitType);\r\n            sqlSession.close();\r\n            return MinConsumption;\r\n        }\r\n        else{\r\n            sqlSession.close();\r\n            return -1;\r\n        }\r\n    }\r\n\r\n\r\n    public int GetMaxProduction(String powerStationId){\r\n        SqlSession sqlSession = MyBatisUtil.getSqlSession();\r\n        PowerStationDao mapper = sqlSession.getMapper(PowerStationDao.class);\r\n\r\n        int Max_Production;\r\n        List<String> StationList = mapper.GetStationList();\r\n\r\n        if (StationList.contains(powerStationId)){\r\n            String StationType = mapper.GetType(powerStationId);\r\n            Max_Production = mapper.GetProduction(StationType);\r\n            sqlSession.close();\r\n            return Max_Production;\r\n        }\r\n        else {\r\n            sqlSession.close();\r\n            return  -1;\r\n        }\r\n    }\r\n\r\n\r\n\r\n\r\n    \r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/group28/dao/FacilitySearch.java b/src/main/java/com/group28/dao/FacilitySearch.java
+--- a/src/main/java/com/group28/dao/FacilitySearch.java	
++++ b/src/main/java/com/group28/dao/FacilitySearch.java	
+@@ -173,9 +173,4 @@
+             return  -1;
+         }
+     }
+-
+-
+-
+-
+-    
+-}
++}
+\ No newline at end of file
+Index: out/artifacts/Project_war_exploded/WEB-INF/classes/db.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/out/artifacts/Project_war_exploded/WEB-INF/classes/db.properties b/out/artifacts/Project_war_exploded/WEB-INF/classes/db.properties
+deleted file mode 100644
+--- a/out/artifacts/Project_war_exploded/WEB-INF/classes/db.properties	
++++ /dev/null	
+@@ -1,4 +0,0 @@
+-jdbc_driver = com.mysql.cj.jdbc.Driver
+-db_url = jdbc:mysql://localhost:3306/User_information?useSSL=false&serverTimezone=GMT
+-db_name = root
+-db_pwd = 12345678
+Index: src/main/java/com/group28/pojo/addNewFacilityImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/group28/pojo/addNewFacilityImpl.java b/src/main/java/com/group28/pojo/addNewFacilityImpl.java
+deleted file mode 100644
+--- a/src/main/java/com/group28/pojo/addNewFacilityImpl.java	
++++ /dev/null	
+@@ -1,45 +0,0 @@
+-package com.group28.pojo;
+-
+-import com.group28.dao.FacilityDao;
+-import com.group28.dao.UserDao;
+-import com.group28.util.MyBatisUtil;
+-import org.apache.ibatis.session.SqlSession;
+-/**
+- *
+- * @author Yuyuan Cao
+- * @version 1.1
+- */
+-
+-public class addNewFacilityImpl implements addNewFacility{
+-
+-    public String addFacility(String facilityId,String type_Id,String facilityName,String x,String y){
+-        NewFacility facility = new NewFacility();
+-
+-        //location to zipcode
+-        String zipCode = "S" + x +" " + "A" + y;
+-
+-        ZipCode fac = facility.searchFacility(zipCode);
+-
+-
+-        if(zipCode.equals(fac.getZipCode())){
+-            return "Not addable";
+-
+-        }else{
+-            SqlSession sqlSession = MyBatisUtil.getSqlSession();
+-            FacilityDao mapper = sqlSession.getMapper(FacilityDao.class);
+-            int maxint = mapper.GetMaxConsumption(type_Id);
+-            FacilityDao mapper2 = sqlSession.getMapper(FacilityDao.class);
+-            int minint = mapper2.GetMinConsumption(type_Id);
+-            sqlSession.close();
+-            Long max = new Long(maxint);
+-            Long min = new Long(minint);
+-            FacilityType facilityType = new FacilityType(type_Id,max,min);
+-            NewFacility newOne = new NewFacility();
+-            String block_name = "G5 2828 block";
+-            ZipCode newZip = new ZipCode(zipCode,block_name);
+-            newOne.FacilityAdd(facilityId,newZip,facilityType,facilityName);
+-            return "Right";
+-        }
+-    }
+-
+-}
+Index: src/main/java/com/group28/pojo/NewFacility.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/group28/pojo/NewFacility.java b/src/main/java/com/group28/pojo/NewFacility.java
+deleted file mode 100644
+--- a/src/main/java/com/group28/pojo/NewFacility.java	
++++ /dev/null	
+@@ -1,61 +0,0 @@
+-package com.group28.pojo;
+-
+-import com.group28.dao.FacilityDao;
+-import com.group28.dao.PowerStationDao;
+-import com.group28.dao.ZipCodeDao;
+-import com.group28.util.MyBatisUtil;
+-import org.apache.ibatis.session.SqlSession;
+-
+-import java.util.List;
+-/**
+- *
+- * @author Yuyuan Cao
+- * @version 1.1
+- */
+-public class NewFacility {
+-    public ZipCode searchFacility(String zipCode){
+-        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+-        ZipCodeDao mapper = sqlSession.getMapper(ZipCodeDao.class);
+-        ZipCode facilityZip = mapper.getZipCode(zipCode);
+-        sqlSession.close();
+-        return facilityZip;
+-    }
+-
+-    public List<ZipCode> GetZipCodeList() {
+-        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+-        ZipCodeDao mapper = sqlSession.getMapper(ZipCodeDao.class);
+-
+-        List<ZipCode> ZipCodeList = mapper.getZipCodeList();
+-
+-        sqlSession.close();
+-        return  ZipCodeList;
+-    }
+-
+-    public void FacilityAdd(String facilityId,ZipCode zipCode, FacilityType facilityType, String facilityName){
+-
+-        if(facilityType.getType_Id().length()==3){
+-            SqlSession sqlSession = MyBatisUtil.getSqlSession();
+-            FacilityDao mapper = sqlSession.getMapper(FacilityDao.class);
+-            ElectricityUnitType electricityUnitType = new ElectricityUnitType(facilityType.getType_Id(), facilityType.getMAX_NUMERICAL(),facilityType.getMIN_NUMERICAL());
+-            ElectricityUnit newEle = new ElectricityUnit(zipCode, electricityUnitType, facilityId,facilityName);
+-            mapper.AddFacility(newEle);
+-            sqlSession.commit();
+-            System.out.println("Data inserted");
+-            System.out.println("New Facility:" + newEle);
+-        }else{
+-            SqlSession sqlSession2 = MyBatisUtil.getSqlSession();
+-            PowerStationDao mapper2 = sqlSession2.getMapper(PowerStationDao.class);
+-
+-            PowerStationType powerStationType = new PowerStationType(facilityType.getType_Id(), facilityType.getMAX_NUMERICAL());
+-            PowerStation newPow = new PowerStation(zipCode, powerStationType, facilityId,facilityName);
+-
+-            mapper2.AddStation(newPow);
+-            sqlSession2.commit();
+-            System.out.println("Data inserted");
+-            System.out.println("New Facility:" + newPow);
+-        }
+-
+-    }
+-
+-
+-}
+Index: src/test/java/com/group28/dao/TestElectricityUnitDao.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/com/group28/dao/TestElectricityUnitDao.java b/src/test/java/com/group28/dao/TestElectricityUnitDao.java
+deleted file mode 100644
+--- a/src/test/java/com/group28/dao/TestElectricityUnitDao.java	
++++ /dev/null	
+@@ -1,104 +0,0 @@
+-package com.group28.dao;
+-
+-import com.group28.pojo.ElectricityUnit;
+-import com.group28.pojo.ElectricityUnitType;
+-import com.group28.pojo.ZipCode;
+-import com.group28.util.MyBatisUtil;
+-import org.apache.ibatis.session.SqlSession;
+-import org.junit.Test;
+-
+-import java.util.List;
+-
+-
+-public class TestElectricityUnitDao {
+-    @Test
+-    public void searchElectricityUnitTest(){
+-        SqlSession sqlsession = MyBatisUtil.getSqlSession();
+-        ElectricityUnitDao mapper = sqlsession.getMapper(ElectricityUnitDao.class);
+-        List<ElectricityUnit> euList = mapper.getElectricityUnit();
+-        for (ElectricityUnit eu : euList) {
+-            System.out.println(eu);
+-        }
+-        sqlsession.close();
+-    }
+-
+-    @Test
+-    public void AddTypeTest(){
+-        SqlSession sqlsession = MyBatisUtil.getSqlSession();
+-        FacilityDao mapper = sqlsession.getMapper(FacilityDao.class);
+-
+-        ElectricityUnitType NewType = new ElectricityUnitType();
+-
+-        NewType.PutTypeId("PB9");
+-
+-        NewType.PutMAX_CONSUMMPTION(200);
+-
+-        NewType.PutMIN_CONSUMMPTION(100);
+-
+-        mapper.AddType(NewType);
+-
+-        sqlsession.commit();
+-
+-        System.out.println(NewType);
+-    }
+-
+-    @Test
+-    public void AddUnitTest(){
+-        SqlSession sqlsession = MyBatisUtil.getSqlSession();
+-
+-        FacilityDao mapper = sqlsession.getMapper(FacilityDao.class);
+-
+-        String ElectricityUnitID = "PB9S1A01";
+-
+-        String PlaceName = "CYY's House";
+-
+-        ElectricityUnit NewUnit = new ElectricityUnit();
+-
+-        NewUnit.Put_electricityUnitId(ElectricityUnitID);
+-        NewUnit.Put_zipCode("S1 A01");
+-        NewUnit.Put_electricityUnitType("PB9");
+-        NewUnit.Put_electricityUnitName(PlaceName);
+-
+-        mapper.AddFacility(NewUnit);
+-
+-        sqlsession.commit();
+-        sqlsession.close();
+-
+-
+-    }
+-
+-    @Test
+-    public void TestFacilitySearch_AddType(){
+-        FacilitySearch SearchTest1 = new FacilitySearch();
+-
+-        SearchTest1.AddType("PB1", 100, 200);
+-        SearchTest1.AddType("SP1", 1000, 500);
+-    }
+-
+-    @Test
+-    public void TestFacilitySearch_AddUnit(){
+-        FacilitySearch SearchTest_AddUnit = new FacilitySearch();
+-
+-        SearchTest_AddUnit.AddUnit("PB9S1A01", "S9 G86", "SP2", "Qyh's House");
+-        SearchTest_AddUnit.AddUnit("SP1S1A02", "S9 G86", "SP2", "Qyh's House");
+-        SearchTest_AddUnit.AddUnit("SP1S1A02", "S1 A02", "SP2", "Qyh's House");
+-        SearchTest_AddUnit.AddUnit("SP1S1A02", "S1 A02", "SP1", "Qyh's House");
+-    }
+-
+-    @Test
+-    public void TestDeleteUnit(){
+-        SqlSession sqlSession = MyBatisUtil.getSqlSession();
+-        FacilityDao mapper = sqlSession.getMapper(FacilityDao.class);
+-
+-        mapper.DeleteElectricityUnit("SP1S1A02");
+-
+-        sqlSession.commit();
+-
+-        mapper.DeleteElectricityType("SP1");
+-
+-        sqlSession.commit();
+-
+-        sqlSession.close();
+-    }
+-
+-}
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ArtifactsWorkspaceSettings\">\r\n    <artifacts-to-build>\r\n      <artifact name=\"Project:war exploded\" />\r\n    </artifacts-to-build>\r\n  </component>\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"763b8252-7652-4b0d-ae32-b26ba8b4805a\" name=\"Changes\" comment=\"获取station的production的方法\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/group28/dao/FacilitySearch.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/group28/dao/FacilitySearch.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"FxmlFile\" />\r\n        <option value=\"Interface\" />\r\n        <option value=\"Tag Library Descriptor\" />\r\n        <option value=\"Mapper\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"HighlightingSettingsPerFile\">\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateVirtualWorld.java\" root0=\"SKIP_INSPECTION\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateMap.java\" root0=\"SKIP_INSPECTION\" />\r\n    <setting file=\"file://$PROJECT_DIR$/pom.xml\" root0=\"SKIP_INSPECTION\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTimeInterface.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTime.java\" root0=\"SKIP_INSPECTION\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/test/java/com/group28/util/TestSimulateTime.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml\" root0=\"SKIP_INSPECTION\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/group28/pojo/PowerStation.java\" root0=\"SKIP_INSPECTION\" />\r\n  </component>\r\n  <component name=\"LogFilters\">\r\n    <option name=\"FILTER_ERRORS\" value=\"false\" />\r\n    <option name=\"FILTER_WARNINGS\" value=\"false\" />\r\n    <option name=\"FILTER_INFO\" value=\"true\" />\r\n    <option name=\"FILTER_DEBUG\" value=\"true\" />\r\n    <option name=\"CUSTOM_FILTER\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"useMavenConfig\" value=\"true\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"26vAQOD0ihMV26ruYhun9J6JAnu\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"DatabaseDriversLRU\" value=\"mysql\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/src/main/resources/com/group28/dao\" />\r\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\r\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\r\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\r\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Modules\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.15\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.2\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"fileTemplates\" />\r\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/src/main/resources/com/group28/dao\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/src/main/resources/com/group28/dao\" />\r\n      <recent name=\"$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"JUnit.PowerStationDaoTest.GetProductionTest\">\r\n    <configuration name=\"PowerStationDaoTest.DeleteStationTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.group28.dao.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.group28.dao\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.group28.dao.PowerStationDaoTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"DeleteStationTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"PowerStationDaoTest.GetProductionTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.group28.dao.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.group28.dao\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.group28.dao.PowerStationDaoTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"GetProductionTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"TestElectricityUnitDao.TestDeleteUnit\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.group28.dao.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.group28.dao\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.group28.dao.TestElectricityUnitDao\" />\r\n      <option name=\"METHOD_NAME\" value=\"TestDeleteUnit\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"TestSqlOfZipCode.testAddZipCode\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.group28.dao.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.group28.dao\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.group28.dao.TestSqlOfZipCode\" />\r\n      <option name=\"METHOD_NAME\" value=\"testAddZipCode\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"TestSqlOfZipCode.testDropZipCode\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.group28.dao.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.group28.dao\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.group28.dao.TestSqlOfZipCode\" />\r\n      <option name=\"METHOD_NAME\" value=\"testDropZipCode\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Tomcat 8.5.57\" type=\"#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory\" factoryName=\"Local\" APPLICATION_SERVER_NAME=\"Tomcat 8.5.57\" ALTERNATIVE_JRE_ENABLED=\"true\" ALTERNATIVE_JRE_PATH=\"1.8\" nameIsGenerated=\"true\">\r\n      <option name=\"OPEN_IN_BROWSER_URL\" value=\"http://localhost:8080\" />\r\n      <option name=\"UPDATING_POLICY\" value=\"restart-server\" />\r\n      <deployment>\r\n        <artifact name=\"Project:war exploded\">\r\n          <settings>\r\n            <option name=\"CONTEXT_PATH\" value=\"\" />\r\n          </settings>\r\n        </artifact>\r\n      </deployment>\r\n      <server-settings>\r\n        <option name=\"BASE_DIRECTORY_NAME\" value=\"37c9d242-c451-445f-b9a1-bda5a4c2e90d\" />\r\n      </server-settings>\r\n      <log_file alias=\"Tomcat Manager Log\" path=\"%IDEA_RUN:CATALINA_BASE%/logs/manager.*\" />\r\n      <log_file alias=\"Tomcat Host Manager Log\" path=\"%IDEA_RUN:CATALINA_BASE%/logs/host-manager.*\" />\r\n      <log_file alias=\"Tomcat Localhost Access Log\" path=\"%IDEA_RUN:CATALINA_BASE%/logs/localhost_access_log.*\" />\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat\" />\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat Catalina\" />\r\n      <RunnerSettings RunnerId=\"Debug\">\r\n        <option name=\"DEBUG_PORT\" value=\"62905\" />\r\n      </RunnerSettings>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Cover\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Debug\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Profile\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Run\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n        <option name=\"BuildArtifacts\" enabled=\"true\">\r\n          <artifact name=\"Project:war exploded\" />\r\n        </option>\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JUnit.PowerStationDaoTest.GetProductionTest\" />\r\n        <item itemvalue=\"JUnit.TestSqlOfZipCode.testDropZipCode\" />\r\n        <item itemvalue=\"JUnit.TestSqlOfZipCode.testAddZipCode\" />\r\n        <item itemvalue=\"JUnit.PowerStationDaoTest.DeleteStationTest\" />\r\n        <item itemvalue=\"JUnit.TestElectricityUnitDao.TestDeleteUnit\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"763b8252-7652-4b0d-ae32-b26ba8b4805a\" name=\"Changes\" comment=\"get最小值\" />\r\n      <created>1648293669906</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1648293669906</updated>\r\n      <workItem from=\"1648293671087\" duration=\"95000\" />\r\n      <workItem from=\"1648293771859\" duration=\"3623000\" />\r\n      <workItem from=\"1648298976747\" duration=\"9863000\" />\r\n      <workItem from=\"1648339087431\" duration=\"1963000\" />\r\n      <workItem from=\"1648344582255\" duration=\"609000\" />\r\n      <workItem from=\"1648345226064\" duration=\"1070000\" />\r\n      <workItem from=\"1648347170348\" duration=\"816000\" />\r\n      <workItem from=\"1648348603425\" duration=\"3618000\" />\r\n      <workItem from=\"1648387270836\" duration=\"761000\" />\r\n      <workItem from=\"1648567023921\" duration=\"4732000\" />\r\n      <workItem from=\"1648647163563\" duration=\"4499000\" />\r\n      <workItem from=\"1648669326266\" duration=\"785000\" />\r\n      <workItem from=\"1648929286833\" duration=\"240000\" />\r\n      <workItem from=\"1648929554376\" duration=\"21000\" />\r\n      <workItem from=\"1648929646206\" duration=\"1759000\" />\r\n      <workItem from=\"1648935511146\" duration=\"334000\" />\r\n      <workItem from=\"1648978724446\" duration=\"2386000\" />\r\n      <workItem from=\"1648996805329\" duration=\"582000\" />\r\n      <workItem from=\"1649183319016\" duration=\"2272000\" />\r\n      <workItem from=\"1649233781468\" duration=\"5123000\" />\r\n      <workItem from=\"1649245796446\" duration=\"4536000\" />\r\n      <workItem from=\"1649274716080\" duration=\"175000\" />\r\n      <workItem from=\"1649323339484\" duration=\"5911000\" />\r\n      <workItem from=\"1649413595354\" duration=\"2760000\" />\r\n      <workItem from=\"1649531904065\" duration=\"3883000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"interlayer\">\r\n      <created>1648379637848</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1648379637848</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"新任务的方法接口\">\r\n      <created>1648580759871</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1648580759871</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"新方法要用到的mapper\">\r\n      <created>1648582990629</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1648582990629</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"新方法要用到的mapper\">\r\n      <created>1648583037732</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1648583037732</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"mapper problem\">\r\n      <created>1648650511008</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1648650511008</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"。\">\r\n      <created>1648930498414</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1648930498414</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"。\">\r\n      <created>1648930685834</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1648930685834</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"。\">\r\n      <created>1648981084042</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1648981084042</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"。\">\r\n      <created>1648982230208</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1648982230208</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"。\">\r\n      <created>1649183926715</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649183926715</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"原param用的是zipcode和unittype，导致在导入sql的时候出错，现将param改为对应sql中varchar的string，在ElectrcityUnit中的添加测试成功\">\r\n      <created>1649234291141</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649234291141</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"电脑快没电了先存一下\">\r\n      <created>1649235230631</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649235230631</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"完善了各个数据结构的Set以及更新了ElectricityMapper和ZipcodeMapper的获得数据list的方法\">\r\n      <created>1649239812027</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649239812027</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"更新了添加unit的方法\">\r\n      <created>1649241363244</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649241363244</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"更新了添加unit的方法的测试，测试在我的电脑上可以通过\">\r\n      <created>1649246692500</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649246692500</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"新增zipcode的方法\">\r\n      <created>1649252174163</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649252174163</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00017\" summary=\"get最小值\">\r\n      <created>1649259476390</created>\r\n      <option name=\"number\" value=\"00017\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00017\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649259476390</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00018\" summary=\"PowerStation 接口\">\r\n      <created>1649323926314</created>\r\n      <option name=\"number\" value=\"00018\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00018\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649323926314</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00019\" summary=\"PowerStation 接口\">\r\n      <created>1649330436034</created>\r\n      <option name=\"number\" value=\"00019\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00019\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649330436034</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00020\" summary=\"更新了新增powerstation type的测试，测试成功\">\r\n      <created>1649332095237</created>\r\n      <option name=\"number\" value=\"00020\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00020\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649332095237</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00021\" summary=\"更新了查找powerstation 和 type的测试，测试成功\">\r\n      <created>1649333131223</created>\r\n      <option name=\"number\" value=\"00021\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00021\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649333131223</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00022\" summary=\"新增了删除electricity unit和electricity type中数据的方法\">\r\n      <created>1649416874515</created>\r\n      <option name=\"number\" value=\"00022\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00022\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649416874515</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00023\" summary=\"新增了删除station unit和station type中数据的方法\">\r\n      <created>1649519487898</created>\r\n      <option name=\"number\" value=\"00023\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00023\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649519487898</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00024\" summary=\"修复了addzipcode的方法以及更新了删除zipcode数据的方法\">\r\n      <created>1649519878757</created>\r\n      <option name=\"number\" value=\"00024\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00024\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649519878757</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00025\" summary=\"获取station的production的方法\">\r\n      <created>1649522912272</created>\r\n      <option name=\"number\" value=\"00025\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00025\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649522912272</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"26\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"interlayer\" />\r\n    <MESSAGE value=\"新任务的方法接口\" />\r\n    <MESSAGE value=\"新方法要用到的mapper\" />\r\n    <MESSAGE value=\"mapper problem\" />\r\n    <MESSAGE value=\"。\" />\r\n    <MESSAGE value=\"原param用的是zipcode和unittype，导致在导入sql的时候出错，现将param改为对应sql中varchar的string，在ElectrcityUnit中的添加测试成功\" />\r\n    <MESSAGE value=\"电脑快没电了先存一下\" />\r\n    <MESSAGE value=\"完善了各个数据结构的Set以及更新了ElectricityMapper和ZipcodeMapper的获得数据list的方法\" />\r\n    <MESSAGE value=\"更新了添加unit的方法\" />\r\n    <MESSAGE value=\"更新了添加unit的方法的测试，测试在我的电脑上可以通过\" />\r\n    <MESSAGE value=\"新增zipcode的方法\" />\r\n    <MESSAGE value=\"get最小值\" />\r\n    <MESSAGE value=\"PowerStation 接口\" />\r\n    <MESSAGE value=\"更新了新增powerstation type的测试，测试成功\" />\r\n    <MESSAGE value=\"更新了查找powerstation 和 type的测试，测试成功\" />\r\n    <MESSAGE value=\"新增了删除electricity unit和electricity type中数据的方法\" />\r\n    <MESSAGE value=\"新增了删除station unit和station type中数据的方法\" />\r\n    <MESSAGE value=\"修复了addzipcode的方法以及更新了删除zipcode数据的方法\" />\r\n    <MESSAGE value=\"获取station的production的方法\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"获取station的production的方法\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -10,8 +10,18 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="763b8252-7652-4b0d-ae32-b26ba8b4805a" name="Changes" comment="获取station的production的方法">
++      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/classes/db.properties" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/controller/Ajaxcontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/controller/Ajaxcontroller.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilitySearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/dao/FacilitySearch.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/pojo/NewFacility.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/pojo/addNewFacilityImpl.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/group28/service/Interation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group28/service/Interation.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/com/group28/dao/TestElectricityUnitDao.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/com/group28/dao/TestSqlOfZipCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/group28/dao/TestSqlOfZipCode.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/home page/menu.jsp" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -33,14 +43,17 @@
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="HighlightingSettingsPerFile">
++    <setting file="file://$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login/index.jsp" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
++    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/controller/Position.java" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateVirtualWorld.java" root0="SKIP_INSPECTION" />
+-    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateMap.java" root0="SKIP_INSPECTION" />
+-    <setting file="file://$PROJECT_DIR$/pom.xml" root0="SKIP_INSPECTION" />
+     <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTimeInterface.java" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateTime.java" root0="SKIP_INSPECTION" />
+-    <setting file="file://$PROJECT_DIR$/src/test/java/com/group28/util/TestSimulateTime.java" root0="FORCE_HIGHLIGHTING" />
++    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/util/SimulateMap.java" root0="SKIP_INSPECTION" />
+     <setting file="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml" root0="SKIP_INSPECTION" />
+     <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/pojo/PowerStation.java" root0="SKIP_INSPECTION" />
++    <setting file="file://$PROJECT_DIR$/pom.xml" root0="SKIP_INSPECTION" />
++    <setting file="file://$PROJECT_DIR$/src/main/java/com/group28/controller/Ajaxcontroller.java" root0="FORCE_HIGHLIGHTING" />
++    <setting file="file://$PROJECT_DIR$/src/test/java/com/group28/util/TestSimulateTime.java" root0="FORCE_HIGHLIGHTING" />
+   </component>
+   <component name="LogFilters">
+     <option name="FILTER_ERRORS" value="false" />
+@@ -51,13 +64,6 @@
+   </component>
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+-  </component>
+-  <component name="MavenImportPreferences">
+-    <option name="generalSettings">
+-      <MavenGeneralSettings>
+-        <option name="useMavenConfig" value="true" />
+-      </MavenGeneralSettings>
+-    </option>
+   </component>
+   <component name="ProjectId" id="26vAQOD0ihMV26ruYhun9J6JAnu" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+@@ -72,7 +78,8 @@
+     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/com/group28/dao" />
++    <property name="aspect.path.notification.shown" value="true" />
++    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+     <property name="node.js.detected.package.eslint" value="true" />
+     <property name="node.js.detected.package.tslint" value="true" />
+     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+@@ -88,11 +95,23 @@
+       <recent name="$PROJECT_DIR$/src/main/resources/com/group28/dao" />
+     </key>
+     <key name="MoveFile.RECENT_KEYS">
++      <recent name="E:\QYH'S Private Things\UOL\Y2\COMP208\Comp208_GroupProject_Group28\web\WEB-INF\jsp\home page" />
+       <recent name="$PROJECT_DIR$/src/main/resources/com/group28/dao" />
+       <recent name="$PROJECT_DIR$/web/WEB-INF/jsp/pages/index_login" />
+     </key>
+   </component>
+-  <component name="RunManager" selected="JUnit.PowerStationDaoTest.GetProductionTest">
++  <component name="RunManager" selected="JUnit.TestSqlOfZipCode.testAddZipCode">
++    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
++      <option name="arquillianRunConfiguration">
++        <value>
++          <option name="containerStateName" value="" />
++        </value>
++      </option>
++      <option name="TEST_OBJECT" value="class" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
+     <configuration name="PowerStationDaoTest.DeleteStationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="Project" />
+       <extension name="coverage">
+@@ -173,8 +192,9 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="Tomcat 8.5.57" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.57" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.8" nameIsGenerated="true">
++    <configuration name="Tomcat 9.0.58" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.58" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.8" nameIsGenerated="true">
+       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080" />
++      <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+       <option name="UPDATING_POLICY" value="restart-server" />
+       <deployment>
+         <artifact name="Project:war exploded">
+@@ -261,11 +281,19 @@
+         </option>
+       </method>
+     </configuration>
+-    <recent_temporary>
+-      <list>
+-        <item itemvalue="JUnit.PowerStationDaoTest.GetProductionTest" />
+-        <item itemvalue="JUnit.TestSqlOfZipCode.testDropZipCode" />
++    <list>
++      <item itemvalue="JUnit.PowerStationDaoTest.DeleteStationTest" />
++      <item itemvalue="JUnit.TestElectricityUnitDao.TestDeleteUnit" />
++      <item itemvalue="JUnit.PowerStationDaoTest.GetProductionTest" />
++      <item itemvalue="JUnit.TestSqlOfZipCode.testAddZipCode" />
++      <item itemvalue="JUnit.TestSqlOfZipCode.testDropZipCode" />
++      <item itemvalue="Tomcat Server.Tomcat 9.0.58" />
++    </list>
++    <recent_temporary>
++      <list>
+         <item itemvalue="JUnit.TestSqlOfZipCode.testAddZipCode" />
++        <item itemvalue="JUnit.PowerStationDaoTest.GetProductionTest" />
++        <item itemvalue="JUnit.TestSqlOfZipCode.testDropZipCode" />
+         <item itemvalue="JUnit.PowerStationDaoTest.DeleteStationTest" />
+         <item itemvalue="JUnit.TestElectricityUnitDao.TestDeleteUnit" />
+       </list>
+@@ -304,6 +332,7 @@
+       <workItem from="1649323339484" duration="5911000" />
+       <workItem from="1649413595354" duration="2760000" />
+       <workItem from="1649531904065" duration="3883000" />
++      <workItem from="1649668517539" duration="1139000" />
+     </task>
+     <task id="LOCAL-00001" summary="interlayer">
+       <created>1648379637848</created>
+@@ -496,6 +525,7 @@
+         </entry>
+       </map>
+     </option>
++    <option name="oldMeFiltersMigrated" value="true" />
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="interlayer" />
