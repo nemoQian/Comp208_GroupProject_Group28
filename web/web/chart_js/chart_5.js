@@ -53,12 +53,22 @@ $(function () {
                 series: [{
                     name: 'Generation',
                     type: 'line',
+/*                    stack: 'Total',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },*/
                     symbol: 'emptydiamond',    //设置折线图中表示每个坐标点的符号 emptycircle：空心圆；emptyrect：空心矩形；circle：实心圆；emptydiamond：菱形
                     data: []
                 },
                     {
                         name: 'Consumption',
                         type: 'line',
+                        stack: 'Total',
+                        areaStyle: {},
+                        emphasis: {
+                            focus: 'series'
+                        },
                         symbol: 'emptydiamond',    //设置折线图中表示每个坐标点的符号 emptycircle：空心圆；emptyrect：空心矩形；circle：实心圆；emptydiamond：菱形
                         data: []
                     }]
@@ -100,13 +110,18 @@ $(function () {
                     /*                    names = [];    //类别数组（实际用来盛放X轴坐标值）
                                         series1 = [];
                                         series2 = [];*/
+                    if (names.length == 24) {
+                        names = [];    //类别数组（实际用来盛放X轴坐标值）
+                        series1 = [];
+                        series2 = [];
+                    }
 
                 },
-                error: function (errorMsg) {
+/*                error: function (errorMsg) {
                     //请求失败时执行该函数
                     alert("图表请求数据失败!");
                     myChart.hideLoading();
-                }
+                }*/
             });
             setTimeout(cs,5000);
         }

@@ -27,10 +27,13 @@ $(function () {
                 type: 'value',
                 splitLine: {show: false},
                 boundaryGap: [0, 0.1],
+                interval: 50000000,
                 axisTick: {
                     show: false
                 },
                 axisLabel: {
+                    showMaxLabel: true,
+                    showMinLabel: true,
                     formatter: '{value}kW',
                     textStyle: {
                         color: '#b5b5b5',
@@ -86,10 +89,19 @@ $(function () {
                         }
                     },
                     type: 'bar',
-                    data: []
+                    data: [],
+                    label: {
+                        show: true,
+                        position: 'right',
+                        valueAnimation: true
+                    }
                 },
 
-            ]
+            ],
+            animationDuration: 0,
+            animationDurationUpdate: 3000,
+            animationEasing: 'linear',
+            animationEasingUpdate: 'linear'
         });
 
 

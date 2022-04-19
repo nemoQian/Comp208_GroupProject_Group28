@@ -14,6 +14,9 @@ $(function () {
             title: {x: 222},
             color: ['blue', 'green'],
             xAxis: {
+                max:16,
+                min:0,
+                Interval: 2,
                 scale: true,
                 splitLine: {
                     show: true,
@@ -36,6 +39,9 @@ $(function () {
 
             },
             yAxis: {
+                max:9,
+                min:0,
+                Interval: 1,
                 scale: true,
                 splitLine: {
                     show: true,
@@ -52,9 +58,9 @@ $(function () {
                         width:1,//这里是为了突出显示加上的
                     }
                 },
-                axisLabel:{
+/*                axisLabel:{
                     show:false
-                }
+                }*/
             },
             encode: {
                 tooltip: 2
