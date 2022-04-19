@@ -250,7 +250,7 @@
 			},
 
 			done:function (){
-				// ctx.putImageData(array[array.length - 1], 0, 0);
+				ctx.putImageData(array[array.length - 1], 0, 0);
 				axios.get('ajax/done').then(function (res){
 					console.log(res.data)
 					for (let i = 0; i < res.data.length; i+=4) {draw(res.data[i],res.data[i+1],res.data[i+2],res.data[i+3])}
