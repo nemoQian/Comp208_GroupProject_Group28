@@ -176,8 +176,8 @@ public class SimulateVirtualWorld implements SimulateVirtualWorldInterface{
         ArrayList<Integer> heightData = new ArrayList<>();
         heightData = new ArrayList<>();
         int[] lo = simulateMap.getFacilityLocation(facilityData.getFacility());
-        heightData.add(lo[0]);
-        heightData.add(lo[1]);
+        heightData.add((int)(((lo[0]-13)/50)+1));
+        heightData.add(9-(lo[1]+10) /50);
         heightData.add(consumption);
         heightList.add(heightData);
     }
@@ -228,6 +228,7 @@ public class SimulateVirtualWorld implements SimulateVirtualWorldInterface{
         fanChart[3] = currentProduction;
         totalProduction += currentProduction;
         System.out.println("currentConsumption " + currentConsumption);
+        System.out.println("currentProduction " + currentProduction);
         System.out.println("totalConsumption " + totalConsumption);
         System.out.println("totalProduction " + totalProduction);
     }
@@ -269,7 +270,7 @@ public class SimulateVirtualWorld implements SimulateVirtualWorldInterface{
     }
 
     public int[] prim(){
-        return simulateMap.prim(0);
+        return simulateMap.generatePrimArray();
     }
 
     public void restWorld(){
