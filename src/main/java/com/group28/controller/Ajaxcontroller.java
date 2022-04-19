@@ -1,6 +1,4 @@
 package com.group28.controller;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.group28.service.Interation;
 import com.group28.service.UserServiceImpl;
 import org.springframework.stereotype.Controller;
@@ -10,10 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Map;
-import com.group28.controller.Position;
-import com.group28.controller.echart_1;
-import com.group28.controller.line;
 @Controller
 @RestController
 @RequestMapping("/ajax")

@@ -175,7 +175,7 @@ public class SimulateMap implements SimulateMapInterface {
 
     private void generateClosestList(){
         connectionList = new LinkedList<>();
-        connectionLocation = new ArrayList<>();
+
         for(int i = 0; i<powerStationLinkedList.size(); i++){
             LinkedList<Facility> cl = new LinkedList<>();
             cl.add(powerStationLinkedList.get(i));
@@ -196,6 +196,7 @@ public class SimulateMap implements SimulateMapInterface {
     }
 
     public int[] generatePrimArray(){
+        connectionLocation = new ArrayList<>();
         if(powerStationLinkedList.size() == 1){
             prim(facilitiesList);
         }
