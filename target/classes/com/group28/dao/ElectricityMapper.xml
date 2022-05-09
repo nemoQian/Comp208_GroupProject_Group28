@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.group28.dao.ElectricityUnitDao">
+    <select id="findElectricityUnit" resultType="String">
+        select ElectricityUnitID from virtualWorld.ElectricityUnit
+        where electricityUnitName = #{electricityUnitName};
+    </select>
+
+    <select id="findElectricityUnitType" resultMap="findeut">
+        select Type_ID, Max_Consumption, Min_Consumption from virtualWorld.electricityunittype where Type_ID = #{electricityUnitType};
+    </select>
+
+    <resultMap id="findeut" type="com.group28.pojo.ElectricityUnitType">
+        <id property="type_Id" jdbcType="VARCHAR" column="Type_ID"/>
+        <result property="MAX_CONSUMMPTION" jdbcType="INTEGER" column="Max_Consumption"/>
+        <result property="MIN_CONSUMMPTION" jdbcType="INTEGER" column="Min_Consumption"/>
+    </resultMap>
+
+    <insert id="AddType" parameterType="com.group28.pojo.ElectricityUnitType">
+        insert into virtualWorld.ElectricityUnitType(Type_ID, Max_Consumption, Min_Consumption) values (#{type_Id}, #{MAX_CONSUMMPTION}, #{MIN_CONSUMMPTION});
+    </insert>
+
+    <insert id="AddFacility" parameterType="com.group28.pojo.ElectricityUnit">
+        insert into virtualWorld.ElectricityUnit values (#{electricityUnitId}, #{zipCode}, #{electricityUnitType}, #{electricityUnitName});
+    </insert>
+
+    <select id="GetTypeIdList" resultType="String">
+        select Type_ID from virtualWorld.ElectricityUnitType;
+    </select>
+
+    <select id="GetUnitIdList" resultType="String">
+        select ElectricityUnitID from virtualWorld.ElectricityUnit;
+    </select>
+
+    <insert id="InsertData" parameterType="com.group28.pojo.ElectricityUnitData">
+        insert into virtualWorld.ElectricityUnit values (#{DATA_REFERENCE_ID}, #{electricityUnitId}, #{timeOfStore}, #{ConsumptionAmount});
+    </insert>
+
+    <select id="GetTypeId" parameterType="String" resultType="String">
+        select ElectricityType from virtualWorld.ElectricityUnit where ElectricityUnitID = #{electricityUnitId};
+    </select>
+
+    <select id="GetMaxConsumption" parameterType="String" resultType="int">
+        select Max_Consumption from virtualWorld.ElectricityUnitType where Type_ID = #{type_Id};
+    </select>
+
+    <select id="GetMinConsumption" parameterType="String" resultType="int">
+        select Min_Consumption from virtualWorld.ElectricityUnitType where Type_ID = #{type_Id};
+    </select>
+
+    <delete id="DeleteElectricityUnit" parameterType="String">
+        delete from virtualWorld.ElectricityUnit where ElectricityUnitID = #{electricityUnitId};
+    </delete>
+    
+    
+    <delete id="DeleteElectricityType" parameterType="String">
+        delete from virtualWorld.ElectricityUnitType where Type_ID = #{type_Id};
+    </delete>
+</mapper>

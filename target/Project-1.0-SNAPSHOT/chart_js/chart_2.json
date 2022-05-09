@@ -1,0 +1,23 @@
+[
+    {
+      "department": "Community",
+      "num": 200
+    },
+    {
+      "department": "Hospital",
+      "num": 100
+    },
+    {
+      "department": "School",
+      "num": 366
+    },
+    {
+      "department": "Station",
+      "num": 320
+    },
+    {
+      "department": "Shop",
+      "num": 300
+    }
+]
+
