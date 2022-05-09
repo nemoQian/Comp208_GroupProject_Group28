@@ -2,10 +2,10 @@ package com.group28.util;
 
 /**
  * The interface Simulate time interface.
- * It simulates times 1 minute equals 6 seconds in real world.
+ * It simulates times 10 minute equals 6 seconds in real world.
  *
  * @author Yihan Qian
- * @version 1.0
+ * @version 2.0
  */
 public interface SimulateTimeInterface {
 
@@ -81,7 +81,6 @@ public interface SimulateTimeInterface {
      * @return the front reference id
      */
     String getFrontReferenceId();
-
 
     /**
      * Simulation open.

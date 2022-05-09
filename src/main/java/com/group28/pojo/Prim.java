@@ -3,7 +3,9 @@ package com.group28.pojo;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
+/**
+ * @author Yuyuan Cao
+ */
 public class Prim<T> {
     private Map<Integer,ShortEdge> map = new HashMap<Integer, ShortEdge>();
     private Graph<T> graph;

@@ -6,7 +6,7 @@ import com.group28.pojo.Facility;
  * The interface Simulate map interface.
  *
  * @author Yihan Qian
- * @version 1.0
+ * @version 2.0
  */
 public interface SimulateMapInterface {
 
@@ -28,7 +28,7 @@ public interface SimulateMapInterface {
     int[] getFacilityLocation (Facility facility);
 
     /**
-     * Gets distance.
+     * Gets distance by Manhattan distance.
      *
      * @param facility1 the facility 1
      * @param facility2 the facility 2

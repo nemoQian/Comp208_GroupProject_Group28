@@ -1,5 +1,8 @@
 package com.group28.pojo;
 
+/**
+  * @author Yuyuan Cao
+  */
 public class Graph<T> {
     private int vertexNum;
     private T vertex[];

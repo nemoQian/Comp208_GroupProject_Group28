@@ -1,5 +1,8 @@
 package com.group28.pojo;
 
+/**
+ * @author Yuyuan Cao
+ */
 public class ShortEdge {
     private int lowCost;
     private int adjvex;
@@ -15,6 +18,5 @@ public class ShortEdge {
     public void setAdjvex(int adjvex) {
         this.adjvex = adjvex;
     }
-
 
 }

@@ -3,7 +3,7 @@ package com.group28.pojo;
 /**
  * The type Power station data.
  *
- * @author Yihan Qian
+ * @author Lingfang Li
  * @version 1.0
  */
 public class PowerStationData {

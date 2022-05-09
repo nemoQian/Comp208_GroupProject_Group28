@@ -6,9 +6,10 @@ import java.util.ArrayList;
  * The type Simulate time.
  *
  * @author Yihan Qian
- * @version 1.0
+ * @version 2.0
  */
 public class SimulateTime implements SimulateTimeInterface {
+    /* declare each month by array */
     private static String[][] JANUARY = new String[31][24];
     private static String[][] FEBRUARY = new String[29][24];
     private static String[][] MARCH = new String[31][24];
@@ -23,21 +24,29 @@ public class SimulateTime implements SimulateTimeInterface {
     private static String[][] DECEMBER = new String[31][24];
 
     private static ArrayList<String[][]> MONTH;
+    /* declare the hour from 0 to 23*/
     private static final int HOUR = 23;
+    /* declart the minute from 0 to 59*/
     private static final int MINUTE = 59;
-    private static final int SECOND = 60;
+    /* declare the second from 0 to 59*/
+    private static final int SECOND = 59;
+    /* initial year is 2022*/
     private static long year = 2022;
 
+    /* these is indicated to the current time */
     private static int second = 0;
     private static int minute = 0;
     private static int hour = 0;
     private static int day = 1;
     private static int month = 1;
 
+    /* initial the flag to control the simulation loop*/
     private static boolean flag = true;
+    /* helps to generate the time now */
     private final int CRITICAL_VALUE = 10;
 
     static {
+        /* static loading the year */
         MONTH = new ArrayList<String[][]>();
         MONTH.add(JANUARY);
         MONTH.add(FEBRUARY);
@@ -64,12 +73,12 @@ public class SimulateTime implements SimulateTimeInterface {
     public void simulationOpen() {
         flag = true;
         System.out.println("Time simulation open!");
-        MONTH.get(month-1)[day-1][hour] = year*1000000 + 10000 + 100 + 0 + "";
-        System.out.println(MONTH.get(month - 1)[day - 1][hour]);
+        /* main part to simulate the time */
+        MONTH.get(month-1)[day-1][hour] = year*1000000 + month*10000 + day*100 + hour + "";
         while (flag){
             simulateSeconds();
             try {
-                Thread.sleep(1);
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -79,11 +88,13 @@ public class SimulateTime implements SimulateTimeInterface {
 
     @Override
     public void simulationStop(){
+        /* set flag as false to shut down the simulation */
         flag = false;
     }
 
     @Override
     public void simulateSeconds(){
+        /* if second equals to 59 it means this one minutes now */
         if(second == SECOND){
             second = 0;
             simulateMinutes();
@@ -95,6 +106,7 @@ public class SimulateTime implements SimulateTimeInterface {
 
     @Override
     public void simulateMinutes(){
+        /* if minute equals to 59 it means this one hour now */
         if(minute == MINUTE){
             minute = 0;
             simulateHours();
@@ -107,6 +119,7 @@ public class SimulateTime implements SimulateTimeInterface {
 
     @Override
     public void simulateHours(){
+        /* if hour equals to 23 it means this one day now */
         if(hour == HOUR){
             hour = 0;
             simulateDays();
