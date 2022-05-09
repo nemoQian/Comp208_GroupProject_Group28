@@ -43,8 +43,8 @@ public class Interation implements IntegrationInterface{
 
     public Interation(){
         resetDB();
-        typeMapper = new HashMap<>();
-        levelMapper = new HashMap<>();
+        typeMapper = new HashMap<String, String[]>();
+        levelMapper = new HashMap<String, Integer>();
         typeMapper.put("Community", communityType);
         typeMapper.put("Hospital", hospitalType);
         typeMapper.put("Shopping centre", shoppingCentreType);
@@ -69,6 +69,7 @@ public class Interation implements IntegrationInterface{
         resetDB();
         virtualWorld.worldSimulateStop();
         virtualWorld.restWorld();
+        virtualWorld.shutdownThreat();
         virtualWorld = new SimulateVirtualWorld();
         return SUCCESS;
     }
@@ -177,6 +178,10 @@ public class Interation implements IntegrationInterface{
         return 0;
     }
 
+    public int getTotalBestLoss() { return virtualWorld.getTotalBestLose(); }
+
+    public int getTotalWorstLoss() { return virtualWorld.getTotalWorstLose(); }
+
     private String generateZipCode(int x, int y) {
         if(x < 10){
             if( y < 10){
@@ -246,4 +251,6 @@ public class Interation implements IntegrationInterface{
     public int[] getFanChart(){
         return virtualWorld.getFanChart();
     }
+
+    public int[] getLineChart() { return virtualWorld.getLineChart(); }
 }

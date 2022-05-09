@@ -47,8 +47,8 @@ public class SimulateMap implements SimulateMapInterface {
         this.facilityLocationMap = new ConcurrentHashMap<Facility, int[]>();
         this.facilitiesList = new LinkedList<Facility>();
 
-        electricityUnitLinkedList = new LinkedList<>();
-        powerStationLinkedList = new LinkedList<>();
+        electricityUnitLinkedList = new LinkedList<Facility>();
+        powerStationLinkedList = new LinkedList<Facility>();
 
         System.out.println("Map created!");
 
@@ -157,7 +157,7 @@ public class SimulateMap implements SimulateMapInterface {
             vertex[i] = "vertex"+i;
         }
         graph.setVertex(vertex);
-        Prim<String> prim =new Prim<>();
+        Prim<String> prim =new Prim<String>();
         prim.setGraph(graph);
         Map<Integer,ShortEdge> resultMap = prim.prim();
         System.out.println(fl.size());
@@ -174,10 +174,10 @@ public class SimulateMap implements SimulateMapInterface {
     }
 
     private void generateClosestList(){
-        connectionList = new LinkedList<>();
+        connectionList = new LinkedList<LinkedList<Facility>>();
 
         for(int i = 0; i<powerStationLinkedList.size(); i++){
-            LinkedList<Facility> cl = new LinkedList<>();
+            LinkedList<Facility> cl = new LinkedList<Facility>();
             cl.add(powerStationLinkedList.get(i));
             connectionList.add(cl);
         }
@@ -196,7 +196,7 @@ public class SimulateMap implements SimulateMapInterface {
     }
 
     public int[] generatePrimArray(){
-        connectionLocation = new ArrayList<>();
+        connectionLocation = new ArrayList<Integer>();
         if(powerStationLinkedList.size() == 1){
             prim(facilitiesList);
         }

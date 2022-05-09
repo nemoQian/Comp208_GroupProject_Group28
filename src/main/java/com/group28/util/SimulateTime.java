@@ -69,7 +69,7 @@ public class SimulateTime implements SimulateTimeInterface {
         while (flag){
             simulateSeconds();
             try {
-                Thread.sleep(2);
+                Thread.sleep(1);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

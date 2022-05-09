@@ -76,6 +76,7 @@
 <script src="https://cdn.bootcdn.net/ajax/libs/qs/6.9.4/qs.min.js"></script>
 
 <script>
+
     var vue = new Vue({
         el: '#app',
         data: {
@@ -89,10 +90,10 @@
                 this.active = type
             },
 
+
             loginsubmit: function () {
                 var lusername = this.loginForm.Username;
                 var lpassword = this.loginForm.Password;
-                console.log(lusername)
                 if (lusername == null || lusername.trim() == "") {alert("username is empty")}
                 else if (lpassword == null || lpassword.trim() == "") {alert("password is empty")}
                 else{
@@ -103,10 +104,10 @@
                         }
                     );
                     axios.post('ajax/login', s)
-                        .then(function (res) {
+                        .then((res)=>{
 
                             switch (res.data){
-                                case 200: window.location.href = "toMenu"; break;
+                                case 200:window.location.href = "toMenu?username="+lusername;break;
                                 case 401: alert("User does not exist"); break;
                                 case 402:  alert("Password is wrong."); break;
                             }
@@ -118,7 +119,7 @@
             },
 
             guestlogin:function (){
-                window.location.href = "toMenu"
+                window.location.href = "toMenu?username=guest";
                 this.ifguest="guest login";
                 let t = window.Qs.stringify(
                     {

@@ -28,11 +28,11 @@
 
 <header>
 	<img src="picture/28logo.png" width=25px height=25px class="logo">
-	<img src="picture/download.png" width=25px height=25px class="download">
-	<img src="picture/user.png" width=25px height=25px class="user">
-	<img src="picture/exit.png" width=25px height=25px class="exit">
+	<%--	<img src="picture/download.png" width=25px height=25px class="download">--%>
+	<%--	<img src="picture/user.png" width=25px height=25px class="user">--%>
+	<img src="picture/exit.png" width=25px height=25px class="exit" onclick=window.location.assign("http://www.groups28.com/")>
 
-	<div class="title">city energy management and Computational Sustainability System</div>
+	<div class="title">Energy Management and Optimization System</div>
 	<div class="user"></div>
 </header>
 <div class="boxset">
@@ -126,9 +126,17 @@
 		reset()
 	});
 
-
+	let user = window.location.href.split("?username=")[1];
+	console.log(user)
+	let typearray = []
 	var canvas=document.getElementById('myCanvas');
 	var ctx=canvas.getContext('2d');
+	var width = canvas.offsetWidth;
+	var height = canvas.offsetHeight;
+	canvas.width = width;
+	canvas.height=height;
+
+
 	var imagedata = ctx.getImageData(0,0,829,515);
 	array=[]
 	array.push(imagedata)
@@ -142,16 +150,25 @@
 		ctx.stroke();
 	}
 
+	function drawall(fromx,fromy,tox,toy){
+		ctx.beginPath()
+		ctx.strokeStyle="black"
+		ctx.lineWidth=0.5;
+		ctx.moveTo(fromx,fromy);
+		ctx.lineTo(tox,toy);
+		ctx.stroke();
+	}
+
 	var vue = new Vue({
 		el: '#app',
 		data: {
 			x:"",y:"",name:"",consumption:"",stype:"",array:[],imagedata,
 
-			messagehouse:"low-level: medium-level: high-level: ",
-			messagehospital:"low-level: medium-level: high-level: ",
-			messageschool:"low-level: medium-level: high-level: ",
-			messagepower:"low-level: medium-level: high-level: ",
-			messageshop:"low-level: medium-level: high-level: ",
+			messagehouse:"low-level:400~800Wh,\n medium-level:450~900Wh,\n high-level:500~1000Wh",
+			messagehospital:"low-level:160~320Wh,\n medium-level:320~640Wh,\n high-level:720~1440Wh ",
+			messageschool:"low-level:240~480Wh,\n medium-level:480~960Wh,\n high-level:720~1440Wh",
+			messagepower:"low-level:20000Wh,\n medium-level:40000Wh,\n high-level:140000Wh ",
+			messageshop:"low-level:700~1000Wh,\n medium-level:1200~1500Wh,\n high-level:1700~2000Wh ",
 
 
 		},
@@ -168,6 +185,14 @@
 				context.fillText(this.name,(Number(this.x*50)*2+50)/2-4.5*len-36,Number(this.y*50)+52)
 			},
 
+			addposition:function(){
+				var len = this.name.length;
+				var con=document.getElementById("myCanvas");
+				var context=con.getContext("2d");
+				context.font = 'italic 10px Calibri';
+				context.fillText("["+this.x+","+this.y+"]",this.x*50-22,Number(this.y*50)+62)
+			},
+
 			position:function (x,y,src){
 				var img = new Image()
 				img.src = src
@@ -176,15 +201,28 @@
 					imagedata = ctx.getImageData(0,0,829,515)
 					array.push(imagedata)
 				}
-				this.addword()
-			},
 
+				this.addword()
+				this.addposition()
+			},
+			countPowerstation(array){
+				let numpower=0;
+				for (let i = 0; i < array.length; i++) {
+					if(array[i]=="Power station"){
+						numpower++;
+					}
+				}
+				return numpower;
+			},
 			addsubmit:function(){
+
 				var type = this.stype;
 				var x = (this.x-1)*50+13;
 				var y = this.y*50-10;
 				var rx = this.x;
 				var ry = this.y;
+
+
 
 				if(!Number.isInteger(x)){alert("Please input the Integer x.")}
 				else if(!Number.isInteger(y)){alert("Please input the Integer y.")}
@@ -195,49 +233,59 @@
 				else if(y==""){alert("Please enter the value of y.")}
 				else if (this.consumption==""){alert("Please choose the consumption level.")}
 				else {
+					numpower = this.countPowerstation(typearray)
+					if (numpower >= 1 && user == "guest"&&this.stype=="Power station") {
+						alert("Guest can only add one power station.Please login to experience more function.")
+					} else {
 
-					let p = window.Qs.stringify(
-							{
-								type: this.stype,
-								name: this.name,
-								x: (this.x - 1) * 50 + 13 + 25,
-								y: this.y * 50 - 10 + 25,
-								consumption: this.consumption,
-							}
-					);
 
-					axios.post('ajax/position', p).then((res)=>{
-
-						console.log(res.data)
-						if (res.data == "insert success") {
-							console.log(type)
-							switch (this.stype) {
-								case "Community":
-									this.position(x, y, "picture/house1.png");
-									break;
-								case "Shopping centre":
-									this.position(x, y, "picture/shopping centre.png");
-									break;
-								case "Hospital":
-									this.position(x, y, "picture/hospital.png");
-									break;
-								case "School":
-									this.position(x, y, "picture/school1.png");
-									break;
-								case "Power station":
-									this.position(x, y, "picture/power station1.png");
-									break;
-							}
-						} else {
-							alert(res.data)
+						if(user=="guest"){
+							numpower = this.countPowerstation(typearray)
 						}
-					}).catch(function () {
-						alert('Please refresh the website.')
-					});
+						let p = window.Qs.stringify(
+								{
+									type: this.stype,
+									name: this.name,
+									x: (this.x - 1) * 50 + 13 + 25,
+									y: this.y * 50 - 10 + 25,
+									consumption: this.consumption,
+								}
+						);
+
+						axios.post('ajax/position', p).then((res) => {
+							// console.log(res.data)
+							if (res.data == "insert success") {
+								typearray.push(type)
+								switch (this.stype) {
+									case "Community":
+										this.position(x, y, "picture/house1.png");
+										break;
+									case "Shopping centre":
+										this.position(x, y, "picture/shopping centre.png");
+										break;
+									case "Hospital":
+										this.position(x, y, "picture/hospital.png");
+										break;
+									case "School":
+										this.position(x, y, "picture/school1.png");
+										break;
+									case "Power station":
+										this.position(x, y, "picture/power station1.png");
+										break;
+								}
+							} else {
+								alert(res.data)
+							}
+						}).catch(function () {
+							alert('Please refresh the website.')
+						});
+					}
 				}
 			},
 
 			rollback:function (){
+
+				typearray.pop()
 				if(array.length==1) {
 					alert("There is no previous operation.")
 				}else{
@@ -254,12 +302,20 @@
 				axios.get('ajax/done').then(function (res){
 					console.log(res.data)
 					if(res.data[0]==-1){
-						alert("ssss")
-					}
-					else{
+						alert("There is no power station in the map.")
+					}else if(res.data[0]==-2){
+						alert("Power consumption exceeds power supply.")
+					}else{
 						for (let i = 0; i < res.data.length; i+=4) {draw(res.data[i],res.data[i+1],res.data[i+2],res.data[i+3])}
+						axios.get('ajax/alljoin').then(function (res){
+							console.log(res.data)
+							for (let i = 0; i < res.data.length; i+=4) {drawall(res.data[i],res.data[i+1],res.data[i+2],res.data[i+3])}
+						})
 					}
+
 				})
+
+
 			},
 
 			reset:function() {
@@ -269,6 +325,7 @@
 			},
 
 			refresh:function (){
+				typearray.length=0;
 				ctx.putImageData(array[0], 0, 0);
 				array.length=0;
 				imagedata = ctx.getImageData(0,0,829,515)
@@ -276,9 +333,13 @@
 				axios.post('ajax/reset').catch(function () {
 					alert('Please refresh the website.')
 				});
-			}
+			},
 
 
+
+
+		},
+		created(){
 
 		}
 
